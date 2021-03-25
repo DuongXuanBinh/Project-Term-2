@@ -9,9 +9,9 @@
     <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container" style="width: 700px">
+<div class="container mail-page">
     <!--    header cua mail-->
-    <div class="row">
+    <div class="row mail-header">
         <div class="col-4">
             <img src="img/logo%20chu%20xanh.png" width="200" height="auto"/>
         </div>
@@ -19,12 +19,13 @@
             <h3>UNBLOCK CONFIRMATION</h3>
         </div>
     </div>
-    <p>Thank you for choosing Helvetic Airline to make your travel reservation. You can require your reservation information below.
-        To see the latest information about your reservation, visit <a href="#">Helvetic Airline website</a></p>
-    <p>Dear Customer, <br>
-        Your Heveltic Airline flight blocking has been cancelled.</p>
-    <p>CANCELLED DETAILS</p>
-    <div class="row">
+    <div class="row col-12">
+        <p class="first-thanks">Thank you for choosing Helvetic Airline to make your travel reservation. You can require your reservation information below.
+            To see the latest information about your reservation, visit <a href="helveticairline.epizy.com">Helvetic Airline website</a></p>
+        <p class="col-12">Dear Customer, your Heveltic Airline flight blocking has been <b>cancelled</b>. The detailed information is shown below</p>
+        <p class="itinerary">CANCELLED DETAILS</p>
+    </div>
+    <div class="row ticket-details">
         <div class="col-8">
             <table>
                 <tr>
@@ -43,41 +44,39 @@
         </div>
         <div class="col-4">
             <!--            qr code den website-->
-            <img src="img/QR Code.png" height="80" width="80"/>
-            <p>Block code: AAAA</p>
+            <img src="img/QR Code.png" height="60" width="60"/>
+            <p>Reservation code: AAAA</p>
         </div>
     </div>
-    <p><img src="img/429706-84.png" height="50" width="50"/>Departure:November 10th, 2021</p>
-    <div class="row">
+    <p><img src="img/429706-84.png" height="30" width="30"/> Departure: <span class="depart-date">November 10th, 2021</span></p>
+    <div class="row departure-details">
         <div class="col-4">
             <p>Helvetic Airline</p>
-            <p>HV111</p>
+            <p>HV111 - (aircraft)</p>
             <p>Duration: hr(s) min(s)</p>
             <p>Cabin: </p>
-            <p>Aircaft:</p>
         </div>
         <div class="col-8">
             <table>
                 <tr>
                     <td>
                         <img src="img/723963.png" height="50" width="50"/>
-                        <p>HAN</p>
+                        <span>HAN</span>
                         <p>Ha Noi, Vietnam</p>
                     </td>
                     <td>
                         <img src="img/68542.png" height="50" width="50"/>
-                        <p>HCM</p>
+                        <span>HCM</span>
                         <p>Ho Chi Minh, Vietnam</p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>Departuring at:</p>
-                        9:50
+                        <p>Departuring at: <span>9:50</span></p>
+
                     </td>
                     <td>
-                        <p>Arriving at:</p>
-                        11:50
+                        <p>Arriving at: <span>9:50</span></p>
                     </td>
                 </tr>
                 <tr>
@@ -91,8 +90,8 @@
             </table>
         </div>
     </div>
-    <p>Thank you! We wish to fly with you next time!</p>
-    <p> Hotline: <a href="tel:19009999">19009999</a>(24/7 service).</p>
+    <p class="last-thanks">Thank you! We wish to fly with you next time!</p>
+    <p class="hotline"> Hotline: <a href="tel:19009999">1900-9999</a> (24/7 service).</p>
 </div>
 
 </body>
