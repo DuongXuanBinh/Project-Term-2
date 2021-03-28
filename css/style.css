@@ -142,5 +142,32 @@ p.last-thanks{
 
 
 /*CSS FOR SEAT MAP*/
+.seat-map{
+    padding-right:0;
+}
+table.business-class,table.economy-class{
+    width: 100%;
+    text-align: center;
+}
+table.business-class,table.economy-class td{
 
+}
+table tr td input{
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    position: absolute;
+}
+table tr.one-digit td label{
+    position: relative;
+    top: 3px;
+    left:6px;
+    font-size: 0.8em;
+}
+table tr.two-digit td label{
+    position: relative;
+    top: 3px;
+    left: 3px;
+    font-size: 0.8em;
+}
 
