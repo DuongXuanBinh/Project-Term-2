@@ -8,10 +8,11 @@
 </head>
 <body>
 <!--business-->
-<div class="row seat-map">
-    <div class="col-2">
+<div class="container">
+<div class="row">
+    <div class="col-3  seat-map">
         <table class="business-class">
-            <tr>
+            <tr class="seat-row">
                 <td>A</td>
                 <td>B</td>
                 <td></td>
@@ -47,7 +48,7 @@ EOT;
             ?>
         </table>
         <table class="economy-class">
-            <tr>
+            <tr class="seat-row">
                 <td>A</td>
                 <td>B</td>
                 <td>C</td>
@@ -58,41 +59,6 @@ EOT;
             </tr>
             <?php
             for ($row=5;$row<=9;$row++) {
-                if ($row = 8) {
-                    echo <<<EOT
-                <br><br>
-                <tr class="one-digit">
-                <td>
-                    <input type="checkbox" name="${row}A" id="${row}A">
-                    <label for="${row}A">${row}A</label>   
-                     
-                </td>
-                <td>
-                    <input type="checkbox" name="${row}B" id="${row}B">
-                    <label for="${row}B">${row}B</label>   
-                </td>
-                 <td>
-                    <input type="checkbox" name="${row}C" id="${row}C">
-                    <label for="${row}C">${row}C</label>    
-                </td>  
-                <td>
-                $row
-                </td>
-                <td>              
-                </td>
-                <td>
-                    <input type="checkbox" name="${row}E" id="${row}E">
-                    <label for="${row}E">${row}E</label>   
-                     
-                </td>
-                <td>
-                    <input type="checkbox" name="${row}G" id="${row}G">
-                    <label for="${row}G">${row}G</label>     
-                </td>
-</tr>
-EOT;
-
-                } else {
                     echo <<<EOT
                 <tr class="one-digit">
                 <td>
@@ -126,10 +92,8 @@ EOT;
                 </td>
 </tr>
 EOT;
-
-                }
             }
-                for ($row = 10; $row <= 20; $row++) {
+                for ($row = 10; $row <= 15; $row++) {
                     echo <<<EOT
                 <tr class="two-digit">
                 <td>
@@ -168,7 +132,7 @@ EOT;
             ?>
         </table>
         <table class="economy-class">
-            <tr>
+            <tr class="seat-row">
                 <td>A</td>
                 <td>B</td>
                 <td>C</td>
@@ -178,7 +142,7 @@ EOT;
                 <td>G</td>
             </tr>
             <?php
-            for ($row=21;$row<=30;$row++){
+            for ($row=16;$row<=25;$row++){
                 echo <<<EOT
                 <tr class="two-digit">
                 <td>
@@ -216,6 +180,7 @@ EOT;
             ?>
         </table>
     </div>
+</div>
 </div>
 </body>
 </html>

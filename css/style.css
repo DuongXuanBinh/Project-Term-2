@@ -143,19 +143,19 @@ p.last-thanks{
 
 /*CSS FOR SEAT MAP*/
 .seat-map{
-    padding-right:0;
+    padding-right:15px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 table.business-class,table.economy-class{
     width: 100%;
-    text-align: center;
 }
-table.business-class,table.economy-class td{
-
-}
+/*table.business-class,table.economy-class tr td{*/
+/*    padding: 10px 0 10px 0;*/
+/*}*/
 table tr td input{
     width: 30px;
     height: 30px;
-    color: transparent;
     position: absolute;
 }
 table tr.one-digit td label{
@@ -170,4 +170,6 @@ table tr.two-digit td label{
     left: 3px;
     font-size: 0.8em;
 }
-
+.seat-row td{
+    padding-left: 10px;
+}
