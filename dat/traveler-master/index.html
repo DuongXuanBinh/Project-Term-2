@@ -29,6 +29,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<!--	dat style-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -50,7 +53,7 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-    <!--dat style-->
+    <!--customer style-->
 		<link rel="stylesheet" href="css/style2.css">
 
 	<!-- Modernizr JS -->
@@ -62,9 +65,8 @@
 
 	</head>
 	<body>
-		
 	<div class="gtco-loader"></div>
-	
+
 	<div id="page">
 
 	
@@ -104,7 +106,7 @@
 		</div>
 	</nav>
 	
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="top: 87px; background-image: url(images/img_bg_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="top: 87px; height: 600px; background-image: url(images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -125,57 +127,88 @@
 											<form action="#" class="row">
 												<div class="col-md-4 row">
 													<div class="col-md-12 booking-form">
-														<label class="sr-only" for="from">From</label>
+														<label class="sr-only" for="place_from">From</label>
 														<div class="input-group mb-2 mr-sm-2 d-flex">
 															<div class="input-group-prepend">
 																<div class="input-group-text">From</div>
 															</div>
-															<input type="text" class="form-control" id="from" placeholder="From">
+															<input type="text" class="form-control" id="place_from" placeholder="From">
 														</div>
 													</div>
 													<div class="col-md-12 booking-form">
-														<label class="sr-only" for="to">To</label>
+														<label class="sr-only" for="place_to">To</label>
 														<div class="input-group mb-2 mr-sm-2 d-flex">
 															<div class="input-group-prepend">
 																<div class="input-group-text" style="width: 40px">To</div>
 															</div>
-															<input type="text" class="form-control" id="to" placeholder="To">
+															<input type="text" class="form-control" id="place_to" placeholder="To">
 														</div>
 													</div>
 
 												</div>
 												<div class="col-md-2 ">
+													<div class="overlay_datepicker"></div>
+													<input type="hidden" name="date_outbound" id="datepicker_outbound">
 													<div class="btn-date btn booking-form" id="from-outbound-date">
-														Outbound <br>
-														<div class="day"></div>
-														<br>
-														<div class="month"></div>
+														Outbound
+														<div class="outbound_day"></div>
+
+														<div class="outbound_month"></div>
 													</div>
 												</div>
-												<div class="col-md-2 ">
-													<div class="btn-date btn booking-form " id="return-date">Add a return</div>
-												</div>
-												<div class="col-md-2 row">
-													<div class="col-md-12">
-														<div class="dropdown">
-															<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																Passengers
-															</button>
-															<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-																<div class="row">
-																	<label for="passenger-adult" class="col-md-4">Adult</label>
-																	<input id="passenger-adult" type="number" value="1" min="0" max="5" name="passenger-adult" class="form-control col-md-4">
-																</div>
+												<div class="col-md-2 row ">
+													<button  type="button" class="close_return_date_btn " aria-label="Close">
+														<span aria-hidden="true">x</span>
+													</button>
+													<div class="overlay_datepicker"></div>
+													<input type="hidden" name="date_return" id="datepicker_return">
+													<div class="btn-date btn booking-form " id="add-return-date">
+														Add a return <br>
+														<span class="icon-plus"></span>
+													</div>
+													<div class="btn-date btn booking-form display_return_date">
+														Return Flight
+														<div class="return_day"></div>
+														<div class="return_month"></div>
+													</div>
 
-																<input class="dropdown-item" type="text" name="passenger-child" value="0">
-																<input class="dropdown-item" type="text" name="passenger-senior" value="0">
+												</div>
+												<div class="col-md-3 row">
+													<div class="col-md-12">
+														<div class="dropdown" id="passenger_dropdown">
+															<div class="booking-form btn_passenger btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																1 Passenger(s)
+															</div>
+															<div class="dropdown-menu" >
+																<div class="passenger_div">Adult <input type="number" name="adult" value="1" min="0" max="9" class="passenger_input"> </div>
+																<div class="passenger_div">Children <input type="number" name="children" value="0" min="0" max="9" class="passenger_input"></div>
+																<div class="passenger_div">Senior citizens <input type="number" name="senior" value="0" min="0" max="9" class="passenger_input"></div>
+																<div class="dropdown-divider"></div>
+																<div class="confirm_div">Confirm</div>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-12">
-
+														<div class="btn_passenger btn booking-form" id="travel_dropdown" >
+															Travel Class
+														</div>
+														<div class="class_radio_div mb-3">
+															<label class="container_radio">First Class
+																<input type="radio" name="travel_class">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container_radio">Business Class
+																<input type="radio" name="travel_class">
+																<span class="checkmark"></span>
+															</label>
+															<label class="container_radio">Economy Class
+																<input type="radio" name="travel_class">
+																<span class="checkmark"></span>
+															</label>
+															<div class="confirm_div">Confirm</div>
+														</div>
 													</div>
-												</div>
+													</div>
 												<div class="col-md-2">
 														<input type="submit" class="btn btn-primary btn-block w-100 h-100" value="Search">
 												</div>
@@ -194,8 +227,27 @@
 			</div>
 		</div>
 	</header>
-	
+
+	<div class="gtco-section news_section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-5 row animate-box" data-animate-effect="fadeInUp">
+					<div class="col-md-12">
+						<h3>News</h3>
+						<a href=""><div>Helvetic Airline has appointed new directors</div></a>
+						<a href=""><div>Helvetic Airline has just bought 10 more Boeing 787 aircraft</div></a>
+						<a href=""><div>Helvetic Airline supports people in floods 100 billion VND </div></a>
+					</div>
+				</div>
+				<div class="col-md-7"></div>
+			</div>
+
+		</div>
+	</div>
+		<hr>
+
 	<div class="gtco-section">
+
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
@@ -246,47 +298,47 @@
 				</div>
 
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_4.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Sydney, Australia</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
+<!--				<div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">-->
+<!--						<figure>-->
+<!--							<div class="overlay"><i class="ti-plus"></i></div>-->
+<!--							<img src="images/img_4.jpg" alt="Image" class="img-responsive">-->
+<!--						</figure>-->
+<!--						<div class="fh5co-text">-->
+<!--							<h2>Sydney, Australia</h2>-->
+<!--							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>-->
+<!--							<p><span class="btn btn-primary">Schedule a Trip</span></p>-->
+<!--						</div>-->
+<!--					</a>-->
+<!--				</div>-->
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_5.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Greece, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
+<!--				<div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">-->
+<!--						<figure>-->
+<!--							<div class="overlay"><i class="ti-plus"></i></div>-->
+<!--							<img src="images/img_5.jpg" alt="Image" class="img-responsive">-->
+<!--						</figure>-->
+<!--						<div class="fh5co-text">-->
+<!--							<h2>Greece, Europe</h2>-->
+<!--							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>-->
+<!--							<p><span class="btn btn-primary">Schedule a Trip</span></p>-->
+<!--						</div>-->
+<!--					</a>-->
+<!--				</div>-->
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_6.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Spain, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
+<!--				<div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">-->
+<!--						<figure>-->
+<!--							<div class="overlay"><i class="ti-plus"></i></div>-->
+<!--							<img src="images/img_6.jpg" alt="Image" class="img-responsive">-->
+<!--						</figure>-->
+<!--						<div class="fh5co-text">-->
+<!--							<h2>Spain, Europe</h2>-->
+<!--							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>-->
+<!--							<p><span class="btn btn-primary">Schedule a Trip</span></p>-->
+<!--						</div>-->
+<!--					</a>-->
+<!--				</div>-->
 
 			</div>
 		</div>
@@ -348,6 +400,7 @@
 
 	<div id="gtco-counter" class="gtco-section py-3">
 		<div class="gtco-container">
+
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box mb-2">
@@ -509,7 +562,7 @@
 	</div>
 	
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+<!--	<script src="js/jquery.min.js"></script>-->
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
@@ -529,8 +582,7 @@
 	<script src="js/magnific-popup-options.js"></script>
 	
 	<!-- Datepicker -->
-	<script src="js/bootstrap-datepicker.min.js"></script>
-	
+<!--	<script src="js/bootstrap-datepicker.min.js"></script>-->
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
