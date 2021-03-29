@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
 </head>
 <body>
 <!--business-->
@@ -24,22 +25,22 @@
                 echo <<<EOT
                 <tr class="one-digit">
                 <td>
-                    <input type="checkbox" name="${row}A" id="${row}A">   
+                    <input class="change-checkbox" type="checkbox" name="${row}A" id="${row}A">   
                     <label for="${row}A">${row}A</label>   
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}B" id="${row}B">
+                    <input class="change-checkbox" type="checkbox" name="${row}B" id="${row}B">
                     <label for="${row}B">${row}B</label>   
                 </td>
                  <td>
                  $row
                 </td>
                  <td>
-                    <input type="checkbox" name="${row}C" id="${row}C">
+                    <input class="change-checkbox" type="checkbox" name="${row}C" id="${row}C">
                     <label for="${row}C">${row}C</label>   
                 </td>  
                  <td>
-                    <input type="checkbox" name="${row}D" id="${row}D">
+                    <input class="change-checkbox" type="checkbox" name="${row}D" id="${row}D">
                     <label for="${row}D">${row}D</label>    
                 </td>
 </tr>
@@ -62,32 +63,32 @@ EOT;
                     echo <<<EOT
                 <tr class="one-digit">
                 <td>
-                    <input type="checkbox" name="${row}A" id="${row}A">
+                    <input class="change-checkbox" type="checkbox" name="${row}A" id="${row}A">
                     <label for="${row}A">${row}A</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}B" id="${row}B">
+                    <input class="change-checkbox" type="checkbox" name="${row}B" id="${row}B">
                     <label for="${row}B">${row}B</label>   
                 </td>
                  <td>
-                    <input type="checkbox" name="${row}C" id="${row}C">
+                    <input class="change-checkbox" type="checkbox" name="${row}C" id="${row}C">
                     <label for="${row}C">${row}C</label>    
                 </td>  
                 <td>
                 $row
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}D" id="${row}D">
+                    <input class="change-checkbox" type="checkbox" name="${row}D" id="${row}D">
                     <label for="${row}D">${row}D</label>                
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}E" id="${row}E">
+                    <input class="change-checkbox" type="checkbox" name="${row}E" id="${row}E">
                     <label for="${row}E">${row}E</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}G" id="${row}G">
+                    <input class="change-checkbox" type="checkbox" name="${row}G" id="${row}G">
                     <label for="${row}G">${row}G</label>     
                 </td>
 </tr>
@@ -97,32 +98,32 @@ EOT;
                     echo <<<EOT
                 <tr class="two-digit">
                 <td>
-                    <input type="checkbox" name="${row}A" id="${row}A">
+                    <input class="change-checkbox" type="checkbox" name="${row}A" id="${row}A">
                     <label for="${row}A">${row}A</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}B" id="${row}B">
+                    <input class="change-checkbox" type="checkbox" name="${row}B" id="${row}B">
                     <label for="${row}B">${row}B</label>   
                 </td>
                  <td>
-                    <input type="checkbox" name="${row}C" id="${row}C">
+                    <input class="change-checkbox" type="checkbox" name="${row}C" id="${row}C">
                     <label for="${row}C">${row}C</label>    
                 </td>  
                 <td>
                 $row
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}D" id="${row}D">
+                    <input class="change-checkbox" type="checkbox" name="${row}D" id="${row}D">
                     <label for="${row}D">${row}D</label>                
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}E" id="${row}E">
+                    <input class="change-checkbox" type="checkbox" name="${row}E" id="${row}E">
                     <label for="${row}E">${row}E</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}G" id="${row}G">
+                    <input class="change-checkbox" type="checkbox" name="${row}G" id="${row}G">
                     <label for="${row}G">${row}G</label>     
                 </td>
 </tr>
@@ -146,32 +147,32 @@ EOT;
                 echo <<<EOT
                 <tr class="two-digit">
                 <td>
-                    <input type="checkbox" name="${row}A" id="${row}A">
+                    <input class="change-checkbox" type="checkbox" name="${row}A" id="${row}A">
                     <label for="${row}A">${row}A</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}B" id="${row}B">
+                    <input class="change-checkbox" type="checkbox" name="${row}B" id="${row}B">
                     <label for="${row}B">${row}B</label>   
                 </td>
                  <td>
-                    <input type="checkbox" name="${row}C" id="${row}C">
+                    <input class="change-checkbox" type="checkbox" name="${row}C" id="${row}C">
                     <label for="${row}C">${row}C</label>    
                 </td>  
                 <td>
                 $row
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}D" id="${row}D">
+                    <input class="change-checkbox" type="checkbox" name="${row}D" id="${row}D">
                     <label for="${row}D">${row}D</label>                
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}E" id="${row}E">
+                    <input class="change-checkbox" type="checkbox" name="${row}E" id="${row}E">
                     <label for="${row}E">${row}E</label>   
                      
                 </td>
                 <td>
-                    <input type="checkbox" name="${row}G" id="${row}G">
+                    <input class="change-checkbox" type="checkbox" name="${row}G" id="${row}G">
                     <label for="${row}G">${row}G</label>     
                 </td>
 </tr>

@@ -150,26 +150,71 @@ p.last-thanks{
 table.business-class,table.economy-class{
     width: 100%;
 }
-/*table.business-class,table.economy-class tr td{*/
-/*    padding: 10px 0 10px 0;*/
-/*}*/
-table tr td input{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-}
-table tr.one-digit td label{
-    position: relative;
-    top: 3px;
-    left:6px;
-    font-size: 0.8em;
-}
-table tr.two-digit td label{
-    position: relative;
-    top: 3px;
-    left: 3px;
-    font-size: 0.8em;
+table tr td div img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 .seat-row td{
-    padding-left: 10px;
+
+    font-weight: bold;
 }
+table.business-class tr td:not(td:nth-child(3)){
+    width: 55px;
+}
+table.business-class tr td:nth-child(2),
+table.business-class tr td:nth-child(5),
+table.economy-class tr td:nth-child(4),
+table.economy-class tr td:nth-child(8){
+    font-weight: bold;
+}
+table.business-class tr td,
+table.economy-class tr td{
+    text-align: center;
+}
+.left-exit,.right-exit,.labotory,.kitchen,.left-labotory,.right-labotory{
+    position: relative;
+}
+.left-exit,.right-exit{
+    width: 15px;
+    height: 15px;
+}
+.labotory,.kitchen,.left-labotory,.right-labotory{
+    width: 20px;
+    height: 20px;
+}
+.plane-320 .left-exit,.plane-787 .left-exit{
+    top:5px;
+    left:-15px;
+}
+.plane-320 .right-exit,.plane-787 .right-exit{
+    top:5px;
+    left:237px
+}
+.plane-320 .kitchen{
+    top:5px;
+    left:137px;
+}
+.plane-320 .labotory{
+    top:5px;
+    left:10px;
+}
+table.economy-class:last-of-type{
+    margin-bottom: 10px;
+}
+.plane-787 .left-labotory{
+    top: 5px;
+    left: 0;
+}
+.plane-787 .right-labotory{
+    top:5px;
+    left:135px;
+}
+.plane-787 .kitchen{
+    top: 5px;
+    left: 65px;
+}
+div.seat-map>div{
+    margin: 0;
+}
+
