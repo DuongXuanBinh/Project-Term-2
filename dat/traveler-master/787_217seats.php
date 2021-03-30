@@ -14,11 +14,11 @@
         <div class="col-3 seat-map plane-787">
             <div>
                 <table class="business-class">
-                    <img class="left-exit" src="img/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="img/Loi%20ra%20phai.jpg" alt="">
-                    <img class="left-labotory" src="img/PhongVeSinh.png" alt="">
-                    <img class="kitchen" src="img/Bep.png" alt="">
-                    <img class="right-labotory" src="img/PhongVeSinh.png" alt="">
+                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="left-labotory" src="images/PhongVeSinh.png" alt="">
+                    <img class="kitchen" src="images/Bep.png" alt="">
+                    <img class="right-labotory" src="images/PhongVeSinh.png" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td></td>
@@ -32,22 +32,22 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="img/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}.A"><img src="images/icon-premium-seat0.png" alt=""></div>
                     </td>
                     <td>
                      $row
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="img/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}.B"><img src="images/icon-premium-seat0.png" alt=""></div>
                     </td>
                      <td>
-                         <div name="${row}.C"><img src="img/icon-premium-seat0.png" alt=""></div> 
+                         <div name="${row}.C"><img src="images/icon-premium-seat0.png" alt=""></div> 
                     </td>  
                     <td>
                      $row
                     </td>
                      <td>
-                         <div name="${row}.D"><img src="img/icon-premium-seat0.png" alt=""></div> 
+                         <div name="${row}.D"><img src="images/icon-premium-seat0.png" alt=""></div> 
                     </td>
     </tr>
     EOT;
@@ -57,11 +57,11 @@
             </div>
             <div>
                 <table class="economy-class">
-                    <img class="left-exit" src="img/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="img/Loi%20ra%20phai.jpg" alt="">
-                    <img class="left-labotory" src="img/PhongVeSinh.png" alt="">
-                    <img class="kitchen" src="img/Bep.png" alt="">
-                    <img class="right-labotory" src="img/PhongVeSinh.png" alt="">
+                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="left-labotory" src="images/PhongVeSinh.png" alt="">
+                    <img class="kitchen" src="images/Bep.png" alt="">
+                    <img class="right-labotory" src="images/PhongVeSinh.png" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td>B</td>
@@ -80,37 +80,37 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="img/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}.A"><img src="images/icon-premium-seat2.png" alt=""></div>  
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.B"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                      <td>
-                        <div name="${row}.C"><img src="img/icon-premium-seat2.png" alt=""></div>     
+                        <div name="${row}.C"><img src="images/icon-premium-seat2.png" alt=""></div>     
                     </td>  
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.D"><img src="img/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}.D"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.E"><img src="img/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}.E"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.F"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.F"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.G"><img src="img/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}.G"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.H"><img src="img/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}.H"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.K"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.K"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
     </tr>
     EOT;
@@ -120,11 +120,11 @@
             </div>
             <div>
                 <table class="economy-class">
-                    <img class="left-exit" src="img/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="img/Loi%20ra%20phai.jpg" alt="">
-                    <img class="left-labotory" src="img/PhongVeSinh.png" alt="">
-                    <img class="kitchen" src="img/Bep.png" alt="">
-                    <img class="right-labotory" src="img/PhongVeSinh.png" alt="">
+                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="left-labotory" src="images/PhongVeSinh.png" alt="">
+                    <img class="kitchen" src="images/Bep.png" alt="">
+                    <img class="right-labotory" src="images/PhongVeSinh.png" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td>B</td>
@@ -143,37 +143,37 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="img/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}.A"><img src="images/icon-premium-seat2.png" alt=""></div>  
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.B"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                      <td>
-                        <div name="${row}.C"><img src="img/icon-premium-seat2.png" alt=""></div>     
+                        <div name="${row}.C"><img src="images/icon-premium-seat2.png" alt=""></div>     
                     </td>  
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.D"><img src="img/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}.D"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.E"><img src="img/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}.E"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.F"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.F"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.G"><img src="img/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}.G"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.H"><img src="img/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}.H"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.K"><img src="img/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}.K"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
     </tr>
     EOT;
@@ -182,11 +182,11 @@
                 </table>
             </div>
             <table class="economy-class">
-                <img class="left-exit" src="img/loi%20ra%20trai.jpg" alt="">
-                <img class="right-exit" src="img/Loi%20ra%20phai.jpg" alt="">
-                <img class="left-labotory" src="img/PhongVeSinh.png" alt="">
-                <img class="kitchen" src="img/Bep.png" alt="">
-                <img class="right-labotory" src="img/PhongVeSinh.png" alt="">
+                <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                <img class="left-labotory" src="images/PhongVeSinh.png" alt="">
+                <img class="kitchen" src="images/Bep.png" alt="">
+                <img class="right-labotory" src="images/PhongVeSinh.png" alt="">
             </table>
         </div>
     </div>
