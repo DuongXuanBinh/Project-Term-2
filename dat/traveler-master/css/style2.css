@@ -237,10 +237,34 @@ font-size: 50px;
 .news_section{
     padding-top: 8em;
     padding-bottom: 0;
+    margin-bottom: 1em;
 }
 .news_section .gtco-container a{
     color: black;
 }
 .news_section .gtco-container a:hover{
     color: #0adec0;
+}
+.carousel_item{
+    background-color: rgba(244,244,245,0.85);
+    padding-top: 30px;
+    text-align: center;
+    height: 455px;
+}
+.carousel_item a.btn.btn-secondary {
+    color: white;
+    float: bottom !important;
+}
+.carousel_item a.btn.btn-secondary:hover {
+    background-color:#0adec0 ;
+}
+.owl-carousel .owl-item img{
+    display: inline !important;
+    width: 200px !important;
+}
+.owl-dots{
+    display: none !important;
+}
+.owl-nav{
+    display: none !important;
 }
