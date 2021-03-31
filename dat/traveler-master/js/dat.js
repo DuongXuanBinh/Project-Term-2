@@ -137,4 +137,3 @@ $(document).ready(function() {
         autoplayTimeout: 2000,
         autoplayHoverPause: true
     });
-})
