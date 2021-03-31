@@ -283,10 +283,41 @@ font-size: 50px;
 #gtco-features .feature-center a{
     color: #fff;
 }
-.bootstrap  label h4{
+.profile_form{
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form  label h4{
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
-.bootstrap .col-xs-6 {
+.profile_form .col-xs-6 {
     margin-top: 20px;
+}
+.profile_form input {
+    color: black;
+    font-weight: 500;
+}
+.profile_form input::placeholder{
+    opacity: 1;
+    color: black;
+}
+.profile_form ul li{
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form input.file-upload{
+    display: none;
+}
+.profile_form .col-sm-3 label{
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form .col-sm-3 label:hover{
+    border: 2px solid #0adec0 ;
+}
+.profile_form .edit,.save,.cancel{
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d ;
+    color: white;
+}
+.profile_form .edit:hover,.save:hover,.cancel:hover{
+    background: #09C6AB;
 }
