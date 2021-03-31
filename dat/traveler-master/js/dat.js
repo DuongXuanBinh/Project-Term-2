@@ -137,37 +137,3 @@ $(document).ready(function() {
         autoplayTimeout: 2000,
         autoplayHoverPause: true
     });
-
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('.avatar').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
-
-    $(".profile_form .form input").prop( "readonly", true );
-    $(".profile_form .save,.cancel").css('display','none');
-})
-
-$(".profile_form .edit").on(
-    'click',function () {
-        $(this).css('display','none');
-        $(".profile_form .form input").prop( "readonly", false );
-        $(".profile_form .save,.cancel").css('display','inline');
-    }
-)
-$(".profile_form .cancel").on(
-    'click',function () {
-        $(".profile_form .edit").css('display','block');
-        $(".profile_form .form input").prop( "readonly", true );
-        $(".profile_form .save,.cancel").css('display','none');
-    }
-)
