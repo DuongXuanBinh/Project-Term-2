@@ -4,7 +4,6 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.5);
 }
 .gtco-nav a{
     padding: 0;
@@ -235,7 +234,6 @@ font-size: 50px;
     font-weight: bold !important;
 }
 .news_section{
-    padding-top: 8em;
     padding-bottom: 0;
     margin-bottom: 1em;
 }
@@ -284,4 +282,11 @@ font-size: 50px;
 }
 #gtco-features .feature-center a{
     color: #fff;
+}
+.bootstrap  label h4{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.bootstrap .col-xs-6 {
+    margin-top: 20px;
 }
