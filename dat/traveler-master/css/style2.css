@@ -250,6 +250,10 @@ font-size: 50px;
     padding-top: 30px;
     text-align: center;
     height: 455px;
+    width: 90%;
+}
+.carousel_item p:first-of-type{
+    padding: 0 20px;
 }
 .carousel_item a.btn.btn-secondary {
     color: white;
@@ -262,9 +266,22 @@ font-size: 50px;
     display: inline !important;
     width: 200px !important;
 }
+.carousel_item h2{
+    font-weight: 300;
+}
 .owl-dots{
     display: none !important;
 }
 .owl-nav{
     display: none !important;
+}
+.booking-form .input-group-text{
+    font-size: 15px;
+    width: 51px;
+}
+#gtco-features .gtco-heading a {
+    color: #fff;
+}
+#gtco-features .feature-center a{
+    color: #fff;
 }
