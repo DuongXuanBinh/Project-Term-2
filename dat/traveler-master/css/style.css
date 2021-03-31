@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .gtco-nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   margin: 0;
@@ -1892,459 +1892,330 @@ form label {
 /*# sourceMappingURL=style.css.map */
 
 
+ /*dat style*/
 
 
-/*-------------------CSS FOR MAIL-----------------------------*/
-
-
-.mail-page{
-  width: 800px;
-  color:black;
-}
-.mail-header{
-  display: flex;
-  align-items: center;
-  height: 100px;
-  font-weight: bold;
-}
-.mail-header h3{
-  color: #1a967b;
-  margin: 0;
-}
-.first-thanks{
-  font-style: italic;
-  font-size: 80%;
-}
-.itinerary{
-  font-weight: bold;
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-.ticket-details{
-  background-color: #09c6ab;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px 5px 20px;
-  color: white;
-}
-.depart-date{
-  padding-left: 20px;
-  font-size: 1.1em;
-}
-.ticket-details table tr td:nth-child(2){
-  padding-left: 15px;
-}
-.ticket-details table tr td:nth-child(1)
-{
-  vertical-align: top;
-  font-weight: bold;
-}
-.ticket-details div:nth-child(2){
-  border-left: 1px solid white;
-  display: block;
-  text-align: center;
-}
-.ticket-details div:nth-child(2)>img{
-  margin: 10px 10px;
-}
-.mail-page>p{
-  padding-top: 10px;
-  border-top: 1px solid grey;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.departure-details{
-  margin: 10px 5px 20px;
-}
-.departure-details div:nth-child(1){
-  background-color: #c4c4c4;
-  position: relative;
-  padding: 20px 0 0 20px;
-  clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%);
-}
-.departure-details div:nth-child(2){
-  padding-right: 0;
-}
-
-.departure-details div:nth-child(1) p:first-child{
-  font-weight: bold;
-  font-size: 1.1em;
-}
-.departure-details table{
-  width: 100%;
-}
-.departure-details table tr td:first-child{
-  width: 238px;
-  border-right: grey 1px solid;
-}
-.departure-details span{
-  font-weight: bold;
-  padding-left: 15px;
-  font-size: 1.1em;
-}
-.departure-details table tr td:last-child{
-  padding-left: 15px;
-}
-
-.payment-details table{
-  width: 80%;
-  margin: 0 auto 10px;
-}
-.payment-details table tr td{
-  border: 1px solid grey;
-  padding-left: 10px;
-}
-.payment-details table tr:nth-child(4) td:first-child{
-  width: 120px;
-}
-.payment-details>p,a{
-  margin: 15px auto 0;
-  text-align: center;
-}
-.payment-details a button{
-  margin-top: -5px;
-  background-image: linear-gradient(#9a8314,#b99920);
-  border: 1px solid #b99920;
-  border-radius: 5px;
-  color: white;
-}
-.mail-note{
-  font-size: 0.9em;
-  margin: 10px 10px;
-  font-style: italic;
-}
-p.hotline{
-  text-transform: none;
-  border: none;
-  background-color: #09C6AB;
-  color: white;
-  text-align: right;
-  padding: 10px 0;
-  margin: 0;
-  font-size: 0.9em;
-}
-p.hotline>a{
-  color: #3434ff;
-}
-p.last-thanks{
-  border: none;
-  text-transform: none;
-  font-style: italic;
-  font-weight: normal;
-}
-.mail-page ul li{
-  list-style-type: decimal;
-}
-
-
-/*----------------------CSS FOR SEAT MAP--------------------------*/
-
-
-.seat-map{
-  padding-right:15px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-}
-table.business-class,table.economy-class{
-  width: 100%;
-}
-table tr td div img{
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-.seat-row td{
-
-  font-weight: bold;
-}
-table.business-class tr td:not(td:nth-child(3)){
-  width: 55px;
-}
-table.business-class tr td:nth-child(2),
-table.business-class tr td:nth-child(3),
-table.business-class tr td:nth-child(5),
-table.economy-class tr td:nth-child(4),
-table.economy-class tr td:nth-child(8){
-  font-weight: bold;
-}
-table.business-class tr td,
-table.economy-class tr td{
-  text-align: center;
-}
-.left-exit,.right-exit,.labotory,.kitchen,.left-labotory,.right-labotory{
-  position: relative;
-}
-.left-exit,.right-exit{
-  width: 15px;
-  height: 15px;
-}
-.labotory,.kitchen,.left-labotory,.right-labotory{
-  width: 20px;
-  height: 20px;
-}
-.plane-320 .left-exit,.plane-787 .left-exit{
-  top:5px;
-  left:-15px;
-}
-.plane-320 .right-exit,.plane-787 .right-exit{
-  top:5px;
-  left:237px
-}
-.plane-320 .kitchen{
-  top:5px;
-  left:137px;
-}
-.plane-320 .labotory{
-  top:5px;
-  left:10px;
-}
-table.economy-class:last-of-type{
-  margin-bottom: 10px;
-}
-.plane-787 .left-labotory{
-  top: 5px;
+.gtco-nav .overlay{
+  position: absolute;
+  bottom: 0;
+  top: 0;
   left: 0;
+  right: 0;
 }
-.plane-787 .right-labotory{
-  top:5px;
-  left:135px;
+.gtco-nav a{
+  padding: 0;
 }
-.plane-787 .kitchen{
-  top: 5px;
-  left: 65px;
+.btn-date{
+  border: 2px solid rgba(228,228,228,0.85);
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
 }
-div.seat-map>div{
-  margin: 0;
+.btn_passenger{
+  border: 2px solid rgba(228,228,228,0.85);
+  height: 90%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 15px;
+}
+.selected{
+  outline: none;
+  box-shadow: none;
+  border-color: #09C6AB;
+}
+.gtco-nav ul li.has-dropdown .dropdown{
+  width: 170px;
+  background-color: rgba(30,46,73,0.85);
+  color: rgba(255, 255, 255, 0.7);
+}
+.gtco-nav ul li.has-dropdown ul.dropdown:hover{
+  background-color: rgba(17, 27, 45, 0.85);
+}
+.gtco-nav ul li.has-dropdown ul.dropdown li a{
+  font-size: 16px;
+}
+.gtco-nav ul li.has-dropdown ul.dropdown li a:hover{
+  color: white;
+}
+/*.gtco-nav ul li.has-dropdown ul.dropdown li:hover{*/
+/*    background-color: rgba(17, 27, 45, 0.85);*/
+
+/*}*/
+.overlay_datepicker{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  content: "";
+  z-index: 10;
+  visibility: hidden;
+}
+.active{
+  visibility: visible;
+}
+#datepicker_outbound{
+  position: absolute;
+  top: -320px;
+  left: -45px;
+  z-index: 12;
+}
+/*.datepicker{*/
+/*    position: relative;*/
+/*    background-color: white;*/
+/*    z-index: 11;*/
+/*    border: 1px solid black;*/
+/*}*/
+.ui-datepicker-calendar a:hover{
+  color:  #09C6AB;
+}
+.outbound_day{
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.btn-date .icon-plus {
+  color: #09C6AB;
+  display: block;
+  padding-top: 10px;
+}
+.btn-date .icon-plus:before{
+  font-size: 50px;
+}
+.display_return_date{
+  position: absolute;
+  width: 143px;
+  display: none;
+}
+.return_day{
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.close_return_date_btn{
+  position: absolute;
+  /*border: none;*/
+  background-color: rgba(238,238,238,0.85);
+  z-index: 14;
+  border-color: rgba(255,255,255,0);
+  border-radius: 100%;
+  right: 0;
+  top: -14px;
+  width: 30px;
+  display: none;
 }
 
-/*--------------LOGIN PAGE-----------------------*/
-.form-signin>div>input{
-  background-color: white;
-  width: 40%;
-  margin: 0 auto;
-}
-.form-signin button{
-  width: 40%;
-  margin: 0 auto;
-}
-.form-signin>div.mt-text{
-  margin: 30px 0 !important;
-}
-.form-signin input[type='checkbox']{
-  position: unset;
-}
-.form-signin p{
-  color: white;
-  font-size: 0.8em;
-  font-style: italic;
-  width: 40%;
-  text-align: right;
-  margin: 0 auto;
+.btn_passenger:after{
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  float: right;
   margin-top: 10px;
 }
-.policy-box{
-  height: 200px;
-  overflow: scroll;
-  margin-top: 20px;
-  font-size: 0.8em;
+.dropdown .dropdown-menu{
+  padding-left: 10px;
+  width: 100%;
+  border: 2px solid;
 }
-.policy-box p:first-child{
-  text-align: center;
-  margin-top: 15px;
-  font-size: 1.3em;
-  color: #09c6ab;
+.passenger_input{
+  float: right;
+  width: 30%;
+  margin-right: 20px;
 }
-.condition-term{
-  text-align: center;
-  margin: 20px 0;
+.passenger_div{
+  padding: 10px 0;
 }
-h1.su-text{
-  text-align: center;
-  font-size: 59px;
-  line-height: 1.5;
-  font-weight: 300;
-}
-.form-signup{
-  width: 60%;
-  margin: 0 auto;
-}
-.form-signup input{
-  margin-top: 20px;
-  display: inline-block;
-}
-#su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
-  width: 48%;
-}
-#su-lastname,#su-creditcard{
-  margin-left: 22px;
-}
-#su-sex{
-  width: 35%;
-}
-#su-age{
-  width: 61%;
-  margin-left: 22px;
-}
-
-/*--------------POLICY-PAGE------------------*/
-
-.policy-page div img{
-  width: 316px;
+.confirm_div{
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  padding: 3px;
+  margin: 0;
+  border-top: 1px solid black;
 }
-.policy-page span:first-of-type{
+.dropdown .dropdown-menu .form-check{
+  line-height: 30px;
+  padding: 10px;
+}
+.dropdown .dropdown-menu .form-check .form-check-label{
+  float: right;
+  font-size: 16px;
+}
+.class_radio_div{
+  background: #fff;
+  border: 1px solid black;
+  border-radius: 3%;
   position: absolute;
-  top: 140px;
-  left: 20px;
-  color: ghostwhite;
-  font-size: 1.3em;
-  cursor: pointer;
+  width: 90%;
+  display: none;
+  z-index: 14;
+  color: black;
 }
-.policy-page span:last-of-type{
-  position: absolute;
+/* The container_radio */
+.container_radio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
   cursor: pointer;
-  top: 140px;
-  left: 310px;
-  color: ghostwhite;
-  font-size: 1.3em;
-}
-.policy-page>div:not(div:nth-of-type(1)){
-  margin-top: 30px;
-  border-top: 0.5px solid #f2f2f2;
-  padding-top: 20px;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 10px;
 }
 
-/*------------------------FLIGHT-STATUS--------------------*/
-.search-flight{
-  width: 50%;
-  margin: 0 auto;
+/* Hide the browser's default radio button */
+.container_radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
-.search-flight input{
-  display: inline-block;
-  background-color: white;
+.container_radio {
+  cursor: pointer !important;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container_radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container_radio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container_radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container_radio .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+.container_radio label{
+  font-weight: bold !important;
+}
+.news_section{
+  padding-bottom: 0;
+  margin-bottom: 1em;
+}
+.news_section .gtco-container a{
+  color: black;
+}
+.news_section .gtco-container a:hover{
+  color: #0adec0;
+}
+.carousel_item{
+  background-color: rgba(244,244,245,0.85);
+  padding-top: 30px;
+  text-align: center;
+  height: 455px;
   width: 90%;
 }
-.search-flight button{
-  width: 46px;
-  height: 46px;
-  margin-left: 10px;
-  border-radius: 5px;
+.carousel_item p:first-of-type{
+  padding: 0 20px;
 }
-.ticket-form{
-  background-color: white;
-  width: 100%;
-  margin: 0;
-}
-
-.ticket-form div.col-md-12 img{
-  width:200px;
-}
-.ticket-form div.col-md-1>img{
-  width: 40px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.ticket-form div.row{
-  margin: 0;
-}
-.ticket-logo{
-  background-color: #09c5a9;
+.carousel_item a.btn.btn-secondary {
   color: white;
-  text-transform: uppercase;
-  text-align: center;
-  position: relative;
+  float: bottom !important;
 }
-.ticket-logo img:first-of-type{
-  float:left;
+.carousel_item a.btn.btn-secondary:hover {
+  background-color:#0adec0 ;
 }
-.ticket-logo img:last-of-type{
-  float: right;
+.owl-carousel .owl-item img{
+  display: inline !important;
+  width: 200px !important;
 }
-.ticket-logo span{
-  position: absolute;
-  top: 16%;
-  left: 33%;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 3px;
-  font-size: 25px;
+.carousel_item h2{
+  font-weight: 300;
 }
-.bound{
-  background-color: #3a3a3b;
+.owl-dots{
+  display: none !important;
+}
+.owl-nav{
+  display: none !important;
+}
+.booking-form .input-group-text{
+  font-size: 15px;
+  width: 51px;
+}
+#gtco-features .gtco-heading a {
+  color: #fff;
+}
+#gtco-features .feature-center a{
+  color: #fff;
+}
+.profile_form{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form  label h4{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.profile_form .col-xs-6 {
+  margin-top: 20px;
+}
+.profile_form input {
+  color: black;
+  font-weight: 500;
+}
+.profile_form input::placeholder{
+  opacity: 1;
+  color: black;
+}
+.profile_form ul li{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form input.file-upload{
+  display: none;
+}
+.profile_form .col-sm-3 label{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form .col-sm-3 label:hover{
+  border: 2px solid #0adec0 ;
+}
+.profile_form .edit,.save,.cancel{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #6c757d ;
   color: white;
-  height: 30px;
 }
-.ticket-form>div:nth-child(2) p{
-  margin: 0;
-  text-align: center;
-  font-style: italic;
+.profile_form .edit:hover,.save:hover,.cancel:hover{
+  background: #09C6AB;
 }
-.ticket-form>div:nth-child(3){
-  margin-top:15px
-}
-.outbound span,.inbound span{
-  text-transform: uppercase;
-  font-size: 0.7em;
-  position: absolute;
-  top:0;
-  left:15px;
-  font-style: italic;
-}
-.outbound p,.inbound p {
-  padding-top: 15px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.passenger-ticket table{
-  width: 100%;
-}
-.passenger-ticket table th{
-  background-color: #09c5a9;
-  color: white;
-  height: 91.11px ;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 20px;
-}
-.passenger-ticket table td{
-  height: 40px;
-}
-.result-form table{
-  width: 100%;
-  margin:0 auto;
-  background-color: white;
-  text-align: center;
-}
-.result-form th{
-  background-color: #09c5a9;
-  color: white;
-  text-transform: uppercase;
-  font-size: 17px;
-  height: 60px;
-  text-align: center;
-  letter-spacing: 1px;
-}
-.result-form td{
-  height: 60px;
-}
-/*-------------SVG-ICON----------------*/
-.svg-icon {
-  width: 25px;
-  height:25px;
-  position: absolute;
-  top: 9px;
-  left:9px
-}
-
-.svg-icon path,
-.svg-icon polygon,
-.svg-icon rect {
-  fill: white;
-}
-
-.svg-icon circle {
-  stroke: white;
-  stroke-width: 1;
-}
+  /*end dat style*/
