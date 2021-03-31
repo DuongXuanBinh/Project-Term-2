@@ -2119,6 +2119,16 @@ div.seat-map>div{
 }
 
 /*--------------LOGIN PAGE-----------------------*/
+
+.form-signup>label:first-of-type{
+  margin-right: 255px;
+}
+.form-signup>label:nth-of-type(3){
+   margin-right: 228px;
+ }
+.form-signup>label:nth-of-type(5){
+  margin-right: 225px;
+}
 .form-signin>div>input{
   background-color: white;
   width: 40%;
@@ -2170,7 +2180,8 @@ h1.su-text{
   margin: 0 auto;
 }
 .form-signup input{
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 #su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
