@@ -15,8 +15,6 @@
     			$('.js-gtco-nav-toggle').removeClass('active');
 				
 	    	}
-	    
-	    	
 	    }
 		});
 
