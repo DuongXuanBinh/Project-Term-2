@@ -99,8 +99,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   width: 100%;
-  padding: 10px 0;
-  z-index: 1001;
+  z-index: 10;
 }
 @media screen and (max-width: 768px) {
   .gtco-nav {
@@ -1892,7 +1891,468 @@ form label {
 /*# sourceMappingURL=style.css.map */
 
 
- /*dat style*/
+
+
+/*-------------------CSS FOR MAIL-----------------------------*/
+
+
+.mail-page{
+  width: 800px;
+  color:black;
+}
+.mail-header{
+  display: flex;
+  align-items: center;
+  height: 100px;
+  font-weight: bold;
+}
+.mail-header h3{
+  color: #1a967b;
+  margin: 0;
+}
+.first-thanks{
+  font-style: italic;
+  font-size: 80%;
+}
+.itinerary{
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+.ticket-details{
+  background-color: #09c6ab;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 5px 20px;
+  color: white;
+}
+.depart-date{
+  padding-left: 20px;
+  font-size: 1.1em;
+}
+.ticket-details table tr td:nth-child(2){
+  padding-left: 15px;
+}
+.ticket-details table tr td:nth-child(1)
+{
+  vertical-align: top;
+  font-weight: bold;
+}
+.ticket-details div:nth-child(2){
+  border-left: 1px solid white;
+  display: block;
+  text-align: center;
+}
+.ticket-details div:nth-child(2)>img{
+  margin: 10px 10px;
+}
+.mail-page>p{
+  padding-top: 10px;
+  border-top: 1px solid grey;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.departure-details{
+  margin: 10px 5px 20px;
+}
+.departure-details div:nth-child(1){
+  background-color: #c4c4c4;
+  position: relative;
+  padding: 20px 0 0 20px;
+  clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%);
+}
+.departure-details div:nth-child(2){
+  padding-right: 0;
+}
+
+.departure-details div:nth-child(1) p:first-child{
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.departure-details table{
+  width: 100%;
+}
+.departure-details table tr td:first-child{
+  width: 238px;
+  border-right: grey 1px solid;
+}
+.departure-details span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 1.1em;
+}
+.departure-details table tr td:last-child{
+  padding-left: 15px;
+}
+
+.payment-details table{
+  width: 80%;
+  margin: 0 auto 10px;
+}
+.payment-details table tr td{
+  border: 1px solid grey;
+  padding-left: 10px;
+}
+.payment-details table tr:nth-child(4) td:first-child{
+  width: 120px;
+}
+.payment-details>p,a{
+  margin: 15px auto 0;
+  text-align: center;
+}
+.payment-details a button{
+  margin-top: -5px;
+  background-image: linear-gradient(#9a8314,#b99920);
+  border: 1px solid #b99920;
+  border-radius: 5px;
+  color: white;
+}
+.mail-note{
+  font-size: 0.9em;
+  margin: 10px 10px;
+  font-style: italic;
+}
+p.hotline{
+  text-transform: none;
+  border: none;
+  background-color: #09C6AB;
+  color: white;
+  text-align: right;
+  padding: 10px 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+p.hotline>a{
+  color: #3434ff;
+}
+p.last-thanks{
+  border: none;
+  text-transform: none;
+  font-style: italic;
+  font-weight: normal;
+}
+.mail-page ul li{
+  list-style-type: decimal;
+}
+
+
+/*----------------------CSS FOR SEAT MAP--------------------------*/
+
+
+.seat-map{
+  padding-right:15px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+table.business-class,table.economy-class{
+  width: 100%;
+}
+table tr td div img{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.seat-row td{
+
+  font-weight: bold;
+}
+table.business-class tr td:not(td:nth-child(3)){
+  width: 55px;
+}
+table.business-class tr td:nth-child(2),
+table.business-class tr td:nth-child(3),
+table.business-class tr td:nth-child(5),
+table.economy-class tr td:nth-child(4),
+table.economy-class tr td:nth-child(8){
+  font-weight: bold;
+}
+table.business-class tr td,
+table.economy-class tr td{
+  text-align: center;
+}
+.left-exit,.right-exit,.labotory,.kitchen,.left-labotory,.right-labotory{
+  position: relative;
+}
+.left-exit,.right-exit{
+  width: 15px;
+  height: 15px;
+}
+.labotory,.kitchen,.left-labotory,.right-labotory{
+  width: 20px;
+  height: 20px;
+}
+.plane-320 .left-exit,.plane-787 .left-exit{
+  top:5px;
+  left:-15px;
+}
+.plane-320 .right-exit,.plane-787 .right-exit{
+  top:5px;
+  left:237px
+}
+.plane-320 .kitchen{
+  top:5px;
+  left:137px;
+}
+.plane-320 .labotory{
+  top:5px;
+  left:10px;
+}
+table.economy-class:last-of-type{
+  margin-bottom: 10px;
+}
+.plane-787 .left-labotory{
+  top: 5px;
+  left: 0;
+}
+.plane-787 .right-labotory{
+  top:5px;
+  left:135px;
+}
+.plane-787 .kitchen{
+  top: 5px;
+  left: 65px;
+}
+div.seat-map>div{
+  margin: 0;
+}
+
+/*--------------LOGIN PAGE-----------------------*/
+.form-signin>div>input{
+  background-color: white;
+  width: 40%;
+  margin: 0 auto;
+}
+.form-signin button{
+  width: 40%;
+  margin: 0 auto;
+}
+.form-signin>div.mt-text{
+  margin: 30px 0 !important;
+}
+.form-signin input[type='checkbox']{
+  position: unset;
+}
+.form-signin p{
+  color: white;
+  font-size: 0.8em;
+  font-style: italic;
+  width: 40%;
+  text-align: right;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.policy-box{
+  height: 200px;
+  overflow: scroll;
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+.policy-box p:first-child{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.3em;
+  color: #09c6ab;
+}
+.condition-term{
+  text-align: center;
+  margin: 20px 0;
+}
+h1.su-text{
+  text-align: center;
+  font-size: 59px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+.form-signup{
+  width: 60%;
+  margin: 0 auto;
+}
+.form-signup input{
+  margin-top: 20px;
+  display: inline-block;
+}
+#su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
+  width: 48%;
+}
+#su-lastname,#su-creditcard{
+  margin-left: 22px;
+}
+#su-sex{
+  width: 35%;
+}
+#su-age{
+  width: 61%;
+  margin-left: 22px;
+}
+
+/*--------------POLICY-PAGE------------------*/
+
+.policy-page div img{
+  width: 316px;
+  cursor: pointer;
+}
+.policy-page span:first-of-type{
+  position: absolute;
+  top: 140px;
+  left: 20px;
+  color: ghostwhite;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.policy-page span:last-of-type{
+  position: absolute;
+  cursor: pointer;
+  top: 140px;
+  left: 310px;
+  color: ghostwhite;
+  font-size: 1.3em;
+}
+.policy-page>div:not(div:nth-of-type(1)){
+  margin-top: 30px;
+  border-top: 0.5px solid #f2f2f2;
+  padding-top: 20px;
+}
+
+/*------------------------FLIGHT-STATUS--------------------*/
+.search-flight{
+  width: 50%;
+  margin: 0 auto;
+}
+.search-flight input{
+  display: inline-block;
+  background-color: white;
+  width: 90%;
+}
+.search-flight button{
+  width: 46px;
+  height: 46px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.ticket-form{
+  background-color: white;
+  width: 100%;
+  margin: 0;
+}
+
+.ticket-form div.col-md-12 img{
+  width:200px;
+}
+.ticket-form div.col-md-1>img{
+  width: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.ticket-form div.row{
+  margin: 0;
+}
+.ticket-logo{
+  background-color: #09c5a9;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+}
+.ticket-logo img:first-of-type{
+  float:left;
+}
+.ticket-logo img:last-of-type{
+  float: right;
+}
+.ticket-logo span{
+  position: absolute;
+  top: 16%;
+  left: 33%;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 25px;
+}
+.bound{
+  background-color: #3a3a3b;
+  color: white;
+  height: 30px;
+}
+.ticket-form>div:nth-child(2) p{
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+}
+.ticket-form>div:nth-child(3){
+  margin-top:15px
+}
+.outbound span,.inbound span{
+  text-transform: uppercase;
+  font-size: 0.7em;
+  position: absolute;
+  top:0;
+  left:15px;
+  font-style: italic;
+}
+.outbound p,.inbound p {
+  padding-top: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.passenger-ticket table{
+  width: 100%;
+}
+.passenger-ticket table th{
+  background-color: #09c5a9;
+  color: white;
+  height: 91.11px ;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+}
+.passenger-ticket table td{
+  height: 40px;
+}
+.result-form table{
+  width: 100%;
+  margin:0 auto;
+  background-color: white;
+  text-align: center;
+}
+.result-form th{
+  background-color: #09c5a9;
+  color: white;
+  text-transform: uppercase;
+  font-size: 17px;
+  height: 60px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.result-form td{
+  height: 60px;
+}
+/*-------------SVG-ICON----------------*/
+.svg-icon {
+  width: 25px;
+  height:25px;
+  position: absolute;
+  top: 9px;
+  left:9px
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: white;
+}
+
+.svg-icon circle {
+  stroke: white;
+  stroke-width: 1;
+}
+
+
+
+/*-----------------------------------------------------------------------dat style
+---------------------------------------------
+--------------------------------------------------------*/
 
 
 .gtco-nav .overlay{
@@ -2218,4 +2678,4 @@ form label {
 .profile_form .edit:hover,.save:hover,.cancel:hover{
   background: #09C6AB;
 }
-  /*end dat style*/
+/*end dat style*/
