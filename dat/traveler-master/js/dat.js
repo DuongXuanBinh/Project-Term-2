@@ -155,6 +155,10 @@ $(document).ready(function() {
 
     $(".profile_form .form input").prop( "readonly", true );
     $(".profile_form .save,.cancel").css('display','none');
+
+    if (!$(".form-signup input:checkbox").is(':checked')){
+        $(".btn_sign_up").prop('disabled', true);
+    }
 })
 
 $(".profile_form .edit").on(
@@ -169,5 +173,23 @@ $(".profile_form .cancel").on(
         $(".profile_form .edit").css('display','block');
         $(".profile_form .form input").prop( "readonly", true );
         $(".profile_form .save,.cancel").css('display','none');
+    }
+)
+$(".dp_sign_up").on(
+    'click',function () {
+        $(".sign_up").css('display','block');
+        $('html,body').animate({
+                scrollTop: $(".sign_up").offset().top},
+            'slow');
+    }
+)
+$(".form-signup input:checkbox").on(
+    'change',function () {
+        if (this.checked){
+            $(".btn_sign_up").prop('disabled', false);
+        }
+        if (!this.checked){
+            $(".btn_sign_up").prop('disabled', true);
+        }
     }
 )

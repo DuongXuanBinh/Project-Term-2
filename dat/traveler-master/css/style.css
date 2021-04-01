@@ -1018,9 +1018,9 @@ form label {
 }
 #gtco-footer .copyright {
   color: #b3b3b3;
-  padding-top: 3em;
-  margin-top: 3em;
-  border-top: 1px solid #f2f2f2;
+  /*padding-top: 3em;*/
+  /*margin-top: 3em;*/
+  /*border-top: 1px solid #f2f2f2;*/
 }
 @media screen and (max-width: 768px) {
   #gtco-footer .copyright .pull-left,
@@ -2689,6 +2689,17 @@ h1.su-text{
 .profile_form .edit:hover,.save:hover,.cancel:hover{
   background: #09C6AB;
 }
+
+.form-signin .dp_sign_up{
+  color: #09C6AB;
+}
+.form-signin .dp_sign_up:hover{
+  color: #0adec0;
+  cursor: pointer;
+}
+.sign_up{
+  display: none;
+}
 /*end dat style*/
 
 
@@ -2722,6 +2733,7 @@ h1.su-text{
 }
 .disable-button:first-of-type{
   margin-left: 30px;
+
 }
 .first-button{
   clip-path: polygon(0% 0%,90% 0%,100% 50%,90% 100%,0% 100%);
