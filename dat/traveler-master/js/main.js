@@ -301,3 +301,10 @@
 
 
 }());
+
+$("#date-flight").datepicker({
+	todayHighlight:true,
+	minDate: 0,
+	maxDate: "+21D",
+	showButtonPanel: true,
+});
