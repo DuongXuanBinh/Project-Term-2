@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 15;
 }
 @media screen and (max-width: 768px) {
   .gtco-nav {
@@ -2428,6 +2428,9 @@ h1.su-text{
 .active{
   visibility: visible;
 }
+#ui-datepicker-div{
+  z-index: 16 !important;
+}
 #datepicker_outbound{
   position: absolute;
   top: -320px;
@@ -2700,6 +2703,30 @@ h1.su-text{
 .sign_up{
   display: none;
 }
+.passenger_form .col-md-8{
+  margin: 30px 0;
+}
+.passenges_list form .form-group label h4{
+  margin: 0;
+}
+.passenges_list .form-group input{
+  margin-bottom: 20px;
+}
+.passenges_list .nav.nav-tabs li a{
+  color: black;
+}
+ .nav-tabs > li.active > a{
+  color: #0ac5a9 !important;
+}
+.passengers_form{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 50px;
+
+}
+.flight_detail{
+   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+ }
 /*end dat style*/
 
 
