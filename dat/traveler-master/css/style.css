@@ -2689,6 +2689,16 @@ h1.su-text{
 .profile_form .edit:hover,.save:hover,.cancel:hover{
   background: #09C6AB;
 }
+.form-signin .dp_sign_up{
+  color: #09C6AB;
+}
+.form-signin .dp_sign_up:hover{
+  color: #0adec0;
+  cursor: pointer;
+}
+.sign_up{
+  display: none;
+}
 /*end dat style*/
 
 
