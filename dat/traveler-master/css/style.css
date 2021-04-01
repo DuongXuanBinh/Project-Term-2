@@ -2689,6 +2689,7 @@ h1.su-text{
 .profile_form .edit:hover,.save:hover,.cancel:hover{
   background: #09C6AB;
 }
+
 .form-signin .dp_sign_up{
   color: #09C6AB;
 }
@@ -2703,18 +2704,35 @@ h1.su-text{
 
 
 /*---------SELECT-FLIGHT------------*/
+.booking-progress{
+  width: 100%;
+  margin-top: 30px;
+}
 .first-button,.second-button{
   text-align: center;
-  background-color: #09c5a9;
   color: white;
   font-size: 16px;
   height: 30px;
-  width: 180px;
   line-height: 30px;
   padding: 0;
   margin: 0 0 20px 0;
+  width: 27%;
+  background-color: #09c5a9;
 }
+.back-icon{
+  color: black;
+  position: absolute;
+  top: 3px;
+  left: 110px;
+}
+
 .disable-button{
+  background-color: #b3b3b36b;
+  color: #606060;
+  cursor: not-allowed;
+}
+.disable-button:first-of-type{
+  margin-left: 30px;
 
 }
 .first-button{
@@ -2724,3 +2742,74 @@ h1.su-text{
   clip-path: polygon(0% 0%,90% 0%,100% 50%,90% 100%,0% 100%,10% 50%);
   margin-left: -30px !important;
 }
+.date-button{
+  background-color: white;
+  height: 40px;
+  margin: 0 0 30px 0;
+  padding: 0;
+  text-align: center;
+  width: 180px;
+  font-size: 12px;
+}
+.date-button:hover{
+  font-weight: bold;
+}
+button.date-button.active{
+  font-weight: bold;
+  color: #000;
+}
+
+.flight-detail{
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  padding: 10px 10px;
+  text-align: center;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.flight-detail table{
+  width: 100%;
+  text-align: left;
+}
+.flight-detail table tr:first-of-type td:nth-child(1),
+.flight-detail table tr:first-of-type td:nth-child(2),
+.flight-detail table tr:nth-of-type(2) td:nth-child(1){
+  text-align: center;
+}
+
+.flight-detail input{
+  width: 15px;
+  height: 15px;
+  margin: 15px 0;
+}
+.flight-detail div:last-child{
+  margin: 5px 0;
+}
+.flight-detail img{
+  width: 20px;
+}
+.back-button,.continue-button{
+  background-color: #0ac5a9;
+  border: 1px solid #09c6ab;
+  border-radius: 5px;
+  color: white;
+  width: 100px;
+  text-align: center;
+  height: 45px;
+}
+.back-button:hover,
+.continue-button:hover{
+  font-weight: bold;
+  box-shadow: 1px 1px 2px #0a9b80;
+
+}
+.back-button{
+  margin-left: 100px;
+  margin-right: 23px;
+}
+
