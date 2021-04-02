@@ -632,7 +632,7 @@ h1, h2, h3, h4, h5, h6, figure {
   content: "\e9af";
 }
 
-#registrationForm label {
+form label {
   font-weight: normal !important;
 }
 
@@ -2183,9 +2183,6 @@ h1.su-text{
   margin-bottom: 10px;
   display: inline-block;
 }
-.form-signup button:hover{
-  color: unset;
-}
 #su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
   width: 48%;
 }
@@ -2233,11 +2230,10 @@ h1.su-text{
   width: 50%;
   margin: 0 auto;
 }
-
 .search-flight input{
   display: inline-block;
   background-color: white;
-  width: 45%;
+  width: 90%;
 }
 .search-flight button{
   width: 46px;
@@ -2323,11 +2319,7 @@ h1.su-text{
   font-size: 20px;
 }
 .passenger-ticket table td{
-  height: 20px;
-  font-size: 14px;
-}
-.passenger-ticket table td>a:hover{
-  color: goldenrod;
+  height: 40px;
 }
 .result-form table{
   width: 100%;
@@ -2445,22 +2437,13 @@ h1.su-text{
   left: -45px;
   z-index: 12;
 }
-.ui-datepicker-prev,.ui-datepicker-next{
-  margin-top: 0;
-}
-.ui-datepicker>table tr td{
-  width: 41px;
-}
-.ui-datepicker>table tr td a{
-  margin-top: 0;
-}
 /*.datepicker{*/
 /*    position: relative;*/
 /*    background-color: white;*/
 /*    z-index: 11;*/
 /*    border: 1px solid black;*/
 /*}*/
-.ui-datepicker a:hover{
+.ui-datepicker-calendar a:hover{
   color:  #09C6AB;
 }
 .outbound_day{
@@ -2671,7 +2654,9 @@ h1.su-text{
 #gtco-features .feature-center a{
   color: #fff;
 }
-
+.profile_form{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
 .profile_form  label h4{
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -2694,9 +2679,18 @@ h1.su-text{
   display: none;
 }
 .profile_form .col-sm-3 label{
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-  color: inherit;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.profile_form .col-sm-3 label:hover{
+  border: 2px solid #0adec0 ;
+}
+.profile_form .edit,.save,.cancel{
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #6c757d ;
+  color: white;
+}
+.profile_form .edit:hover,.save:hover,.cancel:hover{
+  background: #09C6AB;
 }
 
 .form-signin .dp_sign_up{
@@ -2892,27 +2886,3 @@ button.date-button.active{
   margin-right: 23px;
 }
 
-/*----------------------------------*/
-.password-change form div.modal-body{
-  width: 100%;
-}
-.password-change form div.modal-body label{
-  width: 49%;
-  border: unset;
-}
-.password-change form input{
-  width: 50%;
-}
-.modal-title{
-  color: inherit;
-  font-size: 18px;
-}
-.modal-header .close{
-  margin-top: -10px;
-}
-button.close:focus{
-  outline: none;
-}
-#registrationForm label h4,#registrationForm input::placeholder,#registrationForm input{
-  color: #777;
-}
