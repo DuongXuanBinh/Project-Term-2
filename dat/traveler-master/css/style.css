@@ -2725,14 +2725,21 @@ h1.su-text{
   color: #0ac5a9 !important;
 }
 .passengers_form{
-  border: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 50px;
-
 }
-.flight_detail{
-   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
- }
+.flight_detail table{
+  width: 100%;
+}
+.flight_detail table:first-of-type td>img{
+  width: 30px;
+}
+.flight_detail table:first-of-type,
+.flight-detail table:first-of-type th{
+  text-align: center;
+}
+.flight_detail table:first-of-type td{
+  width: 33.3%;
+}
 /*end dat style*/
 
 
@@ -2867,6 +2874,10 @@ button.date-button.active{
 button.close:focus{
   outline: none;
 }
-#registrationForm label h4,#registrationForm input::placeholder,#registrationForm input{
-  color: #777;
+#registrationForm label h4,
+#registrationForm input{
+  color: #353535;
+}
+#registrationForm input::placeholder{
+  color:#777777ba;
 }
