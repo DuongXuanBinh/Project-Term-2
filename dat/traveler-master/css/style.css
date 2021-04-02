@@ -2717,6 +2717,8 @@ h1.su-text{
 }
 .passenges_list .form-group input{
   margin-bottom: 20px;
+  color: black;
+  font-weight: 400;
 }
 .passenges_list .nav.nav-tabs li a{
   color: black;
@@ -2729,10 +2731,54 @@ h1.su-text{
   padding-bottom: 50px;
 
 }
-.flight_detail{
-   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
- }
+.ui-datepicker-prev.ui-corner-all, .ui-datepicker-next.ui-corner-all {
+  margin: 0;
+}
+.select_seats .tab-content #out_bound form .row:first-of-type,
+.select_seats .tab-content #in_bound form .row:first-of-type{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+.select_seats .tab-content #out_bound form .col-md-1,
+.select_seats .tab-content #in_bound form .col-md-1{
+  height: 25px;
+  width: 25px;
+  margin-top: 10px;
+}
+.select_seats ul.nav-tabs li>a{
+  color: #777;;
+}
+.select_seats .tab-content .tab-pane form .col-md-7.col-md-push-1 .row .col-md-12 .row{
+  margin: 20px 0;
+}
+.select_seats .plane-320 .left-exit,.select_seats .plane-787 .left-exit{
+  left: 0;
+}
+.select_seats .plane-320 .right-exit,.select_seats .plane-787 .right-exit{
+  left: 212px;
+}
+.select_seats .tab-content .select_seat_passenger{
+  border: 1px solid black;
+  background: #2a2a2a;
+  color: white;
+  height: 50px;
+  padding-top: 10px;
+  cursor: pointer;
+  margin-bottom: 20px !important;
+}
+.select_seats .tab-content .select_seat_passenger span{
+  border: 1px solid #eeb823;
+  background:#eeb823 ;
+  border-radius: 50%;
+  font-size: 20px;
+}
+ .active_passenger{
+  background: #007292 !important;
+}
+.select_seats .tab-content .select_seat_passenger p:hover{
+  text-decoration: underline;
+}
 /*end dat style*/
 
 
