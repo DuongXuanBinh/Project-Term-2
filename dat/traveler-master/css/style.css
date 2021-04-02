@@ -2846,7 +2846,7 @@ button.date-button.active{
   margin-right: 23px;
 }
 
-<<<<<<< HEAD
+
 /*----------------------------------*/
 .password-change form div.modal-body{
   width: 100%;
@@ -2875,5 +2875,4 @@ button.close:focus{
 #registrationForm input::placeholder{
   color:#777777ba;
 }
-=======
->>>>>>> parent of df10e3d (Merge branch 'main' into dat)
+
