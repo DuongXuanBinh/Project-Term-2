@@ -120,6 +120,8 @@
 
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#passenger1">Passenger 1</a></li>
+                                <li><a data-toggle="tab" href="#passenger2">Passenger 2</a></li>
+                                <li><a data-toggle="tab" href="#passenger3">Passenger 3</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -129,14 +131,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="first_name1"><h4>First name</h4></label>
-                                                <input type="text" class="form-control" name="first_name" id="first_name1" placeholder="First name" title="enter your first name if any.">
+                                                <input type="text" class="form-control" name="first_name" id="first_name1" placeholder="first name" title="enter your first name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="last_name1"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" name="last_name" id="last_name1" placeholder="Last name" title="enter your last name if any.">
+                                                <input type="text" class="form-control" name="last_name" id="last_name1" placeholder="last name" title="enter your last name if any.">
                                             </div>
                                         </div>
 
@@ -150,7 +152,7 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="email"><h4>Email</h4></label>
-                                                <input type="email" class="form-control" name="email" id="your-email" placeholder="you@email.com" title="enter your email.">
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
                                             </div>
                                         </div>
 
@@ -173,69 +175,95 @@
                                         </div>
                                         <br><br>
                                     </form>
+
+
                                 </div><!--/tab-pane-->
+                                <div class="tab-pane" id="passenger2">
+
+                                    <h2></h2>
+                                    <form class="form" action="##" method="post" id="registrationForm2">
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="first_name2"><h4>First name</h4></label>
+                                                <input type="text" class="form-control" name="first_name" id="first_name2" placeholder="first name" title="enter your first name if any.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="last_name2"><h4>Last name</h4></label>
+                                                <input type="text" class="form-control" name="last_name" id="last_name2" placeholder="last name" title="enter your last name if any.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="dob2"><h4>Date of birth</h4></label>
+                                                <input type="date" data-toggle="datepicker" class="form-control" name="dob" id="dob2" placeholder="date of birth" title="enter date of birth">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="sexs2"><h4>Sex</h4></label>
+                                                <input id="sex2" list="sexs2" class="form-control" placeholder="Sex" required>
+                                                <datalist id="sexs2">
+                                                    <option value="Male">
+                                                    <option value="Female">
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div><!--/tab-pane-->
+                                <div class="tab-pane" id="passenger3">
+
+                                    <h2></h2>
+
+                                    <form class="form" action="##" method="post" id="registrationForm2">
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="first_name2"><h4>First name</h4></label>
+                                                <input type="text" class="form-control" name="first_name" id="first_name2" placeholder="first name" title="enter your first name if any.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="last_name2"><h4>Last name</h4></label>
+                                                <input type="text" class="form-control" name="last_name" id="last_name2" placeholder="last name" title="enter your last name if any.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="dob2"><h4>Date of birth</h4></label>
+                                                <input type="date" data-toggle="datepicker" class="form-control" name="dob" id="dob2" placeholder="date of birth" title="enter date of birth">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="sexs2"><h4>Sex</h4></label>
+                                                <input id="sex2" list="sexs2" class="form-control" placeholder="Sex" required>
+                                                <datalist id="sexs2">
+                                                    <option value="Male">
+                                                    <option value="Female">
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div><!--/tab-pane-->
+
                             </div><!--/tab-pane-->
                     </div>
-                    <div class="col-md-4 flight_detail">
-                            <table>
-                                <tr>
-                                    <th colspan="3">13/5/2021 --- HV121</th>
-                                </tr>
-                                <tr>
-                                    <td>Ha Noi</td>
-                                    <td rowspan="2"><img src="images/429706-84%20-%20Copy.png" alt=""></td>
-                                    <td>Ho Chi Minh</td>
-                                </tr>
-                                <tr>
-                                    <td>18:50</td>
-                                    <td>19:50</td>
-                                </tr>
-                            </table>
-                            <table>
-                                <tr>
-                                    <th>Fare Details</th>
-                                    <th>HV121</th>
-                                    <th>HV131</th>
-                                </tr>
-                                <tr>
-                                    <td>Ticket Fare</td>
-                                    <td>VND 1000</td>
-                                    <td>VND 1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Airport Tax Domestic</td>
-                                    <td>VND 1000</td>
-                                    <td>VND 1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Admin Fee</td>
-                                    <td>VND 1000</td>
-                                    <td>VND 1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Airport Security</td>
-                                    <td>VND 1000</td>
-                                    <td>VND 1000</td>
-                                </tr>
-                                <tr>
-                                    <td>System Admin</td>
-                                    <td>VND 1000</td>
-                                    <td>VND 1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Passenger Number:</td>
-                                    <td colspan="2">2</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td colspan="2">VND 100000</td>
-                                </tr>
-                            </table>
+                    <div class="col-md-4 ">
                     </div>
             </div>
             <div class="row ">
                 <div class="col-md-8"></div>
-                <div class="col-md-4">
+                <div class="col-md-4" >
                     <button class="back-button" type="button">Back</button>
                     <button class="continue-button" type="submit">Continue</button>
                 </div>
