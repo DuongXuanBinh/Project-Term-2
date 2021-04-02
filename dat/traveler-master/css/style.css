@@ -2733,12 +2733,14 @@ h1.su-text{
 .flight_detail table:first-of-type td>img{
   width: 30px;
 }
-.flight_detail table:first-of-type,
-.flight-detail table:first-of-type th{
+.flight_detail table:first-of-type{
   text-align: center;
 }
 .flight_detail table:first-of-type td{
   width: 33.3%;
+}
+.flight_detail table tr:first-of-type{
+  border-bottom: 1.5px solid #F5F5F5;
 }
 /*end dat style*/
 
@@ -2880,4 +2882,53 @@ button.close:focus{
 }
 #registrationForm input::placeholder{
   color:#777777ba;
+}
+
+.ui-datepicker-prev.ui-corner-all, .ui-datepicker-next.ui-corner-all {
+  margin: 0;
+}
+.select_seats .tab-content #out_bound form .row:first-of-type,
+.select_seats .tab-content #in_bound form .row:first-of-type{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+.select_seats .tab-content #out_bound form .col-md-1,
+.select_seats .tab-content #in_bound form .col-md-1{
+  height: 25px;
+  width: 25px;
+  margin-top: 10px;
+}
+.select_seats ul.nav-tabs li>a{
+  color: #777;;
+}
+.select_seats .tab-content .tab-pane form .col-md-7.col-md-push-1 .row .col-md-12 .row{
+  margin: 20px 0;
+}
+.select_seats .plane-320 .left-exit,.select_seats .plane-787 .left-exit{
+  left: 0;
+}
+.select_seats .plane-320 .right-exit,.select_seats .plane-787 .right-exit{
+  left: 212px;
+}
+.select_seats .tab-content .select_seat_passenger{
+  border: 1px solid black;
+  background: #2a2a2a;
+  color: white;
+  height: 50px;
+  padding-top: 10px;
+  cursor: pointer;
+  margin-bottom: 20px !important;
+}
+.select_seats .tab-content .select_seat_passenger span{
+  border: 1px solid #eeb823;
+  background:#eeb823 ;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.active_passenger{
+  background: #007292 !important;
+}
+.select_seats .tab-content .select_seat_passenger p:hover{
+  text-decoration: underline;
 }
