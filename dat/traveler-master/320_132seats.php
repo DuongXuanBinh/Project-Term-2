@@ -30,19 +30,19 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="images/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}A"><img src="images/icon-premium-seat0.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="images/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}B"><img src="images/icon-premium-seat0.png" alt=""></div>
                     </td>
                      <td>
                      $row
                     </td>
                      <td>
-                         <div name="${row}.C"><img src="images/icon-premium-seat0.png" alt=""></div> 
+                         <div name="${row}C"><img src="images/icon-premium-seat0.png" alt=""></div> 
                     </td>  
                      <td>
-                         <div name="${row}.D"><img src="images/icon-premium-seat0.png" alt=""></div> 
+                         <div name="${row}D"><img src="images/icon-premium-seat0.png" alt=""></div> 
                     </td>
     </tr>
     EOT;
@@ -68,25 +68,25 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                      <td>
-                        <div name="${row}.C"><img src="images/icon-premium-seat2.png" alt=""></div>     
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
                     </td>  
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
     </tr>
     EOT;
@@ -112,25 +112,25 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}.A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
                     </td>
                     <td>
-                        <div name="${row}.B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
                      <td>
-                        <div name="${row}.C"><img src="images/icon-premium-seat2.png" alt=""></div>     
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
                     </td>  
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}.D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
                     </td>
                     <td>
-                        <div name="${row}.E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
                     </td>
                     <td>
-                        <div name="${row}.G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
                     </td>
     </tr>
     EOT;
