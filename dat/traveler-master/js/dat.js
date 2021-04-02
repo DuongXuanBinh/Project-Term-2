@@ -159,6 +159,9 @@ $(document).ready(function() {
     if (!$(".form-signup input:checkbox").is(':checked')){
         $(".btn_sign_up").prop('disabled', true);
     }
+
+
+
 })
 
 $(".profile_form .edit").on(
@@ -193,3 +196,35 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
+function choose_seat(id){
+
+}
+
+$(".select_seats .tab-content .seat-map table tr td div ").on(
+        'click',function (){
+            if (!$(this).children('img').hasClass("check_seat")){
+                var imgAfter = "<img class=\"check_seat "+idPassenger+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
+                $(this).children('img').addClass("hide_seat_"+idPassenger);
+                $(".check_seat."+idPassenger).remove();
+                $(".hide_seat_"+idPassenger).css('display','inline');
+                $(this).children('img').css('display','none');
+                $(this).append(imgAfter);
+                var location_seat = $(this).attr('name');
+                $("#"+idPassenger).find("p").text(location_seat);
+            }
+
+        })
+var idPassenger = $(".select_seat_passenger:first").attr('id');
+$("#"+idPassenger).addClass('active_passenger');
+var countPassenger = $("#out_bound .select_seat_passenger").length;
+
+$(".select_seat_passenger").on(
+    'click',function (){
+        idPassenger = $(this).attr('id');
+        $(".select_seat_passenger").removeClass('active_passenger');
+        $(this).addClass('active_passenger');
+    }
+)
+
+
+
