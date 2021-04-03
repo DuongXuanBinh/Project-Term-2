@@ -2041,7 +2041,6 @@ p.last-thanks{
 
 
 .seat-map{
-  padding-right:15px;
   border-left: 1px solid black;
   border-right: 1px solid black;
 }
@@ -2721,27 +2720,49 @@ h1.su-text{
 .passenges_list .nav.nav-tabs li a{
   color: black;
 }
+.passenges_list div.row:last-of-type{
+  padding-bottom: 30px;
+  padding-top: 30px;
+  background-color: #f5f5f5;
+}
+.passenges_list div.row:first-of-type{
+  margin: 20px 0 20px;
+}
  .nav-tabs > li.active > a{
   color: #0ac5a9 !important;
 }
-.passengers_form{
-  padding-bottom: 50px;
-}
 .flight_detail table{
-  width: 100%;
+  font-size: 13px;
 }
-.flight_detail table:first-of-type td>img{
+.flight_detail table tr td:nth-of-type(2)>img{
   width: 30px;
 }
-.flight_detail table:first-of-type{
+.flight_detail table:not(table:last-of-type){
   text-align: center;
-}
-.flight_detail table:first-of-type td{
-  width: 33.3%;
+  border-bottom: 0.5px dashed #a9a8a8;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 100%;
 }
 .flight_detail table tr:first-of-type{
-  border-bottom: 1.5px solid #F5F5F5;
+  border-bottom: 0.5px dashed #a9a8a8;
 }
+.flight_detail table:last-of-type{
+  width: 100%;
+  margin: 0 auto 15px;
+}
+.flight_detail table:last-of-type tr:nth-of-type(7) td:nth-of-type(2),
+.flight_detail table:last-of-type tr:nth-of-type(8) td:nth-of-type(2){
+  text-align: center;
+}
+.flight_detail table:last-of-type tr th:first-of-type{
+  width: 135px
+}
+.flight_detail{
+  border: 0.5px dashed #a9a8a8;
+  background-color: #fbf4ec61;
+}
+
 /*end dat style*/
 
 
@@ -2887,12 +2908,8 @@ button.close:focus{
 .ui-datepicker-prev.ui-corner-all, .ui-datepicker-next.ui-corner-all {
   margin: 0;
 }
-.select_seats .tab-content #out_bound form .row:first-of-type,
-.select_seats .tab-content #in_bound form .row:first-of-type{
-  margin-top: 20px;
-  margin-bottom: 20px;
 
-}
+
 .select_seats .tab-content #out_bound form .col-md-1,
 .select_seats .tab-content #in_bound form .col-md-1{
   height: 25px;
@@ -2909,7 +2926,7 @@ button.close:focus{
   left: 0;
 }
 .select_seats .plane-320 .right-exit,.select_seats .plane-787 .right-exit{
-  left: 212px;
+  left: 204px;
 }
 .select_seats .tab-content .select_seat_passenger{
   border: 1px solid black;
@@ -2931,4 +2948,12 @@ button.close:focus{
 }
 .select_seats .tab-content .select_seat_passenger p:hover{
   text-decoration: underline;
+}
+.seat-note{
+  font-size: 0.8em;
+}
+.seat-note:first-of-type{
+  margin-top: 15px;
+  height: 30px;
+  padding: 5px 0 5px 0;
 }
