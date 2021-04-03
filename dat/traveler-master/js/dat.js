@@ -194,9 +194,6 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
-function choose_seat(id){
-
-}
 
 $(".select_seats .tab-content .seat-map table tr td div ").on(
         'click',function (){
@@ -223,6 +220,36 @@ $(".select_seat_passenger").on(
         $(this).addClass('active_passenger');
     }
 )
+$(function() {
+    $('form.require-validation').bind('submit', function(e) {
+        var $form         = $(e.target).closest('form'),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                'input[type=text]', 'input[type=file]',
+                'textarea'].join(', '),
+            $inputs       = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid         = true;
 
+        $errorMessage.addClass('hide');
+        $('.has-error').removeClass('has-error');
+        $inputs.each(function(i, el) {
+            var $input = $(el);
+            if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault(); // cancel on first error
+            }
+        });
+    });
+});
+
+$(".check_out form input:radio").on(
+    'change',function () {
+        if (this.checked){
+            $(".radio_choose").removeClass("radio_choose_active");
+            $(this).parents(".radio_choose").addClass("radio_choose_active");
+        }
+    }
+);
 
 

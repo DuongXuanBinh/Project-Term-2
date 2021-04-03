@@ -2742,6 +2742,32 @@ h1.su-text{
 .flight_detail table tr:first-of-type{
   border-bottom: 1.5px solid #F5F5F5;
 }
+.check_out{
+  text-align: justify;
+}
+.check_out .note{
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 13px;
+}
+.check_out .note span{
+  color: #eeb823;
+}
+.check_out .form-check{
+  cursor: pointer;
+}
+.check_out .radio_block .form-check label, .radio_buy .form-check label{
+  font-size: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.check_out .radio_choose{
+  margin-bottom: 30px;
+  padding-right: 10px;
+}
+.radio_choose_active{
+  border: 1px solid #0adec0;
+}
 /*end dat style*/
 
 
