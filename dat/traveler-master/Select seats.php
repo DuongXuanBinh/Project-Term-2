@@ -117,8 +117,8 @@
             <div class="row">
                 <div class="col-md-9">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
-                        <li><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
+                        <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
+                        <li class="in_bound_tab" ><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="out_bound">
