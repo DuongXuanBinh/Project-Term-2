@@ -42,9 +42,8 @@ var todate = new Date(),
         onClose: function(){
             $(".overlay_datepicker").removeClass("active");
         },
-        showButtonPanel: true,
         minDate: 0,
-        maxDate: "+15d",
+        maxDate: "+21d",
     });
 // }
 $("#from-outbound-date").click(function () {
@@ -85,8 +84,7 @@ $( "#datepicker_return" ).datepicker({
 
     },
     minDate: 0,
-    maxDate: "+15d",
-    showButtonPanel: true,
+    maxDate: "+21d",
 });
 // }
 $("#add-return-date").click(function () {

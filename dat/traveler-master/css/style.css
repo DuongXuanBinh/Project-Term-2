@@ -632,7 +632,7 @@ h1, h2, h3, h4, h5, h6, figure {
   content: "\e9af";
 }
 
-form label {
+#registrationForm label {
   font-weight: normal !important;
 }
 
@@ -2183,6 +2183,9 @@ h1.su-text{
   margin-bottom: 10px;
   display: inline-block;
 }
+.form-signup button:hover{
+  color: unset;
+}
 #su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
   width: 48%;
 }
@@ -2230,10 +2233,11 @@ h1.su-text{
   width: 50%;
   margin: 0 auto;
 }
+
 .search-flight input{
   display: inline-block;
   background-color: white;
-  width: 90%;
+  width: 45%;
 }
 .search-flight button{
   width: 46px;
@@ -2319,7 +2323,11 @@ h1.su-text{
   font-size: 20px;
 }
 .passenger-ticket table td{
-  height: 40px;
+  height: 20px;
+  font-size: 14px;
+}
+.passenger-ticket table td>a:hover{
+  color: goldenrod;
 }
 .result-form table{
   width: 100%;
@@ -2437,13 +2445,22 @@ h1.su-text{
   left: -45px;
   z-index: 12;
 }
+.ui-datepicker-prev,.ui-datepicker-next{
+  margin-top: 0;
+}
+.ui-datepicker>table tr td{
+  width: 41px;
+}
+.ui-datepicker>table tr td a{
+  margin-top: 0;
+}
 /*.datepicker{*/
 /*    position: relative;*/
 /*    background-color: white;*/
 /*    z-index: 11;*/
 /*    border: 1px solid black;*/
 /*}*/
-.ui-datepicker-calendar a:hover{
+.ui-datepicker a:hover{
   color:  #09C6AB;
 }
 .outbound_day{
@@ -2654,9 +2671,7 @@ h1.su-text{
 #gtco-features .feature-center a{
   color: #fff;
 }
-.profile_form{
-  border: 2px solid rgba(0, 0, 0, 0.1);
-}
+
 .profile_form  label h4{
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -2679,18 +2694,9 @@ h1.su-text{
   display: none;
 }
 .profile_form .col-sm-3 label{
-  border: 2px solid rgba(0, 0, 0, 0.1);
-}
-.profile_form .col-sm-3 label:hover{
-  border: 2px solid #0adec0 ;
-}
-.profile_form .edit,.save,.cancel{
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  background: #6c757d ;
-  color: white;
-}
-.profile_form .edit:hover,.save:hover,.cancel:hover{
-  background: #09C6AB;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  color: inherit;
 }
 
 .form-signin .dp_sign_up{
@@ -2711,8 +2717,6 @@ h1.su-text{
 }
 .passenges_list .form-group input{
   margin-bottom: 20px;
-  color: black;
-  font-weight: 400;
 }
 .passenges_list .nav.nav-tabs li a{
   color: black;
@@ -2721,57 +2725,22 @@ h1.su-text{
   color: #0ac5a9 !important;
 }
 .passengers_form{
-  border: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 50px;
-
 }
-.ui-datepicker-prev.ui-corner-all, .ui-datepicker-next.ui-corner-all {
-  margin: 0;
+.flight_detail table{
+  width: 100%;
 }
-.select_seats .tab-content #out_bound form .row:first-of-type,
-.select_seats .tab-content #in_bound form .row:first-of-type{
-  margin-top: 20px;
-  margin-bottom: 20px;
-
+.flight_detail table:first-of-type td>img{
+  width: 30px;
 }
-.select_seats .tab-content #out_bound form .col-md-1,
-.select_seats .tab-content #in_bound form .col-md-1{
-  height: 25px;
-  width: 25px;
-  margin-top: 10px;
+.flight_detail table:first-of-type{
+  text-align: center;
 }
-.select_seats ul.nav-tabs li>a{
-  color: #777;;
+.flight_detail table:first-of-type td{
+  width: 33.3%;
 }
-.select_seats .tab-content .tab-pane form .col-md-7.col-md-push-1 .row .col-md-12 .row{
-  margin: 20px 0;
-}
-.select_seats .plane-320 .left-exit,.select_seats .plane-787 .left-exit{
-  left: 0;
-}
-.select_seats .plane-320 .right-exit,.select_seats .plane-787 .right-exit{
-  left: 212px;
-}
-.select_seats .tab-content .select_seat_passenger{
-  border: 1px solid black;
-  background: #2a2a2a;
-  color: white;
-  height: 50px;
-  padding-top: 10px;
-  cursor: pointer;
-  margin-bottom: 20px !important;
-}
-.select_seats .tab-content .select_seat_passenger span{
-  border: 1px solid #eeb823;
-  background:#eeb823 ;
-  border-radius: 50%;
-  font-size: 20px;
-}
- .active_passenger{
-  background: #007292 !important;
-}
-.select_seats .tab-content .select_seat_passenger p:hover{
-  text-decoration: underline;
+.flight_detail table tr:first-of-type{
+  border-bottom: 1.5px solid #F5F5F5;
 }
 /*end dat style*/
 
@@ -2886,3 +2855,80 @@ button.date-button.active{
   margin-right: 23px;
 }
 
+/*----------------------------------*/
+.password-change form div.modal-body{
+  width: 100%;
+}
+.password-change form div.modal-body label{
+  width: 49%;
+  border: unset;
+}
+.password-change form input{
+  width: 50%;
+}
+.modal-title{
+  color: inherit;
+  font-size: 18px;
+}
+.modal-header .close{
+  margin-top: -10px;
+}
+button.close:focus{
+  outline: none;
+}
+#registrationForm label h4,
+#registrationForm input{
+  color: #353535;
+}
+#registrationForm input::placeholder{
+  color:#777777ba;
+}
+
+.ui-datepicker-prev.ui-corner-all, .ui-datepicker-next.ui-corner-all {
+  margin: 0;
+}
+.select_seats .tab-content #out_bound form .row:first-of-type,
+.select_seats .tab-content #in_bound form .row:first-of-type{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+.select_seats .tab-content #out_bound form .col-md-1,
+.select_seats .tab-content #in_bound form .col-md-1{
+  height: 25px;
+  width: 25px;
+  margin-top: 10px;
+}
+.select_seats ul.nav-tabs li>a{
+  color: #777;;
+}
+.select_seats .tab-content .tab-pane form .col-md-7.col-md-push-1 .row .col-md-12 .row{
+  margin: 20px 0;
+}
+.select_seats .plane-320 .left-exit,.select_seats .plane-787 .left-exit{
+  left: 0;
+}
+.select_seats .plane-320 .right-exit,.select_seats .plane-787 .right-exit{
+  left: 212px;
+}
+.select_seats .tab-content .select_seat_passenger{
+  border: 1px solid black;
+  background: #2a2a2a;
+  color: white;
+  height: 50px;
+  padding-top: 10px;
+  cursor: pointer;
+  margin-bottom: 20px !important;
+}
+.select_seats .tab-content .select_seat_passenger span{
+  border: 1px solid #eeb823;
+  background:#eeb823 ;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.active_passenger{
+  background: #007292 !important;
+}
+.select_seats .tab-content .select_seat_passenger p:hover{
+  text-decoration: underline;
+}
