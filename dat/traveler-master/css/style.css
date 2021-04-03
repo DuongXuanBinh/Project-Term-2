@@ -2742,6 +2742,7 @@ h1.su-text{
 .flight_detail table tr:first-of-type{
   border-bottom: 1.5px solid #F5F5F5;
 }
+
 .check_out{
   text-align: justify;
 }
@@ -2768,6 +2769,7 @@ h1.su-text{
 .radio_choose_active{
   border: 1px solid #0adec0;
 }
+
 /*end dat style*/
 
 
