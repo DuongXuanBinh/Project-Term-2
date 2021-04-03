@@ -197,26 +197,48 @@ $(".form-signup input:checkbox").on(
 
 $(".select_seats .tab-content .seat-map table tr td div ").on(
         'click',function (){
+
             if (!$(this).children('img').hasClass("check_seat")){
-                var imgAfter = "<img class=\"check_seat "+idPassenger+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
-                $(this).children('img').addClass("hide_seat_"+idPassenger);
-                $(".check_seat."+idPassenger).remove();
-                $(".hide_seat_"+idPassenger).css('display','inline');
+                var ID = idBound +"_"+idPassenger;
+                var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
+                $(this).children('img').addClass("hide_seat_"+ID);
+                $(".check_seat."+ID).remove();
+                $(".hide_seat_"+ID).css('display','inline');
                 $(this).children('img').css('display','none');
                 $(this).append(imgAfter);
                 var location_seat = $(this).attr('name');
-                $("#"+idPassenger).find("p").text(location_seat);
+                $("#"+idBound+" #"+idPassenger).find("p").text(location_seat);
             }
 
         })
-var idPassenger = $(".select_seat_passenger:first").attr('id');
-$("#"+idPassenger).addClass('active_passenger');
-var countPassenger = $("#out_bound .select_seat_passenger").length;
+var idBound = $(".select_seats .tab-pane.active").attr('id');
+
+$(".select_seats .nav-tabs li.out_bound_tab").on(
+    'click',function (){
+        idBound = "out_bound";
+        if (!$("#"+idBound).find(".select_seat_passenger").hasClass("active_passenger")){
+            idPassenger = $("#"+idBound+" .select_seat_passenger").attr('id');
+            $("#"+idBound+" #"+idPassenger).addClass('active_passenger');
+        }
+    }
+)
+$(".select_seats .nav-tabs li.in_bound_tab").on(
+    'click',function (){
+        idBound = "in_bound";
+        if (!$("#"+idBound).find(".select_seat_passenger").hasClass("active_passenger")){
+            idPassenger = $("#"+idBound+" .select_seat_passenger").attr('id');
+            $("#"+idBound+" #"+idPassenger).addClass('active_passenger');
+        }
+    }
+)
+var idPassenger = $("#"+idBound+" .select_seat_passenger:first").attr('id');
+$("#"+idBound+" #"+idPassenger).addClass('active_passenger');
+
 
 $(".select_seat_passenger").on(
     'click',function (){
         idPassenger = $(this).attr('id');
-        $(".select_seat_passenger").removeClass('active_passenger');
+        $("#"+idBound+" .select_seat_passenger").removeClass('active_passenger');
         $(this).addClass('active_passenger');
     }
 )
@@ -251,5 +273,3 @@ $(".check_out form input:radio").on(
         }
     }
 );
-
-

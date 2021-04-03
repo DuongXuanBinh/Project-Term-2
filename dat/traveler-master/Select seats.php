@@ -43,7 +43,7 @@
     <script src="js/jquery-ui.js"></script>
 </head>
 
-<body>
+<div>
 <nav class="gtco-nav" role="navigation">
     <div class="overlay"></div>
     <div class="gtco-container">
@@ -99,44 +99,30 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn-group  booking-progress" role="group" aria-label="Basic example">
-                    <button type="button" class="first-button btn btn-secondary ">Select flight</button>
-                    <button type="button" class="second-button btn btn-secondary ">Passenger</button>
-                    <button type="button" class="second-button btn btn-secondary">Pick a seat</button>
-                    <button type="button" class="second-button btn btn-secondary disable-button">Check out</button>
+                    <button type="button" name="selectflight" class="first-button btn btn-secondary">Select flight</button>
+                    <button type="button" name="passenger" class="second-button btn btn-secondary ">Passenger</button>
+                    <button type="button" name="pickseat" class="second-button btn btn-secondary">Pick a seat</button>
+                    <button type="button" name="checkout" class="second-button btn btn-secondary disable-button">Check out</button>
                 </div>
             </div>
         </div>
         <div class="row col-md-12">
-            <h2 style="text-align: center;letter-spacing: 2px;margin-top: 20px">Pick a seat</h2>
+            <h2 style="text-align: center;letter-spacing: 2px;margin-top: 20px">PICK A SEAT</h2>
         </div>
     </div>
-</div>
+    </div>
 
 <div class="gtco-container select_seats">
-    <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
-                        <li><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
+                        <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
+                        <li class="in_bound_tab" ><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="out_bound">
                             <form action="#" class="form" method="post">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="col-md-11 text-justify">
-                                        ABCTo request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.
-                                        - To modify seat, please purchase a new seat and contact the old seat issuing office for refund or send refund request to onlinesupport@vietnamairlines.com for seats purchased on our website/app
-                                    </div>
-                                    <hr>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="seat-map plane-320">
@@ -275,10 +261,12 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-7 col-md-push-1">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h2>Legend</h2>
+                                    <div class="col-md-7">
+                                        <div class="row  seat-note">
+                                                <p>Note:</p>
+                                        </div>
+                                        <div class="row  seat-note">
+                                            <div class="col-md-5">
                                                 <div class="row ">
                                                     <div class="col-md-2"><img src="images/icon-premium-seat0.png" alt=""></div>
                                                     <div class="col-md-10">First Class</div>
@@ -292,8 +280,11 @@
                                                     <div class="col-md-10">Unavailable Seat</div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-7">
+                                                <p>To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.</p>
+                                            </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" style="margin-left: 20px">
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_1">
                                                 <div class="col-md-2"><span>A1</span></div>
                                                 <div class="col-md-4">Dat Nguyen</div>
@@ -318,20 +309,7 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="in_bound">
-                            <form action="#" method="post" class="form">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="col-md-11 text-justify">
-                                        To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.
-                                        - To modify seat, please purchase a new seat and contact the old seat issuing office for refund or send refund request to onlinesupport@vietnamairlines.com for seats purchased on our website/app
-                                    </div>
-                                    <hr>
-                                </div>
+                            <form action="#" class="form" method="post">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="seat-map plane-320">
@@ -470,11 +448,13 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-7 col-md-push-1">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h2>Legend</h2>
-                                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row  seat-note">
+                                            <p>Note:</p>
+                                        </div>
+                                        <div class="row  seat-note">
+                                            <div class="col-md-5">
+                                                <div class="row ">
                                                     <div class="col-md-2"><img src="images/icon-premium-seat0.png" alt=""></div>
                                                     <div class="col-md-10">First Class</div>
                                                 </div>
@@ -487,12 +467,29 @@
                                                     <div class="col-md-10">Unavailable Seat</div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-7">
+                                                <p>To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.</p>
+                                            </div>
                                         </div>
-                                        <div class="row select_seat_passenger  ">
-                                            <div class="col-md-2"><span>A1</span></div>
-                                            <div class="col-md-4">Dat Nguyen</div>
-                                            <div class="col-md-3"></div>
-                                            <div class="col-md-3"><p class="btn_select_seat">(Select Seat)</p></div>
+                                        <div class="row" style="margin-left: 20px">
+                                            <div class="row col-md-12 select_seat_passenger" id="passenger_1">
+                                                <div class="col-md-2"><span>A1</span></div>
+                                                <div class="col-md-4">Dat Nguyen</div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
+                                            </div>
+                                            <div class="row col-md-12 select_seat_passenger" id="passenger_2">
+                                                <div class="col-md-2"><span>A2</span></div>
+                                                <div class="col-md-4">Binh Duong</div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
+                                            </div>
+                                            <div class="row col-md-12 select_seat_passenger" id="passenger_3">
+                                                <div class="col-md-2"><span>A3</span></div>
+                                                <div class="col-md-4">Son Nguyen</div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -500,13 +497,102 @@
                         </div>
                     </div>
                 </div>
+        <div class="col-md-3 flight_detail">
+            <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+                <table>
+                    <tr>
+                        <th colspan="3">13/5/2021 --- HV121</th>
+                    </tr>
+                    <tr>
+                        <td>Ha Noi</td>
+                        <td rowspan="2"><img src="images/429706-84%20-%20Copy.png" alt=""></td>
+                        <td>Ho Chi Minh</td>
+                    </tr>
+                    <tr>
+                        <td>18:50</td>
+                        <td>19:50</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th colspan="3">13/5/2021 --- HV121</th>
+                    </tr>
+                    <tr>
+                        <td>Ha Noi</td>
+                        <td rowspan="2"><img src="images/429706-84%20-%20Copy.png" alt=""></td>
+                        <td>Ho Chi Minh</td>
+                    </tr>
+                    <tr>
+                        <td>18:50</td>
+                        <td>19:50</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th colspan="2">Passenger</th>
+                    </tr>
+                    <tr>
+                        <td>Mr.</td>
+                        <td>Xuan Binh/Duong</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th colspan="2">Price (4 passengers)</th>
+                    </tr>
+                    <tr>
+                        <td>Fare & Tax</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>Seat Fee</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td><b>VND 100000</b></td>
+                    </tr>
+                </table>
+        </div>
+        </div>
+    </div>
+            <div class="row ">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <button class="back-button" type="button">Back</button>
+                    <button class="continue-button" type="submit">Continue</button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
 </div>
 
+</div>
+</div>
+
+<div id="gtco-subscribe">
+    <div class="gtco-container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Subscribe</h2>
+                <p>Be the first to know about the new templates.</p>
+            </div>
+        </div>
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2">
+                <form class="form-inline">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <button type="submit" class="btn btn-default btn-block">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <footer id="gtco-footer" role="contentinfo">
     <div class="gtco-container">
         <div class="row">
@@ -586,7 +672,6 @@
 </footer>
 <!-- </div> -->
 
-</div>
 <!-- jQuery -->
 <!--	<script src="js/jquery.min.js"></script>-->
 <!-- jQuery Easing -->
