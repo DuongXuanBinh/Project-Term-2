@@ -251,4 +251,3 @@ $(".check_out form input:radio").on(
         }
     }
 );
-  

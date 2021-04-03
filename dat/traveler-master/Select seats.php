@@ -309,7 +309,7 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="in_bound">
-                            <form action="#" method="post" class="form">
+                            <form action="#" class="form" method="post">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="seat-map plane-320">
@@ -449,11 +449,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <div class="row seat-note">
-                                                <p>Note:</p>
+                                        <div class="row  seat-note">
+                                            <p>Note:</p>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-5 seat-note">
+                                        <div class="row  seat-note">
+                                            <div class="col-md-5">
                                                 <div class="row ">
                                                     <div class="col-md-2"><img src="images/icon-premium-seat0.png" alt=""></div>
                                                     <div class="col-md-10">First Class</div>
@@ -471,7 +471,7 @@
                                                 <p>To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.</p>
                                             </div>
                                         </div>
-                                        <div class="row"  style="margin-left: 20px!important;">
+                                        <div class="row" style="margin-left: 20px">
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_1">
                                                 <div class="col-md-2"><span>A1</span></div>
                                                 <div class="col-md-4">Dat Nguyen</div>
