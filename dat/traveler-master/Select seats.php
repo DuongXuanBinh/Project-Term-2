@@ -42,8 +42,8 @@
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/jquery-ui.js"></script>
 </head>
+<body>
 
-<div>
 <nav class="gtco-nav" role="navigation">
     <div class="overlay"></div>
     <div class="gtco-container">
@@ -114,7 +114,7 @@
 
 <div class="gtco-container select_seats">
         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
-            <div class="row">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                 <div class="col-md-9">
                     <ul class="nav nav-tabs">
                         <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
@@ -123,8 +123,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="out_bound">
                             <form action="#" class="form" method="post">
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <div class="row" style="display: flex">
+                                    <div class="col-md-4" style="margin: auto 0;">
                                         <div class="seat-map plane-320">
                                             <div>
                                                 <table class="business-class">
@@ -182,25 +182,25 @@
                                                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -226,25 +226,25 @@
                                                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -266,43 +266,41 @@
                                                 <p>Note:</p>
                                         </div>
                                         <div class="row  seat-note">
-                                            <div class="col-md-5">
-                                                <div class="row ">
-                                                    <div class="col-md-2"><img src="images/icon-premium-seat0.png" alt=""></div>
-                                                    <div class="col-md-10">First Class</div>
+                                            <div class="col-md-5 seat-img">
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-premium-seat0.png" alt="">First Class</p>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-2"><img src="images/icon-premium-seat2.png" alt=""></div>
-                                                    <div class="col-md-10">Economy Class</div>
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-premium-seat2.png" alt="">Economy Class</p>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-2"><img src="images/icon-unavailable-seat.png" alt=""></div>
-                                                    <div class="col-md-10">Unavailable Seat</div>
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-unavailable-seat.png" alt="">Unavailable Seat</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <p>To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.</p>
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-left: 20px">
+                                        <div class="row" style="margin-left: 20px;margin-top: 40px">
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_1">
-                                                <div class="col-md-2"><span>A1</span></div>
-                                                <div class="col-md-4">Dat Nguyen</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mr.</span></div>
+                                                <div class="col-md-7">Dat/Nguyen Tien</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_2">
-                                                <div class="col-md-2"><span>A2</span></div>
-                                                <div class="col-md-4">Binh Duong</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mr.</span></div>
+                                                <div class="col-md-7">Binh Duong</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_3">
-                                                <div class="col-md-2"><span>A3</span></div>
-                                                <div class="col-md-4">Son Nguyen</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mrs.</span></div>
+                                                <div class="col-md-7">Son Nguyen</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
+                                        </div>
+                                        <div class="row col-md-12">
+                                            <span class="seat-note">* Please read out our policy carefully.</span><br>
+                                            <span class="seat-note">* Once picked a seat, you can not change.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -310,8 +308,8 @@
                         </div>
                         <div class="tab-pane" id="in_bound">
                             <form action="#" class="form" method="post">
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <div class="row" style="display: flex">
+                                    <div class="col-md-4" style="margin: auto 0;">
                                         <div class="seat-map plane-320">
                                             <div>
                                                 <table class="business-class">
@@ -453,43 +451,41 @@
                                             <p>Note:</p>
                                         </div>
                                         <div class="row  seat-note">
-                                            <div class="col-md-5">
-                                                <div class="row ">
-                                                    <div class="col-md-2"><img src="images/icon-premium-seat0.png" alt=""></div>
-                                                    <div class="col-md-10">First Class</div>
+                                            <div class="col-md-5 seat-img">
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-premium-seat0.png" alt="">First Class</p>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-2"><img src="images/icon-premium-seat2.png" alt=""></div>
-                                                    <div class="col-md-10">Economy Class</div>
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-premium-seat2.png" alt="">Economy Class</p>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-2"><img src="images/icon-unavailable-seat.png" alt=""></div>
-                                                    <div class="col-md-10">Unavailable Seat</div>
+                                                <div class="row col-md-12">
+                                                    <p><img src="images/icon-unavailable-seat.png" alt="">Unavailable Seat</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <p>To request your seat, please click on the seat you would like on the map. Your seat selection cannot be confirmed until you finish your purchase. The preferred seat fee will not be refunded. If you do not select a seat, your seat will be automatically assigned within 25 hours before departure.</p>
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-left: 20px">
+                                        <div class="row" style="margin-left: 20px;margin-top: 40px">
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_1">
-                                                <div class="col-md-2"><span>A1</span></div>
-                                                <div class="col-md-4">Dat Nguyen</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mr.</span></div>
+                                                <div class="col-md-7">Dat/Nguyen Tien</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_2">
-                                                <div class="col-md-2"><span>A2</span></div>
-                                                <div class="col-md-4">Binh Duong</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mr.</span></div>
+                                                <div class="col-md-7">Binh Duong</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
                                             <div class="row col-md-12 select_seat_passenger" id="passenger_3">
-                                                <div class="col-md-2"><span>A3</span></div>
-                                                <div class="col-md-4">Son Nguyen</div>
-                                                <div class="col-md-3"></div>
+                                                <div class="col-md-2"><span>Mrs.</span></div>
+                                                <div class="col-md-7">Son Nguyen</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
+                                        </div>
+                                        <div class="row col-md-12">
+                                            <span class="seat-note">* Please read out our policy carefully.</span><br>
+                                            <span class="seat-note">* Once picked a seat, you can not change.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -541,7 +537,23 @@
                         <th colspan="2">Price (4 passengers)</th>
                     </tr>
                     <tr>
-                        <td>Fare & Tax</td>
+                        <td>Ticket Fare</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>Airport Tax</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>Admin Fee</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>Airport Security</td>
+                        <td>VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>System Admin</td>
                         <td>VND 1000</td>
                     </tr>
                     <tr>
@@ -552,21 +564,21 @@
                         <td><b>Total</b></td>
                         <td><b>VND 100000</b></td>
                     </tr>
-                </table>
-        </div>
-        </div>
-    </div>
-            <div class="row ">
+                    </table>
+                </div>
+            </div>
+            </div>
+            <div class="row">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
                     <button class="back-button" type="button">Back</button>
                     <button class="continue-button" type="submit">Continue</button>
                 </div>
             </div>
+        </div>
 </div>
 
-</div>
-</div>
+
 
 <div id="gtco-subscribe">
     <div class="gtco-container">
