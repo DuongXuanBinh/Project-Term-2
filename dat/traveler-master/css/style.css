@@ -1020,7 +1020,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #b3b3b3;
   /*padding-top: 3em;*/
   /*margin-top: 3em;*/
-  /*border-top: 1px solid #f2f2f2;*/
+  border-top: 1px solid #f2f2f2;
 }
 @media screen and (max-width: 768px) {
   #gtco-footer .copyright .pull-left,
@@ -1444,7 +1444,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .form-control {
   box-shadow: none;
-  background: transparent;
+  /*background: transparent;*/
   border: 2px solid rgba(0, 0, 0, 0.1);
   height: 46px;
   font-size: 16px;
@@ -2751,10 +2751,10 @@ h1.su-text{
   width: 100%;
   margin: 0 auto 15px;
 }
-.flight_detail table:last-of-type tr:nth-of-type(7) td:nth-of-type(2),
-.flight_detail table:last-of-type tr:nth-of-type(8) td:nth-of-type(2){
-  text-align: center;
-}
+/*.flight_detail table:last-of-type tr:nth-of-type(7) td:nth-of-type(2),*/
+/*.flight_detail table:last-of-type tr:nth-of-type(8) td:nth-of-type(2){*/
+/*  text-align: center;*/
+/*}*/
 .flight_detail table:last-of-type tr th:first-of-type{
   width: 135px
 }
@@ -2882,24 +2882,8 @@ button.date-button.active{
 .flight-detail img{
   width: 20px;
 }
-.back-button,.continue-button{
-  background-color: #0ac5a9;
-  border: 1px solid #09c6ab;
-  border-radius: 5px;
-  color: white;
-  width: 100px;
-  text-align: center;
-  height: 45px;
-}
-.back-button:hover,
-.continue-button:hover{
-  font-weight: bold;
-  box-shadow: 1px 1px 2px #0a9b80;
-
-}
-.back-button{
-  margin-left: 100px;
-  margin-right: 23px;
+.back-continue button{
+  width: 150px;
 }
 
 /*----------------------------------*/
@@ -2955,31 +2939,85 @@ button.close:focus{
   left: 204px;
 }
 .select_seats .tab-content .select_seat_passenger{
-  border: 1px solid black;
-  background: #2a2a2a;
+  background: #2a2a2ac7;
   color: white;
   height: 50px;
   padding-top: 10px;
   cursor: pointer;
   margin-bottom: 20px !important;
 }
-.select_seats .tab-content .select_seat_passenger span{
-  border: 1px solid #eeb823;
-  background:#eeb823 ;
-  border-radius: 50%;
-  font-size: 20px;
+.select_seat_passenger{
+  text-transform: uppercase;
+}
+.btn_select_seat{
+  color:#eeb823 ;
+  text-transform: capitalize;
+  font-weight: bold;
 }
 .active_passenger{
-  background: #007292 !important;
+  background: #007fa2f2 !important;
+  box-shadow: 2px 2px 2px #0f7091;
 }
 .select_seats .tab-content .select_seat_passenger p:hover{
   text-decoration: underline;
 }
 .seat-note{
   font-size: 0.8em;
+  font-style: italic;
 }
-.seat-note:first-of-type{
+form .seat-note:first-of-type{
   margin-top: 15px;
   height: 30px;
   padding: 5px 0 5px 0;
+}
+.seat-img>div{
+  margin: 10px 0 10px 0;
+}
+#search-flight{
+  width: 90%;
+}
+.seat-img img{
+  width: 25px;
+  margin-right: 5px;
+}
+.seat-img p{
+  margin-bottom: 0;
+}
+.select_seats div.animate-box>div.row:last-child{
+  padding: 20px 0;
+  background-color: #F5F5F5;
+}
+.modal-backdrop.in{
+  opacity: 0;
+}
+.modal-backdrop{
+  z-index: auto;
+}
+#cancel button.btn,#reschedule button.btn{
+  margin-bottom: 0;
+}
+.passenger-ticket table tr{
+  height: 40px;
+}
+.passenger-ticket table tr:nth-of-type(3),
+.passenger-ticket table tr:nth-of-type(4){
+  height: 25px;
+}
+#reschedule button.close,#cancel button.close{
+  margin-top: -25px;
+}
+#reschedule .modal-dialog,#cancel .modal-dialog{
+  margin: 60px auto;
+}
+.check_out div.animate-box>div.row:last-child{
+  padding: 20px 0;
+  background-color: #F5F5F5;
+  margin: 0;
+}
+.deadline-date{
+  font-size: 20px;
+  color: #e02900db;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: -20px;
 }
