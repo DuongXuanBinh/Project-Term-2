@@ -95,6 +95,7 @@
 </header>
 
 <div class="gtco-container">
+<form>
     <div class="col-md-12 mt-text animate-box"  style="background-color: #ecebeb82" data-animate-effect="fadeInUp">
         <div class="row">
             <div class="col-md-12">
@@ -113,6 +114,7 @@
     </div>
 
 <div class="gtco-container select_seats">
+    <form>
         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
             <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                 <div class="col-md-9">
@@ -568,14 +570,15 @@
                 </div>
             </div>
             </div>
-            <div class="row">
+            <div class="row back-continue">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
-                    <button class="back-button" type="button">Back</button>
-                    <button class="continue-button" type="submit">Continue</button>
+                    <button class="btn btn-secondary" type="button">Back</button>
+                    <button  class="btn btn-primary"  type="submit">Continue</button>
                 </div>
             </div>
         </div>
+    </form>
 </div>
 
 
@@ -605,6 +608,7 @@
         </div>
     </div>
 </div>
+
 <footer id="gtco-footer" role="contentinfo">
     <div class="gtco-container">
         <div class="row">

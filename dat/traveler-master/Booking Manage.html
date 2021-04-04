@@ -111,9 +111,57 @@
                                             <td>32A</td>
                                         </tr>
                                         <tr>
-                                            <td><a>Reschedule</a></td>
-                                            <td><a>Cancel</a></td>
+                                            <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                        </tr>
+
+                                        <div class="modal fade password-change" id="reschedule" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">RESCHEDULE</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <form action="">
+                                                        <div class="modal-body">
+                                                            <label for="new-date">New daparture date:</label>
+                                                            <input type="text" id="new-date" required>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Find</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="modal fade password-change" id="cancel" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">CANCEL BOOKING</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <form action="">
+                                                        <div class="modal-body">
+                                                            <p>Once you cancelled booking, you can't reverse the progress</p>
+                                                            <p>You will be refunded according to our policy. The amount depends on each case</p>
+                                                            <p>Do you still want to cancel?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Cancel</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
 
                                     </table>
