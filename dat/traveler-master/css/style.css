@@ -2489,7 +2489,7 @@ h1.su-text{
   position: absolute;
   /*border: none;*/
   background-color: rgba(238,238,238,0.85);
-  z-index: 14;
+  z-index: 9;
   border-color: rgba(255,255,255,0);
   border-radius: 100%;
   right: 0;
