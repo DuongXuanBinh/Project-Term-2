@@ -118,34 +118,32 @@
         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
             <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                 <div class="col-md-9">
-                    <form action="/" method="post" class="form_seats">
-                        <ul class="nav nav-tabs">
-                            <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
-                            <li class="in_bound_tab" ><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="out_bound">
-                                <div class="form" >
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="seat-map plane-320">
-                                                <div>
-                                                    <table class="business-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <img class="labotory" src="images/PhongVeSinh.png" alt="">
-                                                        <img class="kitchen" src="images/Bep.png" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td></td>
-                                                            <td>C</td>
-                                                            <td>D</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=1;$row<5;$row++){
-                                                            echo <<<EOT
-
+                    <ul class="nav nav-tabs">
+                        <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
+                        <li class="in_bound_tab" ><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="out_bound">
+                            <form action="#" class="form" method="post">
+                                <div class="row" style="display: flex">
+                                    <div class="col-md-4" style="margin: auto 0;">
+                                        <div class="seat-map plane-320">
+                                            <div>
+                                                <table class="business-class">
+                                                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                    <img class="labotory" src="images/PhongVeSinh.png" alt="">
+                                                    <img class="kitchen" src="images/Bep.png" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td></td>
+                                                        <td>C</td>
+                                                        <td>D</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=1;$row<5;$row++){
+                                                        echo <<<EOT
                     <tr>
                     <td>
                         <div name="${row}A"><img src="images/icon-premium-seat0.png" alt=""></div>
@@ -164,109 +162,109 @@
                     </td>
     </tr>
     EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
-                                                <div>
-                                                    <table class="economy-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td>C</td>
-                                                            <td></td>
-                                                            <td>D</td>
-                                                            <td>E</td>
-                                                            <td>G</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=5;$row<=15;$row++) {
-                                                            echo <<<EOT
-                    <tr>
-                    <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                     <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                    $row
-                    </td>
-                    <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-    </tr>
-    EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
-                                                <div>
-                                                    <table class="economy-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td>C</td>
-                                                            <td></td>
-                                                            <td>D</td>
-                                                            <td>E</td>
-                                                            <td>G</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=16;$row<=25;$row++){
-                                                            echo <<<EOT
-                    <tr>
-                    <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                     <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                    $row
-                    </td>
-                    <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-                    <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
-                    </td>
-    </tr>
-    EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
+                                                    }
+                                                    ?>
+                                                </table>
+                                            </div>
+                                            <div>
                                                 <table class="economy-class">
                                                     <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
                                                     <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                    <img class="labotory" src="images/PhongVeSinh.png" alt="">
-                                                    <img class="kitchen" src="images/Bep.png" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td>C</td>
+                                                        <td></td>
+                                                        <td>D</td>
+                                                        <td>E</td>
+                                                        <td>G</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=5;$row<=15;$row++) {
+                                                        echo <<<EOT
+                    <tr>
+                    <td>
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                     <td>
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                    $row
+                    </td>
+                    <td>
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+    </tr>
+    EOT;
+                                                    }
+                                                    ?>
                                                 </table>
-
                                             </div>
+                                            <div>
+                                                <table class="economy-class">
+                                                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td>C</td>
+                                                        <td></td>
+                                                        <td>D</td>
+                                                        <td>E</td>
+                                                        <td>G</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=16;$row<=25;$row++){
+                                                        echo <<<EOT
+                    <tr>
+                    <td>
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                     <td>
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                    $row
+                    </td>
+                    <td>
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+                    <td>
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
+    </tr>
+    EOT;
+                                                    }
+                                                    ?>
+                                                </table>
+                                            </div>
+                                            <table class="economy-class">
+                                                <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                <img class="labotory" src="images/PhongVeSinh.png" alt="">
+                                                <img class="kitchen" src="images/Bep.png" alt="">
+                                            </table>
+
                                         </div>
-                                        <div class="col-md-7">
-                                            <div class="row  seat-note">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="row  seat-note">
                                                 <p>Note:</p>
                                         </div>
                                         <div class="row  seat-note">
@@ -301,7 +299,6 @@
                                                 <div class="col-md-7">Son Nguyen</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
-                                            <div></div>
                                         </div>
                                         <div class="row col-md-12">
                                             <span class="seat-note">* Please read out our policy carefully.</span><br>
@@ -309,29 +306,29 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="tab-pane" id="in_bound">
-                                <div class="form" >
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="seat-map plane-320">
-                                                <div>
-                                                    <table class="business-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <img class="labotory" src="images/PhongVeSinh.png" alt="">
-                                                        <img class="kitchen" src="images/Bep.png" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td></td>
-                                                            <td>C</td>
-                                                            <td>D</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=1;$row<5;$row++){
-                                                            echo <<<EOT
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="in_bound">
+                            <form action="#" class="form" method="post">
+                                <div class="row" style="display: flex">
+                                    <div class="col-md-4" style="margin: auto 0;">
+                                        <div class="seat-map plane-320">
+                                            <div>
+                                                <table class="business-class">
+                                                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                    <img class="labotory" src="images/PhongVeSinh.png" alt="">
+                                                    <img class="kitchen" src="images/Bep.png" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td></td>
+                                                        <td>C</td>
+                                                        <td>D</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=1;$row<5;$row++){
+                                                        echo <<<EOT
                     <tr>
                     <td>
                         <div name="${row}A"><img src="images/icon-premium-seat0.png" alt=""></div>
@@ -350,104 +347,105 @@
                     </td>
     </tr>
     EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
-                                                <div>
-                                                    <table class="economy-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td>C</td>
-                                                            <td></td>
-                                                            <td>D</td>
-                                                            <td>E</td>
-                                                            <td>G</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=5;$row<=15;$row++) {
-                                                            echo <<<EOT
-                    <tr>
-                    <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
-                    </td>
-                    <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
-                    </td>
-                     <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
-                    <td>
-                    $row
-                    </td>
-                    <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
-                    </td>
-                    <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
-                    </td>
-                    <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
-                    </td>
-    </tr>
-    EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
-                                                <div>
-                                                    <table class="economy-class">
-                                                        <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
-                                                        <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                        <tr class="seat-row">
-                                                            <td>A</td>
-                                                            <td>B</td>
-                                                            <td>C</td>
-                                                            <td></td>
-                                                            <td>D</td>
-                                                            <td>E</td>
-                                                            <td>G</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($row=16;$row<=25;$row++){
-                                                            echo <<<EOT
-                    <tr>
-                    <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
-                    </td>
-                    <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
-                    </td>
-                     <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
-                    <td>
-                    $row
-                    </td>
-                    <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
-                    </td>
-                    <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
-                    </td>
-                    <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
-                    </td>
-    </tr>
-    EOT;
-                                                        }
-                                                        ?>
-                                                    </table>
-                                                </div>
+                                                    }
+                                                    ?>
+                                                </table>
+                                            </div>
+                                            <div>
                                                 <table class="economy-class">
                                                     <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
                                                     <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
-                                                    <img class="labotory" src="images/PhongVeSinh.png" alt="">
-                                                    <img class="kitchen" src="images/Bep.png" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td>C</td>
+                                                        <td></td>
+                                                        <td>D</td>
+                                                        <td>E</td>
+                                                        <td>G</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=5;$row<=15;$row++) {
+                                                        echo <<<EOT
+                    <tr>
+                    <td>
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                    </td>
+                    <td>
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                    </td>
+                     <td>
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
+                    </td>  
+                    <td>
+                    $row
+                    </td>
+                    <td>
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                    </td>
+                    <td>
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                    </td>
+                    <td>
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                    </td>
+    </tr>
+    EOT;
+                                                    }
+                                                    ?>
                                                 </table>
+                                            </div>
+                                            <div>
+                                                <table class="economy-class">
+                                                    <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                    <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                    <tr class="seat-row">
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td>C</td>
+                                                        <td></td>
+                                                        <td>D</td>
+                                                        <td>E</td>
+                                                        <td>G</td>
+                                                    </tr>
+                                                    <?php
+                                                    for ($row=16;$row<=25;$row++){
+                                                        echo <<<EOT
+                    <tr>
+                    <td>
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                    </td>
+                    <td>
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                    </td>
+                     <td>
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
+                    </td>  
+                    <td>
+                    $row
+                    </td>
+                    <td>
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                    </td>
+                    <td>
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                    </td>
+                    <td>
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                    </td>
+    </tr>
+    EOT;
+                                                    }
+                                                    ?>
+                                                </table>
+                                            </div>
+                                            <table class="economy-class">
+                                                <img class="left-exit" src="images/loi%20ra%20trai.jpg" alt="">
+                                                <img class="right-exit" src="images/Loi%20ra%20phai.jpg" alt="">
+                                                <img class="labotory" src="images/PhongVeSinh.png" alt="">
+                                                <img class="kitchen" src="images/Bep.png" alt="">
+                                            </table>
+
                                         </div>
                                     </div>
                                     <div class="col-md-7">
@@ -493,11 +491,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="col-md-3 flight_detail">
+        <div class="col-md-3 flight_detail">
             <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                 <table>
                     <tr>
@@ -582,6 +580,8 @@
         </div>
     </form>
 </div>
+
+
 
 <div id="gtco-subscribe">
     <div class="gtco-container">
