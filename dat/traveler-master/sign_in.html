@@ -133,8 +133,8 @@
 
                         <label for="su-phonenumber" class="">Phone Number</label>
                         <label for="su-creditcard" class="">Credit Card</label><br>
-                        <input type="tel" id="su-phonenumber" class="form-control" placeholder="Phone Number" required>
-                        <input type="text" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required>
+                        <input type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required>
+                        <input type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required>
 
                         <label for="su-sexs" class="">Sex</label>
                         <label for="su-age" class="">D.O.B</label><br>
@@ -153,8 +153,8 @@
                         <label for="su-email" class="">Email</label>
                         <input type="email" id="su-email" class="form-control" placeholder="Email Address" required>
 
-                        <label for="su-password" class="">Password <i>(numbers and characters, 8 digits)</i></label>
-                        <input type="password" id="su-password" pattern="[A-Za-z0-9]{8}" class="form-control" placeholder="Password" required>
+                        <label for="su-password" class="">Password <i>(numbers and characters, 6 digits)</i></label>
+                        <input type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
 
                         <label for="su-password1" class="">Confirm Password</label>
                         <input type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required>
