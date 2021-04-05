@@ -13,8 +13,8 @@ class CreateTableFlights extends Migration
      */
     public function up()
     {
-        Schema::table('flights', function (Blueprint $table) {
-            $table->id();
+        Schema::create('flights', function (Blueprint $table) {
+            $table->string('id')->unique();
             $table->string('origin');
             $table->unsignedInteger('origin_airportid');
             $table->unsignedInteger('arrival_airportid');
@@ -31,8 +31,6 @@ class CreateTableFlights extends Migration
      */
     public function down()
     {
-        Schema::table('flights', function (Blueprint $table) {
             Schema::dropIfExists('flights');
-        });
     }
 }

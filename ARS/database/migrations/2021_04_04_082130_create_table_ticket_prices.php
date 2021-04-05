@@ -13,7 +13,7 @@ class CreateTableTicketPrices extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_prices', function (Blueprint $table) {
+        Schema::create('ticket_prices', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('flight_id');
             $table->unsignedInteger('class_id');
@@ -28,8 +28,8 @@ class CreateTableTicketPrices extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_prices', function (Blueprint $table) {
+
             Schema::dropIfExists('ticket_prices');
-        });
+
     }
 }

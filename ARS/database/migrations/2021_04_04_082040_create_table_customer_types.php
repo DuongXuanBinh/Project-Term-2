@@ -13,7 +13,7 @@ class CreateTableCustomerTypes extends Migration
      */
     public function up()
     {
-        Schema::table('customer_types', function (Blueprint $table) {
+        Schema::create('customer_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('age')->unsigned();
@@ -28,8 +28,8 @@ class CreateTableCustomerTypes extends Migration
      */
     public function down()
     {
-        Schema::table('customer_types', function (Blueprint $table) {
+
             Schema::dropIfExists('customer_types');
-        });
+
     }
 }

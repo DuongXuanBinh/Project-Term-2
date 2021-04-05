@@ -13,10 +13,11 @@ class CreateTableRouteDirects extends Migration
      */
     public function up()
     {
-        Schema::table('route_directs', function (Blueprint $table) {
+        Schema::create('route_directs', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('origin_airportid');
             $table->unsignedInteger('arrival_airportid');
+            $table->integer('skymile');
             $table->timestamp('duration');
         });
     }
@@ -28,8 +29,6 @@ class CreateTableRouteDirects extends Migration
      */
     public function down()
     {
-        Schema::table('route_directs', function (Blueprint $table) {
             Schema::dropIfExists('route_directs');
-        });
     }
 }

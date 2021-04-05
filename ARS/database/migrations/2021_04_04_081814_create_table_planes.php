@@ -13,7 +13,7 @@ class CreateTablePlanes extends Migration
      */
     public function up()
     {
-        Schema::table('planes', function (Blueprint $table) {
+        Schema::create('planes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('total_seats')->unsigned();
@@ -27,8 +27,6 @@ class CreateTablePlanes extends Migration
      */
     public function down()
     {
-        Schema::table('planes', function (Blueprint $table) {
             Schema::dropIfExists('planes');
-        });
     }
 }

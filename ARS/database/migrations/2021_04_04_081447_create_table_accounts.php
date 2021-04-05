@@ -13,7 +13,7 @@ class CreateTableAccounts extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
@@ -26,6 +26,7 @@ class CreateTableAccounts extends Migration
             $table->string('credit_number');
             $table->string('phone');
             $table->integer('sky_miles')->unsigned();
+            $table->integer('role')->default(1);
         });
     }
 
@@ -36,8 +37,6 @@ class CreateTableAccounts extends Migration
      */
     public function down()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            Schema::dropIfExists('accounts');
-        });
+        Schema::dropIfExists('accounts');
     }
 }

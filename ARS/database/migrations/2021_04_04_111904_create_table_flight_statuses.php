@@ -13,7 +13,7 @@ class CreateTableFlightStatuses extends Migration
      */
     public function up()
     {
-        Schema::table('flight_statuses', function (Blueprint $table) {
+        Schema::create('flight_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
@@ -26,8 +26,6 @@ class CreateTableFlightStatuses extends Migration
      */
     public function down()
     {
-        Schema::table('flight_statuses', function (Blueprint $table) {
             Schema::dropIfExists('flight_statuses');
-        });
     }
 }

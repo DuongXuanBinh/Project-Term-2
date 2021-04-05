@@ -13,7 +13,7 @@ class CreateTableSeats extends Migration
      */
     public function up()
     {
-        Schema::table('seats', function (Blueprint $table) {
+        Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->string('seat_location');
             $table->unsignedInteger('class_id');
@@ -28,8 +28,6 @@ class CreateTableSeats extends Migration
      */
     public function down()
     {
-        Schema::table('seats', function (Blueprint $table) {
             Schema::dropIfExists('seats');
-        });
     }
 }

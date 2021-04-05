@@ -13,11 +13,11 @@ class CreateTableOrders extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('order_code');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('ticket_status');
+        Schema::create('orders', function (Blueprint $table) {
+            $table->string('id')->unique();
+            $table->unsignedInteger('account_id');
+            $table->unsignedInteger('order_status');
+            $table->double('total_price');
         });
     }
 
@@ -28,8 +28,6 @@ class CreateTableOrders extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
             Schema::dropIfExists('orders');
-        });
     }
 }

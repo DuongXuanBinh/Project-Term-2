@@ -13,7 +13,7 @@ class CreateTableClasses extends Migration
      */
     public function up()
     {
-        Schema::table('classes', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('hand_baggage');
@@ -28,8 +28,6 @@ class CreateTableClasses extends Migration
      */
     public function down()
     {
-        Schema::table('classes', function (Blueprint $table) {
             Schema::dropIfExists('classes');
-        });
     }
 }

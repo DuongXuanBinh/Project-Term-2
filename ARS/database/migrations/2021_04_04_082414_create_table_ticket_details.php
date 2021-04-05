@@ -13,12 +13,13 @@ class CreateTableTicketDetails extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_details', function (Blueprint $table) {
+        Schema::create('ticket_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('flight_id');
+            $table->string('flight_id');
             $table->string('seat_location');
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('pasasengerId');
+            $table->string('order_id');
+            $table->unsignedInteger('passenger_id');
+            $table->double('price');
         });
     }
 
@@ -29,8 +30,6 @@ class CreateTableTicketDetails extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_details', function (Blueprint $table) {
             Schema::dropIfExists('ticket_details');
-        });
     }
 }
