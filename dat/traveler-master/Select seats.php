@@ -118,16 +118,15 @@
         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
             <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                 <div class="col-md-9">
-                    <form action="/" method="post" class="form_seats">
                         <ul class="nav nav-tabs">
                             <li class="out_bound_tab active"><a data-toggle="tab" href="#out_bound">Ha Noi (HAN) to Ho Chi Minh (SGN)</a></li>
                             <li class="in_bound_tab" ><a data-toggle="tab" href="#in_bound">Ho Chi Minh (SGN) to Ha Noi (HAN)</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="out_bound">
-                                <div class="form" >
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                <form action="#" class="form" method="post">
+                                    <div class="row" style="display: flex">
+                                        <div class="col-md-4" style="margin: auto 0;">
                                             <div class="seat-map plane-320">
                                                 <div>
                                                     <table class="business-class">
@@ -262,13 +261,14 @@
                                                     <img class="labotory" src="images/PhongVeSinh.png" alt="">
                                                     <img class="kitchen" src="images/Bep.png" alt="">
                                                 </table>
-
                                             </div>
                                         </div>
+
                                         <div class="col-md-7">
                                             <div class="row  seat-note">
-                                                <p>Note:</p>
-                                        </div>
+                                                <p style="margin-top: 20px;margin-bottom: 0">Note:</p>
+                                            </div>
+
                                         <div class="row  seat-note">
                                             <div class="col-md-5 seat-img">
                                                 <div class="row col-md-12">
@@ -301,20 +301,18 @@
                                                 <div class="col-md-7">Son Nguyen</div>
                                                 <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
                                             </div>
-                                            <div></div>
                                         </div>
+
                                         <div class="row col-md-12">
                                             <span class="seat-note">* Please read out our policy carefully.</span><br>
                                             <span class="seat-note">* Once picked a seat, you can not change.</span>
                                         </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
                             <div class="tab-pane" id="in_bound">
-                                <div class="form" >
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                    <div class="row" style="display: flex">
+                                        <div class="col-md-4" style="margin: auto 0;">
                                             <div class="seat-map plane-320">
                                                 <div>
                                                     <table class="business-class">
@@ -372,25 +370,25 @@
                                                             echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -416,25 +414,25 @@
                                                             echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>  
+                        <div name="${row}A"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}B"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>     
-                    </td>  
+                        <div name="${row}C"><img src="images/icon-premium-seat2.png" alt=""></div>
+                    </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>                
+                        <div name="${row}D"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div> 
+                        <div name="${row}E"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>    
+                        <div name="${row}G"><img src="images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -452,7 +450,7 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="row  seat-note">
-                                            <p>Note:</p>
+                                            <p style="margin-top: 20px;margin-bottom: 0">Note:</p>
                                         </div>
                                         <div class="row  seat-note">
                                             <div class="col-md-5 seat-img">
@@ -495,8 +493,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                            </div>
                 <div class="col-md-3 flight_detail">
             <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                 <table>
@@ -580,7 +577,6 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 
 <div id="gtco-subscribe">
