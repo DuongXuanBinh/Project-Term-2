@@ -28,6 +28,8 @@ class CreateTableCustomerTypes extends Migration
      */
     public function down()
     {
+
             Schema::dropIfExists('customer_types');
+
     }
 }

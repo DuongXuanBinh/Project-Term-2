@@ -17,6 +17,7 @@ class CreateTableRouteDirects extends Migration
             $table->id();
             $table->unsignedInteger('origin_airportid');
             $table->unsignedInteger('arrival_airportid');
+            $table->integer('skymile');
             $table->timestamp('duration');
         });
     }

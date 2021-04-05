@@ -17,7 +17,7 @@ class CreateTableAccounts extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('firstname')->nullable(false);
+            $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
             $table->string('email');
@@ -26,6 +26,7 @@ class CreateTableAccounts extends Migration
             $table->string('credit_number');
             $table->string('phone');
             $table->integer('sky_miles')->unsigned();
+            $table->integer('role')->default(1);
         });
     }
 

@@ -28,6 +28,8 @@ class CreateTableTicketPrices extends Migration
      */
     public function down()
     {
+
             Schema::dropIfExists('ticket_prices');
+
     }
 }

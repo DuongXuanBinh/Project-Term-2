@@ -16,7 +16,7 @@ class CreateTableAirports extends Migration
         Schema::create('airports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('airport_code');
+            $table->string('airport_code')->unique();
         });
     }
 
@@ -27,8 +27,6 @@ class CreateTableAirports extends Migration
      */
     public function down()
     {
-
             Schema::dropIfExists('airports');
-
     }
 }

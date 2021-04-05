@@ -14,9 +14,9 @@ class CreateTableTicketDetails extends Migration
     public function up()
     {
         Schema::create('ticket_details', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->id();
             $table->string('flight_id');
-            $table->string('seat_id');
+            $table->string('seat_location');
             $table->string('order_id');
             $table->unsignedInteger('passenger_id');
             $table->double('price');

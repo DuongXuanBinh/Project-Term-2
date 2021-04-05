@@ -15,11 +15,9 @@ class CreateTableOrders extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->string('id')->unique();
-            $table->string('flight_id');
             $table->unsignedInteger('account_id');
-            $table->unsignedInteger('status');
+            $table->unsignedInteger('order_status');
             $table->double('total_price');
-
         });
     }
 
@@ -31,6 +29,5 @@ class CreateTableOrders extends Migration
     public function down()
     {
             Schema::dropIfExists('orders');
-
     }
 }
