@@ -17,10 +17,14 @@ class TicketStatusSeeder extends Seeder
         DB::table('order_statuses')->insert([
             [
                 'id'=>1,
-            'name'=>'Buy',
+            'name'=>'Buyed',
             ],[
                 'id'=>2,
-            'name'=>'Block',
+            'name'=>'Blocked',
+            ],
+            [
+                'id'=>3,
+                'name'=>'Cancelled'
             ]
         ]);
     }

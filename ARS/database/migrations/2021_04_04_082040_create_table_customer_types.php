@@ -16,7 +16,8 @@ class CreateTableCustomerTypes extends Migration
         Schema::create('customer_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('age')->unsigned();
+            $table->integer('min_age')->unsigned();
+            $table->integer('max_age')->unsigned();
             $table->double('fare_diff');
         });
     }
