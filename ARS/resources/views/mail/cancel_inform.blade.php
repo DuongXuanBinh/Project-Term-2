@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Important Notification | Helvetic Airline</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="front/css/bootstrap.min.css">
+    <link rel="stylesheet" href="front/css/style.css">
+    <script src="front/js/jquery-ui.min.js"></script>
 </head>
 <body>
 <div class="container mail-page">
     <!--    header cua mail-->
     <div class="row mail-header">
         <div class="col-4">
-            <img src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/logo%20chu%20xanh.png" width="200" height="auto"/>
+            <img src="../front/images/logo%20chu%20xanh.png" width="200" height="auto"/>
         </div>
         <div class="col-8">
             <h3>FLIGHT CANCELLATION</h3>
@@ -45,12 +45,12 @@
         </div>
         <div class="col-4">
             <!--            qr code den website-->
-            <img src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/QR%20Code.png" height="60" width="60"/>
+            <img src="../front/images/QR%20Code.png" height="60" width="60"/>
             <p>Reservation code: AAAA</p>
         </div>
     </div>
     <!--  bang  thong tin ve-->
-    <p><img src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/429706-84.png" height="30" width="30"/> Departure: <span class="depart-date">November 10th, 2021</span></p>
+    <p><img src="../front/images/429706-84.png" height="30" width="30"/> Departure: <span class="depart-date">November 10th, 2021</span></p>
     <div class="row departure-details">
         <div class="col-4">
             <p>Helvetic Airline</p>
@@ -62,12 +62,12 @@
             <table>
                 <tr>
                     <td>
-                        <img src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/723963.png" height="50" width="50"/>
+                        <img src="../front/images/723963.png" height="50" width="50"/>
                         <span>HAN</span>
                         <p>Ha Noi, Vietnam</p>
                     </td>
                     <td>
-                        <img src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/68542.png" height="50" width="50"/>
+                        <img src="../front/images/68542.png" height="50" width="50"/>
                         <span>HCM</span>
                         <p>Ho Chi Minh, Vietnam</p>
                     </td>
