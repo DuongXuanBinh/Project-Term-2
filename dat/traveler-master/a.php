@@ -74,3 +74,21 @@ PPP;
     }
 
 }
+
+for ($i=114;$i<=161;$i++){
+    $x = rand(20,99);
+    $y = rand(10,30);
+    $z = $x + $y;
+    echo <<<OOOO
+['flight_id'=>'HV.$i',
+'class_id'=>1,
+'price'=>$x
+],<br>
+['flight_id'=>'HV.$i',
+'class_id'=>2,
+'price'=>$z
+],<br>
+OOOO;
+
+}
+?>

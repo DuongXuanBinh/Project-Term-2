@@ -139,7 +139,7 @@
                         <td>K</td>
                     </tr>
                     <?php
-                    for ($row=18;$row<=30;$row++){
+                    for ($row=19;$row<=30;$row++){
                         echo <<<EOT
                     <tr>
                     <td>

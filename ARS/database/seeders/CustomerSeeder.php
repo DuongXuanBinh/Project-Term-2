@@ -16,21 +16,21 @@ class CustomerSeeder extends Seeder
     {
         DB::table('customers')->insert([
            [
-               'id'=>1,
+               'id'=>10000101,
                'firstname'=>'Duong',
                'lastname'=>'Thuy Ngan',
                'dob'=>'1990/8/1',
                'account_id'=>1
            ],
            [
-               'id'=>2,
+               'id'=>10000102,
                'firstname'=>'Nguyen',
                'lastname'=>'Thi Hang',
                'dob'=>'1968/9/9',
                'account_id'=>1
            ],
             [
-                'id'=>3,
+                'id'=>10000103,
                 'firstname'=>'Nguyen',
                 'lastname'=>'Thuy Linh',
                 'dob'=>'1991/9/9',

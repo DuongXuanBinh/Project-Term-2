@@ -69,7 +69,7 @@ class RouteDirectSeeder extends Seeder
                 'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'670',
-                'duration'=>'1:15'
+                'duration'=>'1:05'
             ],
             [
                 'id'=>'8',
@@ -77,7 +77,7 @@ class RouteDirectSeeder extends Seeder
                 'transit_airportid'=>'',
                 'arrival_airportid'=>'DAD',
                 'skymile'=>'670',
-                'duration'=>'1:15'
+                'duration'=>'1:05'
             ],
             [
                 'id'=>'9',
@@ -85,7 +85,7 @@ class RouteDirectSeeder extends Seeder
                 'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'1030',
-                'duration'=>'1:45'
+                'duration'=>'1:40'
             ],
             [
                 'id'=>'10',
@@ -93,7 +93,7 @@ class RouteDirectSeeder extends Seeder
                 'transit_airportid'=>'',
                 'arrival_airportid'=>'VDO',
                 'skymile'=>'1030',
-                'duration'=>'1:10'
+                'duration'=>'1:40'
             ],
             [
                 'id'=>'11',

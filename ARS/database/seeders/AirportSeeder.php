@@ -16,29 +16,24 @@ class AirportSeeder extends Seeder
     {
         DB::table('airports')->insert([
             [
-                'id'=>1,
+                'id'=>'HAN',
                 'name'=>'Ha Noi',
-                'airport_code'=>'HAN'
             ],
             [
-                'id'=>2,
+                'id'=>'SGN',
                 'name'=>'TP Ho Chi Minh',
-                'airport_code'=>'SGN'
             ],
             [
-                'id'=>3,
+                'id'=>'CXR',
                 'name'=>'Nha Trang',
-                'airport_code'=>'CXR'
             ],
             [
-                'id'=>4,
+                'id'=>'VDO',
                 'name'=>'Van Don',
-                'airport_code'=>'VDO'
             ],
             [
-                'id'=>5,
+                'id'=>'DAD',
                 'name'=>'Da Nang',
-                'airport_code'=>'DAD'
             ]
         ]);
     }

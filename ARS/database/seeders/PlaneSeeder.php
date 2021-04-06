@@ -17,18 +17,18 @@ class PlaneSeeder extends Seeder
         DB::table('planes')->insert([
             [
                 'id'=>1,
-                'name'=>'Airbus320_MB12020',
-                'total_seats'=>132
+                'name'=>'MB111',
+                'plane_type'=>1
             ],
             [
                 'id'=>2,
-                'name'=>'Boeing 787_MB22019',
-                'total_seats'=>262
+                'name'=>'MB112',
+                'plane_type'=>2
             ],
             [
                 'id'=>3,
-                'name'=>'Boeing 787_MB52021',
-                'total_seats'=>262
+                'name'=>'MB113',
+                'plane_type'=>2
             ]
         ]);
     }
