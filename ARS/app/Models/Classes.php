@@ -14,4 +14,8 @@ class Classes extends Model
     public function ticket_prices(){
         return $this->hasMany(Ticket_price::class,'class_id','id');
     }
+    public function seats(){
+        return $this->hasMany(Seat::class,'class_id','id');
+    }
+
 }
