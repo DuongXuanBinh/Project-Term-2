@@ -15,16 +15,15 @@ class CreateTableAccounts extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
-            $table->string('email');
             $table->date('dob');
             $table->string('sex');
-            $table->string('credit_number');
-            $table->string('phone');
+            $table->string('credit_number')->unique();
+            $table->string('phone')->unique();
             $table->integer('sky_miles')->unsigned();
             $table->integer('role')->default(1);
         });
