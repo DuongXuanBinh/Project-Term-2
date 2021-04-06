@@ -176,7 +176,7 @@
 		</div>
 	</div>
 
-	<div class="gtco-cover gtco-cover-sm" style="background-image: url(public/front/images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
+	<div class="gtco-cover gtco-cover-sm" style="background-image: url(front/images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container text-center">
 				<div class="display-t">
