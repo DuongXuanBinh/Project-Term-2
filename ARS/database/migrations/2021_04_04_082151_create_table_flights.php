@@ -17,10 +17,8 @@ class CreateTableFlights extends Migration
             $table->string('id')->unique();
             $table->string('origin_airportid');
             $table->string('arrival_airportid');
-            $table->date('departure_date');
-            $table->date('arrival_date');
-            $table->timestamp('departure_time');
-            $table->timestamp('arrival_time');
+            $table->dateTime('departure_date');
+            $table->dateTime('arrival_date');
             $table->unsignedInteger('statusid');
             $table->unsignedInteger('planeid');
         });

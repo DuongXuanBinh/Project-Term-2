@@ -40,5 +40,9 @@ class Account extends Model
     public function cutomers(){
         return $this->hasMany(Customer::class,'account_id','id');
     }
+    public function orders(){
+        return $this->hasMany(Order::class,'account_id','id');
+    }
+
 
 }
