@@ -15,8 +15,9 @@ class CreateTableRouteDirects extends Migration
     {
         Schema::create('route_directs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('origin_airportid');
-            $table->unsignedInteger('arrival_airportid');
+            $table->string('origin_airportid');
+            $table->string('transit_airportid')->nullable(true);
+            $table->string('arrival_airportid');
             $table->integer('skymile');
             $table->timestamp('duration');
         });

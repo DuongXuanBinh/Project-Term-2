@@ -15,8 +15,8 @@ class CreateTablePlanes extends Migration
     {
         Schema::create('planes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('total_seats')->unsigned();
+            $table->string('name')->unique();
+            $table->unsignedInteger('plane_type');
         });
     }
 

@@ -15,12 +15,14 @@ class CreateTableFlights extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->string('id')->unique();
-            $table->string('origin');
-            $table->unsignedInteger('origin_airportid');
-            $table->unsignedInteger('arrival_airportid');
-            $table->dateTime('departure_time');
-            $table->unsignedInteger('statusID');
-            $table->unsignedInteger('planeID');
+            $table->string('origin_airportid');
+            $table->string('arrival_airportid');
+            $table->date('departure_date');
+            $table->date('arrival_date');
+            $table->timestamp('departure_time');
+            $table->timestamp('arrival_time');
+            $table->unsignedInteger('statusid');
+            $table->unsignedInteger('planeid');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateTableTicketPrices extends Migration
     {
         Schema::create('ticket_prices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('flight_id');
+            $table->string('flight_id');
             $table->unsignedInteger('class_id');
             $table->double('price');
         });

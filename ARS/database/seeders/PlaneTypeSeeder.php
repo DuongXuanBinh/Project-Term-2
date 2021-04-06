@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TicketStatusSeeder extends Seeder
+class PlaneTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +14,16 @@ class TicketStatusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('order_statuses')->insert([
+        DB::table('plane_types')->insert([
             [
                 'id'=>1,
-                'name'=>'Buyed',
-            ],[
-                'id'=>2,
-                'name'=>'Blocked',
+                'name'=>'Airbus 320_200',
+                'total_seats'=>142
             ],
             [
-                'id'=>3,
-                'name'=>'Cancelled'
+                'id'=>2,
+                'name'=>'Boeing 787-800',
+                'total_seats'=>235,
             ]
         ]);
     }

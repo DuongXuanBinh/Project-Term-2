@@ -27,7 +27,7 @@ class AccountSeeder extends Seeder
             'sex'=>'Male',
             'credit_number'=>'1111111111',
             'phone'=>'0947118116',
-            'sky_miles'=>'0',
+            'sky_miles'=>3663,
             'role'=>1
             ],
             [
@@ -41,7 +41,7 @@ class AccountSeeder extends Seeder
                 'sex'=>'Male',
                 'credit_number'=>'2222222222',
                 'phone'=>'0852873838',
-                'sky_miles'=>'0',
+                'sky_miles'=>1221,
                 'role'=>1
             ],
             [
@@ -55,9 +55,22 @@ class AccountSeeder extends Seeder
                 'sex'=>'Female',
                 'credit_number'=>'3333333333',
                 'phone'=>'0912164000',
-                'sky_miles'=>'0',
+                'sky_miles'=>1030,
                 'role'=>1
             ],
+            [
+                'id'=>4,
+                'email'=>'xubiii.95@gmail.com',
+                'password'=>'111111',
+                'firstname'=>'Ad',
+                'lastname'=>'min',
+                'address'=>'Tay Mo, Nam Tu Liem, Ha Noi',
+                'dob'=>'1995/10/11',
+                'sex'=>'Male',
+                'credit_number'=>'4444444444',
+                'skymile'=>0,
+                'role'=>2
+            ]
         ]);
     }
 }
