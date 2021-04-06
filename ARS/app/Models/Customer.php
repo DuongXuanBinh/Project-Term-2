@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
-
-    public function accounts(){
-        return $this->belongsTo(Account::class,'account_id','id');
-    }
 }
