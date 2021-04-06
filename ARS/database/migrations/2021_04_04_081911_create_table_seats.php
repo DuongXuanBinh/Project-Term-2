@@ -17,7 +17,7 @@ class CreateTableSeats extends Migration
             $table->id();
             $table->string('seat_location');
             $table->unsignedInteger('class_id');
-            $table->unsignedInteger('plane_id');
+            $table->unsignedInteger('plane_type');
         });
     }
 

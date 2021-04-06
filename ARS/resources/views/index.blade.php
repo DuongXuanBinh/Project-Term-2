@@ -2,7 +2,7 @@
 @section('title','Home')
 
 @section('body')
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style=" height: 600px ; background-image: url(public/front/images/img_bg_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style=" height: 600px ; background-image: url(front/images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row" style="margin-top: 70px">

@@ -2,7 +2,7 @@
 @section('title','Passenger')
 
 @section('body')
-    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(public/front/images/HEL_Popup_Teaser_E22.jpg); height: 400px">
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/HEL_Popup_Teaser_E22.jpg); height: 400px">
         <div class="overlay"></div>
         <div class="gtco-container">
             <div class="row">
