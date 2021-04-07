@@ -29,4 +29,10 @@ class Flight extends Model
         return $this->hasMany(Ticket_details::class,'flight_id','id');
     }
 
+    protected $casts = [
+        'id' => 'string'
+    ];
+
+
+    public $incrementing = false;
 }

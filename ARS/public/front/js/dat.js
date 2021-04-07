@@ -43,6 +43,7 @@ var todate = new Date(),
         },
         minDate: 0,
         maxDate: "+21d",
+        dateFormat: "yy-mm-dd",
     });
 // }
 $("#from-outbound-date").click(function () {
@@ -84,6 +85,7 @@ $( "#datepicker_return" ).datepicker({
     },
     minDate: 0,
     maxDate: "+21d",
+    dateFormat: "yy-mm-dd",
 });
 // }
 $("#add-return-date").click(function () {
@@ -284,3 +286,113 @@ $(".check_out form input:radio").on(
         }
     }
 );
+
+//Search Place
+
+$(document).ready(function (){
+
+    //place from
+    $('#place_from').keyup(function (){
+        var query = $(this).val();
+        if (query !== ''){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                type: "GET",
+                url: "booking/search",
+                data: {query:query, _token:_token},
+                success:function (data){
+                    $('#place_from_list').fadeIn();
+                    $('#place_from_list').html(data);
+                    $(document).click(function() {
+                        if( this.id !== 'place_from_list') {
+                            $("#place_from_list").fadeOut();
+                        }
+                    });
+                }
+
+            });
+
+        }
+    });
+    $("#place_from_list").on('click','li',function (){
+        $("#place_from").val($(this).text());
+        $("#place_from_list").fadeOut();
+    });
+
+    //place to
+    $('#place_to').keyup(function (){
+        var query = $(this).val();
+        if (query !== ''){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                type: "GET",
+                url: "booking/search",
+                data: {query:query, _token:_token},
+                success:function (data){
+                    $('#place_to_list').fadeIn();
+                    $('#place_to_list').html(data);
+                    $(document).click(function() {
+                        if( this.id !== 'place_from_list') {
+                            $("#place_to_list").fadeOut();
+                        }
+                    });
+                }
+            });
+        }
+    });
+    $("#place_to_list").on('click','li',function (){
+        $("#place_to").val($(this).text());
+        $("#place_to_list").fadeOut();
+    });
+});
+
+//validate sum passenger
+var max = 3;
+var $inputs = $('form .passenger_div input[type="number"]');
+
+function sumInputs($inputs) {
+    var sum = 0;
+
+    $inputs.each(function() {
+        sum += parseInt($(this).val(), 0);
+    });
+
+    return sum;
+}
+
+$inputs.on('input', function(e) {
+    var $this = $(this);
+    var sum = sumInputs($inputs.not(function(i, el) {
+        return el === e.target;
+    }));
+    var value = parseInt($this.val(), 10) || 0;
+    if(sum + value > max) $this.val(max - sum);
+    $inputs.on('change',change_btn_sum_passenger(sum+value))
+
+});
+
+function change_btn_sum_passenger(sum){
+    if (sum === 1 ){
+        $('.dropdown .btn_sum_passenger').text(sum + " Passenger")
+    }
+    if (sum === 2 || sum === 3  ) {
+        $('.dropdown .btn_sum_passenger').text(sum + " Passengers")
+    }
+    else {
+        $('.dropdown .btn_sum_passenger').text(3 + " Passengers")
+    }
+}
+
+//display travel class in #travel_dropdown
+
+$('input[name="travel_class"]').on(
+    'change',function (){
+        var value = $('input[name="travel_class"]:checked').val();
+        if (value == 1){
+            $('#travel_dropdown').text('Economy Class')
+        }
+        if (value == 2){
+            $('#travel_dropdown').text('Business Class')
+        }
+    }
+)

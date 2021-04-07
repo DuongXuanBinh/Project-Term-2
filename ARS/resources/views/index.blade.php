@@ -20,7 +20,7 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active " data-content="signup">
 											<h3 >Book Your Flight</h3>
-											<form action="#" class="row">
+											<form action="./booking/create" method="get" class="row">
 												<div class="col-md-4 row">
 													<div class="col-md-12 booking-form">
 														<label class="sr-only" for="place_from">From</label>
@@ -28,8 +28,11 @@
 															<div class="input-group-prepend">
 																<div class="input-group-text">From</div>
 															</div>
-															<input type="text" class="form-control" id="place_from" placeholder="From">
+															<input type="text" class="form-control" name="place_from" id="place_from" required placeholder="From">
+                                                            <div id="place_from_list"><br></div>
 														</div>
+{{--                                                        {{csrf_field()}}--}}
+
 													</div>
 													<div class="col-md-12 booking-form">
 														<label class="sr-only" for="place_to">To</label>
@@ -37,14 +40,16 @@
 															<div class="input-group-prepend">
 																<div class="px-4 input-group-text">To</div>
 															</div>
-															<input type="text" class="form-control" id="place_to" placeholder="To">
+															<input type="text" class="form-control" name="place_to" id="place_to" required placeholder="To">
+                                                            <div id="place_to_list"><br></div>
 														</div>
+{{--                                                        {{csrf_field()}}--}}
 													</div>
 
 												</div>
 												<div class="col-md-2 ">
 													<div class="overlay_datepicker"></div>
-													<input type="hidden" name="date_outbound" id="datepicker_outbound">
+													<input type="hidden" name="date_outbound" id="datepicker_outbound" required>
 													<div class="btn-date btn booking-form" id="from-outbound-date">
 														Outbound
 														<div class="outbound_day"></div>
@@ -72,13 +77,13 @@
 												<div class="col-md-3 row">
 													<div class="col-md-12">
 														<div class="dropdown" id="passenger_dropdown">
-															<div class="booking-form btn_passenger btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																1 Passenger(s)
+															<div class="booking-form btn_passenger btn_sum_passenger btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																1 Passenger
 															</div>
 															<div class="dropdown-menu" >
-																<div class="passenger_div">Adult <input type="number" name="adult" value="1" min="0" max="9" class="passenger_input"> </div>
-																<div class="passenger_div">Children <input type="number" name="children" value="0" min="0" max="9" class="passenger_input"></div>
-																<div class="passenger_div">Senior citizens <input type="number" name="senior" value="0" min="0" max="9" class="passenger_input"></div>
+																<div class="passenger_div">Adult <input type="number" name="adult" required value="1" min="1" max="9" class="passenger_input"> </div>
+																<div class="passenger_div">Children <input type="number" name="children" required value="0" min="0" max="9" class="passenger_input"></div>
+																<div class="passenger_div">Senior citizens <input type="number" name="senior" required value="0" min="0" max="9" class="passenger_input"></div>
 																<div class="dropdown-divider"></div>
 																<div class="confirm_div">Confirm</div>
 															</div>
@@ -89,16 +94,12 @@
 															Travel Class
 														</div>
 														<div class="class_radio_div mb-3">
-															<label class="container_radio">First Class
-																<input type="radio" name="travel_class">
+															<label class="container_radio">Economy
+																<input type="radio" name="travel_class" value="1" required>
 																<span class="checkmark"></span>
 															</label>
-															<label class="container_radio">Business Class
-																<input type="radio" name="travel_class">
-																<span class="checkmark"></span>
-															</label>
-															<label class="container_radio">Economy Class
-																<input type="radio" name="travel_class">
+															<label class="container_radio">Business
+                                                                <input type="radio" name="travel_class" value="2" required>
 																<span class="checkmark"></span>
 															</label>
 															<div class="confirm_div">Confirm</div>
