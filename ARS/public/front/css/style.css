@@ -2405,11 +2405,11 @@ h1.su-text{
 }
 .gtco-nav ul li.has-dropdown .dropdown{
   width: 170px;
-  background-color: rgba(30,46,73,0.85);
+  background-color: #111b2d;
   color: rgba(255, 255, 255, 0.7);
 }
 .gtco-nav ul li.has-dropdown ul.dropdown:hover{
-  background-color: rgba(17, 27, 45, 0.85);
+  background-color: #111b2d;
 }
 .gtco-nav ul li.has-dropdown ul.dropdown li a{
   font-size: 16px;
