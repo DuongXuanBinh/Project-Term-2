@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/css/style.css">
-    <script src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/main.js"></script>
+    <link rel="stylesheet" href="front/css/bootstrap.min.css">
+    <link rel="stylesheet" href="front/css/style.css">
+    <script src="front/js/main.js"></script>
 </head>
 <body>
 <!--business-->
@@ -14,10 +14,10 @@
         <div class="col-3 seat-map plane-320">
             <div>
                 <table class="business-class">
-                    <img class="left-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Loi%20ra%20phai.jpg" alt="">
-                    <img class="labotory" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/PhongVeSinh.png" alt="">
-                    <img class="kitchen" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Bep.png" alt="">
+                    <img class="left-exit" src="front/images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="front/images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="labotory" src="front/images/PhongVeSinh.png" alt="">
+                    <img class="kitchen" src="front/images/Bep.png" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td>B</td>
@@ -30,19 +30,19 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}A"><img src="front/images/icon-premium-seat0.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat0.png" alt=""></div>
+                        <div name="${row}B"><img src="front/images/icon-premium-seat0.png" alt=""></div>
                     </td>
                      <td>
                      $row
                     </td>
                      <td>
-                         <div name="${row}C"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat0.png" alt=""></div>
+                         <div name="${row}C"><img src="front/images/icon-premium-seat0.png" alt=""></div>
                     </td>
                      <td>
-                         <div name="${row}D"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat0.png" alt=""></div>
+                         <div name="${row}D"><img src="front/images/icon-premium-seat0.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -52,8 +52,8 @@
             </div>
             <div>
                 <table class="economy-class">
-                    <img class="left-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="left-exit" src="front/images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="front/images/Loi%20ra%20phai.jpg" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td>B</td>
@@ -68,25 +68,25 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}A"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}B"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}C"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}D"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}E"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}G"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -96,8 +96,8 @@
             </div>
             <div>
                 <table class="economy-class">
-                    <img class="left-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/loi%20ra%20trai.jpg" alt="">
-                    <img class="right-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Loi%20ra%20phai.jpg" alt="">
+                    <img class="left-exit" src="front/images/loi%20ra%20trai.jpg" alt="">
+                    <img class="right-exit" src="front/images/Loi%20ra%20phai.jpg" alt="">
                     <tr class="seat-row">
                         <td>A</td>
                         <td>B</td>
@@ -112,25 +112,25 @@
                         echo <<<EOT
                     <tr>
                     <td>
-                        <div name="${row}A"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}A"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}B"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}B"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                      <td>
-                        <div name="${row}C"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}C"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
                     $row
                     </td>
                     <td>
-                        <div name="${row}D"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}D"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}E"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}E"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
                     <td>
-                        <div name="${row}G"><img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/icon-premium-seat2.png" alt=""></div>
+                        <div name="${row}G"><img src="front/images/icon-premium-seat2.png" alt=""></div>
                     </td>
     </tr>
     EOT;
@@ -139,10 +139,10 @@
                 </table>
             </div>
             <table class="economy-class">
-                <img class="left-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/loi%20ra%20trai.jpg" alt="">
-                <img class="right-exit" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Loi%20ra%20phai.jpg" alt="">
-                <img class="labotory" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/PhongVeSinh.png" alt="">
-                <img class="kitchen" src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/Bep.png" alt="">
+                <img class="left-exit" src="front/images/loi%20ra%20trai.jpg" alt="">
+                <img class="right-exit" src="front/images/Loi%20ra%20phai.jpg" alt="">
+                <img class="labotory" src="front/images/PhongVeSinh.png" alt="">
+                <img class="kitchen" src="front/images/Bep.png" alt="">
             </table>
 
         </div>

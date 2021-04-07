@@ -59,30 +59,23 @@
         <div class="gtco-container">
             <div class="row ">
                 <div class="col-sm-4 col-xs-12 ">
-                    <div id="gtco-logo"><a href="index.blade.php"><img class="img-responsive" src="front/images/logo_1.png" alt=""></a></div>
+                    <div id="gtco-logo"><a href="/"><img class="img-responsive" src="front/images/logo_1.png" alt=""></a></div>
                 </div>
                 <div style="padding-top: 1.5rem" class="pt-4 col-xs-8 text-right menu-1 ">
                     <ul>
-                        <li><a href="public/destination.html">Book Flight</a></li>
+                        <li><a href="/">Book Flight</a></li>
                         <li class="has-dropdown">
                             <a href="#">Discover</a>
                             <ul class="dropdown">
-                                <li><a href="#">Destination</a></li>
-                                <li><a href="#">Policy</a></li>
-                                <li><a href="#">Promotion</a></li>
+                                <li><a href="/destination">Destination</a></li>
+                                <li><a href="/policy">Policy</a></li>
+                                <li><a href="/promotion">Promotion</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Manage Booking</a></li>
-                        <li><a href="pricing.html">Flight status</a></li>
-                        <li><a href="public/contact.html">Contact</a></li>
-                        <li class="has-dropdown">
-                            <a href="public/contact.html">Account</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Log in</a></li>
-                                <li><a href="#">Sign up</a></li>
-                                <li><a href="#">Log out</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/booking">Manage Booking</a></li>
+                        <li><a href="/flight-status">Flight status</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/sign-in">Account</a></li>
                     </ul>
                 </div>
             </div>

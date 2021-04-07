@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableSeats extends Migration
+class CreateRefundPolicyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTableSeats extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
+        Schema::create('refund_policies', function (Blueprint $table) {
             $table->id();
-            $table->string('seat_location');
-            $table->unsignedInteger('class_id');
-            $table->unsignedInteger('plane_type');
+            $table->integer('days_before_departure');
+            $table->string('percentage of refund');
+            $table->double('number');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateTableSeats extends Migration
      */
     public function down()
     {
-            Schema::dropIfExists('seats');
+        Schema::dropIfExists('refund_policies');
     }
 }

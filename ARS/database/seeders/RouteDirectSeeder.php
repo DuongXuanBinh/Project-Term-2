@@ -18,7 +18,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'1',
                 'origin_airportid'=>'HAN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'1221',
                 'duration'=>'1:50'
@@ -26,7 +25,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'2',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'HAN',
                 'skymile'=>'1221',
                 'duration'=>'1:50'
@@ -34,7 +32,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'3',
                 'origin_airportid'=>'HAN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'860',
                 'duration'=>'1:20'
@@ -42,7 +39,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'4',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'HAN',
                 'skymile'=>'860',
                 'duration'=>'1:20'
@@ -50,7 +46,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'5',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'DAD',
                 'skymile'=>'920',
                 'duration'=>'1:30'
@@ -58,7 +53,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'6',
                 'origin_airportid'=>'DAD',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'VDO',
                 'skymile'=>'920',
                 'duration'=>'1:30'
@@ -66,7 +60,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'7',
                 'origin_airportid'=>'DAD',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'670',
                 'duration'=>'1:05'
@@ -74,7 +67,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'8',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'DAD',
                 'skymile'=>'670',
                 'duration'=>'1:05'
@@ -82,7 +74,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'9',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'1030',
                 'duration'=>'1:40'
@@ -90,7 +81,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'10',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'VDO',
                 'skymile'=>'1030',
                 'duration'=>'1:40'
@@ -98,7 +88,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'11',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'480',
                 'duration'=>'1:00'
@@ -106,7 +95,6 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'12',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'480',
                 'duration'=>'1:00'
@@ -114,35 +102,11 @@ class RouteDirectSeeder extends Seeder
             [
                 'id'=>'13',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'DAD',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'1590',
                 'duration'=>'2:45'
             ],
-            [
-                'id'=>'14',
-                'origin_airportid'=>'VOD',
-                'transit_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'1510',
-                'duration'=>'2:55'
-            ],
-            [
-                'id'=>'15',
-                'origin_airportid'=>'SGN',
-                'transit_airportid'=>'DAD',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'1590',
-                'duration'=>'2:45'
-            ],
-            [
-                'id'=>'16',
-                'origin_airportid'=>'SGN',
-                'transit_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'1510',
-                'duration'=>'2:55'
-            ],
+
         ]);
     }
 }

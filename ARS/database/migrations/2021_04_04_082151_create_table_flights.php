@@ -15,8 +15,7 @@ class CreateTableFlights extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->string('id')->unique();
-            $table->string('origin_airportid');
-            $table->string('arrival_airportid');
+            $table->unsignedInteger('route_id');
             $table->dateTime('departure_date');
             $table->dateTime('arrival_date');
             $table->unsignedInteger('statusid');

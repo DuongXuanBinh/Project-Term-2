@@ -157,8 +157,8 @@ class DatabaseSeeder extends Seeder
         DB::table('flights')->insert([
             [
                 'id'=>'HV111',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/1 09:30',
                 'arrival_date'=>'2021/4/1 11:20',
                 'statusid'=>4,
@@ -166,8 +166,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV114',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/7 6:30',
                 'arrival_date'=>'2021/4/7 08:20',
                 'statusid'=>1,
@@ -175,8 +175,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV115',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/7 16:15',
                 'arrival_date'=>'2021/4/7 18:05',
                 'statusid'=>1,
@@ -184,8 +184,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV116',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/8 12:00',
                 'arrival_date'=>'2021/4/8 13:50',
                 'statusid'=>1,
@@ -193,8 +193,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV117',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/8 16:20',
                 'arrival_date'=>'2021/4/8 18:10',
                 'statusid'=>1,
@@ -202,8 +202,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV118',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/9 08:15',
                 'arrival_date'=>'2021/4/9 10:05',
                 'statusid'=>1,
@@ -211,8 +211,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV119',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/9 13:55',
                 'arrival_date'=>'2021/4/9 16:45',
                 'statusid'=>1,
@@ -220,8 +220,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV120',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/10 9:00',
                 'arrival_date'=>'2021/4/10 10:50',
                 'statusid'=>1,
@@ -229,8 +229,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV121',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>1,
                 'departure_date'=>'2021/4/10 14:35',
                 'arrival_date'=>'2021/4/10 16:25',
                 'statusid'=>1,
@@ -240,8 +240,8 @@ class DatabaseSeeder extends Seeder
 //            ------------------Route--------------------
             [
                 'id'=>'HV112',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/2 14:10',
                 'arrival_date'=>'2021/4/2 16:00',
                 'statusid'=>4,
@@ -249,8 +249,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV122',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/7 10:20',
                 'arrival_date'=>'2021/4/7 12:10',
                 'statusid'=>1,
@@ -258,8 +258,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV123',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/7 20:30',
                 'arrival_date'=>'2021/4/7 22:30',
                 'statusid'=>1,
@@ -267,8 +267,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV124',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/8 16:00',
                 'arrival_date'=>'2021/4/8 17:50',
                 'statusid'=>1,
@@ -276,8 +276,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV125',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/8 20:00',
                 'arrival_date'=>'2021/4/8 21:50',
                 'statusid'=>1,
@@ -285,8 +285,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV126',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/9 11:30',
                 'arrival_date'=>'2021/4/9 13:20',
                 'statusid'=>1,
@@ -294,8 +294,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV127',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/9 17:35',
                 'arrival_date'=>'2021/4/9 19:25',
                 'statusid'=>1,
@@ -303,8 +303,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV128',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/10 06:00',
                 'arrival_date'=>'2021/4/10 07:50',
                 'statusid'=>1,
@@ -312,8 +312,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV129',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
+
+                'route_id'=>2,
                 'departure_date'=>'2021/4/10 11:50',
                 'arrival_date'=>'2021/4/10 13:40',
                 'statusid'=>1,
@@ -323,8 +323,8 @@ class DatabaseSeeder extends Seeder
             //            ------------------Route--------------------
             [
                 'id'=>'HV113',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/2 20:20',
                 'arrival_date'=>'2021/4/2 22:00',
                 'statusid'=>4,
@@ -332,8 +332,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV130',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/7 7:25',
                 'arrival_date'=>'2021/4/7 9:05',
                 'statusid'=>1,
@@ -341,8 +341,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV131',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/7 10:10',
                 'arrival_date'=>'2021/4/7 11:50',
                 'statusid'=>1,
@@ -350,8 +350,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV132',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/8 16:15',
                 'arrival_date'=>'2021/4/8 17:55',
                 'statusid'=>1,
@@ -359,8 +359,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV133',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/8 20:50',
                 'arrival_date'=>'2021/4/8 21:30',
                 'statusid'=>1,
@@ -368,8 +368,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV134',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/9 8:00',
                 'arrival_date'=>'2021/4/9 9:40',
                 'statusid'=>1,
@@ -377,8 +377,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV135',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/9 13:00',
                 'arrival_date'=>'2021/4/9 14:40',
                 'statusid'=>1,
@@ -386,8 +386,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV136',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/10 15:15',
                 'arrival_date'=>'2021/4/10 16:55',
                 'statusid'=>1,
@@ -395,8 +395,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV137',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>9,
                 'departure_date'=>'2021/4/10 18:05',
                 'arrival_date'=>'2021/4/10 19:45',
                 'statusid'=>1,
@@ -405,8 +405,8 @@ class DatabaseSeeder extends Seeder
             //            ------------------Route--------------------
             [
                 'id'=>'HV138',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/7 10:00',
                 'arrival_date'=>'2021/4/7 11:00',
                 'statusid'=>1,
@@ -414,8 +414,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV139',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/7 13:00',
                 'arrival_date'=>'2021/4/7 14:00',
                 'statusid'=>1,
@@ -423,8 +423,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV140',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/8 11:45',
                 'arrival_date'=>'2021/4/8 12:45',
                 'statusid'=>1,
@@ -432,8 +432,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV141',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/8 19:30',
                 'arrival_date'=>'2021/4/8 20:30',
                 'statusid'=>1,
@@ -441,8 +441,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV142',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/9 5:15',
                 'arrival_date'=>'2021/4/9 6:15',
                 'statusid'=>1,
@@ -450,8 +450,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV143',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/9 10:15',
                 'arrival_date'=>'2021/4/9 11:15',
                 'statusid'=>1,
@@ -459,8 +459,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV144',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/10 9:25',
                 'arrival_date'=>'2021/4/10 10:25',
                 'statusid'=>1,
@@ -468,8 +468,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV145',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
+
+                'route_id'=>11,
                 'departure_date'=>'2021/4/10 16:35',
                 'arrival_date'=>'2021/4/10 17:35',
                 'statusid'=>1,
@@ -479,8 +479,8 @@ class DatabaseSeeder extends Seeder
             //            ------------------Route--------------------
             [
                 'id'=>'HV146',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/7 15:00',
                 'arrival_date'=>'2021/4/7 16:00',
                 'statusid'=>1,
@@ -488,8 +488,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV147',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/7 08:15',
                 'arrival_date'=>'2021/4/7 09:15',
                 'statusid'=>1,
@@ -497,8 +497,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV148',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/8 10:00',
                 'arrival_date'=>'2021/4/8 11:00',
                 'statusid'=>1,
@@ -506,8 +506,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV149',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/8 21:00',
                 'arrival_date'=>'2021/4/8 22:00',
                 'statusid'=>1,
@@ -515,8 +515,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV150',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/9 07:10',
                 'arrival_date'=>'2021/4/9 08:10',
                 'statusid'=>1,
@@ -524,8 +524,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV151',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/9 12:15',
                 'arrival_date'=>'2021/4/9 13:15',
                 'statusid'=>1,
@@ -533,8 +533,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV152',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/10 9:55',
                 'arrival_date'=>'2021/4/10 10:55',
                 'statusid'=>1,
@@ -542,8 +542,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV153',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
+
+                'route_id'=>12,
                 'departure_date'=>'2021/4/10 15:15',
                 'arrival_date'=>'2021/4/10 16:15',
                 'statusid'=>1,
@@ -553,8 +553,8 @@ class DatabaseSeeder extends Seeder
             //            ------------------Route--------------------
             [
                 'id'=>'HV154',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/7 6:40',
                 'arrival_date'=>'2021/4/7 8:20',
                 'statusid'=>1,
@@ -562,8 +562,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV155',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/7 10:00',
                 'arrival_date'=>'2021/4/7 11:40',
                 'statusid'=>1,
@@ -571,8 +571,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV156',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/8 15:10',
                 'arrival_date'=>'2021/4/8 16:50',
                 'statusid'=>1,
@@ -580,8 +580,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV157',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/8 21:20',
                 'arrival_date'=>'2021/4/8 23:00',
                 'statusid'=>1,
@@ -589,8 +589,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV158',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/9 10:00',
                 'arrival_date'=>'2021/4/9 11:40',
                 'statusid'=>1,
@@ -598,8 +598,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV159',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/9 14:55',
                 'arrival_date'=>'2021/4/9 15:35',
                 'statusid'=>1,
@@ -607,8 +607,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV160',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/10 9:15',
                 'arrival_date'=>'2021/4/10 10:55',
                 'statusid'=>1,
@@ -616,8 +616,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV161',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
+
+                'route_id'=>10,
                 'departure_date'=>'2021/4/10 17:35',
                 'arrival_date'=>'2021/4/10 19:15',
                 'statusid'=>1,
@@ -711,7 +711,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'1',
                 'origin_airportid'=>'HAN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'1221',
                 'duration'=>'1:50'
@@ -719,7 +718,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'2',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'HAN',
                 'skymile'=>'1221',
                 'duration'=>'1:50'
@@ -727,7 +725,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'3',
                 'origin_airportid'=>'HAN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'860',
                 'duration'=>'1:20'
@@ -735,7 +732,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'4',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'HAN',
                 'skymile'=>'860',
                 'duration'=>'1:20'
@@ -743,7 +739,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'5',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'DAD',
                 'skymile'=>'920',
                 'duration'=>'1:30'
@@ -751,7 +746,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'6',
                 'origin_airportid'=>'DAD',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'VDO',
                 'skymile'=>'920',
                 'duration'=>'1:30'
@@ -759,7 +753,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'7',
                 'origin_airportid'=>'DAD',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'670',
                 'duration'=>'1:05'
@@ -767,7 +760,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'8',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'DAD',
                 'skymile'=>'670',
                 'duration'=>'1:05'
@@ -775,7 +767,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'9',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'1030',
                 'duration'=>'1:40'
@@ -783,7 +774,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'10',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'VDO',
                 'skymile'=>'1030',
                 'duration'=>'1:40'
@@ -791,7 +781,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'11',
                 'origin_airportid'=>'CXR',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'480',
                 'duration'=>'1:00'
@@ -799,7 +788,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'12',
                 'origin_airportid'=>'SGN',
-                'transit_airportid'=>'',
                 'arrival_airportid'=>'CXR',
                 'skymile'=>'480',
                 'duration'=>'1:00'
@@ -807,35 +795,11 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'13',
                 'origin_airportid'=>'VDO',
-                'transit_airportid'=>'DAD',
                 'arrival_airportid'=>'SGN',
                 'skymile'=>'1590',
                 'duration'=>'2:45'
             ],
-            [
-                'id'=>'14',
-                'origin_airportid'=>'VOD',
-                'transit_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'1510',
-                'duration'=>'2:55'
-            ],
-            [
-                'id'=>'15',
-                'origin_airportid'=>'SGN',
-                'transit_airportid'=>'DAD',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'1590',
-                'duration'=>'2:45'
-            ],
-            [
-                'id'=>'16',
-                'origin_airportid'=>'SGN',
-                'transit_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'1510',
-                'duration'=>'2:55'
-            ],
+
         ]);
         DB::table('seats')->insert([
             //320
