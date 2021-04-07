@@ -1,8 +1,8 @@
 //selected các input để hiển thị màu
 $(function () {
     $('.booking-form').click(function(){
-            $('.booking-form').removeClass('selected');
-            $(this).addClass('selected');
+        $('.booking-form').removeClass('selected');
+        $(this).addClass('selected');
     })
 });
 // input outbound day
@@ -22,29 +22,29 @@ var todate = new Date(),
 
 })(jQuery);
 // function show_date_picker(){
-    $( "#datepicker_outbound" ).datepicker({
-        onSelect: function(dateText) {
-            var date = $(this).datepicker('getDate'),
-                day  = date.getDate(),
-                month = date.getMonth() ,
-                year =  date.getFullYear();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            $('#datepicker_outbound').val(dateText);
-            $(' .outbound_day').text(day);
-            $('.outbound_month').text(monthNames[month]);
-            // $( "#datepicker" ).datepicker( "destroy");
-            // $( "#datepicker" ).datepicker("hide");
-            $(".overlay_datepicker").removeClass("active");
-        },
-        onClose: function(){
-            $(".overlay_datepicker").removeClass("active");
-        },
-        minDate: 0,
-        maxDate: "+21d",
-        dateFormat: "yy-mm-dd",
-    });
+$( "#datepicker_outbound" ).datepicker({
+    onSelect: function(dateText) {
+        var date = $(this).datepicker('getDate'),
+            day  = date.getDate(),
+            month = date.getMonth() ,
+            year =  date.getFullYear();
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        $('#datepicker_outbound').val(dateText);
+        $(' .outbound_day').text(day);
+        $('.outbound_month').text(monthNames[month]);
+        // $( "#datepicker" ).datepicker( "destroy");
+        // $( "#datepicker" ).datepicker("hide");
+        $(".overlay_datepicker").removeClass("active");
+    },
+    onClose: function(){
+        $(".overlay_datepicker").removeClass("active");
+    },
+    minDate: 0,
+    maxDate: "+21d",
+    dateFormat: "yy-mm-dd",
+});
 // }
 $("#from-outbound-date").click(function () {
     $(".overlay_datepicker").addClass("active");
@@ -198,22 +198,22 @@ $(".form-signup input:checkbox").on(
 //start Select seats Out-Bound
 
 $(".select_seats .tab-content #out_bound .seat-map table tr td div ").on(
-        'click',function (){
+    'click',function (){
 
-            if (!$(this).children('img').hasClass("check_seat")){
-                var ID = id_outbound +"_"+id_out_passenger;
-                var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
-                $(this).children('img').addClass("hide_seat_"+ID);
-                $(".check_seat."+ID).remove();
-                $(".hide_seat_"+ID).css('display','inline');
-                $(this).children('img').css('display','none');
-                $(this).append(imgAfter);
-                var location_seat = $(this).attr('name');
-                $("#"+id_outbound+" #"+id_out_passenger).find("p").text(location_seat);
-                $("#"+id_outbound+" #"+id_out_passenger).find("input:text").attr('value',location_seat);
-            }
+        if (!$(this).children('img').hasClass("check_seat")){
+            var ID = id_outbound +"_"+id_out_passenger;
+            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
+            $(this).children('img').addClass("hide_seat_"+ID);
+            $(".check_seat."+ID).remove();
+            $(".hide_seat_"+ID).css('display','inline');
+            $(this).children('img').css('display','none');
+            $(this).append(imgAfter);
+            var location_seat = $(this).attr('name');
+            $("#"+id_outbound+" #"+id_out_passenger).find("p").text(location_seat);
+            $("#"+id_outbound+" #"+id_out_passenger).find("input:text").attr('value',location_seat);
+        }
 
-        })
+    })
 var id_outbound = "out_bound"
 
 $(".select_seats .nav-tabs li.out_bound_tab").on(

@@ -20,11 +20,12 @@ class Order extends Model
     public function order_statuses(){
         return $this->belongsTo(Order_status::class,'order_status','id');
     }
-
     protected $casts = [
         'id' => 'string'
     ];
 
 
     public $incrementing = false;
+
+
 }

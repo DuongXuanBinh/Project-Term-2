@@ -12,6 +12,9 @@ class Airport extends Model
         public function route_direct_origin(){
             return $this->hasMany(Route_direct::class,'origin_airportid','id');
         }
+        public function route_direct_transit(){
+            return $this->hasMany(Route_direct::class,'transit_airportid','id');
+        }
         public function route_direct_arrival(){
             return $this->hasMany(Route_direct::class,'arrival_airportid','id');
         }
@@ -21,13 +24,6 @@ class Airport extends Model
         public function flight_arrival(){
             return $this->hasMany(Flight::class,'arrival_airportid','id');
         }
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'string'
     ];

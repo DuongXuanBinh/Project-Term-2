@@ -13,14 +13,15 @@
                             <h1>Sign In</h1>
                         </div>
 
-                            <form class="form-signin">
+                            <form class="form-signin" method="post">
+                                @csrf
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="{{old('email')}}" required autofocus>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <div class="checkbox mb-3">
@@ -29,6 +30,7 @@
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                                    <p><span>Forgot your password?</span></p>
                                     <p>Don't have account yet? Sign up <span class=" dp_sign_up" >here</span></p>
                                 </div>
                             </form>
