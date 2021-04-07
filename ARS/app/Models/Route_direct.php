@@ -13,11 +13,8 @@ class Route_direct extends Model
         return $this->belongsTo(Airport::class,'origin_airportid');
     }
 
-    public function airports_transit(){
-        return $this->belongsTo(Airport::class,'transit_airportid','id');
-    }
-
     public function airports_arrival(){
         return $this->belongsTo(Airport::class,'arrival_airportid','id');
     }
+    
 }
