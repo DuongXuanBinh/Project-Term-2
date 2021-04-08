@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,12 +28,11 @@ Route::get('/promotion', function () {
     return view('promotion');
 });
 Route::prefix('/sign-in')->group(function (){
-    Route::post('/',[\App\Http\Controllers\AccountController::class,'signIn']);
+    Route::get('/',[Controllers\AccountController::class,'index']);
+    Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
 });
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
-    Route::get('/create',[Controllers\BookingController::class,'creat']);
+    Route::get('/create',[Controllers\BookingController::class,'create']);
 });
-Route::get('/',function (){
-    return view('index');
-});
+Route::get('/',[Controllers\HomeController::class,'index']);

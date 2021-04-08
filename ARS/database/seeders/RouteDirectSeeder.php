@@ -99,14 +99,6 @@ class RouteDirectSeeder extends Seeder
                 'skymile'=>'480',
                 'duration'=>'1:00'
             ],
-            [
-                'id'=>'13',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'1590',
-                'duration'=>'2:45'
-            ],
-
         ]);
     }
 }

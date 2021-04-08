@@ -17,6 +17,8 @@ class CreateTablePlanes extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedInteger('plane_type');
+            $table->string('current_position');
+            $table->string('status');
         });
     }
 
