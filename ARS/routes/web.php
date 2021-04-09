@@ -1,8 +1,7 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
@@ -24,24 +23,17 @@ Route::get('/contact', function () {
 Route::get('/policy', function () {
     return view('policy');
 });
-Route::get('/flight-status', function () {
-    return view('Flight status');
-});
 Route::get('/promotion', function () {
     return view('promotion');
 });
-Route::get('/booking', function () {
-    return view('Booking Manage');
+Route::prefix('/sign-in')->group(function (){
+    Route::post('/',[\App\Http\Controllers\AccountController::class,'signIn']);
 });
-Route::get('/sign-in', function () {
-    return view('sign_in');
-});
-Route::get('/',function (){
-    return view('index');
-});
-
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
     Route::get('/create',[Controllers\BookingController::class,'creat']);
+});
+Route::get('/',function (){
+    return view('index');
 });
 

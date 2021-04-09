@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../:\xampp\htdocs\ARS\.idea/dataSources/
+/../../../../../../:\Program\XAMPP\htdocs\ARS\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

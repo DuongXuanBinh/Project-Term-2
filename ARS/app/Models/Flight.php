@@ -15,13 +15,10 @@ class Flight extends Model
     public function planes(){
         return $this->belongsTo(Plane::class,'planeid','id');
     }
-    public function airports_origin(){
-        return $this->belongsTo(Airport::class,'origin_airportid','id');
+    public function route_directs(){
+        return $this->belongsTo(Route_direct::class,'route_id','id');
     }
 
-    public function airports_arrival(){
-        return $this->belongsTo(Airport::class,'arrival_airportid','id');
-    }
     public function flight_statuses(){
         return $this->belongsTo(Plane::class,'statusid','id');
     }
@@ -30,9 +27,10 @@ class Flight extends Model
     }
 
     protected $casts = [
-        'id' => 'string'
+        'id' => 'string',
     ];
 
 
     public $incrementing = false;
+
 }
