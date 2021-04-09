@@ -25,7 +25,6 @@ class Flight extends Model
     public function ticket_details(){
         return $this->hasMany(Ticket_details::class,'flight_id','id');
     }
-
     protected $casts = [
         'id' => 'string',
     ];

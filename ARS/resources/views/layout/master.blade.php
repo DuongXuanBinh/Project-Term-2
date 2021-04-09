@@ -75,7 +75,17 @@
                         <li><a href="/booking">Manage Booking</a></li>
                         <li><a href="/flight-status">Flight status</a></li>
                         <li><a href="/contact">Contact</a></li>
-                        <li><a href="/sign-in">Account</a></li>
+                        @if(session('email')&&session('password'))
+                            <li class="has-dropdown">
+                                <a href="/">Hi, {{session('check')->lastname}}</a>
+                                <ul class="dropdown">
+                                    <li><a href="/sign-in/profile">My Profile</a></li>
+                                    <li><a href="/sign-in/sign-out">Sign out</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            <li><a href="/sign-in">Account</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

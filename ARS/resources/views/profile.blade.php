@@ -29,8 +29,8 @@
 
                     <ul class="list-group">
 <!--                        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>-->
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Sky miles</strong></span> 989 </li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Flights</strong></span> 3</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Sky miles</strong></span>{{$user->sky_miles}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Flights</strong></span> 3 </li>
                     </ul>
                     <p style="text-align: center;cursor:pointer;"  data-toggle="modal" data-target="#myModal"><i>Change password</i></p>
                     <div class="modal fade password-change" id="myModal" tabindex="-1">
@@ -59,47 +59,37 @@
                     </div>
                 </div><!--/col-3-->
                 <div class="col-sm-9">
-                            <form class="form" action="#" method="post" id="registrationForm">
+                            <form class="form" action="/sign-in/update" method="post" id="registrationForm">
                                 <div class="col-xs-6">
                                         <label for="first_name"><h4>First name</h4></label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name" required placeholder="first name" title="enter your first name if any.">
+                                        <input type="text" class="form-control" name="first_name" value="{{$user->firstname}}" id="first_name" required placeholder="first name" title="enter your first name if any.">
                                     </div>
-
-
                                     <div class="col-xs-6">
                                         <label for="last_name"><h4>Last name</h4></label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name" required placeholder="last name" title="enter your last name if any.">
+                                        <input type="text" class="form-control" name="last_name" id="last_name" value="{{$user->lastname}}" required placeholder="last name" title="enter your last name if any.">
                                     </div>
-
-
                                     <div class="col-xs-6">
                                         <label for="phone"><h4>Phone</h4></label>
-                                        <input type="text" class="form-control" name="phone" id="phone" required placeholder="enter phone" title="enter your phone number if any.">
+                                        <input type="tel" class="form-control" name="phone" value="{{$user->phone}}" id="phone" required placeholder="enter phone" title="enter your phone number if any.">
                                     </div>
-
-
-
                                     <div class="col-xs-6">
                                         <label for="credit_card"><h4>Credit card number</h4></label>
-                                        <input type="text" class="form-control" name="credit_card" id="credit_card" required placeholder="enter mobile number" title="enter your credit card number">
+                                        <input type="text" class="form-control" name="credit_card" id="credit_card" value="{{$user->credit_number}}" required placeholder="enter mobile number" title="enter your credit card number">
                                     </div>
-
-
-
                                     <div class="col-xs-6">
                                         <label for="youremail"><h4>Email</h4></label>
-                                        <input type="email" class="form-control" name="email" id="youremail" required placeholder="you@email.com" title="enter your email.">
+                                        <input type="email" class="form-control" name="email" id="youremail" value="{{$user->email}}" required placeholder="you@email.com" title="enter your email.">
                                     </div>
 
 
                                     <div class="col-xs-6">
                                         <label for="address"><h4>Address</h4></label>
-                                        <input type="text" class="form-control" id="address" placeholder="Your address" title="enter your address" required>
+                                        <input type="text" name="address" class="form-control" id="address" placeholder="Your address" value="{{$user->address}}" title="enter your address" required>
                                     </div>
 
                                     <div class="col-xs-6">
                                         <label for="sexs"><h4>Sex</h4></label>
-                                        <input id="sex" list="sexs" class="form-control" placeholder="Sex" required>
+                                        <input id="sex" name="sex" list="sexs" class="form-control" placeholder="Sex" value="{{$user->sex}}" required>
                                         <datalist id="sexs">
                                             <option value="Male">
                                             <option value="Female">
@@ -108,7 +98,7 @@
 
                                     <div class="col-xs-6">
                                     <label for="age"><h4>Date of Birth</h4></label>
-                                    <input type="date" id="age" class="form-control" placeholder="Date Of Birth" required>
+                                    <input type="date" id="age" name="age" class="form-control" value="{{$user->dob}}" placeholder="Date Of Birth" required>
                                     </div>
 
                                     <div class="col-xs-12">
@@ -117,7 +107,6 @@
                                         <button class="btn btn-lg save btn-primary pull-right" type="submit" >Save</button>
                                         <button class="btn btn-lg cancel btn-secondary pull-right" type="reset">Cancel</button>
                                     </div>
-
                             </form>
 
                         </div><!--/tab-pane-->

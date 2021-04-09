@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,8 +20,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>1,
                 'email'=>'binhdxth2004002@fpt.edu.vn',
                 'password'=>'111111',
-                'firstname'=>'Duong',
-                'lastname'=>'Xuan Binh',
+                'firstname'=>'Duong Xuan',
+                'lastname'=>'Binh',
                 'address'=>'Tay Mo, Nam Tu Liem, Ha Noi',
                 'dob'=>'1995/11/10',
                 'sex'=>'Male',
@@ -33,8 +34,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>2,
                 'email'=>'datntth2002021@fpt.edu.vn',
                 'password'=>'111111',
-                'firstname'=>'Nguyen',
-                'lastname'=>'Tien Dat',
+                'firstname'=>'Nguyen Tien',
+                'lastname'=>'Dat',
                 'address'=>'Van Phuc, Ha Dong, Ha Noi',
                 'dob'=>'1996/5/13',
                 'sex'=>'Male',
@@ -47,8 +48,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>3,
                 'email'=>'xuanbinh1011@gmail.com',
                 'password'=>'111111',
-                'firstname'=>'Nguyen',
-                'lastname'=>'Thai Son',
+                'firstname'=>'Nguyen Thai',
+                'lastname'=>'Son',
                 'address'=>'Quang An, Tay Ho, Ha Noi',
                 'dob'=>'1996/3/15',
                 'sex'=>'Female',
@@ -61,14 +62,14 @@ class DatabaseSeeder extends Seeder
                 'id'=>4,
                 'email'=>'xubiii.95@gmail.com',
                 'password'=>'111111',
-                'firstname'=>'Ad',
-                'lastname'=>'min',
+                'firstname'=>'Admin',
+                'lastname'=>'Admin',
                 'address'=>'Tay Mo, Nam Tu Liem, Ha Noi',
                 'dob'=>'1995/10/11',
                 'sex'=>'Male',
                 'credit_number'=>'4444444444',
                 'phone'=>'0932555666',
-                'sky_miles'=>0,
+                'skymile'=>0,
                 'role'=>2
             ]
         ]);
@@ -168,8 +169,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV114',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/7 6:30',
-                'arrival_date'=>'2021/4/7 08:20',
+                'departure_date'=>Carbon::today()->setTime(6,30),
+                'arrival_date'=>Carbon::today()->setTime(8,20),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -177,8 +178,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV115',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/7 16:15',
-                'arrival_date'=>'2021/4/7 18:05',
+                'departure_date'=>Carbon::today()->setTime(16,15) ,
+                'arrival_date'=>Carbon::today()->setTime(18,5),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -186,8 +187,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV116',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/8 12:00',
-                'arrival_date'=>'2021/4/8 13:50',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(12,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(13,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -195,8 +196,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV117',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/8 16:20',
-                'arrival_date'=>'2021/4/8 18:10',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,20),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(18,10),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -204,8 +205,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV118',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/9 08:15',
-                'arrival_date'=>'2021/4/9 10:05',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(8,15),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(10,05),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -213,8 +214,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV119',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/9 13:55',
-                'arrival_date'=>'2021/4/9 16:45',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(13,55),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(16,45),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -222,8 +223,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV120',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/10 9:00',
-                'arrival_date'=>'2021/4/10 10:50',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,0),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -231,13 +232,13 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV121',
 
                 'route_id'=>1,
-                'departure_date'=>'2021/4/10 14:35',
-                'arrival_date'=>'2021/4/10 16:25',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(14,35),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,25),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
 
-//            ------------------Route--------------------
+//            ------------------Route SG HN--------------------
             [
                 'id'=>'HV112',
 
@@ -249,19 +250,17 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id'=>'HV122',
-
                 'route_id'=>2,
-                'departure_date'=>'2021/4/7 10:20',
-                'arrival_date'=>'2021/4/7 12:10',
+                'departure_date'=>Carbon::today()->setTime(10,20),
+                'arrival_date'=>Carbon::today()->setTime(12,10),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
             [
                 'id'=>'HV123',
-
                 'route_id'=>2,
-                'departure_date'=>'2021/4/7 20:30',
-                'arrival_date'=>'2021/4/7 22:30',
+                'departure_date'=>Carbon::today()->setTime(20,30),
+                'arrival_date'=>Carbon::today()->setTime(22,30),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -269,8 +268,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV124',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/8 16:00',
-                'arrival_date'=>'2021/4/8 17:50',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(17,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -278,8 +277,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV125',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/8 20:00',
-                'arrival_date'=>'2021/4/8 21:50',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(20,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(21,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -287,8 +286,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV126',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/9 11:30',
-                'arrival_date'=>'2021/4/9 13:20',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(11,30),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(13,20),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -296,8 +295,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV127',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/9 17:35',
-                'arrival_date'=>'2021/4/9 19:25',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(17,35),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(19,25),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -305,8 +304,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV128',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/10 06:00',
-                'arrival_date'=>'2021/4/10 07:50',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(6,0),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(7,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -314,13 +313,13 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV129',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/10 11:50',
-                'arrival_date'=>'2021/4/10 13:40',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(11,50),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(13,40),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
 
-            //            ------------------Route--------------------
+            //            ------------------Route VDO-CXR--------------------
             [
                 'id'=>'HV113',
 
@@ -334,62 +333,62 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV130',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/7 7:25',
-                'arrival_date'=>'2021/4/7 9:05',
+                'departure_date'=>Carbon::today()->setTime(7,25),
+                'arrival_date'=>Carbon::today()->setTime(9,5),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
-            [
-                'id'=>'HV131',
-
-                'route_id'=>9,
-                'departure_date'=>'2021/4/7 10:10',
-                'arrival_date'=>'2021/4/7 11:50',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
+//            [
+//                'id'=>'HV131',
+//
+//                'route_id'=>9,
+//                'departure_date'=>Carbon::today()->setTime(10,10),
+//                'arrival_date'=>Carbon::today()->setTime(11,50),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
             [
                 'id'=>'HV132',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/8 16:15',
-                'arrival_date'=>'2021/4/8 17:55',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,15),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(17,55),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
-            [
-                'id'=>'HV133',
-
-                'route_id'=>9,
-                'departure_date'=>'2021/4/8 20:50',
-                'arrival_date'=>'2021/4/8 21:30',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
+//            [
+//                'id'=>'HV133',
+//
+//                'route_id'=>9,
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(20,50),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(21,30),
+//                'statusid'=>1,
+//                'planeid'=>2,
+//            ],
             [
                 'id'=>'HV134',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/9 8:00',
-                'arrival_date'=>'2021/4/9 9:40',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(8,0),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(9,40),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
-            [
-                'id'=>'HV135',
-
-                'route_id'=>9,
-                'departure_date'=>'2021/4/9 13:00',
-                'arrival_date'=>'2021/4/9 14:40',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
+//            [
+//                'id'=>'HV135',
+//
+//                'route_id'=>9,
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(13,0),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(14,40),
+//                'statusid'=>1,
+//                'planeid'=>2,
+//            ],
             [
                 'id'=>'HV136',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/10 15:15',
-                'arrival_date'=>'2021/4/10 16:55',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(15,15),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,55),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -397,101 +396,101 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV137',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/10 18:05',
-                'arrival_date'=>'2021/4/10 19:45',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(18,5),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(19,45),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
-            //            ------------------Route--------------------
+            //            ------------------Route--CXR-SGN------------------
             [
                 'id'=>'HV138',
 
                 'route_id'=>11,
-                'departure_date'=>'2021/4/7 10:00',
-                'arrival_date'=>'2021/4/7 11:00',
+                'departure_date'=>Carbon::today()->setTime(10,0),
+                'arrival_date'=>Carbon::today()->setTime(11,0),
                 'statusid'=>1,
-                'planeid'=>1,
+                'planeid'=>3,
             ],
-            [
-                'id'=>'HV139',
-
-                'route_id'=>11,
-                'departure_date'=>'2021/4/7 13:00',
-                'arrival_date'=>'2021/4/7 14:00',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
-            [
-                'id'=>'HV140',
-
-                'route_id'=>11,
-                'departure_date'=>'2021/4/8 11:45',
-                'arrival_date'=>'2021/4/8 12:45',
-                'statusid'=>1,
-                'planeid'=>1,
-            ],
+//            [
+//                'id'=>'HV139',
+//
+//                'route_id'=>11,
+//                'departure_date'=>Carbon::today()->setTime(13,0),
+//                'arrival_date'=>Carbon::today()->setTime(14,0),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
+//            [
+//                'id'=>'HV140',
+//
+//                'route_id'=>11,
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(11,45),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(12,45),
+//                'statusid'=>1,
+//                'planeid'=>1,
+//            ],
             [
                 'id'=>'HV141',
 
                 'route_id'=>11,
-                'departure_date'=>'2021/4/8 19:30',
-                'arrival_date'=>'2021/4/8 20:30',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(19,30),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(20,30),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
-            [
-                'id'=>'HV142',
-
-                'route_id'=>11,
-                'departure_date'=>'2021/4/9 5:15',
-                'arrival_date'=>'2021/4/9 6:15',
-                'statusid'=>1,
-                'planeid'=>3,
-            ],
+//            [
+//                'id'=>'HV142',
+//
+//                'route_id'=>11,
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(5,15),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(6,15),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
             [
                 'id'=>'HV143',
 
                 'route_id'=>11,
-                'departure_date'=>'2021/4/9 10:15',
-                'arrival_date'=>'2021/4/9 11:15',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(10,25),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(11,25),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
-            [
-                'id'=>'HV144',
-
-                'route_id'=>11,
-                'departure_date'=>'2021/4/10 9:25',
-                'arrival_date'=>'2021/4/10 10:25',
-                'statusid'=>1,
-                'planeid'=>1,
-            ],
+//            [
+//                'id'=>'HV144',
+//
+//                'route_id'=>11,
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,25),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,25),
+//                'statusid'=>1,
+//                'planeid'=>1,
+//            ],
             [
                 'id'=>'HV145',
 
                 'route_id'=>11,
-                'departure_date'=>'2021/4/10 16:35',
-                'arrival_date'=>'2021/4/10 17:35',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(17,45),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(18,45),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
 
-            //            ------------------Route--------------------
-            [
-                'id'=>'HV146',
-
-                'route_id'=>12,
-                'departure_date'=>'2021/4/7 15:00',
-                'arrival_date'=>'2021/4/7 16:00',
-                'statusid'=>1,
-                'planeid'=>3,
-            ],
+            //            ------------------Route---SGN-CXR-----------------
+//            [
+//                'id'=>'HV146',
+//
+//                'route_id'=>12,
+//                'departure_date'=>Carbon::today()->setTime(15,0),
+//                'arrival_date'=>Carbon::today()->setTime(16,0),
+//                'statusid'=>1,
+//                'planeid'=>1,
+//            ],
             [
                 'id'=>'HV147',
 
                 'route_id'=>12,
-                'departure_date'=>'2021/4/7 08:15',
-                'arrival_date'=>'2021/4/7 09:15',
+                'departure_date'=>Carbon::today()->setTime(8,15),
+                'arrival_date'=>Carbon::today()->setTime(9,15),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -499,130 +498,127 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV148',
 
                 'route_id'=>12,
-                'departure_date'=>'2021/4/8 10:00',
-                'arrival_date'=>'2021/4/8 11:00',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(10,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(11,0),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
-            [
-                'id'=>'HV149',
-
-                'route_id'=>12,
-                'departure_date'=>'2021/4/8 21:00',
-                'arrival_date'=>'2021/4/8 22:00',
-                'statusid'=>1,
-                'planeid'=>3,
-            ],
+//            [
+//                'id'=>'HV149',
+//
+//                'route_id'=>12,
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(21,0),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(22,0),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
             [
                 'id'=>'HV150',
-
                 'route_id'=>12,
-                'departure_date'=>'2021/4/9 07:10',
-                'arrival_date'=>'2021/4/9 08:10',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(7,10),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(8,10),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
-            [
-                'id'=>'HV151',
-
-                'route_id'=>12,
-                'departure_date'=>'2021/4/9 12:15',
-                'arrival_date'=>'2021/4/9 13:15',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
+//            [
+//                'id'=>'HV151',
+//
+//                'route_id'=>12,
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(12,15),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(13,15),
+//                'statusid'=>1,
+//                'planeid'=>2,
+//            ],
             [
                 'id'=>'HV152',
 
                 'route_id'=>12,
-                'departure_date'=>'2021/4/10 9:55',
-                'arrival_date'=>'2021/4/10 10:55',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,55),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,55),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
+//            [
+//                'id'=>'HV153',
+//
+//                'route_id'=>12,
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(15,15),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,15),
+//                'statusid'=>1,
+//                'planeid'=>2,
+//            ],
+
+            //            ------------------Route-CXR-VDO-------------------
+//            [
+//                'id'=>'HV154',
+//
+//                'route_id'=>10,
+//                'departure_date'=>Carbon::today()->setTime(6,40),
+//                'arrival_date'=>Carbon::today()->setTime(8,20),
+//                'statusid'=>1,
+//                'planeid'=>1,
+//            ],
             [
-                'id'=>'HV153',
-
-                'route_id'=>12,
-                'departure_date'=>'2021/4/10 15:15',
-                'arrival_date'=>'2021/4/10 16:15',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
-
-            //            ------------------Route--------------------
-            [
-                'id'=>'HV154',
-
+                'id'=>'HV155',
                 'route_id'=>10,
-                'departure_date'=>'2021/4/7 6:40',
-                'arrival_date'=>'2021/4/7 8:20',
+                'departure_date'=>Carbon::today()->setTime(15,0),
+                'arrival_date'=>Carbon::today()->setTime(16,40),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
             [
-                'id'=>'HV155',
-
-                'route_id'=>10,
-                'departure_date'=>'2021/4/7 10:00',
-                'arrival_date'=>'2021/4/7 11:40',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
-            [
                 'id'=>'HV156',
-
                 'route_id'=>10,
-                'departure_date'=>'2021/4/8 15:10',
-                'arrival_date'=>'2021/4/8 16:50',
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(15,10),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(16,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
-            [
-                'id'=>'HV157',
-
-                'route_id'=>10,
-                'departure_date'=>'2021/4/8 21:20',
-                'arrival_date'=>'2021/4/8 23:00',
-                'statusid'=>1,
-                'planeid'=>3,
-            ],
+//            [
+//                'id'=>'HV157',
+//                'route_id'=>10,
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(21,20),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(23,0),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
             [
                 'id'=>'HV158',
 
                 'route_id'=>10,
-                'departure_date'=>'2021/4/9 10:00',
-                'arrival_date'=>'2021/4/9 11:40',
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(10,0),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(11,40),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
-            [
-                'id'=>'HV159',
-
-                'route_id'=>10,
-                'departure_date'=>'2021/4/9 14:55',
-                'arrival_date'=>'2021/4/9 15:35',
-                'statusid'=>1,
-                'planeid'=>2,
-            ],
-            [
-                'id'=>'HV160',
-
-                'route_id'=>10,
-                'departure_date'=>'2021/4/10 9:15',
-                'arrival_date'=>'2021/4/10 10:55',
-                'statusid'=>1,
-                'planeid'=>3,
-            ],
+//            [
+//                'id'=>'HV159',
+//
+//                'route_id'=>10,
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(14,55),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(15,35),
+//                'statusid'=>1,
+//                'planeid'=>2,
+//            ],
+//            [
+//                'id'=>'HV160',
+//
+//                'route_id'=>10,
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,15),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,55),
+//                'statusid'=>1,
+//                'planeid'=>3,
+//            ],
             [
                 'id'=>'HV161',
 
                 'route_id'=>10,
-                'departure_date'=>'2021/4/10 17:35',
-                'arrival_date'=>'2021/4/10 19:15',
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(17,35),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(19,15),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
+
             //            ------------------Route--------------------
 
 
@@ -792,14 +788,6 @@ class DatabaseSeeder extends Seeder
                 'skymile'=>'480',
                 'duration'=>'1:00'
             ],
-            [
-                'id'=>'13',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'1590',
-                'duration'=>'2:45'
-            ],
-
         ]);
         DB::table('seats')->insert([
             //320

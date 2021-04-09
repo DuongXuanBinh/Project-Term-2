@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,13 +29,15 @@ Route::get('/promotion', function () {
     return view('promotion');
 });
 Route::prefix('/sign-in')->group(function (){
-    Route::post('/',[\App\Http\Controllers\AccountController::class,'signIn']);
+    Route::get('/',[Controllers\AccountController::class,'index']);
+    Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
+    Route::get('/profile',[Controllers\AccountController::class,'showProfile']);
+    Route::get('/sign-out',[Controllers\AccountController::class,'signOut']);
+    Route::post('/update',[Controllers\AccountController::class,'updateProfile']);
 });
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
-    Route::get('/create',[Controllers\BookingController::class,'creat']);
+    Route::get('/create',[Controllers\BookingController::class,'create']);
+    Route::post('/register',[Controllers\AccountController::class,'signUp']);
 });
-Route::get('/',function (){
-    return view('index');
-});
-
+Route::get('/',[Controllers\HomeController::class,'index']);

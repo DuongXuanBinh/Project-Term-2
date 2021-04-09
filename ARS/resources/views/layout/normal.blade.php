@@ -7,7 +7,6 @@
     <title>@yield('title')|Helvetic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="front/css/jquery-ui.css">
     <!--	dat style-->
@@ -66,7 +65,17 @@
                     <li><a href="/booking">Manage Booking</a></li>
                     <li><a href="/flight-status">Flight status</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li><a href="/sign-in">Account</a></li>
+                    @if(session('email')&&session('password'))
+                        <li class="has-dropdown">
+                            <a href="/">Hi, {{session('check')->lastname}}</a>
+                            <ul class="dropdown">
+                                <li><a href="/sign-in/profile">My Profile</a></li>
+                                <li><a href="/sign-in/sign-out">Sign out</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="/sign-in">Account</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -167,7 +176,7 @@
             <p class="col-md-4 col-md-push-1 ">
                 <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
                 <small class="block">
-                    Designed by <a href="https://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a>
+                    Designed by <a href="https://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo front/images: <a href="http://unsplash.com/" target="_blank">Unsplash</a>
                 </small>
             </p>
 

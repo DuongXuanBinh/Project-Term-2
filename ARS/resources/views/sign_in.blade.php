@@ -12,16 +12,20 @@
                         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                             <h1>Sign In</h1>
                         </div>
-
-                            <form class="form-signin" method="post">
+                        @foreach($errors->all() as $error)
+                            <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp" style="margin-bottom: 0;margin-top: 0;">
+                                <h5 style="color: #ffd700;font-style: italic">{{$error}}</h5>
+                            </div>
+                        @endforeach
+                            <form class="form-signin" action="sign-in/authorize" method="post">
                                 @csrf
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="{{old('email')}}" required autofocus>
+                                    <input type="email" name="si_email" id="inputEmail" class="form-control" placeholder="Email address" value="{{old('si_email')}}" required autofocus>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                    <input type="password" name="si_password" id="inputPassword" class="form-control" value="" placeholder="Password" required>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <div class="checkbox mb-3">
@@ -30,7 +34,7 @@
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                                    <p><span>Forgot your password?</span></p>
+                                    <p><span class=" dp_sign_up" >Forgot your password?</span></p>
                                     <p>Don't have account yet? Sign up <span class=" dp_sign_up" >here</span></p>
                                 </div>
                             </form>
@@ -45,40 +49,41 @@
             <div class="row">
                 <div class="col-md-12 mt-text">
                     <h1 class="su-text">Sign Up</h1>
-                    <form class="form-signup">
+                    <form class="form-signup" method="post">
+                        @csrf
                         <label for="su-firstname" class="">First Name</label>
                         <label for="su-lastname" class="">Last Name</label><br>
-                        <input type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
-                        <input type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
+                        <input name="su_firstname" type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
+                        <input name="su_lastname" type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
 
 
                         <label for="su-phonenumber" class="">Phone Number</label>
                         <label for="su-creditcard" class="">Credit Card</label><br>
-                        <input type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required>
-                        <input type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required>
+                        <input name="su_phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required>
+                        <input name="su_card" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required>
 
                         <label for="su-sexs" class="">Sex</label>
                         <label for="su-age" class="">D.O.B</label><br>
-                        <input id="su-sex" list="su-sexs" class="form-control" placeholder="Sex" required>
+                        <input name="su_sex" id="su-sex" list="su-sexs" class="form-control" placeholder="Sex" required>
                         <datalist id="su-sexs">
                             <option value="Male">
                             <option value="Female">
                         </datalist>
-                        <input type="date" data-toggle="datepicker" id="su-age" class="form-control" placeholder="Date Of Birth" required>
+                        <input name="su_dob" type="date" data-toggle="datepicker" id="su-age" class="form-control" placeholder="Date Of Birth" required>
 
 
                         <label for="su-address" class="">Address</label>
-                        <input type="text" id="su-address" class="form-control" placeholder="Address" required>
+                        <input name="su_address" type="text" id="su-address" class="form-control" placeholder="Address" required>
 
 
                         <label for="su-email" class="">Email</label>
-                        <input type="email" id="su-email" class="form-control" placeholder="Email Address" required>
+                        <input name="su_email" type="email" id="su-email" class="form-control" placeholder="Email Address" required>
 
                         <label for="su-password" class="">Password <i>(numbers and characters, 6 digits)</i></label>
-                        <input type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
+                        <input name="su_password" type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
 
                         <label for="su-password1" class="">Confirm Password</label>
-                        <input type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required>
+                        <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required>
 
                         <div class="policy-box">
                             <p>Your Privacy Rights — Helvetic's Privacy Policy</p>
