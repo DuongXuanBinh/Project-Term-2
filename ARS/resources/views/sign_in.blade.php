@@ -30,7 +30,7 @@
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <div class="checkbox mb-3">
                                         <label  style="color: white">
-                                            <input type="checkbox" value="remember-me"> Remember me
+                                            <input type="checkbox" name="remember" value="remember-me"> Remember me
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

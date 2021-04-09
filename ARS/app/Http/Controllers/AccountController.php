@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
@@ -35,6 +36,11 @@ class AccountController extends Controller
             $check = Account::where('email', $username)->where('password', $password)->first();
             if ($check != null) {
                 session(['email' => $username, 'password' => $password, 'check' => $check]);
+//                if($request->get('remember')=='remember-me'){
+//                    cookie('email', $username, 60);
+//                    cookie('password',$password,60);
+//                    cookie('check',$check,60);
+//                }
                 return redirect('/');
 //                    ->action([HomeController::class, 'index']);
             } else {
@@ -61,7 +67,7 @@ class AccountController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $id = session('id');
+        $id = session('check')->id;
 
         $account = Account::find($id);
         $account->firstname = $request->first_name;
@@ -72,9 +78,12 @@ class AccountController extends Controller
         $account->address = $request->address;
         $account->sex = $request->sex;
         $account->dob = $request->age;
-
+//        validate
         $account->save();
-         return dd($account);
-//        return redirect('/sign-in/profile');
+        return redirect('/sign-in/profile');
+    }
+
+    public function changePassword(Request $request){
+
     }
 }

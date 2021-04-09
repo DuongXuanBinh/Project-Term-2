@@ -26,6 +26,7 @@ class CreateTableAccounts extends Migration
             $table->string('phone')->unique();
             $table->integer('sky_miles')->unsigned();
             $table->integer('role')->default(1);
+            $table->timestamps();
         });
     }
 

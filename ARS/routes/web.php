@@ -3,7 +3,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +30,12 @@ Route::get('/promotion', function () {
 Route::prefix('/sign-in')->group(function (){
     Route::get('/',[Controllers\AccountController::class,'index']);
     Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
-    Route::get('/profile',[Controllers\AccountController::class,'showProfile']);
+});
+Route::prefix('/profile')->group(function(){
+    Route::get('/',[Controllers\AccountController::class,'showProfile']);
     Route::get('/sign-out',[Controllers\AccountController::class,'signOut']);
     Route::post('/update',[Controllers\AccountController::class,'updateProfile']);
+    Route::post('/change-password',[Controllers\AccountController::class,'changePassword']);
 });
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');

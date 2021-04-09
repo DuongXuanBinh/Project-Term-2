@@ -16,6 +16,7 @@ class CreateTableFlightStatuses extends Migration
         Schema::create('flight_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 

@@ -40,7 +40,7 @@
                                     <h5 class="modal-title">Change password</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="">
+                                <form action="/profile/change-password" method="post">
                                 <div class="modal-body">
                                     <label for="old-password">Current password:</label>
                                     <input type="password" id="old-password" required>
@@ -59,7 +59,8 @@
                     </div>
                 </div><!--/col-3-->
                 <div class="col-sm-9">
-                            <form class="form" action="/sign-in/update" method="post" id="registrationForm">
+                            <form class="form" action="/profile/update" method="post" id="registrationForm">
+                                @csrf
                                 <div class="col-xs-6">
                                         <label for="first_name"><h4>First name</h4></label>
                                         <input type="text" class="form-control" name="first_name" value="{{$user->firstname}}" id="first_name" required placeholder="first name" title="enter your first name if any.">

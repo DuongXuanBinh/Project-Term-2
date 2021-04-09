@@ -77,10 +77,10 @@
                         <li><a href="/contact">Contact</a></li>
                         @if(session('email')&&session('password'))
                             <li class="has-dropdown">
-                                <a href="/">Hi, {{session('check')->lastname}}</a>
+                                <a href="/profile">Hi, {{session('check')->lastname}}</a>
                                 <ul class="dropdown">
-                                    <li><a href="/sign-in/profile">My Profile</a></li>
-                                    <li><a href="/sign-in/sign-out">Sign out</a></li>
+                                    <li><a href="/profile">My Profile</a></li>
+                                    <li><a href="/profile/sign-out">Sign out</a></li>
                                 </ul>
                             </li>
                         @else

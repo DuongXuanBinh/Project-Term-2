@@ -19,6 +19,7 @@ class CreateTableOrders extends Migration
             $table->unsignedInteger('order_status');
             $table->double('total_price');
             $table->unsignedInteger('total_skymiles');
+            $table->timestamps();
         });
     }
 

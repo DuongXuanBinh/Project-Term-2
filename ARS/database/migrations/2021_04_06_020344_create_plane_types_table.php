@@ -17,6 +17,7 @@ class CreatePlaneTypesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('total_seats')->unsigned();
+            $table->timestamps();
         });
     }
 
