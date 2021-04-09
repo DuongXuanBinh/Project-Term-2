@@ -15,4 +15,7 @@ class Route_direct extends Model
     public function airports_arrival(){
         return $this->belongsTo(Airport::class,'arrival_airportid','id');
     }
+    public function flights(){
+        return $this->hasMany(Flight::class,'route_id','id');
+    }
 }
