@@ -12,24 +12,20 @@
                         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                             <h1>Sign In</h1>
                         </div>
-                        @if ($errors->any())
-                            <p class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </p>
-                        @endif
+                        @foreach($errors->all() as $error)
+                            <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp" style="margin-bottom: 0;margin-top: 0;">
+                                <h5 style="color: #ffd700;font-style: italic">{{$error}}</h5>
+                            </div>
+                        @endforeach
                             <form class="form-signin" action="sign-in/authorize" method="post">
                                 @csrf
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" name="si_email" id="inputEmail" class="form-control" placeholder="Email address" value="{{old('email')}}" required autofocus>
+                                    <input type="email" name="si_email" id="inputEmail" class="form-control" placeholder="Email address" value="{{old('si_email')}}" required autofocus>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" name="si_password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                    <input type="password" name="si_password" id="inputPassword" class="form-control" value="" placeholder="Password" required>
                                 </div>
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <div class="checkbox mb-3">
@@ -38,7 +34,7 @@
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                                    <p><span>Forgot your password?</span></p>
+                                    <p><span class=" dp_sign_up" >Forgot your password?</span></p>
                                     <p>Don't have account yet? Sign up <span class=" dp_sign_up" >here</span></p>
                                 </div>
                             </form>

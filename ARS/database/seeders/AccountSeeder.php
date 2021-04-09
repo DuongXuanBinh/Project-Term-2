@@ -68,6 +68,7 @@ class AccountSeeder extends Seeder
                 'dob'=>'1995/10/11',
                 'sex'=>'Male',
                 'credit_number'=>'4444444444',
+                'phone'=>'0932555666',
                 'skymile'=>0,
                 'role'=>2
             ]

@@ -19,23 +19,17 @@ class PlaneSeeder extends Seeder
                 'id'=>1,
                 'name'=>'MB111',
                 'plane_type'=>1,
-                'current_position'=>'',
-                'status'=>'',
             ],
             [
                 'id'=>2,
                 'name'=>'MB112',
                 'plane_type'=>2,
-                'current_position'=>'',
-                'status'=>'',
             ],
             [
                 'id'=>3,
                 'name'=>'MB113',
                 'plane_type'=>2,
-                'current_position'=>'',
-                'status'=>'',
-            ]
+            ],
         ]);
     }
 }

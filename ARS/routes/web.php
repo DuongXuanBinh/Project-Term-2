@@ -30,9 +30,13 @@ Route::get('/promotion', function () {
 Route::prefix('/sign-in')->group(function (){
     Route::get('/',[Controllers\AccountController::class,'index']);
     Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
+    Route::get('/profile',[Controllers\AccountController::class,'showProfile']);
+    Route::get('/sign-out',[Controllers\AccountController::class,'signOut']);
+    Route::post('/update',[Controllers\AccountController::class,'updateProfile']);
 });
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
     Route::get('/create',[Controllers\BookingController::class,'create']);
+    Route::post('/register',[Controllers\AccountController::class,'signUp']);
 });
 Route::get('/',[Controllers\HomeController::class,'index']);
