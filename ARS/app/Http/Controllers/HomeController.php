@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function homeIndex(){
         return view('index');
+    }
+    public function flightIndex(){
+        return view('Flight status');
     }
 }

@@ -137,7 +137,7 @@
 							<h2>Student privileges</h2>
 							<p >With our student privileges, travel smart and enjoy exclusive perks as part of your academic journey.
 								Pack everything you will miss from home with 40kg of checked baggage.</p>
-							<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+							<p><a class="btn btn-secondary" href="/promotion">View details &raquo;</a></p>
 						</div>
 
 						<div class="carousel_item">
@@ -145,7 +145,7 @@
 							<h2>Other KrisFlyer</h2>
 							<p  >From now till 31 March 2021, apply for an American Express Singapore Airlines Credit Card and receive an exclusive 10,000
 								KrisFlyer miles* upon the first spend on your card. </p>
-							<p class=""><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+							<p class=""><a class="btn btn-secondary" href="/promotion">View details &raquo;</a></p>
 						</div>
 
 						<div class=" carousel_item">
@@ -153,7 +153,7 @@
 							<h2>Car rentals</h2>
 							<p >Get where you need to go in greater convenience, and at a fantastic price. Rentalcars.com works with all major international
 								car rental suppliers at over 50,000 rental locations worldwide.</p>
-							<p class=""><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+							<p class=""><a class="btn btn-secondary" href="/promotion">View details &raquo;</a></p>
 						</div>
 
 						<div class="carousel_item">
@@ -161,7 +161,7 @@
 							<h2>Hotels</h2>
 							<p  > Agoda connects you to great accommodations all over the world at equally great prices. With Agoda, you can easily make an
 								informed choice before you hit “book”.</p>
-							<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+							<p><a class="btn btn-secondary" href="/promotion">View details &raquo;</a></p>
 						</div>
 
 						<div class=" carousel_item">
@@ -169,7 +169,7 @@
 							<h2>Travel add-ons</h2>
 							<p  >Tradewinds is the tour-operating and travel services arm of Singapore Airlines and SilkAir, tours.
 								Committed to the same quality and service standards of the airline.</p>
-							<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+							<p><a class="btn btn-secondary" href="/promotion">View details &raquo;</a></p>
 						</div>
 					</div>
 			</div>
@@ -199,7 +199,7 @@
 			<div class="row">
 
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="front/images/1542686134580-9cf063d92ec3f0645fd3ef224ed6dd6e.jpeg" class="fh5co-card-item image-popup">
+					<a href="/destination" class="fh5co-card-item">
 						<figure>
 							<div class="overlay"><i class="ti-plus"></i></div>
 							<img src="front/images/1542686134580-9cf063d92ec3f0645fd3ef224ed6dd6e.jpeg" alt="Image" class="img-responsive">
@@ -212,7 +212,7 @@
 					</a>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="front/images/19A03054.jpg" class="fh5co-card-item image-popup">
+					<a href="/destination" class="fh5co-card-item">
 						<figure>
 							<div class="overlay"><i class="ti-plus"></i></div>
 							<img src="front/images/19A03054.jpg" alt="Image" class="img-responsive">
@@ -225,7 +225,7 @@
 					</a>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="front/images/dien-bien-va-7-diem-check-in-nhat-dinh-phai-ghe-tham-1.jpg" class="fh5co-card-item image-popup">
+					<a href="/destination" class="fh5co-card-item">
 						<figure>
 							<div class="overlay"><i class="ti-plus"></i></div>
 							<img src="front/images/dien-bien-va-7-diem-check-in-nhat-dinh-phai-ghe-tham-1.jpg" alt="Image" class="img-responsive">
@@ -245,7 +245,7 @@
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-						<h2><a href="">Our Policy</a></h2>
+						<h2><a href="/policy">Our Policy</a></h2>
 						<!--						<p  >An airline policy is a series of terms and conditions created by an airline. These policies outline an airline's approach to key concepts like baggage, flight changes, seating, and more.</p>-->
 					</div>
 				</div>
@@ -255,7 +255,7 @@
 							<!--						<span class="icon">-->
 							<!--							<i>1</i>-->
 							<!--						</span>-->
-							<h3><a href="">Cancellation - Refund</a> </h3>
+							<h3><a href="/policy">Cancellation - Refund</a> </h3>
 							<p class="text-justify" > You may cancel your Helvetic Airline ticket online for a refund if you’ve purchased a ticket directly from Singapore Airlines, on a refundable fare. </p>
 						</div>
 					</div>
@@ -264,7 +264,7 @@
 							<!--						<span class="icon">-->
 							<!--							<i>2</i>-->
 							<!--						</span>-->
-							<h3><a href="">Service on board</a></h3>
+							<h3><a href="/policy">Service on board</a></h3>
 							<p class="text-justify" >The Helvetic Airways crew is waiting for you with customary Swiss hospitality. A high-quality snack or meal (depending on the time of day & flight) is offered to passengers on all routes.</p>
 						</div>
 					</div>
@@ -273,7 +273,7 @@
 							<!--						<span class="icon">-->
 							<!--							<i>3</i>-->
 							<!--						</span>-->
-							<h3><a href="">Lost baggage</a></h3>
+							<h3><a href="/policy">Lost baggage</a></h3>
 							<p class="text-justify" >Should one or several pieces of individual items or the entire content of your baggage be missing, please notify the Helvetic Airways handling agents of this immediately. </p>
 						</div>
 					</div>

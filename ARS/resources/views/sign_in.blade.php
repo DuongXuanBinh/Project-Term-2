@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-md-12 mt-text">
                     <h1 class="su-text">Sign Up</h1>
-                    <form class="form-signup" method="post">
+                    <form action="" class="form-signup" method="post">
                         @csrf
                         <label for="su-firstname" class="">First Name</label>
                         <label for="su-lastname" class="">Last Name</label><br>
