@@ -156,7 +156,7 @@ $(document).ready(function() {
     $(".profile_form .save,.cancel").css('display','none');
 
     if (!$(".form-signup input:checkbox").is(':checked')){
-        $(".btn_sign_up").prop('disabled', true);
+        $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
     }
 
 
@@ -188,10 +188,10 @@ $(".dp_sign_up").on(
 $(".form-signup input:checkbox").on(
     'change',function () {
         if (this.checked){
-            $(".btn_sign_up").prop('disabled', false);
+            $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('cursor','pointer');
         }
         if (!this.checked){
-            $(".btn_sign_up").prop('disabled', true);
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
         }
     }
 )
@@ -344,6 +344,27 @@ $(document).ready(function (){
         $("#place_to").val($(this).text());
         $("#place_to_list").fadeOut();
     });
+    $('.form-signup svg').css('display','none');
+
+    // ------------
+    // $("#su-phonenumber").blur(function(){
+    //     var query = $(this).val();
+    //     var name = $(this).attr('name');
+    //     if(query !== ''&& name!==''){
+    //         var _token = $('input[name="_token"]').val();
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/sign-in/register",
+    //             data: {query: query, name: name,_token:_token},
+    //             success: function (data) {
+    //                 if(data)
+    //                 $("svg.su-phonenumber").css('display', 'inline');
+    //                 else
+    //                 $(this).css('border-color', 'red');
+    //             }
+    //         });
+    //     }
+    // })
 });
 
 //validate sum passenger
@@ -395,4 +416,9 @@ $('input[name="travel_class"]').on(
             $('#travel_dropdown').text('Business Class')
         }
     }
-)
+);
+
+
+
+
+

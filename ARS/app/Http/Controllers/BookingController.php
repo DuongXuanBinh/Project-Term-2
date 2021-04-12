@@ -30,7 +30,7 @@ class BookingController extends Controller
         }
     }
 
-    public function creat(Request $request)
+    public function create(Request $request)
     {
         $origin_airport = Airport::where('name', '=', $request->place_from)->first();
         $arrival_airport = Airport::where('name', '=', $request->place_to)->first();

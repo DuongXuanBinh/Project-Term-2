@@ -20,7 +20,7 @@ class Flight extends Model
     }
 
     public function flight_statuses(){
-        return $this->belongsTo(Plane::class,'statusid','id');
+        return $this->belongsTo(Flight_status::class,'statusid','id');
     }
     public function ticket_details(){
         return $this->hasMany(Ticket_details::class,'flight_id','id');

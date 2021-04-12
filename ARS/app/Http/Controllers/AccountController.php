@@ -65,7 +65,7 @@ class AccountController extends Controller
         $messages = [
             "required" => "The :attribute field is required",
             "unique" => "The :attribute is already exists",
-            "phone.regex" => "Phone number must be 10 digits and start with 0",
+            "phone.regex" => "Phone number must be 10 digits and start by 0",
             "credit_card.regex" => "Credit card number must be 10 digits",
             "sex.in" => 'Sex must be male or female'
         ];
@@ -80,6 +80,7 @@ class AccountController extends Controller
             'age' => 'required',
         ], $messages);
         if ($validate->fails()) {
+
             return back()->withInput()->withErrors($validate);
         } else {
             $account->firstname = $request->first_name;
@@ -119,7 +120,13 @@ class AccountController extends Controller
         }
     }
 
-    public function signUp(Request $request){
-
-    }
+//    public function signUp(Request $request){
+//        $query = $request->get('query');
+//        $name = $request->get('name');
+//
+//        $data = Account::where($name,strtolower($query))->get();
+//
+//        return $data;
+//
+//    }
 }

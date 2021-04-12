@@ -65,7 +65,6 @@
                             <h5 style="color: #0ac5a9;font-style: italic;font-size: 14px">{{session('success')}}</h5>
                         @endif
                         @if($errors->any())
-                                @yield('validate')
                             <h5 style="color: red;font-style: italic;font-size: 14px">FAILED!</h5>
                         @foreach($errors->all() as $error)
                             <h5 style="color: red;font-style: italic;font-size: 14px">{{$error}}</h5>
