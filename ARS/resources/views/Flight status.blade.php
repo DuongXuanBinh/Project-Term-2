@@ -29,6 +29,7 @@
                             $ori_airport = session('ori_airport');
                             $arr_airport = session('arr_airport');
                             $status = session('status');
+                            $hide = session('hide');
                             ?>
                         <div class="result-form mt-text animate-box" data-animate-effect="fadeInUp">
                             <div class="row col-md-12">
@@ -56,6 +57,26 @@
                             </table>
                             </div>
                         </div>
+                        @elseif(session('flight')==null && session('hide'))
+                            <div class="result-form mt-text animate-box" data-animate-effect="fadeInUp">
+                                <div class="row col-md-12">
+                                    <table>
+                                        <tr>
+                                            <th>Flight Number</th>
+                                            <th>Origin</th>
+                                            <th>Desination</th>
+                                            <th>Departure Date</th>
+                                            <th>Departure time</th>
+                                            <th>Arivale Date</th>
+                                            <th>Arrival time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">NO FLIGHT FOUND</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>

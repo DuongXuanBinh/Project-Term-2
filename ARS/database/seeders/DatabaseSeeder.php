@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'sex'=>'Male',
                 'credit_number'=>'1111111111',
                 'phone'=>'0947118116',
-                'sky_miles'=>3663,
+                'sky_miles'=>4884,
                 'role'=>1
             ],
             [
@@ -112,22 +112,43 @@ class DatabaseSeeder extends Seeder
         DB::table('customers')->insert([
             [
                 'id'=>10000101,
-                'firstname'=>'Duong',
-                'lastname'=>'Thuy Ngan',
+                'firstname'=>'Duong Thuy',
+                'lastname'=>'Ngan',
                 'dob'=>'1990/8/1',
                 'account_id'=>1
             ],
             [
+                'id'=>10000104,
+                'firstname'=>'Duong Xuan',
+                'lastname'=>'Binh',
+                'dob'=>'1995/11/10',
+                'account_id'=>1
+            ],
+            [
+                'id'=>10000105,
+                'firstname'=>'Nguyen Tien',
+                'lastname'=>'Dat',
+                'dob'=>'1996/5/13',
+                'account_id'=>2
+            ],
+            [
+                'id'=>10000106,
+                'firstname'=>'Nguyen Thai',
+                'lastname'=>'Son',
+                'dob'=>'1996/5/13',
+                'account_id'=>3
+            ],
+            [
                 'id'=>10000102,
-                'firstname'=>'Nguyen',
-                'lastname'=>'Thi Hang',
+                'firstname'=>'Nguyen Thi Hang',
+                'lastname'=>'Hang',
                 'dob'=>'1968/9/9',
                 'account_id'=>1
             ],
             [
                 'id'=>10000103,
-                'firstname'=>'Nguyen',
-                'lastname'=>'Thuy Linh',
+                'firstname'=>'Nguyen Thuy',
+                'lastname'=>'Linh',
                 'dob'=>'1991/9/9',
                 'account_id'=>2
             ],
@@ -646,8 +667,9 @@ class DatabaseSeeder extends Seeder
                 'id'=>'SO-AKEB',
                 'account_id'=>1,
                 'order_status'=>1,
-                'total_price'=>'151.5',
-                'total_skymiles'=>3663,
+                'total_price'=>'191',
+                'total_skymiles'=>4884,
+                'flight_route'=>2
             ],
             [
                 'id'=>'SO-HTBN',
@@ -655,6 +677,7 @@ class DatabaseSeeder extends Seeder
                 'order_status'=>1,
                 'total_price'=>'90',
                 'total_skymiles'=>2442,
+                'flight_route'=>1
             ],
             [
                 'id'=>'SO-MLTK',
@@ -662,6 +685,7 @@ class DatabaseSeeder extends Seeder
                 'order_status'=>1,
                 'total_price'=>52,
                 'total_skymiles'=>1030,
+                'flight_route'=>1
             ],
         ]);
         DB::table('planes')->insert([
@@ -1180,28 +1204,35 @@ class DatabaseSeeder extends Seeder
                 'flight_id'=>'HV111',
                 'seat_location'=>'10A',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>1,
+                'passenger_id'=>10000104,
                 'price'=>50.5
             ],
             [
                 'flight_id'=>'HV111',
                 'seat_location'=>'10B',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>'10000101',
+                'passenger_id'=>10000101,
                 'price'=>50.5
             ],
             [
-                'flight_id'=>'HV111',
+                'flight_id'=>'HV112',
                 'seat_location'=>'10C',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>'10000102',
-                'price'=>50.5
+                'passenger_id'=>10000104,
+                'price'=>45
+            ],
+            [
+                'flight_id'=>'HV112',
+                'seat_location'=>'14C',
+                'order_id'=>'SO-AKEB',
+                'passenger_id'=>10000101,
+                'price'=>45
             ],
             [
                 'flight_id'=>'HV112',
                 'seat_location'=>'24C',
                 'order_id'=>'SO-HTBN',
-                'passenger_id'=>2,
+                'passenger_id'=>10000105,
                 'price'=>45
             ],
             [
@@ -1215,7 +1246,7 @@ class DatabaseSeeder extends Seeder
                 'flight_id'=>'HV113',
                 'seat_location'=>'1A',
                 'order_id'=>'SO-MLTK',
-                'passenger_id'=>3,
+                'passenger_id'=>1000106,
                 'price'=>52
             ],
 

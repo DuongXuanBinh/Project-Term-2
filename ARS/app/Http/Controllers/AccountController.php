@@ -44,6 +44,34 @@ class AccountController extends Controller
             }
         }
     }
+    public function signIn2(Request $request)
+    {
+        $messages = [
+            "si_email.required" => "Email is required",
+            "si_email.email" => "Email is not valid",
+            "si_email.exists" => "Email doesn't exists",
+            "si_password.required" => "Password is required",
+            "si_password.min" => "Password must be at least 6 characters"
+        ];
+        $validator = Validator::make($request->all(), [
+            'si_email' => 'required|email|exists:accounts,email',
+            'si_password' => 'required|min:6'
+        ], $messages);
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        } else {
+            $username = $request->get('si_email');
+            $password = $request->get('si_password');
+            $check = Account::where('email', $username)->where('password', $password)->first();
+            if ($check != null) {
+                session(['email' => $username, 'password' => $password, 'check' => $check]);
+                return redirect('/');
+            } else {
+                return redirect()->back()->withInput()->withErrors([
+                    'approve' => 'Wrong password or this account not approved yet.']);
+            }
+        }
+    }
 
     public function showProfile()
     {

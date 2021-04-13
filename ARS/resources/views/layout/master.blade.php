@@ -72,7 +72,7 @@
                                 <li><a href="/promotion">Promotion</a></li>
                             </ul>
                         </li>
-                        <li><a href="/booking">Manage Booking</a></li>
+                        <li><a href="/booking-manage">Manage Booking</a></li>
                         <li><a href="/flight-status">Flight status</a></li>
                         <li><a href="/contact">Contact</a></li>
                         @if(session('email')&&session('password'))

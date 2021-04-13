@@ -35,6 +35,9 @@ Route::prefix('/')->group(function(){
     Route::get('/',[Controllers\HomeController::class,'homeIndex']);
     Route::get('/flight-status',[Controllers\HomeController::class,'flightIndex']);
     Route::get('/flight-status/search',[Controllers\HomeController::class,'flightStatus']);
+    Route::get('/booking-manage',[Controllers\HomeController::class,'bookingIndex']);
+    Route::get('/booking-manage/search',[Controllers\HomeController::class,'bookingManage']);
+    Route::get('/booking-manage/search/register',[Controllers\AccountController::class,'signIn2']);
     Route::get('/destination', function () {
         return view('destination');
     });
