@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta name="_token" content="{{ csrf_token() }}">
     <base href="{{asset('/')}}">
     <meta name="_token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
