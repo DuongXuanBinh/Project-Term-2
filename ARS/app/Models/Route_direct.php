@@ -10,7 +10,7 @@ class Route_direct extends Model
     use HasFactory;
 
     public function airports_origin(){
-        return $this->belongsTo(Airport::class,'origin_airportid');
+        return $this->belongsTo(Airport::class,'origin_airportid','id');
     }
     public function airports_arrival(){
         return $this->belongsTo(Airport::class,'arrival_airportid','id');

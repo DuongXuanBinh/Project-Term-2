@@ -18,9 +18,15 @@ class HomeController extends Controller
         $flightId= $request->get('flight_id');
         $date = strtotime($request->get('date'));
         $dateformat = date('Y/m/d',$date);
-        $flight = Flight::where('id',strtoupper($flightId))
-            ->whereDate('departure_date','=',$dateformat)
-            ->first();
-        return view('/flight-status',compact('flight'));
+        $flight = Flight::find(strtoupper($flightId))
+            ->whereDate('departure_date','=',$dateformat)->first();
+        $route = $flight->route_directs;
+        $ori_airport = $route->airports_origin;
+        $arr_airport = $route->airports_arrival;
+        $status = $flight->flight_statuses;
+        return redirect('/flight-status')->withInput()->with('flight',$flight)
+            ->with('ori_airport',$ori_airport)
+            ->with('arr_airport',$arr_airport)
+            ->with('status',$status);
     }
 }

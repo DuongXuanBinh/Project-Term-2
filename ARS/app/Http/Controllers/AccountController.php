@@ -49,6 +49,7 @@ class AccountController extends Controller
     {
         $id = session('check')->id;
         $user = Account::find($id);
+
         return view('profile', compact('user'));
     }
 
@@ -120,13 +121,13 @@ class AccountController extends Controller
         }
     }
 
-//    public function signUp(Request $request){
-//        $query = $request->get('query');
-//        $name = $request->get('name');
-//
-//        $data = Account::where($name,strtolower($query))->get();
-//
-//        return $data;
-//
-//    }
+    public function signUp(Request $request){
+        $query = $request->get('query');
+        $name = $request->get('name');
+
+        $data = Account::where($name,strtolower($query))->get();
+
+        return $data;
+
+    }
 }
