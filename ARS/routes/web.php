@@ -3,7 +3,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +38,6 @@ Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
     Route::get('/create',[Controllers\BookingController::class,'create']);
     Route::post('/register',[Controllers\AccountController::class,'signUp']);
+    Route::get('/other_date',[Controllers\BookingController::class,'search_other_date']);
 });
 Route::get('/',[Controllers\HomeController::class,'index']);
