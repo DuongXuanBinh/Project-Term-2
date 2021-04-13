@@ -18,6 +18,7 @@ class CreateTableClasses extends Migration
             $table->string('name');
             $table->string('hand_baggage');
             $table->string('checked_baggage');
+            $table->timestamps();
         });
     }
 

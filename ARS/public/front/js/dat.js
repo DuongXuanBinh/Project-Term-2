@@ -159,7 +159,7 @@ $(document).ready(function() {
     $(".profile_form .save,.cancel").css('display','none');
 
     if (!$(".form-signup input:checkbox").is(':checked')){
-        $(".btn_sign_up").prop('disabled', true);
+        $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
     }
 
 
@@ -191,10 +191,10 @@ $(".dp_sign_up").on(
 $(".form-signup input:checkbox").on(
     'change',function () {
         if (this.checked){
-            $(".btn_sign_up").prop('disabled', false);
+            $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('cursor','pointer');
         }
         if (!this.checked){
-            $(".btn_sign_up").prop('disabled', true);
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
         }
     }
 )
@@ -347,7 +347,7 @@ $(document).ready(function (){
         $("#place_to").val($(this).text());
         $("#place_to_list").fadeOut();
     });
-
+    $('.form-signup svg').css('display','none');
 
 });
 
@@ -401,6 +401,7 @@ $('input[name="travel_class"]').on(
         }
     }
 );
+
 
 $('.btn_other_outbound div button.date-button').on('click',function (){
     var other_outbound =  $(this).siblings('input[name="other_day_outbound"]').val();
@@ -474,3 +475,29 @@ $('.btn_other_return_transit div button.date-button').on('click',function (){
 });
 
 $.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
+// ------------
+$(document).ready(function (){
+    $("#su-phonenumber").blur(function(){
+    var query = $(this).val();
+    var name = $(this).attr('name');
+    if(query !== ''&& name!==''){
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            type: "POST",
+            url: "/sign-in/register",
+            data: {query: query, name: name,_token:_token},
+            success: function (data) {
+                if(data)
+                $("svg.su-phonenumber").css('display', 'inline');
+                else
+                $(this).css('border-color', 'red');
+            }
+        });
+    }
+})
+})
+
+
+
+
+

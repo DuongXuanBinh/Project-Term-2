@@ -2182,8 +2182,11 @@ h1.su-text{
   margin-bottom: 10px;
   display: inline-block;
 }
-.form-signup button:hover{
+.form-signup button.btn-secondary:hover{
   color: unset;
+}
+.form-signup button.btn-primary:hover{
+    color: white;
 }
 #su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
   width: 48%;
