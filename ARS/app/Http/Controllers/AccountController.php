@@ -44,7 +44,7 @@ class AccountController extends Controller
                     case 'manage':
                         return redirect('/booking-manage');
                     case 'choose_flight':
-                        return redirect('/booking/create');
+                        return redirect('/booking/show_flights');
                 }
             } else {
                 return redirect()->back()->withInput()->withErrors([
