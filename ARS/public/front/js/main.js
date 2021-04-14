@@ -304,8 +304,6 @@
 
 $("#date-flight").datepicker({
 	todayHighlight:true,
-	minDate:0,
-	maxDate:"+21d",
 });
 $("#new-date").datepicker({
 	todayHighlight:true,
