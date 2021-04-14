@@ -47,134 +47,83 @@
                 </svg>Back</a>
             </div>
         </div>
-        <form action="" method="get" >
-        <div class="row col-md-12" >
-            <div class="btn-group group1 btn_other_outbound" style="display: flex" role="group" aria-label="Basic example">
-                <div>
-                    <input  type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -2)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -1)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))}}">
-                    <button type="button" class="date-button btn btn-secondary active">{{Carbon\Carbon::parse(session('date_outbound'))->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +1)}}">
-                    <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_outbound'))->day+1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +2)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day+2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
-
-                </div>
+            <form>
+        <div class="row col-md-12">
+            <div class="btn-group group1" role="group" aria-label="Basic example">
+                <button type="button" class="date-button btn btn-secondary active">21/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">22/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">23/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">24/2 <br>(From VND111)</button>
             </div>
         </div>
-        <!--            FLIGHTS OUTBOUND-->
-    <div class="outbound_flights">
-        @foreach(session('outbound_details') as $outbound_detail)
-             <div class="row col-md-12 flight-detail">
+        <!--            cac chuyen bay-->
+
+        <div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
-                    <input type="radio" name="flight_outbound" >
+                    <input type="radio" id="b">
                 </div>
 
             <div class="col-md-11">
                 <table>
                     <tr>
-                        <td rowspan="2">{{$outbound_detail->id}}</td>
-                        <td>{{session('place_from')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('place_to')}}</td>
+                        <td rowspan="2">HV111</td>
+                        <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
                         <td>Date:</td>
-                        <td>{{Carbon\Carbon::parse($outbound_detail->departure_date)->format('d/m/Y')}}</td>
+                        <td>12/12/2012</td>
                         <td>Departure:</td>
-                        <td>{{Carbon\Carbon::parse($outbound_detail->departure_date)->format('H:i')}}</td>
-                        <td rowspan="2">USD {{$outbound_detail->price}}</td>
+                        <td>17:50</td>
+                        <td rowspan="2">VND 1000</td>
                     </tr>
                     <tr>
-                        <td>{{$outbound_detail->seats_left}} seat(s) left</td>
+                        <td>seat(s) left</td>
                         <td>Duration: </td>
-                        <td>{{$outbound_detail->duration}} hour(s)</td>
+                        <td>2:30 hour(s)</td>
                         <td>Arrival:</td>
-                        <td>{{Carbon\Carbon::parse($outbound_detail->arrival_date)->format('H:i')}}</td>
+                        <td>18:20</td>
                     </tr>
                 </table>
             </div>
         </div>
-        @endforeach
-    </div>
-                <!--     FLIGHTS INBOUND-->
-        @if(request('date_return'))
+
+        <!--        IN-->
         <div class="row col-md-12">
             <h3>Inbound</h3>
         </div>
         <div class="row col-md-12">
-            <div class="btn-group group1 btn_other_return" style="display: flex" role="group" aria-label="Basic example">
-                <div>
-                    <input  type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -2)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -1)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))}}">
-                    <button type="button" class="date-button btn btn-secondary active">{{Carbon\Carbon::parse(session('date_return'))->day}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +1)}}">
-                    <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_return'))->day+1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
-
-                </div>
-                <div>
-                    <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +2)}}">
-                    <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day+2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
-
-                </div>
+            <div class="btn-group group2" role="group" aria-label="Basic example">
+                <button type="button" class="date-button btn btn-secondary active">21/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">22/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">23/2 <br>(From VND111)</button>
+                <button type="button" class="date-button btn btn-secondary">24/2 <br>(From VND111)</button>
             </div>
         </div>
         <!--            cac chuyen bay-->
-         <div class="return_flights">
-             @foreach(session('return_details') as $return_detail)
-                 <div class="row col-md-12 flight-detail">
-                     <div class="col-md-1">
-                         <input type="radio" name="flight_return" >
-                     </div>
+        <div class="row col-md-12 flight-detail">
+                <div class="col-md-1">
+                    <input type="radio" id="a">
+                </div>
 
-                     <div class="col-md-11">
-                         <table>
-                             <tr>
-                                 <td rowspan="2">{{$return_detail->id}}</td>
-                                 <td>{{request('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_from')}}</td>
-                                 <td>Date:</td>
-                                 <td>{{Carbon\Carbon::parse($return_detail->departure_date)->format('d/m/Y')}}</td>
-                                 <td>Departure:</td>
-                                 <td>{{Carbon\Carbon::parse($return_detail->departure_date)->format('H:i')}}</td>
-                                 <td rowspan="2">USD {{$return_detail->price}}</td>
-                             </tr>
-                             <tr>
-                                 <td>{{$return_detail->seats_left}} seat(s) left</td>
-                                 <td>Duration: </td>
-                                 <td>{{$return_detail->duration}} hour(s)</td>
-                                 <td>Arrival:</td>
-                                 <td>{{Carbon\Carbon::parse($return_detail->arrival_date)->format('H:i')}}</td>
-                             </tr>
-                         </table>
-                     </div>
-                 </div>
-             @endforeach
-         </div>
-
-        @endif
-                {{--END FLIGHT INBOUND--}}
-
+            <div class="col-md-11">
+                <table>
+                    <tr>
+                        <td rowspan="2">HV111</td>
+                        <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
+                        <td>Date:</td>
+                        <td>12/12/2012</td>
+                        <td>Departure:</td>
+                        <td>17:50</td>
+                        <td rowspan="2">VND 1000</td>
+                    </tr>
+                    <tr>
+                        <td>seat(s) left</td>
+                        <td>Duration: </td>
+                        <td>2:30 hour(s)</td>
+                        <td>Arrival:</td>
+                        <td>18:20</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
@@ -184,6 +133,7 @@
 
                 </div>
                 <br>
-        </form>
+            </form>
+        </div>
     </div>
 @endsection

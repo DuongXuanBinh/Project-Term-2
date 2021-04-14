@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\Input;
 
 class AccountController extends Controller
 {
+
     public function index()
     {
         return view('sign_in');
@@ -37,47 +38,24 @@ class AccountController extends Controller
             $check = Account::where('email', $username)->where('password', $password)->first();
             if ($check != null) {
                 session(['email' => $username, 'password' => $password, 'check' => $check]);
-                return redirect('/');
+                switch (session('page')) {
+                    case 'home':
+                        return redirect('/');
+                    case 'manage':
+                        return redirect('/booking-manage');
+                    case 'choose_flight':
+                        return redirect('/booking/create');
+                }
             } else {
                 return redirect()->back()->withInput()->withErrors([
                     'approve' => 'Wrong password or this account not approved yet.']);
             }
         }
     }
-    public function signIn2(Request $request)
-    {
-        $messages = [
-            "si_email.required" => "Email is required",
-            "si_email.email" => "Email is not valid",
-            "si_email.exists" => "Email doesn't exists",
-            "si_password.required" => "Password is required",
-            "si_password.min" => "Password must be at least 6 characters"
-        ];
-        $validator = Validator::make($request->all(), [
-            'si_email' => 'required|email|exists:accounts,email',
-            'si_password' => 'required|min:6'
-        ], $messages);
-        if ($validator->fails()) {
-            return back()->withInput()->withErrors($validator);
-        } else {
-            $username = $request->get('si_email');
-            $password = $request->get('si_password');
-            $check = Account::where('email', $username)->where('password', $password)->first();
-            if ($check != null) {
-                session(['email' => $username, 'password' => $password, 'check' => $check]);
-                return redirect('/');
-            } else {
-                return redirect()->back()->withInput()->withErrors([
-                    'approve' => 'Wrong password or this account not approved yet.']);
-            }
-        }
-    }
-
     public function showProfile()
     {
         $id = session('check')->id;
         $user = Account::find($id);
-
         return view('profile', compact('user'));
     }
 
@@ -121,6 +99,7 @@ class AccountController extends Controller
             $account->sex = $request->sex;
             $account->dob = $request->age;
             $account->save();
+
            return redirect()->back()->with('success','Your update has been recorded!');
         }
     }

@@ -58,13 +58,33 @@ class TicketDetailSeeder extends Seeder
                 'price'=>45
             ],
             [
-                'flight_id'=>'HV113',
+                'flight_id'=>'HV130',
                 'seat_location'=>'1A',
                 'order_id'=>'SO-MLTK',
-                'passenger_id'=>1000106,
-                'price'=>52
+                'passenger_id'=>10000106,
+                'price'=>57
             ],
-
+            [
+                'flight_id'=>'HV138',
+                'seat_location'=>'1B',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000106,
+                'price'=>79
+            ],
+            [
+                'flight_id'=>'HV130',
+                'seat_location'=>'2A',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000102,
+                'price'=>57
+            ],
+            [
+                'flight_id'=>'HV138',
+                'seat_location'=>'2B',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000102,
+                'price'=>79
+            ],
         ]);
     }
 }

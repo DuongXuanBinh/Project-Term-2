@@ -30,7 +30,6 @@ Route::prefix('/profile')->group(function(){
 Route::prefix('booking')->group(function (){
     Route::get('/search',[Controllers\BookingController::class,'search_place'])->name('search');
     Route::get('/create',[Controllers\BookingController::class,'create']);
-    Route::get('/other_date',[Controllers\BookingController::class,'search_other_date']);
 });
 Route::prefix('/')->group(function(){
     Route::get('/',[Controllers\HomeController::class,'homeIndex']);

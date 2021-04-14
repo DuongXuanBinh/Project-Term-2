@@ -35,8 +35,8 @@ class OrderSeeder extends Seeder
                 'id'=>'SO-MLTK',
                 'account_id'=>3,
                 'order_status'=>1,
-                'total_price'=>52,
-                'total_skymiles'=>1030,
+                'total_price'=>272,
+                'total_skymiles'=>3020,
                 'flight_route'=>1
             ],
         ]);
