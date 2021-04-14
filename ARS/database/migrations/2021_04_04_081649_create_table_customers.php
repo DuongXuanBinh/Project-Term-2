@@ -19,7 +19,6 @@ class CreateTableCustomers extends Migration
             $table->string('lastname');
             $table->date('dob');
             $table->unsignedInteger('account_id');
-            $table->timestamps();
         });
     }
 

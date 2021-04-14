@@ -22,6 +22,7 @@ var todate = new Date(),
 
 })(jQuery);
 // function show_date_picker(){
+
 $( "#datepicker_outbound" ).datepicker({
     onSelect: function(dateText) {
         var date = $(this).datepicker('getDate'),
@@ -37,6 +38,8 @@ $( "#datepicker_outbound" ).datepicker({
         // $( "#datepicker" ).datepicker( "destroy");
         // $( "#datepicker" ).datepicker("hide");
         $(".overlay_datepicker").removeClass("active");
+        $("#datepicker_return").datepicker('option', 'minDate', date );
+
     },
     onClose: function(){
         $(".overlay_datepicker").removeClass("active");
@@ -156,7 +159,7 @@ $(document).ready(function() {
     $(".profile_form .save,.cancel").css('display','none');
 
     if (!$(".form-signup input:checkbox").is(':checked')){
-        $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
+        $(".btn_sign_up").prop('disabled', true);
     }
 
 
@@ -188,10 +191,10 @@ $(".dp_sign_up").on(
 $(".form-signup input:checkbox").on(
     'change',function () {
         if (this.checked){
-            $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('cursor','pointer');
+            $(".btn_sign_up").prop('disabled', false);
         }
         if (!this.checked){
-            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
+            $(".btn_sign_up").prop('disabled', true);
         }
     }
 )
@@ -344,7 +347,7 @@ $(document).ready(function (){
         $("#place_to").val($(this).text());
         $("#place_to_list").fadeOut();
     });
-    $('.form-signup svg').css('display','none');
+
 
 });
 
@@ -398,29 +401,86 @@ $('input[name="travel_class"]').on(
         }
     }
 );
-// ------------
-$(document).ready(function (){
-    $("#su-phonenumber").blur(function(){
-    var query = $(this).val();
-    var name = $(this).attr('name');
-    if(query !== ''&& name!==''){
-        var _token = $('input[name="_token"]').val();
-        $.ajax({
-            type: "POST",
-            url: "/sign-in/register",
-            data: {query: query, name: name,_token:_token},
-            success: function (data) {
-                if(data)
-                $("svg.su-phonenumber").css('display', 'inline');
-                else
-                $(this).css('border-color', 'red');
-            }
-        });
-    }
-})
-})
+
+$('.btn_other_outbound div button.date-button').on('click',function (){
+    var other_outbound =  $(this).siblings('input[name="other_day_outbound"]').val();
+
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_outbound: other_outbound},
+        success: function (data){
+            $('.outbound_flights').empty();
+            $('.outbound_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
 
 
+$('.btn_other_return div button.date-button').on('click',function (){
+    var other_return =  $(this).siblings('input[name="other_day_return"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_return: other_return},
+        success: function (data){
+            $('.return_flights').empty();
+            $('.return_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
 
+
+$('.btn_other_outbound_transit div button.date-button').on('click',function (){
+    var other_outbound_transit =  $(this).siblings('input[name="other_day_outbound"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_outbound_transit: other_outbound_transit},
+        success: function (data){
+            $('.outbound_flights').empty();
+            $('.outbound_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+$('.btn_other_return_transit div button.date-button').on('click',function (){
+    var other_return_transit =  $(this).siblings('input[name="other_day_return"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_return_transit: other_return_transit},
+        success: function (data){
+            $('.return_flights').empty();
+            $('.return_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+$.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
+
+$( document ).ajaxStop(function() {
+
+    $(".flight-detail").on('click',function (){
+        $(this).find('input:radio').prop('checked',true);
+    });
+
+});
 
 

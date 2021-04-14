@@ -12,15 +12,15 @@ class Flight extends Model
     public function ticket_prices(){
         return $this->hasMany(Ticket_price::class,'flight_id','id');
     }
-    public function plane(){
+    public function planes(){
         return $this->belongsTo(Plane::class,'planeid','id');
     }
-    public function route_direct(){
+    public function route_directs(){
         return $this->belongsTo(Route_direct::class,'route_id','id');
     }
 
-    public function flight_status(){
-        return $this->belongsTo(Flight_status::class,'statusid','id');
+    public function flight_statuses(){
+        return $this->belongsTo(Plane::class,'statusid','id');
     }
     public function ticket_details(){
         return $this->hasMany(Ticket_details::class,'flight_id','id');
