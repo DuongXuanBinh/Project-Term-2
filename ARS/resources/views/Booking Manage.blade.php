@@ -225,13 +225,18 @@
                                                                 <th colspan="2">Seat ID</th>
                                                             </tr>
                                                             @for($i = 0;$i<count($passengers);$i++)
-                                                            <tr>
-                                                                <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
-                                                                @for($j=$i*2;$j<=2;$j++)
-                                                                    <td>{{$seats[$i]}}</td>
-                                                                @endfor
-
-                                                            </tr>
+                                                                <tr>
+                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    @if($i=0)
+                                                                        @for($j=$i;$j<$i+2;$j++)
+                                                                            <td>{{$seats[$j]}}</td>
+                                                                        @endfor
+                                                                    @elseif($i>0)
+                                                                        @for($j=$i+1;$j<$i+3;$j++)
+                                                                            <td>{{$seats[$j]}}</td>
+                                                                        @endfor
+                                                                    @endif
+                                                                </tr>
                                                             @endfor
                                                             <tr>
                                                                 <td colspan="2" style="padding-top: 10px;height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
