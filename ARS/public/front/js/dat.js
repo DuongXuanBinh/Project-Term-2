@@ -474,3 +474,13 @@ $('.btn_other_return_transit div button.date-button').on('click',function (){
 });
 
 $.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
+
+$( document ).ajaxStop(function() {
+
+    $(".flight-detail").on('click',function (){
+        $(this).find('input:radio').prop('checked',true);
+    });
+
+});
+
+

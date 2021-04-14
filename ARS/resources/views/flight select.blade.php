@@ -47,7 +47,7 @@
                 </svg>Back</a>
             </div>
         </div>
-        <form action="" method="get" >
+        <form action="./booking/choose_flight" method="get" >
         <div class="row col-md-12" >
             <div class="btn-group group1 btn_other_outbound" style="display: flex" role="group" aria-label="Basic example">
                 <div>
@@ -81,7 +81,7 @@
         @foreach(session('outbound_details') as $outbound_detail)
              <div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
-                    <input type="radio" name="flight_outbound" >
+                    <input type="radio" name="flight_outbound" value="{{$outbound_detail->id}}"  >
                 </div>
 
             <div class="col-md-11">
@@ -145,7 +145,7 @@
              @foreach(session('return_details') as $return_detail)
                  <div class="row col-md-12 flight-detail">
                      <div class="col-md-1">
-                         <input type="radio" name="flight_return" >
+                         <input type="radio" name="flight_return" value="{{$return_detail->id}}" >
                      </div>
 
                      <div class="col-md-11">
@@ -178,8 +178,8 @@
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button">Back</button>
-                        <button class="btn btn-primary" type="submit">Continue</button>
+                        <button class="btn btn-secondary" type="button"><a href="/ARS/public">Back</a></button>
+                        <button class="btn btn-primary" type="submit" >Continue</button>
                     </div>
 
                 </div>

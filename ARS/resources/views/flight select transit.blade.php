@@ -46,7 +46,7 @@
                     </svg>Back</a>
                 </div>
             </div>
-            <form>
+            <form action="./booking/choose_flight" method="get">
                 <div class="row col-md-12">
                     <div class="btn-group group1 btn_other_outbound_transit" style="display: flex" role="group" aria-label="Basic example">
                         <div>
@@ -80,7 +80,8 @@
             @for($i = 0; $i < count(session('from_transit_outbound_details')) ; $i++)
                 <div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
-                        <input type="radio" name="flights_outbound" style="height: 70px;cursor: pointer">
+                        <input type="radio" name="flight_outbound_from_transit" value="{{session('from_transit_outbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                        <input type="hidden" name="flight_outbound_transit_to" value="{{session('transit_to_outbound_details')[$i]->id}}" >
                     </div>
                     <div class="col-md-11">
                         <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
@@ -162,7 +163,8 @@
 
                     <div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
-                        <input type="radio" name="flights_return" style="height: 70px;cursor: pointer">
+                        <input type="radio" name="flight_return_from_transit" value="{{session('from_transit_inbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                        <input type="hidden" name="flight_return_transit_to" value="{{session('transit_to_inbound_details')[$i]->id}}">
                     </div>
 
                     <div class="col-md-11">
@@ -210,8 +212,8 @@
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button">Back</button>
-                        <button class="btn btn-primary" type="submit">Continue</button>
+                        <button class="btn btn-secondary" type="button"><a href="/ARS/public">Back</a></button>
+                        <button class="btn btn-primary" type="submit" >Continue</button>
                     </div>
 
                 </div>

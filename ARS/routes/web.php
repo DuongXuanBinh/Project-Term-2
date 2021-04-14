@@ -39,5 +39,8 @@ Route::prefix('booking')->group(function (){
     Route::get('/create',[Controllers\BookingController::class,'create']);
     Route::post('/register',[Controllers\AccountController::class,'signUp']);
     Route::get('/other_date',[Controllers\BookingController::class,'search_other_date']);
+    Route::get('/choose_flight',[Controllers\BookingController::class,'choose_flight']);
+    Route::get('/passenger_index',[Controllers\BookingController::class,'passenger_index']);
+    Route::post('/create_passengers',[Controllers\BookingController::class,'create_passengers']);
 });
 Route::get('/',[Controllers\HomeController::class,'index']);
