@@ -42,127 +42,178 @@
                 </div>
                 <div class="col-md-2" STYLE="text-align: right">
                     <a href="" style="text-align: right; color: black"><svg class="svg-icon back-icon" viewBox="0 0 20 20">
-                        <path style="fill: black" fill="none" d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"></path>
-                    </svg>Back</a>
+                            <path style="fill: black" fill="none" d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"></path>
+                        </svg>Back</a>
                 </div>
             </div>
-            <form>
+            <form action="./booking/choose_flight" method="get">
                 <div class="row col-md-12">
-                    <div class="btn-group group1" role="group" aria-label="Basic example">
-                        <button type="button" class="date-button btn btn-secondary active">21/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">22/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">23/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">24/2 <br>(From VND111)</button>
+                    <div class="btn-group group1 btn_other_outbound_transit" style="display: flex" role="group" aria-label="Basic example">
+                        <div>
+                            <input  type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -2)}}">
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+                        </div>
+                        <div>
+                            <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -1)}}">
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+
+                        </div>
+                        <div>
+                            <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))}}">
+                            <button type="button" class="date-button btn btn-secondary active">{{Carbon\Carbon::parse(session('date_outbound'))->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+
+                        </div>
+                        <div>
+                            <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +1)}}">
+                            <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_outbound'))->day+1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+
+                        </div>
+                        <div>
+                            <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +2)}}">
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day+2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+
+                        </div>
                     </div>
                 </div>
                 <!--            cac chuyen bay-->
-
-                <div class="row col-md-12 flight-detail" style="height: 130px">
-                    <div class="col-md-1">
-                        <input type="radio" id="b" style="height: 70px;cursor: pointer">
-                    </div>
-                    <div class="col-md-11">
-                        <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
-                            <tr>
-                                <td rowspan="2">HV111</td>
-                                <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
-                                <td>Date:</td>
-                                <td>12/12/2012</td>
-                                <td>Departure:</td>
-                                <td>17:50</td>
-                                <td rowspan="2">VND 1000</td>
-                            </tr>
-                            <tr>
-                                <td>seat(s) left</td>
-                                <td>Duration: </td>
-                                <td>2:30 hour(s)</td>
-                                <td>Arrival:</td>
-                                <td>18:20</td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr>
-                                <td rowspan="2">HV111</td>
-                                <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
-                                <td>Date:</td>
-                                <td>12/12/2012</td>
-                                <td>Departure:</td>
-                                <td>17:50</td>
-                                <td rowspan="2">VND 1000</td>
-                            </tr>
-                            <tr>
-                                <td>seat(s) left</td>
-                                <td>Duration: </td>
-                                <td>2:30 hour(s)</td>
-                                <td>Arrival:</td>
-                                <td>18:20</td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="outbound_flights" >
+                    @for($i = 0; $i < count(session('from_transit_outbound_details')) ; $i++)
+                        <div class="row col-md-12 flight-detail" style="height: 130px">
+                            <div class="col-md-1">
+                                <input type="radio" name="flight_outbound_from_transit" value="{{session('from_transit_outbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                                <input type="hidden" name="flight_outbound_transit_to" value="{{session('transit_to_outbound_details')[$i]->id}}" >
+                            </div>
+                            <div class="col-md-11">
+                                <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
+                                    <tr>
+                                        <td rowspan="2">{{session('from_transit_outbound_details')[$i]->id}}</td>
+                                        <td style="    width: 280px;">{{request('place_from')}} &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_outbound_details')[$i]->airport_transit}}</td>
+                                        <td>Date:</td>
+                                        <td>{{Carbon\Carbon::parse(session('from_transit_outbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
+                                        <td>Departure:</td>
+                                        <td>{{Carbon\Carbon::parse(session('from_transit_outbound_details')[$i]->departure_date)->format('H:i')}}</td>
+                                        <td rowspan="2">USD {{session('from_transit_outbound_details')[$i]->price}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{session('from_transit_outbound_details')[$i]->seats_left}} seat(s) left</td>
+                                        <td>Duration: </td>
+                                        <td>{{session('from_transit_outbound_details')[$i]->duration}} hour(s)</td>
+                                        <td>Arrival:</td>
+                                        <td>{{Carbon\Carbon::parse(session('from_transit_outbound_details')[$i]->arrival_date)->format('H:i')}}</td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td rowspan="2">{{session('transit_to_outbound_details')[$i]->id}}</td>
+                                        <td style="    width: 280px;">{{session('from_transit_outbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_to')}}</td>
+                                        <td>Date:</td>
+                                        <td>{{Carbon\Carbon::parse(session('transit_to_outbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
+                                        <td>Departure:</td>
+                                        <td>{{Carbon\Carbon::parse(session('transit_to_outbound_details')[$i]->departure_date)->format('H:i')}}</td>
+                                        <td rowspan="2">USD {{session('transit_to_outbound_details')[$i]->price}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{session('transit_to_outbound_details')[$i]->seats_left}} seat(s) left</td>
+                                        <td>Duration: </td>
+                                        <td>{{session('transit_to_outbound_details')[$i]->duration}} hour(s)</td>
+                                        <td>Arrival:</td>
+                                        <td>{{Carbon\Carbon::parse(session('transit_to_outbound_details')[$i]->arrival_date)->format('H:i')}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    @endfor
                 </div>
-
                 <!--        IN-->
-                <div class="row col-md-12">
-                    <h3>Inbound</h3>
-                </div>
-                <div class="row col-md-12">
-                    <div class="btn-group group2" role="group" aria-label="Basic example">
-                        <button type="button" class="date-button btn btn-secondary active">21/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">22/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">23/2 <br>(From VND111)</button>
-                        <button type="button" class="date-button btn btn-secondary">24/2 <br>(From VND111)</button>
+                @if(request('date_return'))
+                    <div class="row col-md-12">
+                        <h3>Inbound</h3>
                     </div>
-                </div>
-                <!--            cac chuyen bay-->
-                <div class="row col-md-12 flight-detail" style="height: 130px">
-                    <div class="col-md-1">
-                        <input type="radio" id="a" style="height: 70px;cursor: pointer">
-                    </div>
+                    <div class="row col-md-12">
+                        <div class="btn-group group1 btn_other_return_transit" style="display: flex" role="group" aria-label="Basic example">
+                            <div>
+                                <input  type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -2)}}">
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+                            </div>
+                            <div>
+                                <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -1)}}">
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
 
-                    <div class="col-md-11">
-                        <table  style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
-                            <tr>
-                                <td rowspan="2">HV111</td>
-                                <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
-                                <td>Date:</td>
-                                <td>12/12/2012</td>
-                                <td>Departure:</td>
-                                <td>17:50</td>
-                                <td rowspan="2">VND 1000</td>
-                            </tr>
-                            <tr>
-                                <td>seat(s) left</td>
-                                <td>Duration: </td>
-                                <td>2:30 hour(s)</td>
-                                <td>Arrival:</td>
-                                <td>18:20</td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr>
-                                <td rowspan="2">HV111</td>
-                                <td>Ha Noi &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;Ho Chi Minh</td>
-                                <td>Date:</td>
-                                <td>12/12/2012</td>
-                                <td>Departure:</td>
-                                <td>17:50</td>
-                                <td rowspan="2">VND 1000</td>
-                            </tr>
-                            <tr>
-                                <td>seat(s) left</td>
-                                <td>Duration: </td>
-                                <td>2:30 hour(s)</td>
-                                <td>Arrival:</td>
-                                <td>18:20</td>
-                            </tr>
-                        </table>
+                            </div>
+                            <div>
+                                <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))}}">
+                                <button type="button" class="date-button btn btn-secondary active">{{Carbon\Carbon::parse(session('date_return'))->day}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+
+                            </div>
+                            <div>
+                                <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +1)}}">
+                                <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_return'))->day+1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+
+                            </div>
+                            <div>
+                                <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +2)}}">
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day+2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <!--            cac chuyen bay-->
+                    <div class="return_flights">
+                        @for($i = 0; $i < count(session('from_transit_inbound_details')) ; $i++)
+
+                            <div class="row col-md-12 flight-detail" style="height: 130px">
+                                <div class="col-md-1">
+                                    <input type="radio" name="flight_return_from_transit" value="{{session('from_transit_inbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                                    <input type="hidden" name="flight_return_transit_to" value="{{session('transit_to_inbound_details')[$i]->id}}">
+                                </div>
+
+                                <div class="col-md-11">
+                                    <table  style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
+                                        <tr>
+                                            <td rowspan="2">{{session('from_transit_inbound_details')[$i]->id}}</td>
+                                            <td style="    width: 280px;">{{request('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_inbound_details')[$i]->airport_transit}}</td>
+                                            <td>Date:</td>
+                                            <td>{{Carbon\Carbon::parse(session('from_transit_inbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
+                                            <td>Departure:</td>
+                                            <td>{{Carbon\Carbon::parse(session('from_transit_inbound_details')[$i]->departure_date)->format('H:i')}}</td>
+                                            <td rowspan="2">USD {{session('from_transit_inbound_details')[$i]->price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{session('from_transit_inbound_details')[$i]->seats_left}} seat(s) left</td>
+                                            <td>Duration: </td>
+                                            <td>{{session('from_transit_inbound_details')[$i]->duration}} hour(s)</td>
+                                            <td>Arrival:</td>
+                                            <td>{{Carbon\Carbon::parse(session('from_transit_inbound_details')[$i]->arrival_date)->format('H:i')}}</td>
+                                        </tr>
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td rowspan="2">{{session('transit_to_inbound_details')[$i]->id}}</td>
+                                            <td style="    width: 280px;">{{session('from_transit_inbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_from')}}</td>
+                                            <td>Date:</td>
+                                            <td>{{Carbon\Carbon::parse(session('transit_to_inbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
+                                            <td>Departure:</td>
+                                            <td>{{Carbon\Carbon::parse(session('transit_to_inbound_details')[$i]->departure_date)->format('H:i')}}</td>
+                                            <td rowspan="2">USD {{session('transit_to_inbound_details')[$i]->price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{session('transit_to_inbound_details')[$i]->seats_left}} seat(s) left</td>
+                                            <td>Duration: </td>
+                                            <td>{{session('transit_to_inbound_details')[$i]->duration}} hour(s)</td>
+                                            <td>Arrival:</td>
+                                            <td>{{Carbon\Carbon::parse(session('transit_to_inbound_details')[$i]->arrival_date)->format('H:i')}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                @endif
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button">Back</button>
-                        <button class="btn btn-primary" type="submit">Continue</button>
+                        <button class="btn btn-secondary" type="button"><a href="/ARS/public">Back</a></button>
+                        <button class="btn btn-primary" type="submit" >Continue</button>
                     </div>
 
                 </div>

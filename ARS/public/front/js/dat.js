@@ -398,6 +398,91 @@ $('input[name="travel_class"]').on(
         }
     }
 );
+
+
+$('.btn_other_outbound div button.date-button').on('click',function (){
+    var other_outbound =  $(this).siblings('input[name="other_day_outbound"]').val();
+
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_outbound: other_outbound},
+        success: function (data){
+            $('.outbound_flights').empty();
+            $('.outbound_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+
+$('.btn_other_return div button.date-button').on('click',function (){
+    var other_return =  $(this).siblings('input[name="other_day_return"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_return: other_return},
+        success: function (data){
+            $('.return_flights').empty();
+            $('.return_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+
+$('.btn_other_outbound_transit div button.date-button').on('click',function (){
+    var other_outbound_transit =  $(this).siblings('input[name="other_day_outbound"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_outbound_transit: other_outbound_transit},
+        success: function (data){
+            $('.outbound_flights').empty();
+            $('.outbound_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+$('.btn_other_return_transit div button.date-button').on('click',function (){
+    var other_return_transit =  $(this).siblings('input[name="other_day_return"]').val();
+    $.ajax({
+        type: "GET",
+        url: "booking/other_date",
+        data: {other_return_transit: other_return_transit},
+        success: function (data){
+            $('.return_flights').empty();
+            $('.return_flights').html(data);
+        },
+        error: function (error){
+            alert('failed');
+            console.log(error);
+        }
+    })
+});
+
+$.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
+
+$( document ).ajaxStop(function() {
+
+    $(".flight-detail").on('click',function (){
+        $(this).find('input:radio').prop('checked',true);
+    });
+
+});
+
+
+
 // ------------
 $(document).ready(function (){
     $("#su-phonenumber").blur(function(){
