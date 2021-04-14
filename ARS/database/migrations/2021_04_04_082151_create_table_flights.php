@@ -20,7 +20,6 @@ class CreateTableFlights extends Migration
             $table->dateTime('arrival_date');
             $table->unsignedInteger('statusid');
             $table->unsignedInteger('planeid');
-            $table->timestamps();
         });
     }
 

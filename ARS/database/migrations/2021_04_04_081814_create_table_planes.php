@@ -17,7 +17,6 @@ class CreateTablePlanes extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedInteger('plane_type');
-            $table->timestamps();
         });
     }
 

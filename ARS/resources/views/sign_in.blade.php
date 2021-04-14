@@ -30,7 +30,7 @@
                                 <div class=" mt-text animate-box" data-animate-effect="fadeInUp">
                                     <div class="checkbox mb-3">
                                         <label  style="color: white">
-                                            <input type="checkbox" name="remember" value="remember-me"> Remember me
+                                            <input type="checkbox" value="remember-me"> Remember me
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
@@ -49,41 +49,35 @@
             <div class="row">
                 <div class="col-md-12 mt-text">
                     <h1 class="su-text">Sign Up</h1>
-                    <form action="/sign-in/register" class="form-signup" method="post">
+                    <form class="form-signup" method="post">
                         @csrf
                         <label for="su-firstname" class="">First Name</label>
                         <label for="su-lastname" class="">Last Name</label><br>
-                        <input name="firstname" type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
-                        <input name="lastname" type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
+                        <input name="su_firstname" type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
+                        <input name="su_lastname" type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
 
 
-                        <label for="su-phonenumber" class="su-phonenumber">Phone Number</label>
-                        <label for="su-creditcard" class="su-creditcard">Credit Card</label><br>
-                        <input name="phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required><svg  style="position: absolute;top: 263px;left: 510px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-phonenumber" viewBox="0 0 16 16">
-                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        </svg>
-                        <input name="credit_number" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required><svg style="position: absolute;top: 263px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-creditcard" viewBox="0 0 16 16">
-                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        </svg>
+                        <label for="su-phonenumber" class="">Phone Number</label>
+                        <label for="su-creditcard" class="">Credit Card</label><br>
+                        <input name="su_phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required>
+                        <input name="su_card" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required>
 
                         <label for="su-sexs" class="">Sex</label>
                         <label for="su-age" class="">D.O.B</label><br>
-                        <input name="sex" id="su-sex" list="su-sexs" class="form-control" placeholder="Sex" required>
+                        <input name="su_sex" id="su-sex" list="su-sexs" class="form-control" placeholder="Sex" required>
                         <datalist id="su-sexs">
                             <option value="Male">
                             <option value="Female">
                         </datalist>
-                        <input name="dob" type="date" data-toggle="datepicker" id="su-age" class="form-control" placeholder="Date Of Birth" required>
+                        <input name="su_dob" type="date" data-toggle="datepicker" id="su-age" class="form-control" placeholder="Date Of Birth" required>
 
 
                         <label for="su-address" class="">Address</label>
-                        <input name="address" type="text" id="su-address" class="form-control" placeholder="Address" required>
+                        <input name="su_address" type="text" id="su-address" class="form-control" placeholder="Address" required>
 
 
-                        <label for="su-email" class="su-email">Email</label>
-                        <input name="email" type="email" id="su-email" class="form-control" placeholder="Email Address" required><svg style="position: absolute;top: 557px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-email" viewBox="0 0 16 16">
-                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        </svg>
+                        <label for="su-email" class="">Email</label>
+                        <input name="su_email" type="email" id="su-email" class="form-control" placeholder="Email Address" required>
 
                         <label for="su-password" class="">Password <i>(numbers and characters, 6 digits)</i></label>
                         <input name="su_password" type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>

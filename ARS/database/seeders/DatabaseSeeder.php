@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'sex'=>'Male',
                 'credit_number'=>'1111111111',
                 'phone'=>'0947118116',
-                'sky_miles'=>4884,
+                'sky_miles'=>3663,
                 'role'=>1
             ],
             [
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
                 'sex'=>'Female',
                 'credit_number'=>'3333333333',
                 'phone'=>'0912164000',
-                'sky_miles'=>3020,
+                'sky_miles'=>1030,
                 'role'=>1
             ],
             [
@@ -112,43 +112,22 @@ class DatabaseSeeder extends Seeder
         DB::table('customers')->insert([
             [
                 'id'=>10000101,
-                'firstname'=>'DUONG THUY',
-                'lastname'=>'NGAN',
+                'firstname'=>'Duong',
+                'lastname'=>'Thuy Ngan',
                 'dob'=>'1990/8/1',
                 'account_id'=>1
             ],
             [
-                'id'=>10000104,
-                'firstname'=>'DUONG XUAN',
-                'lastname'=>'BINH',
-                'dob'=>'1995/11/10',
-                'account_id'=>1
-            ],
-            [
-                'id'=>10000105,
-                'firstname'=>'NGUYEN TIEN',
-                'lastname'=>'DAT',
-                'dob'=>'1996/5/13',
-                'account_id'=>2
-            ],
-            [
-                'id'=>10000106,
-                'firstname'=>'NGUYEN THAI',
-                'lastname'=>'SON',
-                'dob'=>'1996/5/13',
-                'account_id'=>3
-            ],
-            [
                 'id'=>10000102,
-                'firstname'=>'NGUYEN THI',
-                'lastname'=>'HANG',
+                'firstname'=>'Nguyen',
+                'lastname'=>'Thi Hang',
                 'dob'=>'1968/9/9',
                 'account_id'=>1
             ],
             [
                 'id'=>10000103,
-                'firstname'=>'NGUYEN THUY',
-                'lastname'=>'LINH',
+                'firstname'=>'Nguyen',
+                'lastname'=>'Thuy Linh',
                 'dob'=>'1991/9/9',
                 'account_id'=>2
             ],
@@ -190,8 +169,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV114',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(6,30),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(8,20),
+                'departure_date'=>Carbon::today()->setTime(6,30),
+                'arrival_date'=>Carbon::today()->setTime(8,20),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -199,8 +178,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV115',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,15) ,
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(18,5),
+                'departure_date'=>Carbon::today()->setTime(16,15) ,
+                'arrival_date'=>Carbon::today()->setTime(18,5),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -208,8 +187,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV116',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(12,0),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(13,50),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(12,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(13,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -217,8 +196,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV117',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(16,20),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(18,10),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,20),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(18,10),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -226,8 +205,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV118',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(8,15),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,05),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(8,15),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(10,05),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -235,8 +214,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV119',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(13,55),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,45),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(13,55),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(16,45),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -244,8 +223,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV120',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(9,0),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(10,50),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,0),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -253,8 +232,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV121',
 
                 'route_id'=>1,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(14,35),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(16,25),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(14,35),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,25),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -272,16 +251,16 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>'HV122',
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(10,20),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(12,10),
+                'departure_date'=>Carbon::today()->setTime(10,20),
+                'arrival_date'=>Carbon::today()->setTime(12,10),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
             [
                 'id'=>'HV123',
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(20,30),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(22,30),
+                'departure_date'=>Carbon::today()->setTime(20,30),
+                'arrival_date'=>Carbon::today()->setTime(22,30),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -289,8 +268,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV124',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(16,0),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(17,50),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(17,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -298,8 +277,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV125',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(20,0),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(21,50),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(20,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(21,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -307,8 +286,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV126',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(11,30),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(13,20),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(11,30),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(13,20),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -316,8 +295,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV127',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(17,35),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(19,25),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(17,35),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(19,25),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -325,8 +304,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV128',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(6,0),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(7,50),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(6,0),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(7,50),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -334,8 +313,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV129',
 
                 'route_id'=>2,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(11,50),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(13,40),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(11,50),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(13,40),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -354,8 +333,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV130',
 
                 'route_id'=>9,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(7,25),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(9,5),
+                'departure_date'=>Carbon::today()->setTime(7,25),
+                'arrival_date'=>Carbon::today()->setTime(9,5),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -363,8 +342,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV131',
 //
 //                'route_id'=>9,
-//                'departure_date'=>Carbon::today()->addDays(1)->setTime(10,10),
-//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(11,50),
+//                'departure_date'=>Carbon::today()->setTime(10,10),
+//                'arrival_date'=>Carbon::today()->setTime(11,50),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
@@ -372,8 +351,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV132',
 
                 'route_id'=>9,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(16,15),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(17,55),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(16,15),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(17,55),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -381,8 +360,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV133',
 //
 //                'route_id'=>9,
-//                'departure_date'=>Carbon::today()->addDays(2)->setTime(20,50),
-//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(21,30),
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(20,50),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(21,30),
 //                'statusid'=>1,
 //                'planeid'=>2,
 //            ],
@@ -390,8 +369,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV134',
 
                 'route_id'=>9,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(8,0),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(9,40),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(8,0),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(9,40),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -399,8 +378,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV135',
 //
 //                'route_id'=>9,
-//                'departure_date'=>Carbon::today()->addDays(3)->setTime(13,0),
-//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(14,40),
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(13,0),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(14,40),
 //                'statusid'=>1,
 //                'planeid'=>2,
 //            ],
@@ -408,8 +387,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV136',
 
                 'route_id'=>9,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(15,15),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(16,55),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(15,15),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,55),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -417,8 +396,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV137',
 
                 'route_id'=>9,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(18,5),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(19,45),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(18,5),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(19,45),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -427,8 +406,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV138',
 
                 'route_id'=>11,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(10,0),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(11,0),
+                'departure_date'=>Carbon::today()->setTime(10,0),
+                'arrival_date'=>Carbon::today()->setTime(11,0),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -436,8 +415,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV139',
 //
 //                'route_id'=>11,
-//                'departure_date'=>Carbon::today()->addDays(1)->setTime(13,0),
-//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(14,0),
+//                'departure_date'=>Carbon::today()->setTime(13,0),
+//                'arrival_date'=>Carbon::today()->setTime(14,0),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
@@ -445,8 +424,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV140',
 //
 //                'route_id'=>11,
-//                'departure_date'=>Carbon::today()->addDays(2)->setTime(11,45),
-//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(12,45),
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(11,45),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(12,45),
 //                'statusid'=>1,
 //                'planeid'=>1,
 //            ],
@@ -454,8 +433,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV141',
 
                 'route_id'=>11,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(19,30),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(20,30),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(19,30),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(20,30),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -463,8 +442,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV142',
 //
 //                'route_id'=>11,
-//                'departure_date'=>Carbon::today()->addDays(3)->setTime(5,15),
-//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(6,15),
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(5,15),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(6,15),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
@@ -472,8 +451,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV143',
 
                 'route_id'=>11,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(10,25),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(11,25),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(10,25),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(11,25),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -481,8 +460,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV144',
 //
 //                'route_id'=>11,
-//                'departure_date'=>Carbon::today()->addDays(4)->setTime(9,25),
-//                'arrival_date'=>Carbon::today()->addDays(4)->setTime(10,25),
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,25),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,25),
 //                'statusid'=>1,
 //                'planeid'=>1,
 //            ],
@@ -490,8 +469,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV145',
 
                 'route_id'=>11,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(17,45),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(18,45),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(17,45),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(18,45),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -501,8 +480,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV146',
 //
 //                'route_id'=>12,
-//                'departure_date'=>Carbon::today()->addDays(1)->setTime(15,0),
-//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(16,0),
+//                'departure_date'=>Carbon::today()->setTime(15,0),
+//                'arrival_date'=>Carbon::today()->setTime(16,0),
 //                'statusid'=>1,
 //                'planeid'=>1,
 //            ],
@@ -510,8 +489,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV147',
 
                 'route_id'=>12,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(8,15),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(9,15),
+                'departure_date'=>Carbon::today()->setTime(8,15),
+                'arrival_date'=>Carbon::today()->setTime(9,15),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -519,8 +498,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV148',
 
                 'route_id'=>12,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(10,0),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(11,0),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(10,0),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(11,0),
                 'statusid'=>1,
                 'planeid'=>2,
             ],
@@ -528,16 +507,16 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV149',
 //
 //                'route_id'=>12,
-//                'departure_date'=>Carbon::today()->addDays(2)->setTime(21,0),
-//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(22,0),
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(21,0),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(22,0),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
             [
                 'id'=>'HV150',
                 'route_id'=>12,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(7,10),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(8,10),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(7,10),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(8,10),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -545,8 +524,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV151',
 //
 //                'route_id'=>12,
-//                'departure_date'=>Carbon::today()->addDays(3)->setTime(12,15),
-//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(13,15),
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(12,15),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(13,15),
 //                'statusid'=>1,
 //                'planeid'=>2,
 //            ],
@@ -554,8 +533,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV152',
 
                 'route_id'=>12,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(9,55),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(10,55),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,55),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,55),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -563,8 +542,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV153',
 //
 //                'route_id'=>12,
-//                'departure_date'=>Carbon::today()->addDays(4)->setTime(15,15),
-//                'arrival_date'=>Carbon::today()->addDays(4)->setTime(16,15),
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(15,15),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(16,15),
 //                'statusid'=>1,
 //                'planeid'=>2,
 //            ],
@@ -574,32 +553,32 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV154',
 //
 //                'route_id'=>10,
-//                'departure_date'=>Carbon::today()->addDays(1)->setTime(6,40),
-//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(8,20),
+//                'departure_date'=>Carbon::today()->setTime(6,40),
+//                'arrival_date'=>Carbon::today()->setTime(8,20),
 //                'statusid'=>1,
 //                'planeid'=>1,
 //            ],
             [
                 'id'=>'HV155',
                 'route_id'=>10,
-                'departure_date'=>Carbon::today()->addDays(1)->setTime(15,0),
-                'arrival_date'=>Carbon::today()->addDays(1)->setTime(16,40),
+                'departure_date'=>Carbon::today()->setTime(15,0),
+                'arrival_date'=>Carbon::today()->setTime(16,40),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
             [
                 'id'=>'HV156',
                 'route_id'=>10,
-                'departure_date'=>Carbon::today()->addDays(2)->setTime(15,10),
-                'arrival_date'=>Carbon::today()->addDays(2)->setTime(16,50),
+                'departure_date'=>Carbon::today()->addDays(1)->setTime(15,10),
+                'arrival_date'=>Carbon::today()->addDays(1)->setTime(16,50),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
 //            [
 //                'id'=>'HV157',
 //                'route_id'=>10,
-//                'departure_date'=>Carbon::today()->addDays(2)->setTime(21,20),
-//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(23,0),
+//                'departure_date'=>Carbon::today()->addDays(1)->setTime(21,20),
+//                'arrival_date'=>Carbon::today()->addDays(1)->setTime(23,0),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
@@ -607,8 +586,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV158',
 
                 'route_id'=>10,
-                'departure_date'=>Carbon::today()->addDays(3)->setTime(10,0),
-                'arrival_date'=>Carbon::today()->addDays(3)->setTime(11,40),
+                'departure_date'=>Carbon::today()->addDays(2)->setTime(10,0),
+                'arrival_date'=>Carbon::today()->addDays(2)->setTime(11,40),
                 'statusid'=>1,
                 'planeid'=>3,
             ],
@@ -616,8 +595,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV159',
 //
 //                'route_id'=>10,
-//                'departure_date'=>Carbon::today()->addDays(3)->setTime(14,55),
-//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(15,35),
+//                'departure_date'=>Carbon::today()->addDays(2)->setTime(14,55),
+//                'arrival_date'=>Carbon::today()->addDays(2)->setTime(15,35),
 //                'statusid'=>1,
 //                'planeid'=>2,
 //            ],
@@ -625,8 +604,8 @@ class DatabaseSeeder extends Seeder
 //                'id'=>'HV160',
 //
 //                'route_id'=>10,
-//                'departure_date'=>Carbon::today()->addDays(4)->setTime(9,15),
-//                'arrival_date'=>Carbon::today()->addDays(4)->setTime(10,55),
+//                'departure_date'=>Carbon::today()->addDays(3)->setTime(9,15),
+//                'arrival_date'=>Carbon::today()->addDays(3)->setTime(10,55),
 //                'statusid'=>1,
 //                'planeid'=>3,
 //            ],
@@ -634,8 +613,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'HV161',
 
                 'route_id'=>10,
-                'departure_date'=>Carbon::today()->addDays(4)->setTime(17,35),
-                'arrival_date'=>Carbon::today()->addDays(4)->setTime(19,15),
+                'departure_date'=>Carbon::today()->addDays(3)->setTime(17,35),
+                'arrival_date'=>Carbon::today()->addDays(3)->setTime(19,15),
                 'statusid'=>1,
                 'planeid'=>1,
             ],
@@ -667,9 +646,8 @@ class DatabaseSeeder extends Seeder
                 'id'=>'SO-AKEB',
                 'account_id'=>1,
                 'order_status'=>1,
-                'total_price'=>'191',
-                'total_skymiles'=>4884,
-                'flight_route'=>2
+                'total_price'=>'151.5',
+                'total_skymiles'=>3663,
             ],
             [
                 'id'=>'SO-HTBN',
@@ -677,15 +655,13 @@ class DatabaseSeeder extends Seeder
                 'order_status'=>1,
                 'total_price'=>'90',
                 'total_skymiles'=>2442,
-                'flight_route'=>1
             ],
             [
                 'id'=>'SO-MLTK',
                 'account_id'=>3,
                 'order_status'=>1,
-                'total_price'=>272,
-                'total_skymiles'=>3020,
-                'flight_route'=>1
+                'total_price'=>52,
+                'total_skymiles'=>1030,
             ],
         ]);
         DB::table('planes')->insert([
@@ -709,15 +685,11 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>1,
                 'name'=>'Airbus 320_200',
-                'business_seats'=>16,
-                'economy_seats'=>126,
                 'total_seats'=>142
             ],
             [
                 'id'=>2,
                 'name'=>'Boeing 787-800',
-                'business_seats'=>28,
-                'economy_seats'=>207,
                 'total_seats'=>235,
             ]
         ]);
@@ -1204,35 +1176,28 @@ class DatabaseSeeder extends Seeder
                 'flight_id'=>'HV111',
                 'seat_location'=>'10A',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000104,
+                'passenger_id'=>1,
                 'price'=>50.5
             ],
             [
                 'flight_id'=>'HV111',
                 'seat_location'=>'10B',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000101,
+                'passenger_id'=>'10000101',
                 'price'=>50.5
             ],
             [
-                'flight_id'=>'HV112',
+                'flight_id'=>'HV111',
                 'seat_location'=>'10C',
                 'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000104,
-                'price'=>45
-            ],
-            [
-                'flight_id'=>'HV112',
-                'seat_location'=>'14C',
-                'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000101,
-                'price'=>45
+                'passenger_id'=>'10000102',
+                'price'=>50.5
             ],
             [
                 'flight_id'=>'HV112',
                 'seat_location'=>'24C',
                 'order_id'=>'SO-HTBN',
-                'passenger_id'=>10000105,
+                'passenger_id'=>2,
                 'price'=>45
             ],
             [
@@ -1243,33 +1208,13 @@ class DatabaseSeeder extends Seeder
                 'price'=>45
             ],
             [
-                'flight_id'=>'HV130',
+                'flight_id'=>'HV113',
                 'seat_location'=>'1A',
                 'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000106,
-                'price'=>57
+                'passenger_id'=>3,
+                'price'=>52
             ],
-            [
-                'flight_id'=>'HV138',
-                'seat_location'=>'1B',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000106,
-                'price'=>79
-            ],
-            [
-                'flight_id'=>'HV130',
-                'seat_location'=>'2A',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000102,
-                'price'=>57
-            ],
-            [
-                'flight_id'=>'HV138',
-                'seat_location'=>'2B',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000102,
-                'price'=>79
-            ],
+
         ]);
         DB::table('ticket_prices')->insert([
             [

@@ -18,7 +18,6 @@ class CreateTableTicketPrices extends Migration
             $table->string('flight_id');
             $table->unsignedInteger('class_id');
             $table->double('price');
-            $table->timestamps();
         });
     }
 
