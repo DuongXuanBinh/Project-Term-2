@@ -19,8 +19,9 @@ class OrderSeeder extends Seeder
                 'id'=>'SO-AKEB',
                 'account_id'=>1,
                 'order_status'=>1,
-                'total_price'=>'151.5',
-                'total_skymiles'=>3663,
+                'total_price'=>'191',
+                'total_skymiles'=>4884,
+                'flight_route'=>2
             ],
             [
                 'id'=>'SO-HTBN',
@@ -28,13 +29,15 @@ class OrderSeeder extends Seeder
                 'order_status'=>1,
                 'total_price'=>'90',
                 'total_skymiles'=>2442,
+                'flight_route'=>1
             ],
             [
                 'id'=>'SO-MLTK',
                 'account_id'=>3,
                 'order_status'=>1,
-                'total_price'=>52,
-                'total_skymiles'=>1030,
+                'total_price'=>272,
+                'total_skymiles'=>3020,
+                'flight_route'=>1
             ],
         ]);
     }

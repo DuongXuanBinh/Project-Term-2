@@ -9,10 +9,10 @@ class Ticket_price extends Model
 {
     use HasFactory;
 
-    public function flights(){
+    public function flight(){
         return $this->belongsTo(Flight::class,'flight_id','id');
     }
-    public function classes(){
+    public function class(){
         return $this->belongsTo(Classes::class,'class_id','id');
     }
 }

@@ -9,10 +9,10 @@ class Customer extends Model
 {
     use HasFactory;
 
-    public function accounts(){
+    public function account(){
         return $this->belongsTo(Account::class,'account_id','id');
     }
-    public function ticket_details(){
+    public function ticket_detail(){
         return $this->hasOne(Ticket_details::class,'passenger_id','id');
     }
 }
