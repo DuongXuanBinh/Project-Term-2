@@ -178,7 +178,7 @@
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button"><a href="/ARS/public">Back</a></button>
+                        <button class="btn btn-secondary" type="button"><a href="./">Back</a></button>
                         <button class="btn btn-primary" type="submit" >Continue</button>
                     </div>
 

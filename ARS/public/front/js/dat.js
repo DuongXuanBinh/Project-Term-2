@@ -37,6 +37,7 @@ $( "#datepicker_outbound" ).datepicker({
         // $( "#datepicker" ).datepicker( "destroy");
         // $( "#datepicker" ).datepicker("hide");
         $(".overlay_datepicker").removeClass("active");
+        $("#datepicker_return").datepicker('option', 'minDate', date );
     },
     onClose: function(){
         $(".overlay_datepicker").removeClass("active");
