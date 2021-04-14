@@ -141,7 +141,10 @@ class BookingController extends Controller
                 }
 
                 session(['outbound_details'=>$outbound_details, 'return_details'=>$return_details]);
-                return view('flight select');
+                session()->forget('from_transit_outbound_details');
+                session()->forget('transit_to_outbound_details');
+                session()->forget('from_transit_inbound_details');
+                session()->forget('transit_to_inbound_details');
             } elseif (!$route_outbound) {
                 $route_from_transit_outbounds = Route_direct::where('origin_airportid', '=', $origin_airport->id)
                     ->take(10)
@@ -303,11 +306,21 @@ class BookingController extends Controller
                     'transit_to_outbound_details' => $transit_to_outbound_details,
                     'from_transit_inbound_details' =>  $from_transit_inbound_details,
                     'transit_to_inbound_details' =>  $transit_to_inbound_details]);
-                return view('flight select transit');
+                session()->forget('outbound_details');
+                session()->forget('return_details');
             }
         }
 
+        return redirect('/booking/show_flights');
+    }
 
+    public function show_flights(){
+        if (session('outbound_details')){
+            return view('flight select');
+        }
+        elseif (session('from_transit_outbound_details')){
+            return view('flight select transit');
+        }
     }
 
     public function search_other_date(Request $request){
@@ -705,8 +718,16 @@ class BookingController extends Controller
                 session()->forget('flight_return_transit_to_choose');
             }
         }
+        session(['page'=>'choose_flight']);
 
-        return redirect('/booking/passenger_index');
+        if (session('email') && session('password')){
+            return redirect('/booking/passenger_index');
+        }
+        else{
+            return redirect('/sign-in');
+        }
+
+
     }
 
     public function passenger_index(){
