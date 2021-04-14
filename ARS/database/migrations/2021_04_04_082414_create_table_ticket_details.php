@@ -20,6 +20,7 @@ class CreateTableTicketDetails extends Migration
             $table->string('order_id');
             $table->unsignedInteger('passenger_id');
             $table->double('price');
+            $table->timestamps();
         });
     }
 

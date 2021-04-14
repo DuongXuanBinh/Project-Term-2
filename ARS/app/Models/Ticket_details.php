@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket_details extends Model
 {
     use HasFactory;
-    public function customers(){
+    public function customer(){
         return $this->belongsTo(Customer::class,'passenger_id','id');
     }
-    public function flights(){
+    public function flight(){
         return $this->belongsTo(Flight::class,'flight_id','id');
     }
-    public function orders(){
+    public function order(){
         return $this->belongsTo(Order::class,'order_id','id');
     }
 }

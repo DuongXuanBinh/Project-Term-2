@@ -18,6 +18,7 @@ class CreateRefundPolicyTable extends Migration
             $table->integer('days_before_departure');
             $table->string('percentage of refund');
             $table->double('number');
+            $table->timestamps();
         });
     }
 

@@ -16,7 +16,10 @@ class CreatePlaneTypesTable extends Migration
         Schema::create('plane_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->integer('business_seats')->unsigned();
+            $table->integer('economy_seats')->unsigned();
             $table->integer('total_seats')->unsigned();
+            $table->timestamps();
         });
     }
 
