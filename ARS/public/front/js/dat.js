@@ -196,42 +196,42 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
-//start Select seats Out-Bound
+//start Select seats Flight[0]
 
-$(".select_seats .tab-content #out_bound .seat-map table tr td div ").on(
+$(".select_seats .tab-content #flight_0 .seat-map table tr td div ").on(
     'click',function (){
 
         if (!$(this).children('img').hasClass("check_seat")){
-            var ID = id_outbound +"_"+id_out_passenger;
-            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
+            var ID = id_first +"_"+id_first_passenger;
+            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"./front/images/icon-premium-seat1.png\" alt=\"\">"
             $(this).children('img').addClass("hide_seat_"+ID);
             $(".check_seat."+ID).remove();
             $(".hide_seat_"+ID).css('display','inline');
             $(this).children('img').css('display','none');
             $(this).append(imgAfter);
             var location_seat = $(this).attr('name');
-            $("#"+id_outbound+" #"+id_out_passenger).find("p").text(location_seat);
-            $("#"+id_outbound+" #"+id_out_passenger).find("input:text").attr('value',location_seat);
+            $("#"+id_first+" #"+id_first_passenger).find("p").text(location_seat);
+            $("#"+id_first+" #"+id_first_passenger).find("input:text").attr('value',location_seat);
         }
 
     })
-var id_outbound = "out_bound"
+var id_first = "flight_0"
 
-$(".select_seats .nav-tabs li.out_bound_tab").on(
+$(".select_seats .nav-tabs li.flight_0_tab").on(
     'click',function (){
-        if (!$("#"+id_outbound).find(".select_seat_passenger").hasClass("active_passenger")){
-            id_out_passenger = $("#"+id_outbound+" .select_seat_passenger").attr('id');
-            $("#"+id_outbound+" #"+id_out_passenger).addClass('active_passenger');
+        if (!$("#"+id_first).find(".select_seat_passenger").hasClass("active_passenger")){
+            id_first_passenger = $("#"+id_first+" .select_seat_passenger").attr('id');
+            $("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
         }
     }
 )
-var id_out_passenger = $("#"+id_outbound+" .select_seat_passenger:first").attr('id');
-$("#"+id_outbound+" #"+id_out_passenger).addClass('active_passenger');
+var id_first_passenger = $("#"+id_first+" .select_seat_passenger:first").attr('id');
+$("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
 
-$("#out_bound .select_seat_passenger").on(
+$("#flight_0 .select_seat_passenger").on(
     'click',function (){
-        id_out_passenger = $(this).attr('id');
-        $("#"+id_outbound+" .select_seat_passenger").removeClass('active_passenger');
+        id_first_passenger = $(this).attr('id');
+        $("#"+id_first+" .select_seat_passenger").removeClass('active_passenger');
         $(this).addClass('active_passenger');
     }
 )
@@ -244,7 +244,7 @@ $(".select_seats .tab-content #in_bound .seat-map table tr td div ").on(
 
         if (!$(this).children('img').hasClass("check_seat")){
             var ID = id_inbound +"_"+id_in_passenger;
-            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"images/icon-premium-seat1.png\" alt=\"\">"
+            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"./front/images/icon-premium-seat1.png\" alt=\"\">"
             $(this).children('img').addClass("hide_seat_"+ID);
             $(".check_seat."+ID).remove();
             $(".hide_seat_"+ID).css('display','inline');
@@ -505,6 +505,7 @@ $(document).ready(function (){
     }
 })
 })
+
 
 
 
