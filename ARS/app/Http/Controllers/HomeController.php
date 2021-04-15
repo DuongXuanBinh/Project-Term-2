@@ -14,6 +14,12 @@ class HomeController extends Controller
     public function homeIndex()
     {
         session(['page'=>'home']);
+        session()->forget('from_transit_outbound_details');
+        session()->forget('transit_to_outbound_details');
+        session()->forget('from_transit_inbound_details');
+        session()->forget('transit_to_inbound_details');
+        session()->forget('outbound_details');
+        session()->forget('return_details');
         return view('index');
     }
 
