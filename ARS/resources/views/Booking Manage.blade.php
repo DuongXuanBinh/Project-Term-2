@@ -32,7 +32,7 @@
                                 @if(session('hide'))
                                     <div class="ticket-form mt-text animate-box" data-animate-effect="fadeInUp">
                                         <div class="row" >
-                                            <div class="passenger-ticket col-md-4" style="padding:0;">
+                                            <div class="passenger-ticket col-md-3" style="padding:0;">
                                                 <table>
                                                     <tr>
                                                         <th>Passenger</th>
@@ -40,7 +40,7 @@
                                                     </tr>
                                                 </table>
                                             </div>
-                                            <div class="col-md-8" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
+                                            <div class="col-md-9" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
                                                 <div class="row ticket-logo">
                                                     <div class="col-md-12">
                                                         <img src="front/images/logo%20chu%20trang.png" alt="">
@@ -87,7 +87,7 @@
                     @if(session('way')==1 && count(session('flights'))==1)
                         <div class="ticket-form mt-text animate-box" data-animate-effect="fadeInUp">
                                                 <div class="row" >
-                                                    <div class="passenger-ticket col-md-4" style="padding:0;">
+                                                    <div class="passenger-ticket col-md-3" style="padding:0;">
                                                         <table>
 
                                                             <tr>
@@ -97,14 +97,16 @@
                                                             @for($i=0;$i<count($passengers);$i++)
                                                             <tr>
                                                                 <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
-                                                                <td>{{$seats[$i]}}</td>
+                                                                @for($j=0;$j<count($flights);$j++)
+                                                                    <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                @endfor
                                                             </tr>
                                                             @endfor
-                                                            <tr>
-                                                                <td colspan="2" style="padding-top: 10px;height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
+                                                            <tr style="margin-top: 10px;height: 25px">
+                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td colspan="2" style="height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                                            <tr style="height: 25px">
+                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
                                                             </tr>
 
                                                             <div class="modal fade password-change" id="reschedule" tabindex="-1">
@@ -159,7 +161,7 @@
 
                                                         </table>
                                                     </div>
-                                                    <div class="col-md-8" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
+                                                    <div class="col-md-9" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
                                                         <div class="row ticket-logo">
                                                             <div class="col-md-12">
                                                                 <img src="front/images/logo%20chu%20trang.png" alt="">
@@ -218,31 +220,26 @@
                     @elseif(session('way')==1 && count(session('flights'))==2)
                         <div class="ticket-form mt-text animate-box" data-animate-effect="fadeInUp">
                                                 <div class="row" >
-                                                    <div class="passenger-ticket col-md-4" style="padding:0;">
+                                                    <div class="passenger-ticket col-md-3" style="padding:0;">
                                                         <table>
                                                             <tr>
                                                                 <th>Passenger</th>
                                                                 <th colspan="2">Seat ID</th>
                                                             </tr>
-                                                            @for($i = 0;$i<count($passengers);$i++)
+                                                            @for($i=0;$i<count($passengers);$i++)
                                                                 <tr>
                                                                     <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
-                                                                    @if($i=0)
-                                                                        @for($j=$i;$j<$i+2;$j++)
-                                                                            <td>{{$seats[$j]}}</td>
-                                                                        @endfor
-                                                                    @elseif($i>0)
-                                                                        @for($j=$i+1;$j<$i+3;$j++)
-                                                                            <td>{{$seats[$j]}}</td>
-                                                                        @endfor
-                                                                    @endif
+                                                                    @for($j=0;$j<count($flights);$j++)
+                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                    @endfor
                                                                 </tr>
                                                             @endfor
-                                                            <tr>
-                                                                <td colspan="2" style="padding-top: 10px;height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
+
+                                                            <tr style="margin-top: 10px;height: 25px">
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td colspan="2" style="height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                                            <tr style="height: 25px">
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
                                                             </tr>
 
                                                             <div class="modal fade password-change" id="reschedule" tabindex="-1">
@@ -297,7 +294,7 @@
 
                                                         </table>
                                                     </div>
-                                                    <div class="col-md-8" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
+                                                    <div class="col-md-9" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
                                                         <div class="row ticket-logo">
                                                             <div class="col-md-12">
                                                                 <img src="front/images/logo%20chu%20trang.png" alt="">
@@ -311,7 +308,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <!--                                outbound-->
+                                                            @for($i = 0;$i<count($flights);$i++)
                                                             <div class="col-md-1">
                                                                 <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
                                                             </div>
@@ -319,70 +316,35 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <span>From</span>
-                                                                        <p>Ha Noi</p>
+                                                                        <p>{{$ori_airports[$i]->name}}</p>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <span>To</span>
-                                                                        <p>Ha Noi</p>
+                                                                        <p>{{$arr_airports[$i]->name}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <span>flight</span>
-                                                                        <p>///</p>
+                                                                        <p>{{$flights[$i]->id}}</p>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <span>date</span>
-                                                                        <p>///</p>
+                                                                        <p>{{date('d/m/Y',strtotime($flights[$i]->departure_date))}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <span>departure time</span>
-                                                                        <p>///</p>
+                                                                        <p>{{date('H:i',strtotime($flights[$i]->departure_date))}}</p>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <span>Arrival time</span>
-                                                                        <p>///</p>
+                                                                        <p>{{date('H:i',strtotime($flights[$i]->arrival_date))}}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!--                                inbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 inbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endfor
                                                         </div>
                                                     </div>
                                                 </div>
@@ -390,27 +352,25 @@
                     @elseif(session('way')==2 && count(session('flights'))==2)
                         <div class="ticket-form mt-text animate-box" data-animate-effect="fadeInUp">
                                                 <div class="row" >
-                                                    <div class="passenger-ticket col-md-4" style="padding:0;">
+                                                    <div class="passenger-ticket col-md-3" style="padding:0;">
                                                         <table>
                                                             <tr>
                                                                 <th>Passenger</th>
                                                                 <th colspan="2">Seat ID</th>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Nguyen Van A</td>
-                                                                <td>Out: 32A</td>
-                                                                <td>In: 32A</td>
+                                                            @for($i=0;$i<count($passengers);$i++)
+                                                                <tr>
+                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    @for($j=0;$j<count($flights);$j++)
+                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                    @endfor
+                                                                </tr>
+                                                            @endfor
+                                                            <tr  style="margin-top: 10px;height: 25px">
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Nguyen Van A</td>
-                                                                <td>Out: </td>
-                                                                <td>In: </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3" style="padding-top: 10px;height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3" style="height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                                            <tr style="height: 25px">
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
                                                             </tr>
 
                                                             <div class="modal fade password-change" id="reschedule" tabindex="-1">
@@ -465,7 +425,7 @@
 
                                                         </table>
                                                     </div>
-                                                    <div class="col-md-8" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
+                                                    <div class="col-md-9" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
                                                         <div class="row ticket-logo">
                                                             <div class="col-md-12">
                                                                 <img src="front/images/logo%20chu%20trang.png" alt="">
@@ -483,77 +443,43 @@
                                                         </div>
                                                         <div class="row">
                                                             <!--                                outbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 outbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
+                                                            @for($i = 0;$i<count($flights);$i++)
+                                                                <div class="col-md-1">
+                                                                    <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
+                                                                </div>
+                                                                <div class="col-md-5 outbound">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>From</span>
+                                                                            <p>{{$ori_airports[$i]->name}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>To</span>
+                                                                            <p>{{$arr_airports[$i]->name}}</p>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>flight</span>
+                                                                            <p>{{$flights[$i]->id}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>date</span>
+                                                                            <p>{{date('d/m/Y',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>departure time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>Arrival time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->arrival_date))}}</p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--                                inbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 inbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endfor
                                                         </div>
                                                     </div>
                                                 </div>
@@ -581,21 +507,25 @@
                                             </form>
                                             <div class="ticket-form mt-text animate-box" data-animate-effect="fadeInUp">
                                                 <div class="row" >
-                                                    <div class="passenger-ticket col-md-4" style="padding:0;">
+                                                    <div class="passenger-ticket col-md-3" style="padding:0;">
                                                         <table>
                                                             <tr>
                                                                 <th>Passenger</th>
                                                                 <th>Seat ID</th>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Nguyen Van A</td>
-                                                                <td>32A</td>
+                                                            @for($i=0;$i<count($passengers);$i++)
+                                                                <tr>
+                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    @for($j=0;$j<count($flights);$j++)
+                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                    @endfor
+                                                                </tr>
+                                                            @endfor
+                                                            <tr  style="margin-top: 10px;height: 25px">
+                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td colspan="2" style="padding-top: 10px;height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" style="height: 25px"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                                            <tr style="height: 25px">
+                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
                                                             </tr>
 
                                                             <div class="modal fade password-change" id="reschedule" tabindex="-1">
@@ -650,7 +580,7 @@
 
                                                         </table>
                                                     </div>
-                                                    <div class="col-md-8" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
+                                                    <div class="col-md-9" style="padding:0;border-left: 0.5px dotted #3a3a3b ">
                                                         <div class="row ticket-logo">
                                                             <div class="col-md-12">
                                                                 <img src="front/images/logo%20chu%20trang.png" alt="">
@@ -665,77 +595,43 @@
                                                         </div>
                                                         <div class="row">
                                                             <!--                                outbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 outbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
+                                                            @for($i = 0;$i<count($flights)-2;$i++)
+                                                                <div class="col-md-1">
+                                                                    <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
+                                                                </div>
+                                                                <div class="col-md-5 outbound">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>From</span>
+                                                                            <p>{{$ori_airports[$i]->name}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>To</span>
+                                                                            <p>{{$arr_airports[$i]->name}}</p>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>flight</span>
+                                                                            <p>{{$flights[$i]->id}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>date</span>
+                                                                            <p>{{date('d/m/Y',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>departure time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>Arrival time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->arrival_date))}}</p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--                                inbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 inbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endfor
                                                         </div>
                                                         <div class="row bound">
                                                             <div class="col-md-12">
@@ -744,77 +640,43 @@
                                                         </div>
                                                         <div class="row">
                                                             <!--                                outbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 outbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
+                                                            @for($i = 2;$i<count($flights);$i++)
+                                                                <div class="col-md-1">
+                                                                    <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
+                                                                </div>
+                                                                <div class="col-md-5 outbound">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>From</span>
+                                                                            <p>{{$ori_airports[$i]->name}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>To</span>
+                                                                            <p>{{$arr_airports[$i]->name}}</p>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>flight</span>
+                                                                            <p>{{$flights[$i]->id}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>date</span>
+                                                                            <p>{{date('d/m/Y',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <span>departure time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->departure_date))}}</p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <span>Arrival time</span>
+                                                                            <p>{{date('H:i',strtotime($flights[$i]->arrival_date))}}</p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--                                inbound-->
-                                                            <div class="col-md-1">
-                                                                <img src="front/images/cach-phan-biet-may-doc-ma-vach-1d-va-may-quet-ma-vach-2d-to.jpg" alt="">
-                                                            </div>
-                                                            <div class="col-md-5 inbound">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>From</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>To</span>
-                                                                        <p>Ha Noi</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>flight</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>date</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <span>departure time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <span>Arrival time</span>
-                                                                        <p>///</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endfor
                                                         </div>
                                                     </div>
                                                 </div>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use App\Models\Order;
+use App\Models\Ticket_details;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -57,25 +59,41 @@ class HomeController extends Controller
         session(['code'=>$code]);
         if (session('email') && session('password')) {
             $order = Order::where('id',strtoupper($code))->first();
-            if ($order){
+            if ($order) {
                 $way = $order->flight_route;
                 $tickets = $order->ticket_details;
                 $passenger = array();
                 $flight = array();
-                $ori_airports= array();
-                $arr_airports=array();
+                $ori_airports = array();
+                $arr_airports = array();
                 $seat = array();
                 for ($i = 0; $i < count($tickets); $i++) {
                     $passenger[$i] = $tickets[$i]->customer;
-                    $seat[$i]=$tickets[$i]->seat_location;
                     $flight[$i] = $tickets[$i]->flight;
-                    $airport[$i]=$flight[$i]->route_direct;
+                }
+                $flights = array_values(array_unique($flight));
+                $passengers = array_values(array_unique($passenger));
+                usort($flights, function ($a, $b){
+                    if(strtotime($a->departure_date)==strtotime($b->departure_date))
+                        return 0;
+                    return  (strtotime($a->departure_date)<strtotime($b->departure_date)) ? -1 : 1;
+                });
+
+
+                for($i=0;$i<count($flights);$i++){
+                    $airport[$i] = $flights[$i]->route_direct;
                     $ori_airports[$i] = $airport[$i]->airports_origin;
                     $arr_airports[$i] = $airport[$i]->airports_arrival;
                 }
-                $flights = array_unique($flight);
-                $passengers = array_unique($passenger);
-//                dd($passengers);
+                for($i=0;$i<count($passengers);$i++){
+                    for($j=0;$j<count($flights);$j++){
+                        $seat[$i][$j] = Ticket_details::select('seat_location')->where('flight_id','=',$flights[$j]->id)
+                            ->where('passenger_id','=',$passengers[$i]->id)
+                        ->first();
+                    }
+                }
+//                dd($passengers,$seat);
+
                 return back()->with('ori_airport', $ori_airports)
                     ->with('arr_airport', $arr_airports)
                     ->with('passengers', $passengers)
