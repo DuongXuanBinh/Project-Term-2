@@ -62,7 +62,7 @@ class AccountController extends Controller
     public function signOut()
     {
         session()->flush();
-        return view('index');
+        return redirect('/');
     }
 
     public function updateProfile(Request $request)

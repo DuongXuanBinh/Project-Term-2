@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
+use phpDocumentor\Reflection\Types\Integer;
 use SebastianBergmann\CodeCoverage\Filter;
 use Carbon\Carbon;
 
@@ -61,10 +62,8 @@ class BookingController extends Controller
                 'class_id'=>$request->travel_class,'adult'=>$request->adult,
                 'children'=>$request->children,'senior'=>$request->senior
             ]);
-            if ($route_outbound != null){
-                session(['route_outbound_id '=>$route_outbound->id]);
-            }
             if ($route_outbound) {
+                session(['route_outbound_id '=>$route_outbound->id]);
                 $flight_outbound = Flight::where('route_id', '=', $route_outbound->id)
                     ->whereDate('departure_date', '=', $request->date_outbound)
                     ->take(30)->get();
@@ -742,6 +741,8 @@ class BookingController extends Controller
         $total_price = 0;
         $total_passengers = session('adult') + session('children') + session('senior');
         if (session('flight_outbound_choose')){
+            session()->forget('flights_choose');
+
             $flight[0] = Flight::where('id','=',session('flight_outbound_choose'))->first();
 
             $flight[0]['price'] = Ticket_price::where('flight_id','=',$flight[0]['id'])
@@ -759,22 +760,28 @@ class BookingController extends Controller
                 $flight[1]['price'] = Ticket_price::where('flight_id','=',$flight[1]['id'])
                     ->where('class_id','=',session('class_id')) ->first()->price;
 
-                $flight[1]['place_from'] = session('place_from');
+                $flight[1]['place_from'] = session('place_to');
 
-                $flight[1]['place_to'] = session('place_to');
+                $flight[1]['place_to'] = session('place_from');
 
                 $total_price+= $flight[1]['price'];
             }
         }
         elseif (session('flight_outbound_from_transit_choose')) {
+            session()->forget('flights_choose');
             $flight[0] = Flight::where('id','=',session('flight_outbound_from_transit_choose'))->first();
 
             $flight[0]['price'] = Ticket_price::where('flight_id','=',$flight[0]['id'])
                 ->where('class_id','=',session('class_id')) ->first()->price;
 
+            $airport_transit_id = Route_direct::where('id','=',$flight[0]->route_id)
+                ->first()->arrival_airportid;
+            $airport_transit = Airport::where('id','=', $airport_transit_id)-> first() -> name;
+
+
             $flight[0]['place_from'] = session('place_from');
 
-            $flight[0]['place_to'] = session('place_to');
+            $flight[0]['place_to'] = $airport_transit;
 
             $total_price+= $flight[0]['price'];
 
@@ -784,7 +791,7 @@ class BookingController extends Controller
             $flight[1]['price'] = Ticket_price::where('flight_id','=',$flight[1]['id'])
                 ->where('class_id','=',session('class_id')) ->first()->price;
 
-            $flight[1]['place_from'] = session('place_from');
+            $flight[1]['place_from'] = $airport_transit;
 
             $flight[1]['place_to'] = session('place_to');
 
@@ -797,9 +804,9 @@ class BookingController extends Controller
                 $flight[3]['price'] = Ticket_price::where('flight_id','=',$flight[3]['id'])
                     ->where('class_id','=',session('class_id')) ->first()->price;
 
-                $flight[3]['place_from'] = session('place_from');
+                $flight[3]['place_from'] = session('place_to');
 
-                $flight[3]['place_to'] = session('place_to');
+                $flight[3]['place_to'] = $airport_transit;
 
                 $total_price+= $flight[3]['price'];
 
@@ -809,9 +816,9 @@ class BookingController extends Controller
                 $flight[4]['price'] = Ticket_price::where('flight_id','=',$flight[4]['id'])
                     ->where('class_id','=',session('class_id')) ->first()->price;
 
-                $flight[4]['place_from'] = session('place_from');
+                $flight[4]['place_from'] =  $airport_transit;
 
-                $flight[4]['place_to'] = session('place_to');
+                $flight[4]['place_to'] = session('place_from');
 
                 $total_price+= $flight[4]['price'];
             }
@@ -820,10 +827,62 @@ class BookingController extends Controller
         session(['flights_choose'=>$flight,'total_price'=>$total_price,'total_passengers'=>$total_passengers]);
     }
 
-    public function create_passengers(Request $request){
-
-        dd($request);
+    public  function set_type_customer(int $age):int{
+        $children_min = 0;
+        $children_max = 10;
+        $adult_min = 11;
+        $adult_max = 65;
+        $senior_min = 66;
+        $type_customer = 0;
+        if ($age >=0 && $age <= 10){
+            $type_customer = 1;
+        }
+        elseif ($age >= 11 && $age <=65 ){
+            $type_customer = 2;
+        }
+        else {
+            $type_customer = 3;
+        }
+        return $type_customer;
     }
 
+    public function create_passengers(Request $request){
+
+        $passengers = array();
+        $children_min = 0;
+        $children_max = 10;
+        $adult_min = 11;
+        $adult_max = 65;
+        $senior_min = 66;
+        for ($i=0; $i< count($request->first_name); $i++){
+            if ($i==0){
+                $passengers[$i]['firstname'] = $request->first_name[$i];
+                $passengers[$i]['lastname'] = $request->last_name[$i];
+                $passengers[$i]['phone'] = session('check')->phone;
+                $passengers[$i]['email'] = session('email');
+                $passengers[$i]['dob'] = $request->dob[$i];
+                $passengers[$i]['sex'] = $request->sex[$i];
+                $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
+                $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+            }
+            elseif ($i != 0){
+                $passengers[$i]['firstname'] = $request->first_name[$i];
+                $passengers[$i]['lastname'] = $request->last_name[$i];
+                $passengers[$i]['dob'] = $request->dob[$i];
+                $passengers[$i]['sex'] = $request->sex[$i];
+                $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
+                $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+            }
+        }
+
+        session(['passengers'=>$passengers]);
+
+        return redirect('/booking/show_seats');
+    }
+
+    public function show_seats(){
+
+        return view('Select seats');
+    }
 
 }

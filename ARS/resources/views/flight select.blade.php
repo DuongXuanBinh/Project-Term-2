@@ -108,7 +108,7 @@
                     @endforeach
                 </div>
                 <!--     FLIGHTS INBOUND-->
-                @if(request('date_return'))
+                @if(session('date_return'))
                     <div class="row col-md-12">
                         <h3>Inbound</h3>
                     </div>
@@ -152,7 +152,7 @@
                                     <table>
                                         <tr>
                                             <td rowspan="2">{{$return_detail->id}}</td>
-                                            <td>{{request('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_from')}}</td>
+                                            <td>{{session('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('place_from')}}</td>
                                             <td>Date:</td>
                                             <td>{{Carbon\Carbon::parse($return_detail->departure_date)->format('d/m/Y')}}</td>
                                             <td>Departure:</td>

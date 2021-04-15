@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="front/css/bootstrap.min.css">
-    <link rel="stylesheet" href="front/css/style.css">
-    <script src="front/js/main.js"></script>
-</head>
-<body>
-<!--business-->
-<div class="container">
-    <div class="row">
-        <div class="col-3 seat-map plane-787">
+
+
+        <div class=" seat-map plane-787">
             <div>
                 <table class="business-class">
                     <img class="left-exit" src="front/images/loi%20ra%20trai.jpg" alt="">
@@ -189,7 +178,3 @@
                 <img class="right-labotory" src="front/images/PhongVeSinh.png" alt="">
             </table>
         </div>
-    </div>
-</div>
-</body>
-</html>
