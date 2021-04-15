@@ -36,7 +36,6 @@ Route::prefix('booking')->group(function (){
     Route::get('/choose_flight',[Controllers\BookingController::class,'choose_flight']);
     Route::get('/passenger_index',[Controllers\BookingController::class,'passenger_index']);
     Route::post('/create_passengers',[Controllers\BookingController::class,'create_passengers']);
-    Route::get('/show_seats',[Controllers\BookingController::class,'show_seats']);
 });
 Route::prefix('/')->group(function(){
     Route::get('/',[Controllers\HomeController::class,'homeIndex']);

@@ -39,10 +39,9 @@
 
     <div class="gtco-container passenges_list">
         <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp" style="padding: 0">
-            <form action="./booking/create_passengers" method="post" >
-                @csrf
+            <form action="/booking/create_passengers" method="post" >
                 <div class="row">
-                    <div class="col-md-9 passengers_form"  >
+                    <div class="col-md-8 passengers_form"  >
 
                         <ul class="nav nav-tabs">
                             @for($i=0; $i<session('total_passengers');$i++)
@@ -61,35 +60,35 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="first_name{{$i+1}}"><h4>First name</h4></label>
-                                                <input type="text" required class="form-control" name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
+                                                <input type="text" class="form-control" name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="last_name{{$i+1}}"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" required name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
+                                                <input type="text" class="form-control" name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="phone"><h4>Phone</h4></label>
-                                                <input type="text" class="form-control"  name="phone" readonly value="{{session('check')->phone}}" id="phone" placeholder="Enter phone" title="enter your phone number if any.">
+                                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone" title="enter your phone number if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="email"><h4>Email</h4></label>
-                                                <input type="email" class="form-control"  readonly value="{{session('email')}}" name="email" id="your-email" placeholder="You@email.com" title="enter your email.">
+                                                <input type="email" class="form-control" name="email" id="your-email" placeholder="You@email.com" title="enter your email.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="dob{{$i+1}}"><h4>Date of birth</h4></label>
-                                                <input type="date" data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
+                                                <input type="date" data-toggle="datepicker" class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
                                             </div>
                                         </div>
 
@@ -111,14 +110,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="first_name{{$i+1}}"><h4>First name</h4></label>
-                                                <input type="text" class="form-control" required name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
+                                                <input type="text" class="form-control" name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="last_name{{$i+1}}"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" required name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
+                                                <input type="text" class="form-control" name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
                                             </div>
                                         </div>
 
@@ -126,7 +125,7 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="dob{{$i+1}}"><h4>Date of birth</h4></label>
-                                                <input type="date" data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
+                                                <input type="date" data-toggle="datepicker" class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
                                             </div>
                                         </div>
 
@@ -147,20 +146,20 @@
                         </div>
 
                     </div>
-                    <div class="col-md-3 flight_detail">
+                    <div class="col-md-4 flight_detail">
                         @foreach(session('flights_choose') as $flight)
                             <table>
                                 <tr>
-                                    <th colspan="4">{{$flight->id}} --- {{Carbon\Carbon::parse($flight->departure_date)->format('d/m/Y')}}</th>
+                                    <th colspan="3">{{$flight->id}} --- {{Carbon\Carbon::parse($flight->departure_date)->format('d/m/Y')}}</th>
                                 </tr>
-                                <tr class="row">
-                                    <td class="col-md-5">{{$flight->place_from}}</td>
-                                    <td class="col-md-2" rowspan="2"><img src="front/images/429706-84%20-%20Copy.png" alt=""></td>
-                                    <td class="col-md-5">{{$flight->place_to}}</td>
+                                <tr>
+                                    <td>{{$flight->place_from}}</td>
+                                    <td rowspan="2"><img src="public/front/images/429706-84%20-%20Copy.png" alt=""></td>
+                                    <td>{{$flight->place_to}}</td>
                                 </tr>
-                                <tr  class="row">
-                                    <td class="col-md-5">{{Carbon\Carbon::parse($flight->departure_date)->format('H:i')}}</td>
-                                    <td class="col-md-5">{{Carbon\Carbon::parse($flight->arrival_date)->format('H:i')}}</td>
+                                <tr>
+                                    <td>{{Carbon\Carbon::parse($flight->departure_date)->format('H:i')}}</td>
+                                    <td>{{Carbon\Carbon::parse($flight->arrival_date)->format('H:i')}}</td>
                                 </tr>
                             </table>
                         @endforeach

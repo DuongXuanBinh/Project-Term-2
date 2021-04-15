@@ -125,7 +125,7 @@
                     @endfor
                 </div>
                 <!--        IN-->
-                @if(session('date_return'))
+                @if(request('date_return'))
                     <div class="row col-md-12">
                         <h3>Inbound</h3>
                     </div>
@@ -171,7 +171,7 @@
                                     <table  style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
                                         <tr>
                                             <td rowspan="2">{{session('from_transit_inbound_details')[$i]->id}}</td>
-                                            <td style="    width: 280px;">{{session('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_inbound_details')[$i]->airport_transit}}</td>
+                                            <td style="    width: 280px;">{{request('place_to')}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_inbound_details')[$i]->airport_transit}}</td>
                                             <td>Date:</td>
                                             <td>{{Carbon\Carbon::parse(session('from_transit_inbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
                                             <td>Departure:</td>
@@ -189,7 +189,7 @@
                                     <table>
                                         <tr>
                                             <td rowspan="2">{{session('transit_to_inbound_details')[$i]->id}}</td>
-                                            <td style="    width: 280px;">{{session('from_transit_inbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('place_from')}}</td>
+                                            <td style="    width: 280px;">{{session('from_transit_inbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_from')}}</td>
                                             <td>Date:</td>
                                             <td>{{Carbon\Carbon::parse(session('transit_to_inbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
                                             <td>Departure:</td>
