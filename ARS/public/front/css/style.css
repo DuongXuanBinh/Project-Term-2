@@ -3002,8 +3002,7 @@ form .seat-note:first-of-type{
 .passenger-ticket table tr{
   height: 40px;
 }
-.passenger-ticket table tr:nth-of-type(3),
-.passenger-ticket table tr:nth-of-type(4){
+.passenger-ticket table tr:not(tr:first-of-type){
   height: 25px;
 }
 #reschedule button.close,#cancel button.close{
