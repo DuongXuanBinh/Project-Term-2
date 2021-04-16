@@ -121,8 +121,8 @@
                                                                         <form method="get" action="/booking-manage/reschedule">
                                                                             @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" name="new_date" required>
+                                                                                <label for="new-depart_date">New daparture date:</label>
+                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -254,10 +254,11 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <label for="new-depart_date">New daparture date:</label>
+                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -387,10 +388,13 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <p><label for="new-depart-date">New daparture date:</label>
+                                                                                    <input type="text" id="new-depart-date" name="new_depart_date" required></p>
+                                                                                <p><label for="new-arrival-date">New arrival date:</label>
+                                                                                    <input style="margin-left: 22px;" type="text" id="new-arrival-date" name="new_arrival_date" required></p>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -544,10 +548,13 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <p><label for="new-depart-date">New daparture date:</label>
+                                                                                    <input type="text" id="new-depart-date" name="new_depart_date" required></p>
+                                                                                <p><label for="new-arrival-date">New arrival date:</label>
+                                                                                    <input style="margin-left: 22px;" type="text" id="new-arrival-date" name="new_arrival_date" required></p>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

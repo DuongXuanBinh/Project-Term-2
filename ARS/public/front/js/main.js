@@ -305,10 +305,19 @@
 $("#date-flight").datepicker({
 	todayHighlight:true,
 });
-$("#new-date").datepicker({
-	todayHighlight:true,
-	minDate:0,
-	maxDate:"+21d",
+$("#new-arrival-date").datepicker({
+    todayHighlight:true,
+    minDate:0,
+    maxDate:"+21d",
+});
+$( "#new-depart-date" ).datepicker({
+    onSelect: function(dateText) {
+        var date = $(this).datepicker('getDate');
+        $("#new-arrival-date").datepicker('option', 'minDate', date );
+    },
+    minDate: 0,
+    maxDate: "+21d",
+    dateFormat: "yy-mm-dd",
 });
 $("div.group1 button.date-button").click(function (){
 
@@ -323,3 +332,27 @@ $("div.group2 button.date-button").click(function (){
 $(".flight-detail").on('click',function (){
 	$(this).children('div').children('input').prop('checked',true);
 });
+$(window).on('load', function() {
+    $('#notification').modal('show');
+});
+// ------------
+$(document).ready(function (){
+    $("#su-phonenumber").blur(function(){
+        var query = $(this).val();
+        var name = $(this).attr('name');
+        if(query !== ''&& name!==''){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                type: "POST",
+                url: "/sign-in/register",
+                data: {query: query, name: name,_token:_token},
+                success: function (data) {
+                    if(data)
+                        $("svg.su-phonenumber").css('display', 'inline');
+                    else
+                        $(this).css('border-color', 'red');
+                }
+            });
+        }
+    })
+})

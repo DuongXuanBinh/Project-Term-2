@@ -459,30 +459,7 @@ $( document ).ajaxStop(function() {
 
 });
 
-$(window).on('load', function() {
-    $('#notification').modal('show');
-});
-// ------------
-$(document).ready(function (){
-    $("#su-phonenumber").blur(function(){
-        var query = $(this).val();
-        var name = $(this).attr('name');
-        if(query !== ''&& name!==''){
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "POST",
-                url: "/sign-in/register",
-                data: {query: query, name: name,_token:_token},
-                success: function (data) {
-                    if(data)
-                        $("svg.su-phonenumber").css('display', 'inline');
-                    else
-                        $(this).css('border-color', 'red');
-                }
-            });
-        }
-    })
-})
+
 
 // Show available seats
 
