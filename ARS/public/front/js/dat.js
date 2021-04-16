@@ -196,88 +196,65 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
-//start Select seats Flight[0]
-
-$(".select_seats .tab-content #flight_0 .seat-map table tr td div ").on(
-    'click',function (){
-
-        if (!$(this).children('img').hasClass("check_seat")){
-            var ID = id_first +"_"+id_first_passenger;
-            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"./front/images/icon-premium-seat1.png\" alt=\"\">"
-            $(this).children('img').addClass("hide_seat_"+ID);
-            $(".check_seat."+ID).remove();
-            $(".hide_seat_"+ID).css('display','inline');
-            $(this).children('img').css('display','none');
-            $(this).append(imgAfter);
-            var location_seat = $(this).attr('name');
-            $("#"+id_first+" #"+id_first_passenger).find("p").text(location_seat);
-            $("#"+id_first+" #"+id_first_passenger).find("input:text").attr('value',location_seat);
-        }
-
-    })
-var id_first = "flight_0"
-
-$(".select_seats .nav-tabs li.flight_0_tab").on(
-    'click',function (){
-        if (!$("#"+id_first).find(".select_seat_passenger").hasClass("active_passenger")){
-            id_first_passenger = $("#"+id_first+" .select_seat_passenger").attr('id');
-            $("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
-        }
-    }
-)
+// start Select seats Flight[0]
+var id_first = "flight_0";
 var id_first_passenger = $("#"+id_first+" .select_seat_passenger:first").attr('id');
-$("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
 
-$("#flight_0 .select_seat_passenger").on(
-    'click',function (){
-        id_first_passenger = $(this).attr('id');
-        $("#"+id_first+" .select_seat_passenger").removeClass('active_passenger');
-        $(this).addClass('active_passenger');
-    }
-)
+var id_second = "flight_1";
+var id_second_passenger = $("#"+id_second+" .select_seat_passenger:first").attr('id');
+
+var id_third = "flight_2";
+var id_third_passenger = $("#"+id_third+" .select_seat_passenger:first").attr('id');
+
+var id_four = "flight_3";
+var id_four_passenger = $("#"+id_four+" .select_seat_passenger:first").attr('id');
+
+function choose_seats(id_first,id_first_passenger ){
+    $(".select_seats .tab-content #"+id_first+" .seat-map table tr td div ").on(
+        'click',function (){
+
+            if (!$(this).children('img').hasClass("check_seat")){
+                var ID = id_first +"_"+id_first_passenger;
+                var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"./front/images/icon-premium-seat1.png\" alt=\"\">"
+                $(this).children('img').addClass("hide_seat_"+ID);
+                $(".check_seat."+ID).remove();
+                $(".hide_seat_"+ID).css('display','inline');
+                $(this).children('img').css('display','none');
+                $(this).append(imgAfter);
+                var location_seat = $(this).attr('name');
+                $("#"+id_first+" #"+id_first_passenger).find("p").text(location_seat);
+                $("#"+id_first+" #"+id_first_passenger).find("input:text").attr('value',location_seat);
+            }
+
+        })
+
+    $(".select_seats .nav-tabs li."+id_first+"_tab").on(
+        'click',function (){
+            if (!$("#"+id_first).find(".select_seat_passenger").hasClass("active_passenger")){
+                id_first_passenger = $("#"+id_first+" .select_seat_passenger").attr('id');
+                $("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
+            }
+        }
+    )
+    $("#"+id_first+" #"+id_first_passenger).addClass('active_passenger');
+
+    $("#"+id_first+" .select_seat_passenger").on(
+        'click',function (){
+            id_first_passenger = $(this).attr('id');
+            $("#"+id_first+" .select_seat_passenger").removeClass('active_passenger');
+            $(this).addClass('active_passenger');
+        }
+    )
+
+}
+
+choose_seats(id_first,id_first_passenger);
+choose_seats(id_second,id_second_passenger);
+choose_seats(id_third,id_third_passenger);
+choose_seats(id_four,id_four_passenger);
 
 //end select seat Out-Bound
 
-//start select seat In-bound
-$(".select_seats .tab-content #in_bound .seat-map table tr td div ").on(
-    'click',function (){
-
-        if (!$(this).children('img').hasClass("check_seat")){
-            var ID = id_inbound +"_"+id_in_passenger;
-            var imgAfter = "<img class=\"check_seat "+ID+"\" src=\"./front/images/icon-premium-seat1.png\" alt=\"\">"
-            $(this).children('img').addClass("hide_seat_"+ID);
-            $(".check_seat."+ID).remove();
-            $(".hide_seat_"+ID).css('display','inline');
-            $(this).children('img').css('display','none');
-            $(this).append(imgAfter);
-            var location_seat = $(this).attr('name');
-            $("#"+id_inbound+" #"+id_in_passenger).find("p").text(location_seat);
-        }
-
-    })
-var id_inbound = "in_bound"
-
-$(".select_seats .nav-tabs li.in_bound_tab").on(
-    'click',function (){
-        if (!$("#"+id_inbound).find(".select_seat_passenger").hasClass("active_passenger")){
-            id_in_passenger = $("#"+id_inbound+" .select_seat_passenger").attr('id');
-            $("#"+id_inbound+" #"+id_in_passenger).addClass('active_passenger');
-        }
-    }
-)
-var id_in_passenger = $("#"+id_inbound+" .select_seat_passenger:first").attr('id');
-$("#"+id_inbound+" #"+id_in_passenger).addClass('active_passenger');
-
-
-$("#in_bound .select_seat_passenger").on(
-    'click',function (){
-        id_in_passenger = $(this).attr('id');
-        $("#"+id_inbound+" .select_seat_passenger").removeClass('active_passenger');
-        $(this).addClass('active_passenger');
-    }
-)
-
-//end select seat In-Bound
 
 $(".check_out form input:radio").on(
     'change',function () {
@@ -482,39 +459,36 @@ $( document ).ajaxStop(function() {
 
 });
 
-<<<<<<< HEAD
 
-=======
-$(window).on('load', function() {
-    $('#notification').modal('show');
-});
-// ------------
+
+// Show available seats
+
+
+
 $(document).ready(function (){
-    $("#su-phonenumber").blur(function(){
-    var query = $(this).val();
-    var name = $(this).attr('name');
-    if(query !== ''&& name!==''){
-        var _token = $('input[name="_token"]').val();
-        $.ajax({
-            type: "POST",
-            url: "/sign-in/register",
-            data: {query: query, name: name,_token:_token},
-            success: function (data) {
-                if(data)
-                $("svg.su-phonenumber").css('display', 'inline');
-                else
-                $(this).css('border-color', 'red');
-            }
-        });
-    }
-<<<<<<< HEAD
-=======
-})
->>>>>>> parent of e1cb778 (Merge pull request #39 from DuongXuanBinh/dat)
-})
-})
->>>>>>> parent of e1cb778 (Merge pull request #39 from DuongXuanBinh/dat)
 
+
+    for (var i = 0; i < $('#flight_0 input[name="seat_location"]').length; i++){
+        var seat_unavailable = $('#flight_0 input[name="seat_location"]')[i].value;
+        $('#flight_0').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
+        $('#flight_0').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+    }
+    for (var i = 0; i < $('#flight_1 input[name="seat_location"]').length; i++){
+        var seat_unavailable = $('#flight_1 input[name="seat_location"]')[i].value;
+        $('#flight_1').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
+        $('#flight_1').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+    }
+    for (var i = 0; i < $('#flight_2 input[name="seat_location"]').length; i++){
+        var seat_unavailable = $('#flight_2 input[name="seat_location"]')[i].value;
+        $('#flight_2').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
+        $('#flight_2').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+    }
+    for (var i = 0; i < $('#flight_3 input[name="seat_location"]').length; i++){
+        var seat_unavailable = $('#flight_3 input[name="seat_location"]')[i].value;
+        $('#flight_3').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
+        $('#flight_3').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+    }
+});
 
 
 

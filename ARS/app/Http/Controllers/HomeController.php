@@ -99,7 +99,7 @@ class HomeController extends Controller
                         ->first();
                     }
                 }
-//                dd($passengers,$seat);
+//                dd($way);
 
                 return back()->with('ori_airport', $ori_airports)
                     ->with('arr_airport', $arr_airports)
@@ -129,6 +129,7 @@ class HomeController extends Controller
         session()->forget('code');
         return redirect('/')->with('notification','Your booking has been cancelled. Please check your email');
     }
+
     public function bookingReschedule(Request $request){
 
     }
