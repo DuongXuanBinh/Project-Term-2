@@ -49,6 +49,7 @@
             <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                 <div class="col-md-9">
                         <ul class="row nav nav-tabs " style="border-bottom: none !important;">
+
                             @foreach($flights as $flight)
                                 @if($i == 0)
                                     <li class="flight_{{$i}}_tab col-md-6 active"><a data-toggle="tab" href="#flight_{{$i}}">{{$flight->place_from}} to {{$flight->place_to}}</a></li>
@@ -64,17 +65,9 @@
                                 @if($j== 0)
                                     <div class="tab-pane active" id="flight_{{$j}}">
                                         <form action="#" class="form" method="post">
-                                            @foreach($flight->ticket_details as $ticket)
-                                                <input type="hidden" name="seat_location" value="{{$ticket->seat_location}}">
-                                            @endforeach
                                             <div class="row" style="display: flex">
                                                 <div class="col-md-4" style="margin: auto 0;">
-                                                    @if($flight->plane_type == '1')
-                                                        @include('320_142seats')
-                                                    @elseif($flight->plane_type == '2')
-                                                        @include('787_235seats')
-                                                    @endif
-
+                                                    @include('320_142seats')
                                                 </div>
 
                                                 <div class="col-md-7">
@@ -89,7 +82,7 @@
                                                         </div>
                                                         <div class="row col-md-12">
                                                             <p><img src="front/images/icon-premium-seat2.png" alt="">Economy Class</p>
-                                                         </div>
+                                                        </div>
                                                         <div class="row col-md-12">
                                                             <p><img src="front/images/icon-unavailable-seat.png" alt="">Unavailable Seat</p>
                                                         </div>
@@ -128,16 +121,9 @@
                                     <?php $j++ ?>
                                 @else
                                     <div class="tab-pane" id="flight_{{$j}}">
-                                        @foreach($flight->ticket_details as $ticket)
-                                            <input type="hidden" name="seat_location" value="{{$ticket->seat_location}}">
-                                        @endforeach
                                             <div class="row" style="display: flex">
                                                 <div class="col-md-4" style="margin: auto 0;">
-                                                    @if($flight->plane_type == '1')
-                                                        @include('320_142seats')
-                                                    @elseif($flight->plane_type == '2')
-                                                        @include('787_235seats')
-                                                    @endif
+                                                    @include('320_142seats')
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="row  seat-note">
@@ -160,8 +146,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-left: 20px;margin-top: 40px">
-                                                    <?php $p=0 ?>
                                                     @foreach($passengers as $passenger)
+                                                        <?php $p=0 ?>
                                                         <div class="row col-md-12 select_seat_passenger" id="passenger_{{$p}}">
                                                             <div class="col-md-2"><span>
                                                                 @if($passenger['sex'] === 'Male')
@@ -276,4 +262,3 @@
 </div>
 
 @endsection
-

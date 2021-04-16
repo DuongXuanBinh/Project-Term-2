@@ -754,9 +754,6 @@ class BookingController extends Controller
 
             $total_price+= $flight[0]['price'];
 
-            $flight[0]['plane_type'] = $flight[0]->plane->plane_type;
-
-
             if (session('flight_return_choose')){
                 $flight[1] = Flight::where('id','=',session('flight_return_choose'))->first();
 
@@ -768,8 +765,6 @@ class BookingController extends Controller
                 $flight[1]['place_to'] = session('place_from');
 
                 $total_price+= $flight[1]['price'];
-
-                $flight[1]['plane_type'] = $flight[1]->plane->plane_type;
             }
         }
         elseif (session('flight_outbound_from_transit_choose')) {
@@ -790,18 +785,6 @@ class BookingController extends Controller
 
             $total_price+= $flight[0]['price'];
 
-            $flight[0]['plane_type'] = $flight[0]->plane->plane_type;
-
-            $ticket_details =  $flight[0]->ticket_details;
-
-//            $seats_unavailable = collect();
-//
-//            foreach ($ticket_details as $ticket_detail){
-//                $seats_unavailable->push($ticket_detail->seat_location);
-//            }
-//
-//            session(['seat__'=>$seats_unavailable]);
-
 
             $flight[1] = Flight::where('id','=',session('flight_outbound_transit_to_choose'))->first();
 
@@ -814,36 +797,30 @@ class BookingController extends Controller
 
             $total_price+= $flight[1]['price'];
 
-            $flight[1]['plane_type'] = $flight[1]->plane->plane_type;
-
 
             if (session('flight_return_from_transit_choose')){
-                $flight[2] = Flight::where('id','=',session('flight_return_from_transit_choose'))->first();
-
-                $flight[2]['price'] = Ticket_price::where('flight_id','=',$flight[2]['id'])
-                    ->where('class_id','=',session('class_id')) ->first()->price;
-
-                $flight[2]['place_from'] = session('place_to');
-
-                $flight[2]['place_to'] = $airport_transit;
-
-                $total_price+= $flight[2]['price'];
-
-                $flight[2]['plane_type'] = $flight[2]->plane->plane_type;
-
-
-                $flight[3] = Flight::where('id','=',session('flight_return_transit_to_choose'))->first();
+                $flight[3] = Flight::where('id','=',session('flight_return_from_transit_choose'))->first();
 
                 $flight[3]['price'] = Ticket_price::where('flight_id','=',$flight[3]['id'])
                     ->where('class_id','=',session('class_id')) ->first()->price;
 
-                $flight[3]['place_from'] =  $airport_transit;
+                $flight[3]['place_from'] = session('place_to');
 
-                $flight[3]['place_to'] = session('place_from');
+                $flight[3]['place_to'] = $airport_transit;
 
                 $total_price+= $flight[3]['price'];
 
-                $flight[3]['plane_type'] = $flight[3]->plane->plane_type;
+
+                $flight[4] = Flight::where('id','=',session('flight_return_transit_to_choose'))->first();
+
+                $flight[4]['price'] = Ticket_price::where('flight_id','=',$flight[4]['id'])
+                    ->where('class_id','=',session('class_id')) ->first()->price;
+
+                $flight[4]['place_from'] =  $airport_transit;
+
+                $flight[4]['place_to'] = session('place_from');
+
+                $total_price+= $flight[4]['price'];
             }
 
         }
@@ -905,7 +882,6 @@ class BookingController extends Controller
 
     public function show_seats(){
 
-//        dd(session('flights_choose'));
         return view('Select seats');
     }
 
