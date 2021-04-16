@@ -15,6 +15,162 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('flight_statuses')->insert([
+            [
+                'id'=>1,
+                'name'=>'As scheduled'
+            ],
+            [
+                'id'=>2,
+                'name'=>'Delayed'
+            ],
+            [
+                'id'=>3,
+                'name'=>'Cancelled'
+            ],
+            [
+                'id'=>4,
+                'name'=>'Landed'
+            ]
+        ]);
+        DB::table('order_statuses')->insert([
+            [
+                'id'=>1,
+                'name'=>'Buyed',
+            ],[
+                'id'=>2,
+                'name'=>'Blocked',
+            ],
+            [
+                'id'=>3,
+                'name'=>'Cancelled'
+            ]
+        ]);
+        DB::table('refund_policies')->insert([
+            [
+                'days_before_departure'=>3,
+                'percentage of refund'=>'30%',
+                'number'=>0.3,
+            ],
+            [
+                'days_before_departure'=>7,
+                'percentage of refund'=>'50%',
+                'number'=>0.5,
+            ],
+            [
+                'days_before_departure'=>15,
+                'percentage of refund'=>'70%',
+                'number'=>0.7,
+            ],
+            [
+                'days_before_departure'=>30,
+                'percentage of refund'=>'100%',
+                'number'=>1,
+            ]
+
+        ]);
+        DB::table('roles')->insert([
+            [
+                'id'=>1,
+                'name'=>'passenger'
+            ],
+            [
+                'id'=>2,
+                'name'=>'admin'
+            ]
+        ]);
+        DB::table('classes')->insert([
+            [
+                'id'=>1,
+                'name'=>'Economy',
+                'hand_baggage'=>'7kg',
+                'checked_baggage'=>'20kg'
+            ],
+            [
+                'id'=>2,
+                'name'=>'Business',
+                'hand_baggage'=>'10kg',
+                'checked_baggage'=>'40kg'
+            ]
+        ]);
+        DB::table('airports')->insert([
+            [
+                'id'=>'HAN',
+                'name'=>'Ha Noi',
+            ],
+            [
+                'id'=>'SGN',
+                'name'=>'TP Ho Chi Minh',
+            ],
+            [
+                'id'=>'CXR',
+                'name'=>'Nha Trang',
+            ],
+            [
+                'id'=>'VDO',
+                'name'=>'Van Don',
+            ],
+            [
+                'id'=>'DAD',
+                'name'=>'Da Nang',
+            ]
+        ]);
+        DB::table('customer_types')->insert([
+            [
+                'id'=>1,
+                'name'=>'Children',
+                'min_age'=>0,
+                'max_age'=>10,
+                'fare_diff'=>0.6
+            ],
+            [
+                'id'=>2,
+                'name'=>'Aldult',
+                'min_age'=>11,
+                'max_age'=>65,
+                'fare_diff'=>1.0
+            ],
+            [
+                'id'=>3,
+                'name'=>'Senior citizen',
+                'min_age'=>66,
+                'max_age'=>200,
+                'fare_diff'=>0.8
+            ]
+        ]);
+        DB::table('plane_types')->insert([
+            [
+                'id'=>1,
+                'name'=>'Airbus 320_200',
+                'business_seats'=>16,
+                'economy_seats'=>126,
+                'total_seats'=>142
+            ],
+            [
+                'id'=>2,
+                'name'=>'Boeing 787-800',
+                'business_seats'=>28,
+                'economy_seats'=>207,
+                'total_seats'=>235,
+            ]
+        ]);
+        DB::table('planes')->insert([
+            [
+                'id'=>1,
+                'name'=>'MB111',
+                'plane_type'=>1,
+            ],
+            [
+                'id'=>2,
+                'name'=>'MB112',
+                'plane_type'=>2,
+            ],
+            [
+                'id'=>3,
+                'name'=>'MB113',
+                'plane_type'=>2,
+            ],
+        ]);
         DB::table('accounts')->insert([
             [
                 'id'=>1,
@@ -41,7 +197,7 @@ class DatabaseSeeder extends Seeder
                 'sex'=>'Male',
                 'credit_number'=>'2222222222',
                 'phone'=>'0852873838',
-                'sky_miles'=>1221,
+                'sky_miles'=>2442,
                 'role'=>1
             ],
             [
@@ -71,42 +227,6 @@ class DatabaseSeeder extends Seeder
                 'phone'=>'0932555666',
                 'skymile'=>0,
                 'role'=>2
-            ]
-        ]);
-        DB::table('airports')->insert([
-            [
-                'id'=>'HAN',
-                'name'=>'Ha Noi',
-            ],
-            [
-                'id'=>'SGN',
-                'name'=>'TP Ho Chi Minh',
-            ],
-            [
-                'id'=>'CXR',
-                'name'=>'Nha Trang',
-            ],
-            [
-                'id'=>'VDO',
-                'name'=>'Van Don',
-            ],
-            [
-                'id'=>'DAD',
-                'name'=>'Da Nang',
-            ]
-        ]);
-        DB::table('classes')->insert([
-            [
-                'id'=>1,
-                'name'=>'Economy',
-                'hand_baggage'=>'7kg',
-                'checked_baggage'=>'20kg'
-            ],
-            [
-                'id'=>2,
-                'name'=>'Business',
-                'hand_baggage'=>'10kg',
-                'checked_baggage'=>'40kg'
             ]
         ]);
         DB::table('customers')->insert([
@@ -153,28 +273,117 @@ class DatabaseSeeder extends Seeder
                 'account_id'=>2
             ],
         ]);
-        DB::table('customer_types')->insert([
+        DB::table('orders')->insert([
             [
-                'id'=>1,
-                'name'=>'Children',
-                'min_age'=>0,
-                'max_age'=>10,
-                'fare_diff'=>0.6
+                'id'=>'SO-AKEB',
+                'account_id'=>1,
+                'order_status'=>1,
+                'total_price'=>'191',
+                'total_skymiles'=>4884,
+                'flight_route'=>2
             ],
             [
-                'id'=>2,
-                'name'=>'Aldult',
-                'min_age'=>11,
-                'max_age'=>65,
-                'fare_diff'=>1.0
+                'id'=>'SO-HTBN',
+                'account_id'=>2,
+                'order_status'=>1,
+                'total_price'=>'90',
+                'total_skymiles'=>2442,
+                'flight_route'=>1
             ],
             [
-                'id'=>3,
-                'name'=>'Senior citizen',
-                'min_age'=>66,
-                'max_age'=>200,
-                'fare_diff'=>0.8
-            ]
+                'id'=>'SO-MLTK',
+                'account_id'=>3,
+                'order_status'=>1,
+                'total_price'=>272,
+                'total_skymiles'=>3020,
+                'flight_route'=>1
+            ],
+        ]);
+        DB::table('route_directs')->insert([
+            [
+                'id'=>'1',
+                'origin_airportid'=>'HAN',
+                'arrival_airportid'=>'SGN',
+                'skymile'=>'1221',
+                'duration'=>'1:50'
+            ],
+            [
+                'id'=>'2',
+                'origin_airportid'=>'SGN',
+                'arrival_airportid'=>'HAN',
+                'skymile'=>'1221',
+                'duration'=>'1:50'
+            ],
+            [
+                'id'=>'3',
+                'origin_airportid'=>'HAN',
+                'arrival_airportid'=>'CXR',
+                'skymile'=>'860',
+                'duration'=>'1:20'
+            ],
+            [
+                'id'=>'4',
+                'origin_airportid'=>'CXR',
+                'arrival_airportid'=>'HAN',
+                'skymile'=>'860',
+                'duration'=>'1:20'
+            ],
+            [
+                'id'=>'5',
+                'origin_airportid'=>'VDO',
+                'arrival_airportid'=>'DAD',
+                'skymile'=>'920',
+                'duration'=>'1:30'
+            ],
+            [
+                'id'=>'6',
+                'origin_airportid'=>'DAD',
+                'arrival_airportid'=>'VDO',
+                'skymile'=>'920',
+                'duration'=>'1:30'
+            ],
+            [
+                'id'=>'7',
+                'origin_airportid'=>'DAD',
+                'arrival_airportid'=>'SGN',
+                'skymile'=>'670',
+                'duration'=>'1:05'
+            ],
+            [
+                'id'=>'8',
+                'origin_airportid'=>'SGN',
+                'arrival_airportid'=>'DAD',
+                'skymile'=>'670',
+                'duration'=>'1:05'
+            ],
+            [
+                'id'=>'9',
+                'origin_airportid'=>'VDO',
+                'arrival_airportid'=>'CXR',
+                'skymile'=>'1030',
+                'duration'=>'1:40'
+            ],
+            [
+                'id'=>'10',
+                'origin_airportid'=>'CXR',
+                'arrival_airportid'=>'VDO',
+                'skymile'=>'1030',
+                'duration'=>'1:40'
+            ],
+            [
+                'id'=>'11',
+                'origin_airportid'=>'CXR',
+                'arrival_airportid'=>'SGN',
+                'skymile'=>'480',
+                'duration'=>'1:00'
+            ],
+            [
+                'id'=>'12',
+                'origin_airportid'=>'SGN',
+                'arrival_airportid'=>'CXR',
+                'skymile'=>'480',
+                'duration'=>'1:00'
+            ],
         ]);
         DB::table('flights')->insert([
             [
@@ -644,178 +853,205 @@ class DatabaseSeeder extends Seeder
 
 
         ]);
-        DB::table('flight_statuses')->insert([
+        DB::table('ticket_details')->insert([
             [
-                'id'=>1,
-                'name'=>'As scheduled'
+                'flight_id'=>'HV111',
+                'seat_location'=>'10A',
+                'order_id'=>'SO-AKEB',
+                'passenger_id'=>10000104,
+                'price'=>50.5
             ],
             [
-                'id'=>2,
-                'name'=>'Delayed'
+                'flight_id'=>'HV111',
+                'seat_location'=>'10B',
+                'order_id'=>'SO-AKEB',
+                'passenger_id'=>10000101,
+                'price'=>50.5
             ],
             [
-                'id'=>3,
-                'name'=>'Cancelled'
+                'flight_id'=>'HV112',
+                'seat_location'=>'10C',
+                'order_id'=>'SO-AKEB',
+                'passenger_id'=>10000104,
+                'price'=>45
             ],
             [
-                'id'=>4,
-                'name'=>'Landed'
-            ]
+                'flight_id'=>'HV112',
+                'seat_location'=>'14C',
+                'order_id'=>'SO-AKEB',
+                'passenger_id'=>10000101,
+                'price'=>45
+            ],
+            [
+                'flight_id'=>'HV112',
+                'seat_location'=>'24C',
+                'order_id'=>'SO-HTBN',
+                'passenger_id'=>10000105,
+                'price'=>45
+            ],
+            [
+                'flight_id'=>'HV112',
+                'seat_location'=>'15A',
+                'order_id'=>'SO-HTBN',
+                'passenger_id'=>10000103,
+                'price'=>45
+            ],
+            [
+                'flight_id'=>'HV130',
+                'seat_location'=>'1A',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000106,
+                'price'=>57
+            ],
+            [
+                'flight_id'=>'HV138',
+                'seat_location'=>'1B',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000106,
+                'price'=>79
+            ],
+            [
+                'flight_id'=>'HV130',
+                'seat_location'=>'2A',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000102,
+                'price'=>57
+            ],
+            [
+                'flight_id'=>'HV138',
+                'seat_location'=>'2B',
+                'order_id'=>'SO-MLTK',
+                'passenger_id'=>10000102,
+                'price'=>79
+            ],
         ]);
-        DB::table('orders')->insert([
+        DB::table('ticket_prices')->insert([
             [
-                'id'=>'SO-AKEB',
-                'account_id'=>1,
-                'order_status'=>1,
-                'total_price'=>'191',
-                'total_skymiles'=>4884,
-                'flight_route'=>2
+                'flight_id'=>'HV111',
+                'class_id'=>1,
+                'price'=>50.5,
             ],
             [
-                'id'=>'SO-HTBN',
-                'account_id'=>2,
-                'order_status'=>1,
-                'total_price'=>'90',
-                'total_skymiles'=>2442,
-                'flight_route'=>1
+                'flight_id'=>'HV111',
+                'class_id'=>2,
+                'price'=>71.3,
             ],
             [
-                'id'=>'SO-MLTK',
-                'account_id'=>3,
-                'order_status'=>1,
-                'total_price'=>272,
-                'total_skymiles'=>3020,
-                'flight_route'=>1
-            ],
-        ]);
-        DB::table('planes')->insert([
-            [
-                'id'=>1,
-                'name'=>'MB111',
-                'plane_type'=>1
+                'flight_id'=>'HV112',
+                'class_id'=>1,
+                'price'=>45,
             ],
             [
-                'id'=>2,
-                'name'=>'MB112',
-                'plane_type'=>2
+                'flight_id'=>'HV112',
+                'class_id'=>2,
+                'price'=>68.9,
             ],
             [
-                'id'=>3,
-                'name'=>'MB113',
-                'plane_type'=>2
-            ]
-        ]);
-        DB::table('plane_types')->insert([
-            [
-                'id'=>1,
-                'name'=>'Airbus 320_200',
-                'business_seats'=>16,
-                'economy_seats'=>126,
-                'total_seats'=>142
+                'flight_id'=>'HV113',
+                'class_id'=>1,
+                'price'=>39,
             ],
             [
-                'id'=>2,
-                'name'=>'Boeing 787-800',
-                'business_seats'=>28,
-                'economy_seats'=>207,
-                'total_seats'=>235,
-            ]
-        ]);
-        DB::table('roles')->insert([
-            [
-                'id'=>1,
-                'name'=>'passenger'
+                'flight_id'=>'HV113',
+                'class_id'=>2,
+                'price'=>52,
             ],
-            [
-                'id'=>2,
-                'name'=>'admin'
-            ]
-        ]);
-        DB::table('route_directs')->insert([
-            [
-                'id'=>'1',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'1221',
-                'duration'=>'1:50'
-            ],
-            [
-                'id'=>'2',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'HAN',
-                'skymile'=>'1221',
-                'duration'=>'1:50'
-            ],
-            [
-                'id'=>'3',
-                'origin_airportid'=>'HAN',
-                'arrival_airportid'=>'CXR',
-                'skymile'=>'860',
-                'duration'=>'1:20'
-            ],
-            [
-                'id'=>'4',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'HAN',
-                'skymile'=>'860',
-                'duration'=>'1:20'
-            ],
-            [
-                'id'=>'5',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'DAD',
-                'skymile'=>'920',
-                'duration'=>'1:30'
-            ],
-            [
-                'id'=>'6',
-                'origin_airportid'=>'DAD',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'920',
-                'duration'=>'1:30'
-            ],
-            [
-                'id'=>'7',
-                'origin_airportid'=>'DAD',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'670',
-                'duration'=>'1:05'
-            ],
-            [
-                'id'=>'8',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'DAD',
-                'skymile'=>'670',
-                'duration'=>'1:05'
-            ],
-            [
-                'id'=>'9',
-                'origin_airportid'=>'VDO',
-                'arrival_airportid'=>'CXR',
-                'skymile'=>'1030',
-                'duration'=>'1:40'
-            ],
-            [
-                'id'=>'10',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'VDO',
-                'skymile'=>'1030',
-                'duration'=>'1:40'
-            ],
-            [
-                'id'=>'11',
-                'origin_airportid'=>'CXR',
-                'arrival_airportid'=>'SGN',
-                'skymile'=>'480',
-                'duration'=>'1:00'
-            ],
-            [
-                'id'=>'12',
-                'origin_airportid'=>'SGN',
-                'arrival_airportid'=>'CXR',
-                'skymile'=>'480',
-                'duration'=>'1:00'
-            ],
+            ['flight_id'=>'HV114', 'class_id'=>1, 'price'=>80 ],
+            ['flight_id'=>'HV114', 'class_id'=>2, 'price'=>104 ],
+            ['flight_id'=>'HV115', 'class_id'=>1, 'price'=>82 ],
+            ['flight_id'=>'HV115', 'class_id'=>2, 'price'=>97 ],
+            ['flight_id'=>'HV116', 'class_id'=>1, 'price'=>34 ],
+            ['flight_id'=>'HV116', 'class_id'=>2, 'price'=>60 ],
+            ['flight_id'=>'HV117', 'class_id'=>1, 'price'=>98 ],
+            ['flight_id'=>'HV117', 'class_id'=>2, 'price'=>117 ],
+            ['flight_id'=>'HV118', 'class_id'=>1, 'price'=>76 ],
+            ['flight_id'=>'HV118', 'class_id'=>2, 'price'=>87 ],
+            ['flight_id'=>'HV119', 'class_id'=>1, 'price'=>32 ],
+            ['flight_id'=>'HV119', 'class_id'=>2, 'price'=>58 ],
+            ['flight_id'=>'HV120', 'class_id'=>1, 'price'=>47 ],
+            ['flight_id'=>'HV120', 'class_id'=>2, 'price'=>71 ],
+            ['flight_id'=>'HV121', 'class_id'=>1, 'price'=>93 ],
+            ['flight_id'=>'HV121', 'class_id'=>2, 'price'=>110 ],
+            ['flight_id'=>'HV122', 'class_id'=>1, 'price'=>68 ],
+            ['flight_id'=>'HV122', 'class_id'=>2, 'price'=>84 ],
+            ['flight_id'=>'HV123', 'class_id'=>1, 'price'=>93 ],
+            ['flight_id'=>'HV123', 'class_id'=>2, 'price'=>115 ],
+            ['flight_id'=>'HV124', 'class_id'=>1, 'price'=>74 ],
+            ['flight_id'=>'HV124', 'class_id'=>2, 'price'=>91 ],
+            ['flight_id'=>'HV125', 'class_id'=>1, 'price'=>72 ],
+            ['flight_id'=>'HV125', 'class_id'=>2, 'price'=>82 ],
+            ['flight_id'=>'HV126', 'class_id'=>1, 'price'=>44 ],
+            ['flight_id'=>'HV126', 'class_id'=>2, 'price'=>57 ],
+            ['flight_id'=>'HV127', 'class_id'=>1, 'price'=>69 ],
+            ['flight_id'=>'HV127', 'class_id'=>2, 'price'=>88 ],
+            ['flight_id'=>'HV128', 'class_id'=>1, 'price'=>32 ],
+            ['flight_id'=>'HV128', 'class_id'=>2, 'price'=>59 ],
+            ['flight_id'=>'HV129', 'class_id'=>1, 'price'=>50 ],
+            ['flight_id'=>'HV129', 'class_id'=>2, 'price'=>67 ],
+            ['flight_id'=>'HV130', 'class_id'=>1, 'price'=>38 ],
+            ['flight_id'=>'HV130', 'class_id'=>2, 'price'=>57 ],
+//            ['flight_id'=>'HV131', 'class_id'=>1, 'price'=>52 ],
+//            ['flight_id'=>'HV131', 'class_id'=>2, 'price'=>65 ],
+            ['flight_id'=>'HV132', 'class_id'=>1, 'price'=>75 ],
+            ['flight_id'=>'HV132', 'class_id'=>2, 'price'=>91 ],
+//            ['flight_id'=>'HV133', 'class_id'=>1, 'price'=>99 ],
+//            ['flight_id'=>'HV133', 'class_id'=>2, 'price'=>111 ],
+            ['flight_id'=>'HV134', 'class_id'=>1, 'price'=>84 ],
+            ['flight_id'=>'HV134', 'class_id'=>2, 'price'=>105 ],
+//            ['flight_id'=>'HV135', 'class_id'=>1, 'price'=>71 ],
+//            ['flight_id'=>'HV135', 'class_id'=>2, 'price'=>96 ],
+            ['flight_id'=>'HV136', 'class_id'=>1, 'price'=>76 ],
+            ['flight_id'=>'HV136', 'class_id'=>2, 'price'=>103 ],
+            ['flight_id'=>'HV137', 'class_id'=>1, 'price'=>75 ],
+            ['flight_id'=>'HV137', 'class_id'=>2, 'price'=>101 ],
+            ['flight_id'=>'HV138', 'class_id'=>1, 'price'=>60 ],
+            ['flight_id'=>'HV138', 'class_id'=>2, 'price'=>79 ],
+//            ['flight_id'=>'HV139', 'class_id'=>1, 'price'=>55 ],
+//            ['flight_id'=>'HV139', 'class_id'=>2, 'price'=>76 ],
+//            ['flight_id'=>'HV140', 'class_id'=>1, 'price'=>39 ],
+//            ['flight_id'=>'HV140', 'class_id'=>2, 'price'=>62 ],
+            ['flight_id'=>'HV141', 'class_id'=>1, 'price'=>36 ],
+            ['flight_id'=>'HV141', 'class_id'=>2, 'price'=>47 ],
+//            ['flight_id'=>'HV142', 'class_id'=>1, 'price'=>83 ],
+//            ['flight_id'=>'HV142', 'class_id'=>2, 'price'=>98 ],
+            ['flight_id'=>'HV143', 'class_id'=>1, 'price'=>34 ],
+            ['flight_id'=>'HV143', 'class_id'=>2, 'price'=>54 ],
+//            ['flight_id'=>'HV144', 'class_id'=>1, 'price'=>84 ],
+//            ['flight_id'=>'HV144', 'class_id'=>2, 'price'=>104 ],
+            ['flight_id'=>'HV145', 'class_id'=>1, 'price'=>77 ],
+            ['flight_id'=>'HV145', 'class_id'=>2, 'price'=>97 ],
+//            ['flight_id'=>'HV146', 'class_id'=>1, 'price'=>61 ],
+//            ['flight_id'=>'HV146', 'class_id'=>2, 'price'=>85 ],
+            ['flight_id'=>'HV147', 'class_id'=>1, 'price'=>50 ],
+            ['flight_id'=>'HV147', 'class_id'=>2, 'price'=>78 ],
+            ['flight_id'=>'HV148', 'class_id'=>1, 'price'=>80 ],
+            ['flight_id'=>'HV148', 'class_id'=>2, 'price'=>91 ],
+//            ['flight_id'=>'HV149', 'class_id'=>1, 'price'=>24 ],
+//            ['flight_id'=>'HV149', 'class_id'=>2, 'price'=>49 ],
+            ['flight_id'=>'HV150', 'class_id'=>1, 'price'=>74 ],
+            ['flight_id'=>'HV150', 'class_id'=>2, 'price'=>87 ],
+//            ['flight_id'=>'HV151', 'class_id'=>1, 'price'=>92 ],
+//            ['flight_id'=>'HV151', 'class_id'=>2, 'price'=>116 ],
+            ['flight_id'=>'HV152', 'class_id'=>1, 'price'=>68 ],
+            ['flight_id'=>'HV152', 'class_id'=>2, 'price'=>78 ],
+//            ['flight_id'=>'HV153', 'class_id'=>1, 'price'=>76 ],
+//            ['flight_id'=>'HV153', 'class_id'=>2, 'price'=>101 ],
+//            ['flight_id'=>'HV154', 'class_id'=>1, 'price'=>43 ],
+//            ['flight_id'=>'HV154', 'class_id'=>2, 'price'=>71 ],
+            ['flight_id'=>'HV155', 'class_id'=>1, 'price'=>23 ],
+            ['flight_id'=>'HV155', 'class_id'=>2, 'price'=>40 ],
+            ['flight_id'=>'HV156', 'class_id'=>1, 'price'=>26 ],
+            ['flight_id'=>'HV156', 'class_id'=>2, 'price'=>38 ],
+//            ['flight_id'=>'HV157', 'class_id'=>1, 'price'=>27 ],
+//            ['flight_id'=>'HV157', 'class_id'=>2, 'price'=>47 ],
+            ['flight_id'=>'HV158', 'class_id'=>1, 'price'=>90 ],
+            ['flight_id'=>'HV158', 'class_id'=>2, 'price'=>101 ],
+//            ['flight_id'=>'HV159', 'class_id'=>1, 'price'=>84 ],
+//            ['flight_id'=>'HV159', 'class_id'=>2, 'price'=>110 ],
+//            ['flight_id'=>'HV160', 'class_id'=>1, 'price'=>65 ],
+//            ['flight_id'=>'HV160', 'class_id'=>2, 'price'=>76 ],
+            ['flight_id'=>'HV161', 'class_id'=>1, 'price'=>95 ],
+            ['flight_id'=>'HV161', 'class_id'=>2, 'price'=>108 ],
         ]);
         DB::table('seats')->insert([
             //320
@@ -1198,219 +1434,6 @@ class DatabaseSeeder extends Seeder
             [ 'seat_location'=>'30H', 'class_id'=>1, 'plane_type'=>2 ],
             [ 'seat_location'=>'30K', 'class_id'=>1, 'plane_type'=>2 ],
 
-        ]);
-        DB::table('ticket_details')->insert([
-            [
-                'flight_id'=>'HV111',
-                'seat_location'=>'10A',
-                'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000104,
-                'price'=>50.5
-            ],
-            [
-                'flight_id'=>'HV111',
-                'seat_location'=>'10B',
-                'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000101,
-                'price'=>50.5
-            ],
-            [
-                'flight_id'=>'HV112',
-                'seat_location'=>'10C',
-                'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000104,
-                'price'=>45
-            ],
-            [
-                'flight_id'=>'HV112',
-                'seat_location'=>'14C',
-                'order_id'=>'SO-AKEB',
-                'passenger_id'=>10000101,
-                'price'=>45
-            ],
-            [
-                'flight_id'=>'HV112',
-                'seat_location'=>'24C',
-                'order_id'=>'SO-HTBN',
-                'passenger_id'=>10000105,
-                'price'=>45
-            ],
-            [
-                'flight_id'=>'HV112',
-                'seat_location'=>'15A',
-                'order_id'=>'SO-HTBN',
-                'passenger_id'=>10000103,
-                'price'=>45
-            ],
-            [
-                'flight_id'=>'HV130',
-                'seat_location'=>'1A',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000106,
-                'price'=>57
-            ],
-            [
-                'flight_id'=>'HV138',
-                'seat_location'=>'1B',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000106,
-                'price'=>79
-            ],
-            [
-                'flight_id'=>'HV130',
-                'seat_location'=>'2A',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000102,
-                'price'=>57
-            ],
-            [
-                'flight_id'=>'HV138',
-                'seat_location'=>'2B',
-                'order_id'=>'SO-MLTK',
-                'passenger_id'=>10000102,
-                'price'=>79
-            ],
-        ]);
-        DB::table('ticket_prices')->insert([
-            [
-                'flight_id'=>'HV111',
-                'class_id'=>1,
-                'price'=>50.5,
-            ],
-            [
-                'flight_id'=>'HV111',
-                'class_id'=>2,
-                'price'=>71.3,
-            ],
-            [
-                'flight_id'=>'HV112',
-                'class_id'=>1,
-                'price'=>45,
-            ],
-            [
-                'flight_id'=>'HV112',
-                'class_id'=>2,
-                'price'=>68.9,
-            ],
-            [
-                'flight_id'=>'HV113',
-                'class_id'=>1,
-                'price'=>39,
-            ],
-            [
-                'flight_id'=>'HV113',
-                'class_id'=>2,
-                'price'=>52,
-            ],
-            ['flight_id'=>'HV114', 'class_id'=>1, 'price'=>80 ],
-            ['flight_id'=>'HV114', 'class_id'=>2, 'price'=>104 ],
-            ['flight_id'=>'HV115', 'class_id'=>1, 'price'=>82 ],
-            ['flight_id'=>'HV115', 'class_id'=>2, 'price'=>97 ],
-            ['flight_id'=>'HV116', 'class_id'=>1, 'price'=>34 ],
-            ['flight_id'=>'HV116', 'class_id'=>2, 'price'=>60 ],
-            ['flight_id'=>'HV117', 'class_id'=>1, 'price'=>98 ],
-            ['flight_id'=>'HV117', 'class_id'=>2, 'price'=>117 ],
-            ['flight_id'=>'HV118', 'class_id'=>1, 'price'=>76 ],
-            ['flight_id'=>'HV118', 'class_id'=>2, 'price'=>87 ],
-            ['flight_id'=>'HV119', 'class_id'=>1, 'price'=>32 ],
-            ['flight_id'=>'HV119', 'class_id'=>2, 'price'=>58 ],
-            ['flight_id'=>'HV120', 'class_id'=>1, 'price'=>47 ],
-            ['flight_id'=>'HV120', 'class_id'=>2, 'price'=>71 ],
-            ['flight_id'=>'HV121', 'class_id'=>1, 'price'=>93 ],
-            ['flight_id'=>'HV121', 'class_id'=>2, 'price'=>110 ],
-            ['flight_id'=>'HV122', 'class_id'=>1, 'price'=>68 ],
-            ['flight_id'=>'HV122', 'class_id'=>2, 'price'=>84 ],
-            ['flight_id'=>'HV123', 'class_id'=>1, 'price'=>93 ],
-            ['flight_id'=>'HV123', 'class_id'=>2, 'price'=>115 ],
-            ['flight_id'=>'HV124', 'class_id'=>1, 'price'=>74 ],
-            ['flight_id'=>'HV124', 'class_id'=>2, 'price'=>91 ],
-            ['flight_id'=>'HV125', 'class_id'=>1, 'price'=>72 ],
-            ['flight_id'=>'HV125', 'class_id'=>2, 'price'=>82 ],
-            ['flight_id'=>'HV126', 'class_id'=>1, 'price'=>44 ],
-            ['flight_id'=>'HV126', 'class_id'=>2, 'price'=>57 ],
-            ['flight_id'=>'HV127', 'class_id'=>1, 'price'=>69 ],
-            ['flight_id'=>'HV127', 'class_id'=>2, 'price'=>88 ],
-            ['flight_id'=>'HV128', 'class_id'=>1, 'price'=>32 ],
-            ['flight_id'=>'HV128', 'class_id'=>2, 'price'=>59 ],
-            ['flight_id'=>'HV129', 'class_id'=>1, 'price'=>50 ],
-            ['flight_id'=>'HV129', 'class_id'=>2, 'price'=>67 ],
-            ['flight_id'=>'HV130', 'class_id'=>1, 'price'=>38 ],
-            ['flight_id'=>'HV130', 'class_id'=>2, 'price'=>57 ],
-            ['flight_id'=>'HV131', 'class_id'=>1, 'price'=>52 ],
-            ['flight_id'=>'HV131', 'class_id'=>2, 'price'=>65 ],
-            ['flight_id'=>'HV132', 'class_id'=>1, 'price'=>75 ],
-            ['flight_id'=>'HV132', 'class_id'=>2, 'price'=>91 ],
-            ['flight_id'=>'HV133', 'class_id'=>1, 'price'=>99 ],
-            ['flight_id'=>'HV133', 'class_id'=>2, 'price'=>111 ],
-            ['flight_id'=>'HV134', 'class_id'=>1, 'price'=>84 ],
-            ['flight_id'=>'HV134', 'class_id'=>2, 'price'=>105 ],
-            ['flight_id'=>'HV135', 'class_id'=>1, 'price'=>71 ],
-            ['flight_id'=>'HV135', 'class_id'=>2, 'price'=>96 ],
-            ['flight_id'=>'HV136', 'class_id'=>1, 'price'=>76 ],
-            ['flight_id'=>'HV136', 'class_id'=>2, 'price'=>103 ],
-            ['flight_id'=>'HV137', 'class_id'=>1, 'price'=>75 ],
-            ['flight_id'=>'HV137', 'class_id'=>2, 'price'=>101 ],
-            ['flight_id'=>'HV138', 'class_id'=>1, 'price'=>60 ],
-            ['flight_id'=>'HV138', 'class_id'=>2, 'price'=>79 ],
-            ['flight_id'=>'HV139', 'class_id'=>1, 'price'=>55 ],
-            ['flight_id'=>'HV139', 'class_id'=>2, 'price'=>76 ],
-            ['flight_id'=>'HV140', 'class_id'=>1, 'price'=>39 ],
-            ['flight_id'=>'HV140', 'class_id'=>2, 'price'=>62 ],
-            ['flight_id'=>'HV141', 'class_id'=>1, 'price'=>36 ],
-            ['flight_id'=>'HV141', 'class_id'=>2, 'price'=>47 ],
-            ['flight_id'=>'HV142', 'class_id'=>1, 'price'=>83 ],
-            ['flight_id'=>'HV142', 'class_id'=>2, 'price'=>98 ],
-            ['flight_id'=>'HV143', 'class_id'=>1, 'price'=>34 ],
-            ['flight_id'=>'HV143', 'class_id'=>2, 'price'=>54 ],
-            ['flight_id'=>'HV144', 'class_id'=>1, 'price'=>84 ],
-            ['flight_id'=>'HV144', 'class_id'=>2, 'price'=>104 ],
-            ['flight_id'=>'HV145', 'class_id'=>1, 'price'=>77 ],
-            ['flight_id'=>'HV145', 'class_id'=>2, 'price'=>97 ],
-            ['flight_id'=>'HV146', 'class_id'=>1, 'price'=>61 ],
-            ['flight_id'=>'HV146', 'class_id'=>2, 'price'=>85 ],
-            ['flight_id'=>'HV147', 'class_id'=>1, 'price'=>50 ],
-            ['flight_id'=>'HV147', 'class_id'=>2, 'price'=>78 ],
-            ['flight_id'=>'HV148', 'class_id'=>1, 'price'=>80 ],
-            ['flight_id'=>'HV148', 'class_id'=>2, 'price'=>91 ],
-            ['flight_id'=>'HV149', 'class_id'=>1, 'price'=>24 ],
-            ['flight_id'=>'HV149', 'class_id'=>2, 'price'=>49 ],
-            ['flight_id'=>'HV150', 'class_id'=>1, 'price'=>74 ],
-            ['flight_id'=>'HV150', 'class_id'=>2, 'price'=>87 ],
-            ['flight_id'=>'HV151', 'class_id'=>1, 'price'=>92 ],
-            ['flight_id'=>'HV151', 'class_id'=>2, 'price'=>116 ],
-            ['flight_id'=>'HV152', 'class_id'=>1, 'price'=>68 ],
-            ['flight_id'=>'HV152', 'class_id'=>2, 'price'=>78 ],
-            ['flight_id'=>'HV153', 'class_id'=>1, 'price'=>76 ],
-            ['flight_id'=>'HV153', 'class_id'=>2, 'price'=>101 ],
-            ['flight_id'=>'HV154', 'class_id'=>1, 'price'=>43 ],
-            ['flight_id'=>'HV154', 'class_id'=>2, 'price'=>71 ],
-            ['flight_id'=>'HV155', 'class_id'=>1, 'price'=>23 ],
-            ['flight_id'=>'HV155', 'class_id'=>2, 'price'=>40 ],
-            ['flight_id'=>'HV156', 'class_id'=>1, 'price'=>26 ],
-            ['flight_id'=>'HV156', 'class_id'=>2, 'price'=>38 ],
-            ['flight_id'=>'HV157', 'class_id'=>1, 'price'=>27 ],
-            ['flight_id'=>'HV157', 'class_id'=>2, 'price'=>47 ],
-            ['flight_id'=>'HV158', 'class_id'=>1, 'price'=>90 ],
-            ['flight_id'=>'HV158', 'class_id'=>2, 'price'=>101 ],
-            ['flight_id'=>'HV159', 'class_id'=>1, 'price'=>84 ],
-            ['flight_id'=>'HV159', 'class_id'=>2, 'price'=>110 ],
-            ['flight_id'=>'HV160', 'class_id'=>1, 'price'=>65 ],
-            ['flight_id'=>'HV160', 'class_id'=>2, 'price'=>76 ],
-            ['flight_id'=>'HV161', 'class_id'=>1, 'price'=>95 ],
-            ['flight_id'=>'HV161', 'class_id'=>2, 'price'=>108 ],
-        ]);
-        DB::table('order_statuses')->insert([
-            [
-                'id'=>1,
-                'name'=>'Buyed',
-            ],[
-                'id'=>2,
-                'name'=>'Blocked',
-            ],
-            [
-                'id'=>3,
-                'name'=>'Cancelled'
-            ]
         ]);
     }
 }

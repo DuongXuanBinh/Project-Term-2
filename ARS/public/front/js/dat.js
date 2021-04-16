@@ -482,8 +482,9 @@ $( document ).ajaxStop(function() {
 
 });
 
-
-
+$(window).on('load', function() {
+    $('#notification').modal('show');
+});
 // ------------
 $(document).ready(function (){
     $("#su-phonenumber").blur(function(){
