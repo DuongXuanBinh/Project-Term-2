@@ -507,6 +507,10 @@ $(document).ready(function (){
             }
         });
     }
+<<<<<<< HEAD
+=======
+})
+>>>>>>> parent of e1cb778 (Merge pull request #39 from DuongXuanBinh/dat)
 })
 })
 >>>>>>> parent of e1cb778 (Merge pull request #39 from DuongXuanBinh/dat)
