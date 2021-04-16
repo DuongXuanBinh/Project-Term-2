@@ -41,7 +41,7 @@ class AccountSeeder extends Seeder
                 'sex'=>'Male',
                 'credit_number'=>'2222222222',
                 'phone'=>'0852873838',
-                'sky_miles'=>1221,
+                'sky_miles'=>2442,
                 'role'=>1
             ],
             [
