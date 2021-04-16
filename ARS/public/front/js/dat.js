@@ -459,9 +459,8 @@ $( document ).ajaxStop(function() {
 
 });
 
-$(window).on('load', function() {
-    $('#notification').modal('show');
-});
+
+
 // ------------
 $(document).ready(function (){
     $("#su-phonenumber").blur(function(){
@@ -495,21 +494,25 @@ $(document).ready(function (){
         var seat_unavailable = $('#flight_0 input[name="seat_location"]')[i].value;
         $('#flight_0').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
         $('#flight_0').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+        $('#flight_0').find('div[name='+seat_unavailable+']').children('img').css('cursor','not-allowed');
     }
     for (var i = 0; i < $('#flight_1 input[name="seat_location"]').length; i++){
         var seat_unavailable = $('#flight_1 input[name="seat_location"]')[i].value;
         $('#flight_1').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
         $('#flight_1').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+        $('#flight_1').find('div[name='+seat_unavailable+']').children('img').css('cursor','not-allowed');
     }
     for (var i = 0; i < $('#flight_2 input[name="seat_location"]').length; i++){
         var seat_unavailable = $('#flight_2 input[name="seat_location"]')[i].value;
         $('#flight_2').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
         $('#flight_2').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+        $('#flight_2').find('div[name='+seat_unavailable+']').children('img').css('cursor','not-allowed');
     }
     for (var i = 0; i < $('#flight_3 input[name="seat_location"]').length; i++){
         var seat_unavailable = $('#flight_3 input[name="seat_location"]')[i].value;
         $('#flight_3').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
         $('#flight_3').find('div[name='+seat_unavailable+']').css('cursor','not-allowed');
+        $('#flight_3').find('div[name='+seat_unavailable+']').children('img').css('cursor','not-allowed');
     }
 });
 

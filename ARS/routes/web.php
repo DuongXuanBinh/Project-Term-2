@@ -45,8 +45,6 @@ Route::prefix('/')->group(function(){
     Route::get('/booking-manage',[Controllers\HomeController::class,'bookingIndex']);
     Route::get('/booking-manage/search',[Controllers\HomeController::class,'bookingManage']);
     Route::get('/booking-manage/search/register',[Controllers\AccountController::class,'signIn2']);
-    Route::get('/booking-manage/delete',[Controllers\HomeController::class,'bookingDelete']);
-    Route::get('/booking-manage/reschedule',[Controllers\HomeController::class,'bookingReschedule']);
     Route::get('/destination', function () {
         return view('destination');
     });

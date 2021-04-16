@@ -28,5 +28,6 @@ class Airport extends Model
         'id' => 'string'
     ];
 
+
     public $incrementing = false;
 }
