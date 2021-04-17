@@ -100,7 +100,11 @@
                                                             <tr>
                                                                 <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
                                                                 @for($j=0;$j<count($flights);$j++)
-                                                                    <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                    @if($seats[$i][$j]->seat_location==null)
+                                                                        <td></td>
+                                                                    @else
+                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                    @endif
                                                                 @endfor
                                                             </tr>
                                                             @endfor
@@ -123,6 +127,7 @@
                                                                             <div class="modal-body">
                                                                                 <label for="new-depart_date">New daparture date:</label>
                                                                                 <input type="text" id="new-depart_date" name="new_depart_date" required>
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,7 +158,6 @@
                                                                                 <p>Do you still want to cancel?</p>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                                 <button type="submit" class="btn btn-primary">Cancel</button>
                                                                             </div>
@@ -235,7 +239,11 @@
                                                                 <tr>
                                                                     <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
-                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @if($seats[$i][$j]->seat_location==null)
+                                                                            <td></td>
+                                                                        @else
+                                                                            <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @endif
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
@@ -259,10 +267,11 @@
                                                                             <div class="modal-body">
                                                                                 <label for="new-depart_date">New daparture date:</label>
                                                                                 <input type="text" id="new-depart_date" name="new_depart_date" required>
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Find</button>
+                                                                                <button type="submit" class="btn btn-primary">Find</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -370,7 +379,11 @@
                                                                 <tr>
                                                                     <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
-                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @if($seats[$i][$j]->seat_location==null)
+                                                                            <td></td>
+                                                                        @else
+                                                                            <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @endif
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
@@ -391,6 +404,7 @@
                                                                         <form method="get" action="/booking-manage/reschedule">
                                                                             @csrf
                                                                             <div class="modal-body">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <p><label for="new-depart-date">New daparture date:</label>
                                                                                     <input type="text" id="new-depart-date" name="new_depart_date" required></p>
                                                                                 <p><label for="new-arrival-date">New arrival date:</label>
@@ -398,7 +412,7 @@
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Find</button>
+                                                                                <button type="submit" class="btn btn-primary">Find</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -530,7 +544,11 @@
                                                                 <tr>
                                                                     <td rowspan="2">{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
-                                                                        <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @if($seats[$i][$j]->seat_location==null)
+                                                                            <td></td>
+                                                                        @else
+                                                                            <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @endif
                                                                         @if($j=1)
                                                                             </tr>
                                                                             <tr>
@@ -555,6 +573,7 @@
                                                                         <form method="get" action="/booking-manage/reschedule">
                                                                             @csrf
                                                                             <div class="modal-body">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <p><label for="new-depart-date">New daparture date:</label>
                                                                                     <input type="text" id="new-depart-date" name="new_depart_date" required></p>
                                                                                 <p><label for="new-arrival-date">New arrival date:</label>
@@ -562,7 +581,7 @@
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Find</button>
+                                                                                <button type="submit" class="btn btn-primary">Find</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>

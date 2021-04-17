@@ -1899,6 +1899,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .mail-page{
   width: 800px;
   color:black;
+    background-color: white;
 }
 .mail-header{
   display: flex;

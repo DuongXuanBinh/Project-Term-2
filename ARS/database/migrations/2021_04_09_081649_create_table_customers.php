@@ -17,6 +17,7 @@ class CreateTableCustomers extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('sex');
             $table->date('dob');
             $table->unsignedBigInteger('account_id');
             $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade');

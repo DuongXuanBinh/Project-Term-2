@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Refund_Policy extends Model
 {
     use HasFactory;
+    public $timestamps = true;
 }

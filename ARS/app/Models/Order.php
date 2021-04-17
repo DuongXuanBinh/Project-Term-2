@@ -23,7 +23,7 @@ class Order extends Model
     protected $casts = [
         'id' => 'string'
     ];
-
+    public $timestamps = true;
     public $incrementing = false;
 
 

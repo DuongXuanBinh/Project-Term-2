@@ -11,4 +11,5 @@ class Flight_status extends Model
     public function flights(){
         return $this->hasMany(Flight::class,'statusid','id');
     }
+    public $timestamps = true;
 }

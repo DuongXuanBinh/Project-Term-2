@@ -317,7 +317,6 @@ $( "#new-depart-date" ).datepicker({
     },
     minDate: 0,
     maxDate: "+21d",
-    dateFormat: "yy-mm-dd",
 });
 $("div.group1 button.date-button").click(function (){
 

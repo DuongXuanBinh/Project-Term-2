@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
-
+    public $timestamps = true;
     protected $table ='classes';
 
     public function ticket_prices(){
