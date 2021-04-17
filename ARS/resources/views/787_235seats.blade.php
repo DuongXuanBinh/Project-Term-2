@@ -1,5 +1,4 @@
 
-
 @if(session('class_id')=='1')
     <div class=" seat-map plane-787">
         {{--            <div>--}}

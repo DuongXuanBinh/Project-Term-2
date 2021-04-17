@@ -528,9 +528,13 @@
                                                             </tr>
                                                             @for($i=0;$i<count($passengers);$i++)
                                                                 <tr>
-                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    <td rowspan="2">{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
                                                                         <td>{{$seats[$i][$j]->seat_location}}</td>
+                                                                        @if($j=1)
+                                                                            </tr>
+                                                                            <tr>
+                                                                        @endif
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
