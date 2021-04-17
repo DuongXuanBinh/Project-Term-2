@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Flight;
 use App\Models\Order;
 use App\Models\Ticket_details;
@@ -63,8 +64,8 @@ class HomeController extends Controller
     {
         $code = $request->get('confirm-code');
         session(['code'=>$code]);
+        $order = Order::where('id',strtoupper($code))->where('account_id',session('check')->id)->first();
         if (session('email') && session('password')) {
-            $order = Order::where('id',strtoupper($code))->first();
             if ($order) {
                 $way = $order->flight_route;
                 $tickets = $order->ticket_details;
@@ -98,7 +99,7 @@ class HomeController extends Controller
                         ->first();
                     }
                 }
-//                dd($passengers,$seat);
+//                dd($way);
 
                 return back()->with('ori_airport', $ori_airports)
                     ->with('arr_airport', $arr_airports)
@@ -116,5 +117,20 @@ class HomeController extends Controller
         else{
            return redirect('/sign-in');
         }
+    }
+    public function bookingDelete(Request $request){
+        $code = $request->get('booking_code');
+        $mile = Order::select('total_skymiles')->where('id',$code)->first();
+        $order = Order::where('id',$code)->first();
+        $account = Account::where('id',session('check')->id)->first();
+        $account->sky_miles = $account->sky_miles - $mile->total_skymiles;
+        $order->delete();
+        $account->save();
+        session()->forget('code');
+        return redirect('/')->with('notification','Your booking has been cancelled. Please check your email');
+    }
+
+    public function bookingReschedule(Request $request){
+
     }
 }

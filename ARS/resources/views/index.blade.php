@@ -2,6 +2,24 @@
 @section('title','Home')
 
 @section('body')
+    @if(session('notification'))
+        <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="margin-left: 170px">NOTIFICATION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p style="margin-bottom: 0">{{session('notification')}}</p>
+                    </div>
+                    <div class="modal-footer" style="display: unset;text-align: center" >
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style=" height: 600px ; background-image: url(front/images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">

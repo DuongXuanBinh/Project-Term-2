@@ -8,6 +8,8 @@
     $passengers = session('passengers');
     $flights = session('flights');
     $seats = session('seat');
+    $code = session('code');
+    session()->forget('code');
     ?>
         @if(!session('flights'))
             <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/5.jpg)">
@@ -22,7 +24,7 @@
                                 <form class="search-flight" action="/booking-manage/search">
                                     <div class="row mt-text animate-box" data-animate-effect="fadeInUp">
                                         <label for="search-flight" class="sr-only">Code</label>
-                                        <input value="{{session('code')}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
+                                        <input value="{{strtoupper(old('confirm-code'))}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
                                         <button class="col-md-2 btn-primary btn-block" type="submit"><svg class="svg-icon" viewBox="0 0 20 20">
                                                 <path fill="none" d="M18.109,17.776l-3.082-3.081c-0.059-0.059-0.135-0.077-0.211-0.087c1.373-1.38,2.221-3.28,2.221-5.379c0-4.212-3.414-7.626-7.625-7.626c-4.212,0-7.626,3.414-7.626,7.626s3.414,7.627,7.626,7.627c1.918,0,3.665-0.713,5.004-1.882c0.006,0.085,0.033,0.17,0.098,0.234l3.082,3.081c0.143,0.142,0.371,0.142,0.514,0C18.25,18.148,18.25,17.918,18.109,17.776zM9.412,16.13c-3.811,0-6.9-3.089-6.9-6.9c0-3.81,3.089-6.899,6.9-6.899c3.811,0,6.901,3.09,6.901,6.899C16.312,13.041,13.223,16.13,9.412,16.13z"></path>
                                             </svg>
@@ -77,7 +79,7 @@
                                         <form class="search-flight" action="/booking-manage/search">
                                             <div class="row mt-text animate-box" data-animate-effect="fadeInUp">
                                                 <label for="search-flight" class="sr-only">Code</label>
-                                                <input value="{{old('confirm-code')}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
+                                                <input value="{{strtoupper(old('confirm-code'))}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
                                                 <button class="col-md-2 btn-primary btn-block" type="submit"><svg class="svg-icon" viewBox="0 0 20 20">
                                                         <path fill="none" d="M18.109,17.776l-3.082-3.081c-0.059-0.059-0.135-0.077-0.211-0.087c1.373-1.38,2.221-3.28,2.221-5.379c0-4.212-3.414-7.626-7.625-7.626c-4.212,0-7.626,3.414-7.626,7.626s3.414,7.627,7.626,7.627c1.918,0,3.665-0.713,5.004-1.882c0.006,0.085,0.033,0.17,0.098,0.234l3.082,3.081c0.143,0.142,0.371,0.142,0.514,0C18.25,18.148,18.25,17.918,18.109,17.776zM9.412,16.13c-3.811,0-6.9-3.089-6.9-6.9c0-3.81,3.089-6.899,6.9-6.899c3.811,0,6.901,3.09,6.901,6.899C16.312,13.041,13.223,16.13,9.412,16.13z"></path>
                                                     </svg>
@@ -116,14 +118,15 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <label for="new-depart_date">New daparture date:</label>
+                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Find</button>
+                                                                                <button type="submit" class="btn btn-primary">Find</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -142,15 +145,17 @@
                                                                                 </svg> CANCEL BOOKING</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/delete">
+                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <p>Once you cancelled booking, you can't reverse the progress</p>
                                                                                 <p>You will be refunded according to our policy. The amount depends on each case</p>
                                                                                 <p>Do you still want to cancel?</p>
                                                                             </div>
                                                                             <div class="modal-footer">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
+                                                                                <button type="submit" class="btn btn-primary">Cancel</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -249,10 +254,11 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <label for="new-depart_date">New daparture date:</label>
+                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -275,15 +281,17 @@
                                                                                 </svg> CANCEL BOOKING</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/delete">
+                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <p>Once you cancelled booking, you can't reverse the progress</p>
                                                                                 <p>You will be refunded according to our policy. The amount depends on each case</p>
                                                                                 <p>Do you still want to cancel?</p>
                                                                             </div>
                                                                             <div class="modal-footer">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
+                                                                                <button type="submit" class="btn btn-primary">Cancel</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -380,10 +388,13 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <p><label for="new-depart-date">New daparture date:</label>
+                                                                                    <input type="text" id="new-depart-date" name="new_depart_date" required></p>
+                                                                                <p><label for="new-arrival-date">New arrival date:</label>
+                                                                                    <input style="margin-left: 22px;" type="text" id="new-arrival-date" name="new_arrival_date" required></p>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -406,15 +417,17 @@
                                                                                 </svg> CANCEL BOOKING</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/delete">
+                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <p>Once you cancelled booking, you can't reverse the progress</p>
                                                                                 <p>You will be refunded according to our policy. The amount depends on each case</p>
                                                                                 <p>Do you still want to cancel?</p>
                                                                             </div>
                                                                             <div class="modal-footer">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
+                                                                                <button type="submit" class="btn btn-primary">Cancel</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -498,7 +511,7 @@
                                             <form class="search-flight" action="/booking-manage/search">
                                                 <div class="row mt-text animate-box" data-animate-effect="fadeInUp">
                                                     <label for="search-flight" class="sr-only">Code</label>
-                                                    <input value="{{old('confirm-code')}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
+                                                    <input value="{{strtoupper(old('confirm-code'))}}" name="confirm-code" type="text" id="search-flight" class="col-md-8 form-control" placeholder="Enter booking code" required autofocus>
                                                     <button class="col-md-2 btn-primary btn-block" type="submit"><svg class="svg-icon" viewBox="0 0 20 20">
                                                          <path fill="none" d="M18.109,17.776l-3.082-3.081c-0.059-0.059-0.135-0.077-0.211-0.087c1.373-1.38,2.221-3.28,2.221-5.379c0-4.212-3.414-7.626-7.625-7.626c-4.212,0-7.626,3.414-7.626,7.626s3.414,7.627,7.626,7.627c1.918,0,3.665-0.713,5.004-1.882c0.006,0.085,0.033,0.17,0.098,0.234l3.082,3.081c0.143,0.142,0.371,0.142,0.514,0C18.25,18.148,18.25,17.918,18.109,17.776zM9.412,16.13c-3.811,0-6.9-3.089-6.9-6.9c0-3.81,3.089-6.899,6.9-6.899c3.811,0,6.901,3.09,6.901,6.899C16.312,13.041,13.223,16.13,9.412,16.13z"></path>
                                                          </svg>
@@ -535,10 +548,13 @@
                                                                             <h5 class="modal-title">RESCHEDULE</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/reschedule">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <label for="new-date">New daparture date:</label>
-                                                                                <input type="text" id="new-date" required>
+                                                                                <p><label for="new-depart-date">New daparture date:</label>
+                                                                                    <input type="text" id="new-depart-date" name="new_depart_date" required></p>
+                                                                                <p><label for="new-arrival-date">New arrival date:</label>
+                                                                                    <input style="margin-left: 22px;" type="text" id="new-arrival-date" name="new_arrival_date" required></p>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -561,15 +577,17 @@
                                                                                 </svg> CANCEL BOOKING</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
-                                                                        <form action="">
+                                                                        <form method="get" action="/booking-manage/delete">
+                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <p>Once you cancelled booking, you can't reverse the progress</p>
                                                                                 <p>You will be refunded according to our policy. The amount depends on each case</p>
                                                                                 <p>Do you still want to cancel?</p>
                                                                             </div>
                                                                             <div class="modal-footer">
+                                                                                <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
+                                                                                <button type="submit" class="btn btn-primary">Cancel</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
