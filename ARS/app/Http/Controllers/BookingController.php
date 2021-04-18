@@ -738,7 +738,7 @@ class BookingController extends Controller
 
     public function fare_detail(){
         $flight=array();
-        $total_price = 0;
+        $total_price_one = 0;
         $total_passengers = session('adult') + session('children') + session('senior');
         if (session('flight_outbound_choose')){
             session()->forget('flights_choose');
@@ -752,7 +752,9 @@ class BookingController extends Controller
 
             $flight[0]['place_to'] = session('place_to');
 
-            $total_price+= $flight[0]['price'];
+            $flight[0]['plane_type'] = $flight[0]->plane->plane_type;
+
+            $total_price_one+= $flight[0]['price'];
 
             if (session('flight_return_choose')){
                 $flight[1] = Flight::where('id','=',session('flight_return_choose'))->first();
@@ -764,7 +766,9 @@ class BookingController extends Controller
 
                 $flight[1]['place_to'] = session('place_from');
 
-                $total_price+= $flight[1]['price'];
+                $flight[1]['plane_type'] = $flight[1]->plane->plane_type;
+
+                $total_price_one+= $flight[1]['price'];
             }
         }
         elseif (session('flight_outbound_from_transit_choose')) {
@@ -783,7 +787,9 @@ class BookingController extends Controller
 
             $flight[0]['place_to'] = $airport_transit;
 
-            $total_price+= $flight[0]['price'];
+            $flight[0]['plane_type'] = $flight[0]->plane->plane_type;
+
+            $total_price_one+= $flight[0]['price'];
 
 
             $flight[1] = Flight::where('id','=',session('flight_outbound_transit_to_choose'))->first();
@@ -795,36 +801,44 @@ class BookingController extends Controller
 
             $flight[1]['place_to'] = session('place_to');
 
-            $total_price+= $flight[1]['price'];
+            $flight[1]['plane_type'] = $flight[1]->plane->plane_type;
+
+            $total_price_one+= $flight[1]['price'];
 
 
             if (session('flight_return_from_transit_choose')){
-                $flight[3] = Flight::where('id','=',session('flight_return_from_transit_choose'))->first();
+                $flight[2] = Flight::where('id','=',session('flight_return_from_transit_choose'))->first();
+
+                $flight[2]['price'] = Ticket_price::where('flight_id','=',$flight[2]['id'])
+                    ->where('class_id','=',session('class_id')) ->first()->price;
+
+                $flight[2]['place_from'] = session('place_to');
+
+                $flight[2]['place_to'] = $airport_transit;
+
+                $flight[2]['plane_type'] = $flight[2]->plane->plane_type;
+
+                $total_price_one+= $flight[2]['price'];
+
+
+                $flight[3] = Flight::where('id','=',session('flight_return_transit_to_choose'))->first();
 
                 $flight[3]['price'] = Ticket_price::where('flight_id','=',$flight[3]['id'])
                     ->where('class_id','=',session('class_id')) ->first()->price;
 
-                $flight[3]['place_from'] = session('place_to');
+                $flight[3]['place_from'] =  $airport_transit;
 
-                $flight[3]['place_to'] = $airport_transit;
+                $flight[3]['place_to'] = session('place_from');
 
-                $total_price+= $flight[3]['price'];
+                $flight[3]['plane_type'] = $flight[3]->plane->plane_type;
 
-
-                $flight[4] = Flight::where('id','=',session('flight_return_transit_to_choose'))->first();
-
-                $flight[4]['price'] = Ticket_price::where('flight_id','=',$flight[4]['id'])
-                    ->where('class_id','=',session('class_id')) ->first()->price;
-
-                $flight[4]['place_from'] =  $airport_transit;
-
-                $flight[4]['place_to'] = session('place_from');
-
-                $total_price+= $flight[4]['price'];
+                $total_price_one+= $flight[3]['price'];
             }
 
         }
-        session(['flights_choose'=>$flight,'total_price'=>$total_price,'total_passengers'=>$total_passengers]);
+
+
+        session(['flights_choose'=>$flight,'total_price_one'=>$total_price_one,'total_passengers'=>$total_passengers]);
     }
 
     public  function set_type_customer(int $age):int{
@@ -854,8 +868,14 @@ class BookingController extends Controller
         $adult_min = 11;
         $adult_max = 65;
         $senior_min = 66;
+        $total_price_one = session('total_price_one');
+        $total_price = 0;
+        $last_passenger = DB::table('customers')->orderBy('id', 'DESC')->first();
+        $last_id_passenger =  $last_passenger->id;
         for ($i=0; $i< count($request->first_name); $i++){
             if ($i==0){
+                ++$last_id_passenger;
+                $passengers[$i]['id'] = $last_id_passenger;
                 $passengers[$i]['firstname'] = $request->first_name[$i];
                 $passengers[$i]['lastname'] = $request->last_name[$i];
                 $passengers[$i]['phone'] = session('check')->phone;
@@ -864,18 +884,42 @@ class BookingController extends Controller
                 $passengers[$i]['sex'] = $request->sex[$i];
                 $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
                 $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+                switch ($passengers[$i]['type']){
+                    case '1':
+                        $total_price+= $total_price_one * 0.6;
+                        break;
+                    case '2':
+                        $total_price+= $total_price_one;
+                        break;
+                    case '3':
+                        $total_price+= $total_price_one * 0.8;
+                        break;
+                }
             }
             elseif ($i != 0){
+                ++$last_id_passenger;
+                $passengers[$i]['id'] = $last_id_passenger;
                 $passengers[$i]['firstname'] = $request->first_name[$i];
                 $passengers[$i]['lastname'] = $request->last_name[$i];
                 $passengers[$i]['dob'] = $request->dob[$i];
                 $passengers[$i]['sex'] = $request->sex[$i];
                 $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
                 $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+                switch ($passengers[$i]['type']){
+                    case '1':
+                        $total_price+= $total_price_one * 0.6;
+                        break;
+                    case '2':
+                        $total_price+= $total_price_one;
+                        break;
+                    case '3':
+                        $total_price+= $total_price_one * 0.8;
+                        break;
+                }
             }
         }
 
-        session(['passengers'=>$passengers]);
+        session(['passengers'=>$passengers,'total_price'=>$total_price]);
 
         return redirect('/booking/show_seats');
     }
@@ -883,6 +927,24 @@ class BookingController extends Controller
     public function show_seats(){
 
         return view('Select seats');
+    }
+
+    public function select_seats(Request $request){
+
+        $seats = $request->seat;
+        $flights = session('flights_choose');
+        $passengers = session('passengers');
+        $tickets = array();
+        $count = 0;
+        for ($i = 0; $i < count($flights); $i++){
+            for ($j = 0; $j < count($passengers); $j++){
+              $tickets[$count]['flight_id']  = $flights[$i]->id;
+              $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+              $tickets[$count]['seat_location'] = $seats[$count];
+              $count++;
+            }
+        }
+        return view('check_out');
     }
 
 }
