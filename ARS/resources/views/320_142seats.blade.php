@@ -272,4 +272,6 @@
             <img class="kitchen" src="front/images/Bep.png" alt="">
         </table>
     </div>
+@else
+
 @endif

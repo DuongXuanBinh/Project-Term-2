@@ -223,7 +223,7 @@ function choose_seats(id_first,id_first_passenger ){
                 $(this).append(imgAfter);
                 var location_seat = $(this).attr('name');
                 $("#"+id_first+" #"+id_first_passenger).find("p").text(location_seat);
-                $("#"+id_first+" #"+id_first_passenger).find("input:text").attr('value',location_seat);
+                $("#"+id_first+" #"+id_first_passenger).find("input:hidden").attr('value',location_seat);
             }
 
         })

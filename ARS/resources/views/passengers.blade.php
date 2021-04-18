@@ -171,27 +171,27 @@
                             <tr>
                                 <td>Ticket Fare</td>
 
-                                <td>USD {{session('total_price')}}</td>
+                                <td>USD {{session('total_price_one')}}</td>
                             </tr>
                             <tr>
                                 <td>Airport Tax Domestic</td>
 
-                                <td>USD 10</td>
+                                <td>USD {{10*count(session('flights_choose'))}}</td>
                             </tr>
                             <tr>
                                 <td>Admin Fee</td>
 
-                                <td>USD 10</td>
+                                <td>USD {{5*count(session('flights_choose'))}}</td>
                             </tr>
                             <tr>
                                 <td>Airport Security</td>
 
-                                <td>USD 20</td>
+                                <td>USD {{5*count(session('flights_choose'))}}</td>
                             </tr>
                             <tr>
                                 <td>System Admin</td>
 
-                                <td>USD 10</td>
+                                <td>USD {{5*count(session('flights_choose'))}}</td>
                             </tr>
                             <tr>
                                 <td>Passenger Number</td>
@@ -199,7 +199,7 @@
                             </tr>
                             <tr>
                                 <td><b>Subtotal</b></td>
-                                <td colspan="2"><b>USD {{session('total_price')*session('total_passengers') + 50}}</b></td>
+                                <td colspan="2"><b>USD {{session('total_price_one')*session('total_passengers') + 25*session('total_passengers')*count(session('flights_choose'))}}</b></td>
                             </tr>
                         </table>
                     </div>

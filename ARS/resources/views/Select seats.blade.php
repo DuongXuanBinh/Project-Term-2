@@ -44,7 +44,7 @@
     </div>
 
     <div class="gtco-container select_seats">
-        <form >
+        <form method="get" action="./booking/select_seats" >
             <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                 <div class="row" style="margin-top: 20px;margin-bottom: 20px">
                     <div class="col-md-9">
@@ -70,7 +70,11 @@
                                             @endforeach
                                             <div class="row" style="display: flex">
                                                 <div class="col-md-4" style="margin: auto 0;">
-                                                    @include('320_142seats')
+                                                    @if($flight->plane_type == '1')
+                                                        @include('320_142seats')
+                                                    @elseif($flight->plane_type == '2')
+                                                        @include('787_235seats')
+                                                    @endif
                                                 </div>
 
                                                 <div class="col-md-7">
@@ -107,7 +111,10 @@
                                                                         @endif
                                                                 .</span></div>
                                                                 <div class="col-md-7">{{$passenger['firstname']}} {{$passenger['lastname']}}</div>
-                                                                <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
+                                                                <div class="col-md-3" style="padding: 0">
+                                                                    <p class="btn_select_seat">(Select Seat)</p>
+                                                                    <input type="hidden" name="seat[]">
+                                                                </div>
                                                             </div>
                                                             <?php $p++ ?>
                                                         @endforeach
@@ -156,8 +163,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-left: 20px;margin-top: 40px">
+                                                    <?php $p=0 ?>
                                                     @foreach($passengers as $passenger)
-                                                        <?php $p=0 ?>
+
                                                         <div class="row col-md-12 select_seat_passenger" id="passenger_{{$p}}">
                                                             <div class="col-md-2"><span>
                                                                 @if($passenger['sex'] === 'Male')
@@ -167,7 +175,10 @@
                                                                     @endif
                                                                 .</span></div>
                                                             <div class="col-md-7">{{$passenger['firstname']}} {{$passenger['lastname']}}</div>
-                                                            <div class="col-md-3" style="padding: 0"><p class="btn_select_seat">(Select Seat)</p></div>
+                                                            <div class="col-md-3" style="padding: 0">
+                                                                <p class="btn_select_seat">(Select Seat)</p>
+                                                                <input type="hidden" name="seat[]">
+                                                            </div>
                                                         </div>
                                                         <?php $p++ ?>
                                                     @endforeach
@@ -218,45 +229,44 @@
                                     </tr>
                                 @endforeach
                             </table>
-
                             <table>
-                                <tr>
-                                    <th colspan="3">Fare Details</th>
-                                </tr>
-                                <tr>
-                                    <td>Ticket Fare</td>
+                                    <tr>
+                                        <th colspan="3">Fare Details</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Ticket Fare</td>
 
-                                    <td>USD {{session('total_price')}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Airport Tax Domestic</td>
+                                        <td>USD {{session('total_price_one')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airport Tax Domestic</td>
 
-                                    <td>USD 10</td>
-                                </tr>
-                                <tr>
-                                    <td>Admin Fee</td>
+                                        <td>USD {{10*count(session('flights_choose'))}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Admin Fee</td>
 
-                                    <td>USD 10</td>
-                                </tr>
-                                <tr>
-                                    <td>Airport Security</td>
+                                        <td>USD {{5*count(session('flights_choose'))}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airport Security</td>
 
-                                    <td>USD 20</td>
-                                </tr>
-                                <tr>
-                                    <td>System Admin</td>
+                                        <td>USD {{5*count(session('flights_choose'))}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>System Admin</td>
 
-                                    <td>USD 10</td>
-                                </tr>
-                                <tr>
-                                    <td>Passenger Number</td>
-                                    <td colspan="2">{{session('total_passengers')}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Subtotal</b></td>
-                                    <td colspan="2"><b>USD {{session('total_price')*session('total_passengers') + 50}}</b></td>
-                                </tr>
-                            </table>
+                                        <td>USD {{5*count(session('flights_choose'))}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Passenger Number</td>
+                                        <td colspan="2">{{session('total_passengers')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Subtotal</b></td>
+                                        <td colspan="2"><b>USD {{session('total_price') +( 25*session('total_passengers')*count(session('flights_choose')))}}</b></td>
+                                    </tr>
+                                </table>
                         </div>
                     </div>
                 </div>
