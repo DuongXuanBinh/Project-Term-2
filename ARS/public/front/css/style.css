@@ -2190,10 +2190,7 @@ h1.su-text{
     color: white;
 }
 #su-firstname,#su-lastname,#su-phonenumber,#su-creditcard{
-  width: 48%;
-}
-#su-lastname,#su-creditcard{
-  margin-left: 22px;
+  width: 100%;
 }
 #su-sex{
   width: 35%;

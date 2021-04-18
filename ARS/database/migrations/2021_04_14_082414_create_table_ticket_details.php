@@ -17,7 +17,7 @@ class CreateTableTicketDetails extends Migration
             $table->id();
             $table->string('flight_id');
             $table->foreign('flight_id')->references('id')->on('flights')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('seat_location');
+            $table->string('seat_location')->nullable();
             $table->string('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('passenger_id');

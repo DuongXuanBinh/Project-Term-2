@@ -335,29 +335,161 @@ $(window).on('load', function() {
     $('#notification').modal('show');
 });
 // ------------
-$(document).ready(function (){
-    $("#su-phonenumber").on('blur',function(){
-        // var $t = $(this);
+
+$(document).ready(function () {
+    $("#su-phonenumber").on('blur', function () {
         var query = $(this).val();
         var name = $(this).attr('name');
-        if(query !== ''&& name!==''){
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "POST",
-                url: "/sign-in/register/check",
-                data: {query: query, name: name,_token:_token},
-                success: function (data) {
-                    if(!$.trim(data)) {
-                        $("svg.su-phonenumber").css('display', 'inline');
-                        $("#su-phonenumber").css('border-color', '#0000001a');
+        var phonereg = /^(0)[0-9]{9}$/;
+        var phone = $(this).val();
+        if (!phonereg.test(phone)) {
+            $("svg.su-phonenumber").css('display', 'none');
+            $("#su-phonenumber").css('border-color', 'red');
+            $("label.su-phonenumber").next().next().empty();
+            $("label.su-phonenumber").next().empty();
+            $("label.su-phonenumber").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid phone number</span>");
+            $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='false'>")
+        }else {
+            if (query !== '' && name !== '') {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    type: "get",
+                    url: "/sign-in/register/check",
+                    data: {query: query, name: name, _token: _token},
+                    success: function (data) {
+                        if (!$.trim(data)) {
+                            $("svg.su-phonenumber").css('display', 'inline');
+                            $("#su-phonenumber").css('border-color', '#0000001a');
+                            $("label.su-phonenumber").next().next().empty();
+                            $("label.su-phonenumber").next().empty();
+                            $("label.su-phonenumber").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this number</span>");
+                            $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='true'>");
+                        } else {
+                            $("svg.su-phonenumber").css('display', 'none');
+                            $("#su-phonenumber").css('border-color', 'red');
+                            $("label.su-phonenumber").next().next().empty();
+                            $("label.su-phonenumber").next().empty();
+                            $("label.su-phonenumber").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This number is already exist</span>");
+                            $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='false'>");
+                        }
                     }
-                    else
-                    {
-                        $("svg.su-phonenumber").css('display', 'none');
-                        $("#su-phonenumber").css('border-color', 'red');
-                    }
-                }
-            });
+                })
+            }
         }
     })
-})
+    $("#su-creditcard").on('blur', function () {
+        var query = $(this).val();
+        var name = $(this).attr('name');
+        var creditreg = /^[0-9]{10}$/;
+        var credit = $(this).val();
+        if (!creditreg.test(credit)) {
+            $("svg.su-creditcard").css('display', 'none');
+            $("#su-creditcard").css('border-color', 'red');
+            $("label.su-creditcard").next().next().empty();
+            $("label.su-creditcard").next().empty();
+            $("label.su-creditcard").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid credit number</span>");
+            $("label.su-creditcard").after("<input type='hidden' class='flag2' value='false'>");
+        }else {
+            if (query !== '' && name !== '') {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    type: "get",
+                    url: "/sign-in/register/check",
+                    data: {query: query, name: name, _token: _token},
+                    success: function (data) {
+                        if (!$.trim(data)) {
+                            $("svg.su-creditcard").css('display', 'inline');
+                            $("#su-creditcard").css('border-color', '#0000001a');
+                            $("label.su-creditcard").next().next().empty();
+                            $("label.su-creditcard").next().empty();
+                            $("label.su-creditcard").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this credit</span>");
+                            $("label.su-creditcard").after("<input type='hidden' class='flag2' value='true'>");
+                        } else {
+                            $("svg.su-creditcard").css('display', 'none');
+                            $("#su-creditcard").css('border-color', 'red');
+                            $("label.su-creditcard").next().next().empty();
+                            $("label.su-creditcard").next().empty();
+                            $("label.su-creditcard").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This credit is already exist</span>");
+                            $("label.su-creditcard").after("<input type='hidden' class='flag2' value='false'>");
+                        }
+                    }
+                })
+            }
+        }
+    })
+    $("#su-email").on('blur', function () {
+        var query = $(this).val();
+        var name = $(this).attr('name');
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var email = $(this).val();
+        if (!emailReg.test(email)) {
+            $("svg.su-email").css('display', 'none');
+            $("#su-email").css('border-color', 'red');
+            $("label.su-email").next().next().empty();
+            $("label.su-email").next().empty();
+            $("label.su-email").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid email address</span>");
+            $("label.su-email").after("<input type='hidden' class='flag3' value='false'>");
+        }else {
+            if (query !== '' && name !== '') {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    type: "get",
+                    url: "/sign-in/register/check",
+                    data: {query: query, name: name, _token: _token},
+                    success: function (data) {
+                        if (!$.trim(data)) {
+                            $("svg.su-email").css('display', 'inline');
+                            $("#su-email").css('border-color', '#0000001a');
+                            $("label.su-email").next().next().empty();
+                            $("label.su-email").next().empty();
+                            $("label.su-email").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this email</span>");
+                            $("label.su-email").after("<input type='hidden' class='flag3' value='true'>");
+                        } else {
+                            $("svg.su-email").css('display', 'none');
+                            $("#su-email").css('border-color', 'red');
+                            $("label.su-email").next().next().empty();
+                            $("label.su-email").next().empty();
+                            $("label.su-email").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This email is already exist</span>");
+                            $("label.su-email").after("<input type='hidden' class='flag3' value='false'>");
+                        }
+                    }
+                })
+            }
+        }
+    })
+    $("#su-password").on('blur', function () {
+        var passReg = /^[A-Za-z0-9]{6,}$/;
+        var pass = $(this).val();
+        if (!passReg.test(pass)) {
+            $("svg.su-password").css('display', 'none');
+            $("#su-password").css('border-color', 'red');
+            $("label.su-password").next().empty();
+            $("label.su-password").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid password</span>");
+            $(this).after("<input type='hidden' class='flag5' value='false'>")
+        } else {
+            $("svg.su-password").css('display', 'inline');
+            $("#su-password").css('border-color', '#0000001a');
+            $("label.su-password").next().empty();
+            $(this).after("<input type='hidden' class='flag5' value='true'>")
+        }
+    })
+    $("#su-password1").on('blur',function(){
+        var pass1 = $("#su-password").val();
+        var pass2 = $(this).val();
+        if (pass1 === pass2){
+            $("svg.su-password1").css('display', 'inline');
+            $("#su-password1").css('border-color', '#0000001a');
+            $("label.su-password1").next().empty();
+            $(this).after("<input type='hidden' class='flag4' value='true'>");
+        }
+        else {
+            $("svg.su-password1").css('display', 'none');
+            $("#su-password1").css('border-color', 'red');
+            $("label.su-password1").next().empty();
+            $("label.su-password1").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Password doesn't match</span>");
+            $(this).after("<input type='hidden' class='flag4' value='false'>")
+        }
+    })
+
+});
+

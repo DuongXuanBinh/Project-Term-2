@@ -2,6 +2,24 @@
 @section('title','Sign-In')
 
 @section('body')
+    @if(session('signUp-notif'))
+        <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="margin-left: 217px">NOTIFICATION</h5>
+                        <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p style="margin-bottom: 0">{{session('signUp-notif')}}</p>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/ErCSon6XMAYN7jw.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">
@@ -51,20 +69,46 @@
                     <h1 class="su-text">Sign Up</h1>
                     <form action="/sign-in/register" class="form-signup" method="post">
                         @csrf
-                        <label for="su-firstname" class="">First Name</label>
-                        <label for="su-lastname" class="">Last Name</label><br>
-                        <input name="firstname" type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
-                        <input name="lastname" type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
-
-
-                        <label for="su-phonenumber" class="su-phonenumber">Phone Number</label>
-                        <label for="su-creditcard" class="su-creditcard">Credit Card</label><br>
-                        <input name="phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required><svg  style="position: absolute;top: 263px;left: 510px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-phonenumber" viewBox="0 0 16 16">
-                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        </svg>
-                        <input name="credit_number" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required><svg style="position: absolute;top: 263px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-creditcard" viewBox="0 0 16 16">
-                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        </svg>
+                        <div class="row">
+                            <div class="col-md-6" style="padding-right: 0">
+                                <div class="row col-md-12">
+                                    <label for="su-firstname" class="">First Name</label>
+                                </div>
+                                <div class="row col-md-12">
+                                    <input name="firstname" type="text" id="su-firstname" class="form-control" placeholder="First Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding: 0">
+                                <div class="row col-md-12">
+                                    <label for="su-lastname" class="">Last Name</label>
+                                </div>
+                                <div class="row col-md-12"  style="padding-right: 0">
+                                    <input name="lastname" type="text" id="su-lastname" class="form-control" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="padding-right: 0">
+                                <div class="row col-md-12">
+                                    <label for="su-phonenumber" class="su-phonenumber">Phone Number</label>
+                                </div>
+                                <div class="row col-md-12">
+                                    <input name="phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required><svg  style="position: absolute;top: 23px;left: 277px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-phonenumber" viewBox="0 0 16 16">
+                                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-right: 0;padding-left: 0">
+                                <div class="row col-md-12">
+                                    <label for="su-creditcard" class="su-creditcard">Credit Card</label><br>
+                                </div>
+                                <div class="row col-md-12"  style="padding-right: 0">
+                                    <input name="credit_number" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required><svg style="position: absolute;top: 23px;left: 300px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-creditcard" viewBox="0 0 16 16">
+                                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
 
                         <label for="su-sexs" class="">Sex</label>
                         <label for="su-age" class="">D.O.B</label><br>
@@ -81,15 +125,16 @@
 
 
                         <label for="su-email" class="su-email">Email</label>
-                        <input name="email" type="email" id="su-email" class="form-control" placeholder="Email Address" required><svg style="position: absolute;top: 557px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-email" viewBox="0 0 16 16">
+                        <input name="email" type="email" id="su-email" class="form-control" placeholder="Email Address" required><svg style="position: absolute;top: 557px;left: 838px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-email" viewBox="0 0 16 16">
                             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                         </svg>
 
-                        <label for="su-password" class="">Password <i>(numbers and characters, 6 digits)</i></label>
-                        <input name="password" type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
+                        <label for="su-password" class="su-password">Password <i>(numbers and characters, 6 digits)</i></label>
+                        <input name="password" type="password" id="su-password" pattern="[A-Za-z0-9]{6,}" class="form-control" placeholder="Password" required>
 
-                        <label for="su-password1" class="">Confirm Password</label>
-                        <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required>
+                        <label for="su-password1" class="su-password1">Confirm Password</label>
+                        <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required><svg style="position: absolute;top: 755px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-password1" viewBox="0 0 16 16">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
 
                         <div class="policy-box">
                             <p>Your Privacy Rights — Helvetic's Privacy Policy</p>
