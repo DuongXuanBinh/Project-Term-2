@@ -188,11 +188,16 @@ $(".dp_sign_up").on(
 )
 $(".form-signup input:checkbox").on(
     'change',function () {
-        if (this.checked){
+        var a = $(".flag1").val();
+        var b = $(".flag2").val();
+        var c = $(".flag3").val();
+        var d = $(".flag4").val();
+        var e = $(".flag5").val();
+        if (this.checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
             $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('cursor','pointer');
         }
-        if (!this.checked){
-            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('cursor','not-allowed');
+        else{
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         }
     }
 )

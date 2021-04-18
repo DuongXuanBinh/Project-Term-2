@@ -196,4 +196,7 @@ class HomeController extends Controller
         $pass->create($require,$passengers);
     }
 
+    public function sendEmail($order){
+
+    }
 }

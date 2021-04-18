@@ -20,7 +20,8 @@ Route::prefix('/sign-in')->group(function (){
     Route::get('/',[Controllers\AccountController::class,'index']);
     Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
     Route::post('/register',[Controllers\AccountController::class,'signUp']);
-    Route::post('/register/check',[Controllers\AccountController::class,'checkSignUp']);
+    Route::get('/register/check',[Controllers\AccountController::class,'checkSignUp']);
+    Route::get('/register/validate',[Controllers\AccountController::class,'validateSignUp']);
 });
 Route::prefix('/profile')->group(function(){
     Route::get('/',[Controllers\AccountController::class,'showProfile']);

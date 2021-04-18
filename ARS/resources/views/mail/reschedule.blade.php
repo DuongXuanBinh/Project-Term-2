@@ -109,11 +109,11 @@
             </tr>
             <tr>
                 <td>Reschedule fee</td>
-                <td>VND</td>
+                <td>$</td>
             </tr>
             <tr>
                 <td>Total</td>
-                <td>VND 100000</td>
+                <td>$</td>
             </tr>
         </table>
     </div>

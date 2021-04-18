@@ -131,17 +131,38 @@ class AccountController extends Controller
     {
         $query = $request->get('query');
         $name = $request->get('name');
-        $validate = Validator::make($request->all(),
-            [
-                'phone' => ['required', 'regex:/^(0)[0-9]{9}$/']
-            ], $messages = [
-                "phone.regex" => "Phone number must be 10 digits and start by 0",
-            ]);
-        if ($validate->fails())
-            return $messages;
-        else {
-            $data = Account::where($name, strtolower($query))->first();
-            return $data;
-        }
+        $data = Account::where($name, strtolower($query))->first();
+        return $data;
+    }
+    public function signUp(Request $request){
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
+        $phone = $request->phone;
+        $credit_number = $request->credit_number;
+        $sex = $request->sex;
+        $password = $request->password;
+        $address = $request->address;
+        $dob = $request->dob;
+        $email = $request->email;
+        $skymile = 0;
+
+        $user = new Account();
+        $user->firstname = ucfirst($firstname);
+        $user->lastname = ucfirst($lastname);
+        $user->phone = $phone;
+        $user->sex = $sex;
+        $user->credit_number = $credit_number;
+        $user->password = $password;
+        $user->address = $address;
+        $user->email =$email;
+        $user->dob= $dob;
+        $user->sky_miles = $skymile;
+        $user->save();
+
+        if(!$user->save()){
+            return redirect('/sign-in')->with('signUp-notif','Something is wrong. Please try again.');
+        }else
+            return redirect('/sign-in')->with('signUp-notif','Welcome to Helvetic Home. Your account has been generated.');
+
     }
 }

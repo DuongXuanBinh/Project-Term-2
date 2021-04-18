@@ -105,24 +105,24 @@
             </tr>
             <tr>
                 <td colspan="2">Ticket Fare</td>
-                <td>VND</td>
+                <td>$</td>
             </tr>
             <tr>
                 <td rowspan="4">Tax</td>
                 <td>Airport Tax Domestic</td>
-                <td>VND 1000</td>
+                <td>$10</td>
             </tr>
             <tr>
                 <td>Admin Fee Domestic</td>
-                <td>VND 1000</td>
+                <td>$5</td>
             </tr>
             <tr>
                 <td>Airport Security</td>
-                <td>VND 1000</td>
+                <td>$5</td>
             </tr>
             <tr>
                 <td>System Admin</td>
-                <td>VND 1000</td>
+                <td>$5</td>
             </tr>
             <tr>
                 <td colspan="2">Total</td>
