@@ -317,7 +317,6 @@ $( "#new-depart-date" ).datepicker({
     },
     minDate: 0,
     maxDate: "+21d",
-    dateFormat: "yy-mm-dd",
 });
 $("div.group1 button.date-button").click(function (){
 
@@ -337,20 +336,26 @@ $(window).on('load', function() {
 });
 // ------------
 $(document).ready(function (){
-    $("#su-phonenumber").blur(function(){
+    $("#su-phonenumber").on('blur',function(){
+        // var $t = $(this);
         var query = $(this).val();
         var name = $(this).attr('name');
         if(query !== ''&& name!==''){
             var _token = $('input[name="_token"]').val();
             $.ajax({
                 type: "POST",
-                url: "/sign-in/register",
+                url: "/sign-in/register/check",
                 data: {query: query, name: name,_token:_token},
                 success: function (data) {
-                    if(data)
+                    if(!$.trim(data)) {
                         $("svg.su-phonenumber").css('display', 'inline');
+                        $("#su-phonenumber").css('border-color', '#0000001a');
+                    }
                     else
-                        $(this).css('border-color', 'red');
+                    {
+                        $("svg.su-phonenumber").css('display', 'none');
+                        $("#su-phonenumber").css('border-color', 'red');
+                    }
                 }
             });
         }

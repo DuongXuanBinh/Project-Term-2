@@ -86,7 +86,7 @@
                         </svg>
 
                         <label for="su-password" class="">Password <i>(numbers and characters, 6 digits)</i></label>
-                        <input name="su_password" type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
+                        <input name="password" type="password" id="su-password" pattern="[A-Za-z0-9]{6}" class="form-control" placeholder="Password" required>
 
                         <label for="su-password1" class="">Confirm Password</label>
                         <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required>

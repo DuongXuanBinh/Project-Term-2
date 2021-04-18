@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
-
+    public $timestamps = true;
     public function account(){
         return $this->belongsTo(Account::class,'account_id','id');
     }

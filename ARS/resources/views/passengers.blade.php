@@ -164,50 +164,13 @@
                                 </tr>
                             </table>
                         @endforeach
-                        <table>
-                            <tr>
-                                <th colspan="3">Fare Details</th>
-                            </tr>
-                            <tr>
-                                <td>Ticket Fare</td>
 
-                                <td>USD {{session('total_price_one')}}</td>
-                            </tr>
-                            <tr>
-                                <td>Airport Tax Domestic</td>
-
-                                <td>USD {{10*count(session('flights_choose'))}}</td>
-                            </tr>
-                            <tr>
-                                <td>Admin Fee</td>
-
-                                <td>USD {{5*count(session('flights_choose'))}}</td>
-                            </tr>
-                            <tr>
-                                <td>Airport Security</td>
-
-                                <td>USD {{5*count(session('flights_choose'))}}</td>
-                            </tr>
-                            <tr>
-                                <td>System Admin</td>
-
-                                <td>USD {{5*count(session('flights_choose'))}}</td>
-                            </tr>
-                            <tr>
-                                <td>Passenger Number</td>
-                                <td colspan="2">{{session('total_passengers')}}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Subtotal</b></td>
-                                <td colspan="2"><b>USD {{session('total_price_one')*session('total_passengers') + 25*session('total_passengers')*count(session('flights_choose'))}}</b></td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
                 <div class="row  back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button">Back</button>
+                        <button class="btn btn-secondary" type="button"><a href="./booking/show_flights">Back</a></button>
                         <button class="btn btn-primary" type="submit">Continue</button>
                     </div>
                 </div>

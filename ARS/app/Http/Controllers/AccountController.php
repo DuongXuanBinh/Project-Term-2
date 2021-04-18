@@ -127,14 +127,21 @@ class AccountController extends Controller
             return redirect()->back()->with('success','Your password has been changed');
         }
     }
-
-    public function signUp(Request $request){
+    public function checkSignUp(Request $request)
+    {
         $query = $request->get('query');
         $name = $request->get('name');
-
-        $data = Account::where($name,strtolower($query))->get();
-
-        return $data;
-
+        $validate = Validator::make($request->all(),
+            [
+                'phone' => ['required', 'regex:/^(0)[0-9]{9}$/']
+            ], $messages = [
+                "phone.regex" => "Phone number must be 10 digits and start by 0",
+            ]);
+        if ($validate->fails())
+            return $messages;
+        else {
+            $data = Account::where($name, strtolower($query))->first();
+            return $data;
+        }
     }
 }

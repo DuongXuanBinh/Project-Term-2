@@ -267,64 +267,64 @@ $(".check_out form input:radio").on(
 
 //Search Place
 
-$(document).ready(function (){
-
-    //place from
-    $('#place_from').keyup(function (){
-        var query = $(this).val();
-        if (query !== ''){
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "GET",
-                url: "booking/search",
-                data: {query:query, _token:_token},
-                success:function (data){
-                    $('#place_from_list').fadeIn();
-                    $('#place_from_list').html(data);
-                    $(document).click(function() {
-                        if( this.id !== 'place_from_list') {
-                            $("#place_from_list").fadeOut();
-                        }
-                    });
-                }
-
-            });
-
-        }
-    });
-    $("#place_from_list").on('click','li',function (){
-        $("#place_from").val($(this).text());
-        $("#place_from_list").fadeOut();
-    });
-
-    //place to
-    $('#place_to').keyup(function (){
-        var query = $(this).val();
-        if (query !== ''){
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "GET",
-                url: "booking/search",
-                data: {query:query, _token:_token},
-                success:function (data){
-                    $('#place_to_list').fadeIn();
-                    $('#place_to_list').html(data);
-                    $(document).click(function() {
-                        if( this.id !== 'place_from_list') {
-                            $("#place_to_list").fadeOut();
-                        }
-                    });
-                }
-            });
-        }
-    });
-    $("#place_to_list").on('click','li',function (){
-        $("#place_to").val($(this).text());
-        $("#place_to_list").fadeOut();
-    });
-    $('.form-signup svg').css('display','none');
-
-});
+// $(document).ready(function (){
+//
+//     //place from
+//     $('#place_from').keyup(function (){
+//         var query = $(this).val();
+//         if (query !== ''){
+//             var _token = $('input[name="_token"]').val();
+//             $.ajax({
+//                 type: "GET",
+//                 url: "booking/search",
+//                 data: {query:query, _token:_token},
+//                 success:function (data){
+//                     $('#place_from_list').fadeIn();
+//                     $('#place_from_list').html(data);
+//                     $(document).click(function() {
+//                         if( this.id !== 'place_from_list') {
+//                             $("#place_from_list").fadeOut();
+//                         }
+//                     });
+//                 }
+//
+//             });
+//
+//         }
+//     });
+//     $("#place_from_list").on('click','li',function (){
+//         $("#place_from").val($(this).text());
+//         $("#place_from_list").fadeOut();
+//     });
+//
+//     //place to
+//     $('#place_to').keyup(function (){
+//         var query = $(this).val();
+//         if (query !== ''){
+//             var _token = $('input[name="_token"]').val();
+//             $.ajax({
+//                 type: "GET",
+//                 url: "booking/search",
+//                 data: {query:query, _token:_token},
+//                 success:function (data){
+//                     $('#place_to_list').fadeIn();
+//                     $('#place_to_list').html(data);
+//                     $(document).click(function() {
+//                         if( this.id !== 'place_from_list') {
+//                             $("#place_to_list").fadeOut();
+//                         }
+//                     });
+//                 }
+//             });
+//         }
+//     });
+//     $("#place_to_list").on('click','li',function (){
+//         $("#place_to").val($(this).text());
+//         $("#place_to_list").fadeOut();
+//     });
+//     $('.form-signup svg').css('display','none');
+//
+// });
 
 //validate sum passenger
 var max = 3;
@@ -492,6 +492,13 @@ $(document).ready(function (){
     }
 });
 
+// radio choose how to checkout
+
+$(".radio_choose").on('click',function (){
+    $(this).find('input:radio').prop('checked',true);
+    $('.radio_choose').removeClass('radio_choose_active');
+    $(this).addClass('radio_choose_active');
+});
 
 
 

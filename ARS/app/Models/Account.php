@@ -36,7 +36,7 @@ class Account extends Model
         'password',
         'remember_token',
     ];
-
+    public $timestamps = true;
     public function cutomers(){
         return $this->hasMany(Customer::class,'account_id','id');
     }

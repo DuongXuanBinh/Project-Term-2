@@ -16,4 +16,5 @@ class Seat extends Model
     public function plane_type(){
         return $this->belongsTo(Plane_type::class,'plane_type','id');
     }
+    public $timestamps = true;
 }

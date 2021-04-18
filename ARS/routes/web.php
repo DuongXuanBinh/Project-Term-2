@@ -20,6 +20,7 @@ Route::prefix('/sign-in')->group(function (){
     Route::get('/',[Controllers\AccountController::class,'index']);
     Route::post('/authorize',[Controllers\AccountController::class,'signIn']);
     Route::post('/register',[Controllers\AccountController::class,'signUp']);
+    Route::post('/register/check',[Controllers\AccountController::class,'checkSignUp']);
 });
 Route::prefix('/profile')->group(function(){
     Route::get('/',[Controllers\AccountController::class,'showProfile']);
@@ -38,6 +39,7 @@ Route::prefix('booking')->group(function (){
     Route::post('/create_passengers',[Controllers\BookingController::class,'create_passengers']);
     Route::get('/show_seats',[Controllers\BookingController::class,'show_seats']);
     Route::get('/select_seats',[Controllers\BookingController::class,'select_seats']);
+    Route::get('/transaction',[Controllers\BookingController::class,'choose_transaction']);
 });
 Route::prefix('/')->group(function(){
     Route::get('/',[Controllers\HomeController::class,'homeIndex']);
@@ -45,7 +47,6 @@ Route::prefix('/')->group(function(){
     Route::get('/flight-status/search',[Controllers\HomeController::class,'flightStatus']);
     Route::get('/booking-manage',[Controllers\HomeController::class,'bookingIndex']);
     Route::get('/booking-manage/search',[Controllers\HomeController::class,'bookingManage']);
-    Route::get('/booking-manage/search/register',[Controllers\AccountController::class,'signIn2']);
     Route::get('/booking-manage/delete',[Controllers\HomeController::class,'bookingDelete']);
     Route::get('/booking-manage/reschedule',[Controllers\HomeController::class,'bookingReschedule']);
     Route::get('/destination', function () {

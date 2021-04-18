@@ -11,4 +11,5 @@ class Order_status extends Model
     public function orders(){
         return $this->hasMany(Order::class,'order_status','id');
     }
+    public $timestamps = true;
 }

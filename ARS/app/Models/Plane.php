@@ -17,6 +17,6 @@ class Plane extends Model
     public function seats(){
         return $this->hasMany(Seat::class,'plane_id','id');
     }
-
+    public $timestamps = true;
 
 }

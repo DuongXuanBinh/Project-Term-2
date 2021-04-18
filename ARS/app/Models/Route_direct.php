@@ -18,4 +18,5 @@ class Route_direct extends Model
     public function flights(){
         return $this->hasMany(Flight::class,'route_id','id');
     }
+    public $timestamps = true;
 }

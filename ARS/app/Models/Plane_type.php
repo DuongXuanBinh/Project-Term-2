@@ -15,4 +15,5 @@ class Plane_type extends Model
     public function seats(){
         return $this->hasMany(Seat::class,'plane_type','id');
     }
+    public $timestamps = true;
 }

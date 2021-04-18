@@ -46,8 +46,14 @@
 															<div class="input-group-prepend">
 																<div class="input-group-text">From</div>
 															</div>
-                                                            <input type="text" class="form-control" name="place_from" id="place_from" required placeholder="From">
-                                                            <div id="place_from_list"><br></div>
+                                                            <input  class="form-control" list="places_from" name="place_from" id="place_from" required placeholder="From">
+                                                            <div id="place_from_list">
+                                                                <datalist  id="places_from">
+                                                                    @foreach($airports as $airport)
+                                                                    <option value="{{$airport->name}}"></option>
+                                                                    @endforeach
+                                                                </datalist>
+                                                            </div>
 														</div>
                                                         {{--                                                        {{csrf_field()}}--}}
 													</div>
@@ -57,8 +63,14 @@
 															<div class="input-group-prepend">
 																<div class="px-4 input-group-text">To</div>
 															</div>
-                                                            <input type="text" class="form-control" name="place_to" id="place_to" required placeholder="To">
-                                                            <div id="place_to_list"><br></div>
+                                                            <input type="text" class="form-control" list="places_to" name="place_to" id="place_to" required placeholder="To">
+                                                            <div id="place_to_list">
+                                                                <datalist  id="places_to">
+                                                                    @foreach($airports as $airport)
+                                                                        <option value="{{$airport->name}}"></option>
+                                                                    @endforeach
+                                                                </datalist>
+                                                            </div>
                                                         </div>
                                                         {{--                                                        {{csrf_field()}}--}}
 													</div>

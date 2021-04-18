@@ -17,4 +17,5 @@ class Ticket_details extends Model
     public function order(){
         return $this->belongsTo(Order::class,'order_id','id');
     }
+    public $timestamps = true;
 }

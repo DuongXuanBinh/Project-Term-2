@@ -4,40 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Airport;
 use App\Models\Flight;
+use App\Models\Order;
 use App\Models\Plane;
 use App\Models\Plane_type;
 use App\Models\Route_direct;
 use App\Models\Ticket_details;
 use App\Models\Ticket_price;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Str;
 use phpDocumentor\Reflection\Types\Integer;
 use SebastianBergmann\CodeCoverage\Filter;
 use Carbon\Carbon;
+use Throwable;
 
 
 class BookingController extends Controller
 {
-    public function search_place(Request $request)
-    {
-        if ($request->get('query')) {
-            $query = $request->get('query');
-            $data = DB::table('airports')
-                ->where('name', 'LIKE', "%{$query}%")
-                ->get();
-            $output = '<ul class="dropdown-menu" style="display:block ; position:absolute ; width: 80%; margin-left: 55px
-                    ">';
-            foreach ($data as $row) {
-                $output .= '
-            <li style="line-height: 2em; margin-left: 10px; font-size: 15px; color: #777; cursor: pointer">' . $row->name . '</li>
-            ';
-            }
-            $output .= '</ul>';
-            echo $output;
-        }
-    }
+//    public function search_place(Request $request)
+//    {
+//        if ($request->get('query')) {
+//            $query = $request->get('query');
+//            $data = DB::table('airports')
+//                ->where('name', 'LIKE', "%{$query}%")
+//                ->get();
+////            $output = '<ul class="dropdown-menu" style="display:block ; position:absolute ; width: 80%; margin-left: 55px
+////                    ">';
+////            foreach ($data as $row) {
+////                $output .= '
+////            <li style="line-height: 2em; margin-left: 10px; font-size: 15px; color: #777; cursor: pointer">' . $row->name . '</li>
+////            ';
+////            }
+////            $output .= '</ul>';
+//            $output ='';
+//            foreach ($data as $row){
+//                $output.= '<option style="line-height: 2em; margin-left: 10px; font-size: 15px; color: #777; cursor: pointer" value="'.$row->name.'">';
+//            }
+//            echo $output;
+//        }
+//    }
 
     public function create(Request $request)
     {
@@ -51,9 +59,10 @@ class BookingController extends Controller
         $flight_from_transit_inbound = collect();
         $flight_transit_to_inbound = collect();
         $flight_return = collect();
+
         // IF HAVE ROUTE DIRECT
         // flight outbound
-        if ($origin_airport != null &   $arrival_airport!= null){
+        if ($origin_airport != null &   $arrival_airport!= null & $origin_airport != $arrival_airport){
             $route_outbound = Route_direct::where('origin_airportid', '=', $origin_airport->id)
                 ->where('arrival_airportid', '=', $arrival_airport->id)
                 ->first();
@@ -67,21 +76,6 @@ class BookingController extends Controller
                 $flight_outbound = Flight::where('route_id', '=', $route_outbound->id)
                     ->whereDate('departure_date', '=', $request->date_outbound)
                     ->take(30)->get();
-
-                //HANDLER DAY HAVE FLIGHTS
-
-//            $flight_other_outbound =  DB::table('flights')
-//                ->select(DB::raw('flights.statusid, flights.route_id ,DATE(departure_date) as departure_date'))
-//                ->where('statusid','=',1)
-//                ->where('route_id','=',$route_outbound->id)
-//                ->distinct()
-//                ->get();
-//            $other_outbound_days =collect();
-//            $other_return_days =collect();
-//            foreach ($flight_other_outbound as $flights){
-//                $other_outbound_days->push($flights->departure_date);
-//            }
-
 
                 // flight return
 
@@ -314,12 +308,17 @@ class BookingController extends Controller
     }
 
     public function show_flights(){
+
         if (session('outbound_details')){
             return view('flight select');
         }
         elseif (session('from_transit_outbound_details')){
             return view('flight select transit');
         }
+        elseif (!session('outbound_details') & !session('from_transit_outbound_details')){
+            return view('flight select');
+        }
+
     }
 
     public function search_other_date(Request $request){
@@ -359,7 +358,7 @@ class BookingController extends Controller
 
                 $output_outbound .= '<div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
-                    <input type="radio" name="flight_outbound" value="'.$outbound_detail->id.'" >
+                    <input type="radio" required name="flight_outbound" value="'.$outbound_detail->id.'" >
                 </div>
 
             <div class="col-md-11">
@@ -419,7 +418,7 @@ class BookingController extends Controller
             foreach (session('return_details') as $return_detail){
                 $output_return .= '<div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
-                    <input type="radio" name="flight_return" value="'.$return_detail->id.'" >
+                    <input type="radio" required name="flight_return" value="'.$return_detail->id.'" >
 
                 </div>
 
@@ -519,7 +518,7 @@ class BookingController extends Controller
             for ($i = 0; $i< count(session('from_transit_outbound_details')); $i++){
                 $output_outbound_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
-                        <input type="radio" name="flight_outbound_from_transit" value="'.session("from_transit_outbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
+                        <input type="radio" required name="flight_outbound_from_transit" value="'.session("from_transit_outbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
                         <input type="hidden" name="flight_outbound_transit_to" value="'.session('transit_to_outbound_details')[$i]->id.'">
                     </div>
                     <div class="col-md-11">
@@ -637,7 +636,7 @@ class BookingController extends Controller
             for ($i = 0; $i< count(session('from_transit_inbound_details')); $i++){
                 $output_return_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
-                        <input type="radio" name="flight_return_from_transit" value="'.session("from_transit_inbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
+                        <input type="radio" required name="flight_return_from_transit" value="'.session("from_transit_inbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
                         <input type="hidden" name="flight_return_transit_to" value="'.session('transit_to_inbound_details')[$i]->id.'">
                     </div>
                     <div class="col-md-11">
@@ -936,15 +935,152 @@ class BookingController extends Controller
         $passengers = session('passengers');
         $tickets = array();
         $count = 0;
-        for ($i = 0; $i < count($flights); $i++){
-            for ($j = 0; $j < count($passengers); $j++){
-              $tickets[$count]['flight_id']  = $flights[$i]->id;
-              $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
-              $tickets[$count]['seat_location'] = $seats[$count];
-              $count++;
+        if ($seats){
+            for ($i = 0; $i < count($flights); $i++){
+                for ($j = 0; $j < count($passengers); $j++){
+                    $tickets[$count]['flight_id']  = $flights[$i]->id;
+                    $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                    $tickets[$count]['seat_location'] = $seats[$count];
+                    $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                        ->where('class_id','=',session('class_id')) ->first()->price;
+                    switch ($passengers[$j]['type']){
+                        case '1':
+                            $price*=0.6;
+                            break;
+                        case '2':
+                            $price*=1;
+                            break;
+                        case '3':
+                            $price*=0.8;
+                            break;
+                    }
+                    $tickets[$count]['price'] = $price;
+                    $count++;
+                }
             }
         }
-        return view('check_out');
+        elseif (! $seats){
+            for ($i = 0; $i < count($flights); $i++){
+                for ($j = 0; $j < count($passengers); $j++){
+                    $tickets[$count]['flight_id']  = $flights[$i]->id;
+                    $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                    $tickets[$count]['seat_location'] = null;
+                    $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                        ->where('class_id','=',session('class_id')) ->first()->price;
+                    switch ($passengers[$j]['type']){
+                        case '1':
+                            $price*=0.6;
+                            break;
+                        case '2':
+                            $price*=1;
+                            break;
+                        case '3':
+                            $price*=0.8;
+                            break;
+                    }
+                    $tickets[$count]['price'] = $price;
+                    $count++;
+                }
+            }
+        }
+
+        session(['tickets'=>$tickets]);
+
+        $now = Carbon::today('Asia/Ho_Chi_Minh');
+        $first_departure = Carbon::parse(session('flights_choose')[0]->departure_date);
+        $diff_date = $first_departure->diffInDays($now);
+        return view('check_out')->with('diff_date',$diff_date);
     }
+
+    public function choose_transaction(Request  $request){
+        $order_id = '';
+        $order_status = 0;
+        $notification = '';
+        if ($request->transaction == 'block'){
+            $x = false;
+            do{
+                $order_id ='BO-';
+                $after_code = Str::upper(Str::random(4)) ;
+                $order_id.=$after_code;
+                $same_order_id = Order::where('id','=',$order_id)->first();
+                if ($same_order_id){
+                    $x = false;
+                }
+                else{
+                    $x = true;
+                }
+
+            }
+            while($x == false);
+
+            $order_status = 2;
+
+        }
+        elseif ($request->transaction == 'buy'){
+
+            return "method buy not ready";
+        }
+
+        DB::beginTransaction();
+        try {
+            $account_id = session('check')->id;
+            foreach (session('passengers') as $passenger){
+                DB::table('customers')->insert([
+                    'id' => $passenger['id'],
+                    'firstname' => $passenger['firstname'],
+                    'lastname' => $passenger['lastname'],
+                    'sex' => $passenger['sex'],
+                    'dob' => $passenger['dob'],
+                    'account_id' => $account_id
+                ]);
+            }
+            $flight_route = 0;
+            if (!session('date_return')){
+                $flight_route = 1;
+            }
+            elseif (session('date_return')){
+                $flight_route = 2;
+            }
+
+            $total_skymiles = 0;
+            $skymile_one_passenger = 0;
+            foreach (session('flights_choose') as $flight){
+                $skymile_one_passenger+= $flight->route_direct->skymile;
+            }
+            $total_skymiles = $skymile_one_passenger * count(session('passengers'));
+
+            DB::table('orders')->insert([
+                'id' => $order_id,
+                'account_id' => $account_id,
+                'order_status'=>$order_status,
+                'total_price'=>session('total_price'),
+                'total_skymiles'=>$total_skymiles,
+                'flight_route'=>$flight_route
+            ]);
+
+            foreach (session('tickets') as $ticket){
+                DB::table('ticket_details')->insert([
+                    'flight_id' => $ticket['flight_id'],
+                    'seat_location' => $ticket['seat_location'],
+                    'order_id' => $order_id,
+                    'passenger_id' => $ticket['passenger_id'],
+                    'price' => $ticket['price']
+                ]);
+            }
+
+            DB::commit();
+            $notification = 'Your booking has been recored ! Your booking code is '.$order_id.' Please check your email';
+        }  catch (\Exception $e) {
+            DB::rollBack();
+            $notification = 'Somethings is wrong. Please check again! Thanks!';
+        }
+
+        session()->forget('passengers');
+        session()->forget('flights_choose');
+        session()->forget('tickets');
+        return redirect('/')->with('notification',$notification);
+    }
+
+
 
 }
