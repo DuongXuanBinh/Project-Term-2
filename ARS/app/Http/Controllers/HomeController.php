@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Airport;
 use App\Models\Flight;
 use App\Models\Order;
 use App\Models\Ticket_details;
@@ -21,7 +22,11 @@ class HomeController extends Controller
         session()->forget('transit_to_inbound_details');
         session()->forget('outbound_details');
         session()->forget('return_details');
-        return view('index');
+        session()->forget('date_return');
+        session()->forget('no_flight');
+        $airports = Airport::all();
+
+        return view('index')->with('airports',$airports);
     }
 
     public function flightIndex()
@@ -197,6 +202,6 @@ class HomeController extends Controller
     }
 
     public function sendEmail($order){
-
     }
+
 }

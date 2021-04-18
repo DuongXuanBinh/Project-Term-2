@@ -335,6 +335,7 @@ $(window).on('load', function() {
     $('#notification').modal('show');
 });
 // ------------
+
 $(document).ready(function () {
     $("#su-phonenumber").on('blur', function () {
         var query = $(this).val();

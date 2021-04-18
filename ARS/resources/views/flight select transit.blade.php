@@ -80,7 +80,7 @@
                     @for($i = 0; $i < count(session('from_transit_outbound_details')) ; $i++)
                         <div class="row col-md-12 flight-detail" style="height: 130px">
                             <div class="col-md-1">
-                                <input type="radio" name="flight_outbound_from_transit" value="{{session('from_transit_outbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                                <input type="radio" required name="flight_outbound_from_transit" value="{{session('from_transit_outbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
                                 <input type="hidden" name="flight_outbound_transit_to" value="{{session('transit_to_outbound_details')[$i]->id}}" >
                             </div>
                             <div class="col-md-11">
@@ -163,7 +163,7 @@
 
                             <div class="row col-md-12 flight-detail" style="height: 130px">
                                 <div class="col-md-1">
-                                    <input type="radio" name="flight_return_from_transit" value="{{session('from_transit_inbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
+                                    <input type="radio" required name="flight_return_from_transit" value="{{session('from_transit_inbound_details')[$i]->id}}" style="height: 70px;cursor: pointer">
                                     <input type="hidden" name="flight_return_transit_to" value="{{session('transit_to_inbound_details')[$i]->id}}">
                                 </div>
 

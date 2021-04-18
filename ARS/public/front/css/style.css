@@ -2785,9 +2785,14 @@ h1.su-text{
 .check_out .radio_choose{
   margin-bottom: 30px;
   padding-right: 10px;
+    cursor: pointer;
 }
 .radio_choose_active{
   border: 1px solid #0adec0;
+}
+
+.not_allow{
+    pointer-events: none;
 }
 
 /*end dat style*/
@@ -3018,7 +3023,6 @@ form .seat-note:first-of-type{
   font-size: 20px;
   color: #e02900db;
   text-align: center;
-  text-decoration: underline;
   margin-top: -20px;
 }
 div.modal-header{

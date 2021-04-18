@@ -35,7 +35,10 @@
             <div class="row col-md-12">
                 <h2 style="text-align: center;letter-spacing: 2px;margin-top: 20px">SELECT A FLIGHT</h2>
             </div>
-
+        @if(!session('outbound_details') & !session('from_transit_outbound_details'))
+            <h1 style="text-align: center;
+    padding: 200px;"> No Flights Found! Please try later!!!</h1>
+        @else
             <!--        OUT-->
             <div class="row">
                 <div class="col-md-10">
@@ -81,7 +84,7 @@
                     @foreach(session('outbound_details') as $outbound_detail)
                         <div class="row col-md-12 flight-detail">
                             <div class="col-md-1">
-                                <input type="radio" name="flight_outbound" value="{{$outbound_detail->id}}"  >
+                                <input type="radio" required name="flight_outbound" value="{{$outbound_detail->id}}"  >
                             </div>
 
                             <div class="col-md-11">
@@ -145,7 +148,7 @@
                         @foreach(session('return_details') as $return_detail)
                             <div class="row col-md-12 flight-detail">
                                 <div class="col-md-1">
-                                    <input type="radio" name="flight_return" value="{{$return_detail->id}}" >
+                                    <input type="radio" required name="flight_return" value="{{$return_detail->id}}" >
                                 </div>
 
                                 <div class="col-md-11">
@@ -186,4 +189,5 @@
                 <br>
             </form>
         </div>
+        @endif
 @endsection
