@@ -2,6 +2,27 @@
 @section('title','Booking')
 
 @section('body')
+    @if(session('manage-notif'))
+        <form action="/sign-in">
+        <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="margin-left: 217px">NOTIFICATION</h5>
+                        <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p style="margin-bottom: 0">{{session('manage-notif')}}</p>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    @endif
     <?php
     $arr_airports = session('arr_airport');
     $ori_airports = session('ori_airport');

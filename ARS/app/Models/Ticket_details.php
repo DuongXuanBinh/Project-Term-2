@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket_details extends Model
 {
     use HasFactory;
+    protected $table ='ticket_details';
     public function customer(){
         return $this->belongsTo(Customer::class,'passenger_id','id');
     }

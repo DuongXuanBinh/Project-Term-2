@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="front/css/bootstrap.min.css">
     <link rel="stylesheet" href="front/css/style.css">
     <script src="front/js/jquery-ui.min.js"></script>
-
 </head>
 <body style="background-color: #393c3b24">
 <div class="container mail-page">
@@ -37,8 +36,9 @@
                 <tr>
 
                     <td rowspan="{{count($passengers)}}">Passenger Name:</td>
-                    @for($i=0;i<count($passengers);$i++)
-                    <td>Mr.{{strtoupper($passenger->lastname)}}/{{strtoupper($passenger->firstname)}}</td>
+                    @for($i=0;$i<count($passengers);$i++)
+                    <td>Mr.{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
+                        @endfor
                 </tr>
                 <tr>
                     <td>E-mail:</td>
