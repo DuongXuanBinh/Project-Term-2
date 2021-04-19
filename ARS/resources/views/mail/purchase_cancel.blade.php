@@ -35,12 +35,14 @@
         <div class="col-8">
             <table>
                 <tr>
-                    <td>Passenger Name:</td>
-                    <td>Mr... -- <b>Seat:</b></td>
+
+                    <td rowspan="{{count($passengers)}}">Passenger Name:</td>
+                    @for($i=0;i<count($passengers);$i++)
+                    <td>Mr.{{strtoupper($passenger->lastname)}}/{{strtoupper($passenger->firstname)}}</td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
-                    <td>@@@</td>
+                    <td>{{$account->email}}</td>
                 </tr>
                 <tr>
                     <td>Phone number:</td>

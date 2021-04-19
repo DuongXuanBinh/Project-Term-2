@@ -32,10 +32,12 @@
     <div class="row ticket-details">
         <div class="col-8">
             <table>
+                @foreach($passengers as $passenger)
                 <tr>
                     <td>Passenger Name:</td>
-                    <td>Mr... -- <b>Seat:</b></td>
+                    <td></td>
                 </tr>
+                @endforeach
                 <tr>
                     <td>E-mail:</td>
                     <td>@@@</td>

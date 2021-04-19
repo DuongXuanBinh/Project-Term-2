@@ -10,6 +10,7 @@ use App\Models\Ticket_details;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -123,16 +124,31 @@ class HomeController extends Controller
            return redirect('/sign-in');
         }
     }
-    public function bookingDelete(Request $request){
+    public function bookingDelete(Request $request)
+    {
         $code = $request->get('booking_code');
-        $mile = Order::select('total_skymiles')->where('id',$code)->first();
-        $order = Order::where('id',$code)->first();
-        $account = Account::where('id',session('check')->id)->first();
+        $mile = Order::select('total_skymiles')->where('id', $code)->first();
+        $status = Order::select('order_status')->where('id', $code)->first();
+        $order = Order::where('id', $code)->first();
+        $account = Account::where('id', session('check')->id)->first();
         $account->sky_miles = $account->sky_miles - $mile->total_skymiles;
-        $order->delete();
-        $account->save();
+        DB::beginTransaction();
+        try{
+            $order->delete();
+            $account->save();
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect('/')->with('notification', 'Something is wrong. Please try again');
+        }
+        if ($status->order_status == 1) {
+            $mailType = 5;
+        }
+        if ($status->order_status == 2) {
+            $mailType = 1;
+        }
+        $this->sendEmail($code, $mailType);
         session()->forget('code');
-        return redirect('/')->with('notification','Your booking has been cancelled. Please check your email');
+        return redirect('/')->with('notification', 'Your booking has been cancelled. Please check your email');
     }
 
     public function bookingReschedule(Request $request){
@@ -201,7 +217,99 @@ class HomeController extends Controller
         $pass->create($require,$passengers);
     }
 
-    public function sendEmail($order){
+    public function sendEmail($code,$mailType){
+        $order = Order::where('id',strtoupper($code))->where('account_id',session('check')->id)->first();
+        $way = $order->flight_route;
+        $account = $order->account;
+        $tickets = $order->ticket_details;
+        $passenger = array();
+        $flight = array();
+        $ori_airports = array();
+        $arr_airports = array();
+        $seat = array();
+        for ($i = 0; $i < count($tickets); $i++) {
+            $passenger[$i] = $tickets[$i]->customer;
+            $flight[$i] = $tickets[$i]->flight;
+        }
+        $total = $order->total_price;
+        $price = $total - 25*count($flight)*count($passenger);
+        $flights = array_values(array_unique($flight));
+        $passengers = array_values(array_unique($passenger));
+        usort($flights, function ($a, $b){
+            if(strtotime($a->departure_date)==strtotime($b->departure_date))
+                return 0;
+            return  (strtotime($a->departure_date)<strtotime($b->departure_date)) ? -1 : 1;
+        });
+        for($i=0;$i<count($flights);$i++){
+            $planeId[$i]=$flight[$i]->plane;
+            $duration[$i]=$flight[$i]->route_direct;
+        }
+        for($i=0;$i<count($flights);$i++){
+            $airport[$i] = $flights[$i]->route_direct;
+            $ori_airports[$i] = $airport[$i]->airports_origin;
+            $arr_airports[$i] = $airport[$i]->airports_arrival;
+        }
+        for($i=0;$i<count($passengers);$i++){
+            for($j=0;$j<count($flights);$j++){
+                $seat[$i][$j] = Ticket_details::select('seat_location')->where('flight_id','=',$flights[$j]->id)
+                    ->where('passenger_id','=',$passengers[$i]->id)
+                    ->first();
+            }
+        }
+        $email_to = $order->email;
+        $name = $account->lastname;
+        if($mailType==1) {
+            Mail::send('mail.block_cancel', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+            ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('Cancel Confirmation');
+            });
+        }elseif ($mailType==2){
+            Mail::send('mail.block_confirm', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('Block Confirmation');
+            });
+        }elseif ($mailType==3){
+            Mail::send('mail.cancel_inform', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('!!!Cancel Notification!!!');
+            });
+        }elseif ($mailType==4){
+            Mail::send('mail.delay_inform', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('!!!Delay Inform!!!');
+            });
+        }elseif ($mailType==5){
+            Mail::send('mail.purchase_cancel', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('Cancel Confirmation');
+            });
+        }elseif ($mailType==6){
+            Mail::send('mail.purchase_confirm', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('Booking Confirmation');
+            });
+        }elseif ($mailType==7){
+            Mail::send('mail.reschedule', compact('code', 'way','account','price','passengers','flights','seat','ori_airports','arr_airports'
+                ,'planeId','duration'), function ($message) use ($name, $email_to) {
+                $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+                $message->to($email_to, $name);
+                $message->subject('Reschedule Confirmation');
+            });
+        }
+
+
     }
 
 }

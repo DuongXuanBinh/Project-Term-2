@@ -40,10 +40,6 @@ class DatabaseSeeder extends Seeder
             ],[
                 'id'=>2,
                 'name'=>'Blocked',
-            ],
-            [
-                'id'=>3,
-                'name'=>'Cancelled'
             ]
         ]);
         DB::table('refund_policies')->insert([

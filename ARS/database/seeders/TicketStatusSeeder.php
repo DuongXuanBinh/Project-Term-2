@@ -22,10 +22,6 @@ class TicketStatusSeeder extends Seeder
                 'id'=>2,
                 'name'=>'Blocked',
             ],
-            [
-                'id'=>3,
-                'name'=>'Cancelled'
-            ]
         ]);
     }
 }
