@@ -48,7 +48,7 @@
                     <div class="col-md-12">
                         <form action="#" method="post" >
                             <div class="row">
-                                @if($diff_date > 2)
+                                @if($diff_date >= 2)
                                     <div class="col-md-12 radio_choose radio_block ">
                                     <div class="row">
                                         <div class="form-check col-md-12">
@@ -63,11 +63,11 @@
                                         </div>
                                         <div class="col-md-3" style="margin-top: 15px">
                                             <p>Your payment deadline:</p>
-                                            <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day +2)->format('d:m:Y')}}</p>
+                                            <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d:m:Y')}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                @elseif($diff_date >=0 && $diff_date <= 2)
+                                @elseif($diff_date >=0 && $diff_date < 2)
                                     <div class="col-md-12 radio_choose radio_block not_allow ">
                                         <div class="row">
                                             <div class="form-check col-md-12">
