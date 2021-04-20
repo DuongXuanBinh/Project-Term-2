@@ -53,7 +53,7 @@ class BookingController extends Controller
     {
 
         // HANDLER DATE
-        if ($request){
+        if ($request->place_from && (!$request->require)){
             $origin_airport = Airport::where('name', '=', $request->place_from)->first();
             $arrival_airport = Airport::where('name', '=', $request->place_to)->first();
             $flight_from_transit_outbound = collect();
@@ -307,6 +307,9 @@ class BookingController extends Controller
             }
 
             return redirect('/booking/show_flights');
+        }
+        if ((!$request->place_from) && $request->require){
+            dd($request);
         }
         else{
             return redirect('/');
@@ -727,8 +730,13 @@ class BookingController extends Controller
         }
         session(['page'=>'choose_flight']);
 
-        return redirect('/booking/passenger_index');
 
+        if (session('email') && session('password')){
+            return redirect('/booking/passenger_index');
+        }
+        else{
+            return redirect('/sign-in');
+        }
 
     }
 

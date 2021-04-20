@@ -3,24 +3,23 @@
 
 @section('body')
 
-    <div class="modal_select_flight">
-        <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade password-change"  id="notification_" role="dialog" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" >
                 <div class="modal-content" style="top: 100px">
                     <div class="modal-header">
                         <h5 class="modal-title" style="margin-left: 217px">NOTIFICATION</h5>
                         <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body" style="text-align: center">
-                        <p style="margin-bottom: 0">{{session('signUp-notif')}}</p>
+                        <p style="margin-bottom: 0">You have not sign-in yet? Please sign-in to continue </p>
                     </div>
                     <div class="modal-footer" style="text-align: center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button id="select_flight_sign_in" type="button" class="btn btn-primary">Sign-in</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/HEL_Popup_Teaser_E22.jpg); height: 400px">
         <div class="overlay"></div>
@@ -69,7 +68,7 @@
                         </svg>Back</a>
                 </div>
             </div>
-            <form action="./booking/choose_flight" method="get" >
+            <form action="./booking/choose_flight" id="form_choose_flight" method="get" >
                 <div class="row col-md-12" >
                     <div class="btn-group group1 btn_other_outbound" style="display: flex" role="group" aria-label="Basic example">
                         <div>
@@ -204,7 +203,7 @@
                         @if(session('check'))
                             <button class="btn btn-primary" type="submit" >Continue</button>
                         @elseif(!session('check'))
-                            <button class="btn btn-primary" id="btn_check_sign_in" >Continue</button>
+                            <button class="btn btn-primary" id="btn_check_sign_in" data-toggle="modal" data-target="#notification_" >Continue</button>
                         @endif
                     </div>
 
