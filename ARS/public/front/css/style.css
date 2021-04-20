@@ -1306,7 +1306,12 @@ h1, h2, h3, h4, h5, h6, figure {
   background: #09C6AB;
   color: #fff;
 }
-
+div.group1 button:focus{
+    outline: 0 !important;
+    background-image: none !important;
+    -webkit-box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%)!important;
+    box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%)!important;
+}
 .btn-success {
   background: #5cb85c;
   color: #fff;
@@ -1906,6 +1911,7 @@ h1, h2, h3, h4, h5, h6, figure {
   align-items: center;
   height: 100px;
   font-weight: bold;
+    padding-top: 30px;
 }
 .mail-header h3{
   color: #1a967b;
@@ -1932,10 +1938,10 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-left: 20px;
   font-size: 1.1em;
 }
-.ticket-details table tr td:nth-child(2){
+.ticket-details table tr td:not(td.menu){
   padding-left: 15px;
 }
-.ticket-details table tr td:nth-child(1)
+.ticket-details table tr td.menu
 {
   vertical-align: top;
   font-weight: bold;
@@ -1962,6 +1968,7 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   padding: 20px 0 0 20px;
   clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%);
+    -webkit-clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%);
 }
 .departure-details div:nth-child(2){
   padding-right: 0;
@@ -2703,6 +2710,9 @@ h1.su-text{
 .form-signin .dp_sign_up{
   color: #09C6AB;
 }
+.form-signin .dp_sign_up1{
+    color: #09C6AB;
+}
 .form-signin .dp_sign_up:hover{
   color: #0adec0;
   cursor: pointer;
@@ -2763,6 +2773,7 @@ h1.su-text{
 .flight_detail{
   border: 0.5px dashed #a9a8a8;
   background-color: #fbf4ec61;
+    padding: 0 5px;
 }
 .check_out{
   text-align: justify;
@@ -2894,6 +2905,9 @@ button.date-button.active{
 .back-continue button{
   width: 150px;
 }
+.back-continue button.btn-secondary:hover{
+    color:#09C6AB !important;
+}
 
 /*----------------------------------*/
 .password-change form div.modal-body{
@@ -2902,6 +2916,10 @@ button.date-button.active{
 .password-change form div.modal-body label{
   width: 49%;
   border: unset;
+}
+.modal-open{
+    overflow: auto;
+    padding-right:0 !important;
 }
 .password-change form input{
   width: 50%;

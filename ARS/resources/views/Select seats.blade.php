@@ -79,7 +79,7 @@
 
                                                 <div class="col-md-7">
                                                     <div class="row  seat-note">
-                                                        <p style="margin-top: 20px;margin-bottom: 0">Note:</p>
+                                                        <p style="margin-top: 10px;margin-bottom: 0">Note:</p>
                                                     </div>
 
                                                     <div class="row  seat-note">
@@ -110,7 +110,7 @@
                                                                             {{'Mrs'}}
                                                                         @endif
                                                                 .</span></div>
-                                                                <div class="col-md-7">{{$passenger['firstname']}} / {{$passenger['lastname']}}</div>
+                                                                <div class="col-md-7">{{$passenger['lastname']}}/{{$passenger['firstname']}}</div>
                                                                 <div class="col-md-3" style="padding: 0">
                                                                     <p class="btn_select_seat">(Select Seat)</p>
                                                                     <input type="hidden" name="seat[]">
@@ -174,7 +174,7 @@
                                                                         {{'Mrs'}}
                                                                     @endif
                                                                 .</span></div>
-                                                            <div class="col-md-7">{{$passenger['firstname']}} / {{$passenger['lastname']}}</div>
+                                                            <div class="col-md-7">{{$passenger['lastname']}}/{{$passenger['firstname']}}</div>
                                                             <div class="col-md-3" style="padding: 0">
                                                                 <p class="btn_select_seat">(Select Seat)</p>
                                                                 <input type="hidden" name="seat[]">
@@ -225,7 +225,7 @@
                                                 {{'Mrs'}}
                                             @endif
                                             .</td>
-                                        <td>{{$passenger['firstname']}} {{$passenger['lastname']}}</td>
+                                        <td>{{$passenger['lastname']}}/{{$passenger['firstname']}}</td>
                                     </tr>
                                 @endforeach
                             </table>

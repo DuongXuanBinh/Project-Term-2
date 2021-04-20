@@ -95,8 +95,8 @@
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
-                                                <label for="sexs{{$i+1}}"><h4>Sex</h4></label>
-                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Sex" required>
+                                                <label for="sexs{{$i+1}}"><h4>Gender</h4></label>
+                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Gender" required>
                                                 <datalist id="sexs{{$i+1}}">
                                                     <option value="Male">
                                                     <option value="Female">
@@ -132,8 +132,8 @@
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
-                                                <label for="sexs{{$i+1}}"><h4>Sex</h4></label>
-                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Sex" required>
+                                                <label for="sexs{{$i+1}}"><h4>Gender</h4></label>
+                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Gender" required>
                                                 <datalist id="sexs{{$i+1}}">
                                                     <option value="Male">
                                                     <option value="Female">
@@ -170,7 +170,7 @@
                 <div class="row  back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button"><a href="./booking/show_flights">Back</a></button>
+                        <a href="./booking/show_flights"><button class="btn btn-secondary" type="button">Back</button></a>
                         <button class="btn btn-primary" type="submit">Continue</button>
                     </div>
                 </div>

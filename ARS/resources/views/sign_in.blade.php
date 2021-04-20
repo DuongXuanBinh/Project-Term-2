@@ -2,6 +2,28 @@
 @section('title','Sign-In')
 
 @section('body')
+    <form action="sign-in/forgot">
+        @csrf
+        <div class="modal fade password-change" id="forgot" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title">RESET PASSWORD</h5>
+                        <button type="button" style="margin-top: -24px;padding-left: 180px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <label style="font-weight: normal">Enter you email: </label>
+                        <input type="email" name="forgot_email">
+                        <p style="margin-bottom: 0;margin-top: 10px">Please check your mail for validation code</p>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     @if(session('signUp-notif'))
         <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -52,8 +74,9 @@
                                         </label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                                    <p><span class=" dp_sign_up" >Forgot your password?</span></p>
-                                    <p>Don't have account yet? Sign up <span class=" dp_sign_up" >here</span></p>
+                                    <a style="cursor: pointer" data-toggle="modal" data-target="#forgot"><p><span class=" dp_sign_up1">Forgot your password?</span></p></a>
+
+                                    <p>Don't have account yet? Sign up <span class=" dp_sign_up">here</span></p>
                                 </div>
                             </form>
                     </div>
@@ -110,9 +133,9 @@
                             </div>
                         </div>
 
-                        <label for="su-sexs" class="">Sex</label>
+                        <label for="su-sexs" class="">Gender</label>
                         <label for="su-age" class="">D.O.B</label><br>
-                        <input name="sex" id="su-sex" list="su-sexs" class="form-control" placeholder="Sex" required>
+                        <input name="sex" id="su-sex" list="su-sexs" class="form-control" placeholder="Gender" required>
                         <datalist id="su-sexs">
                             <option value="Male">
                             <option value="Female">

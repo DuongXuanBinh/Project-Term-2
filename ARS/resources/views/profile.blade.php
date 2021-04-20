@@ -100,7 +100,7 @@
                                     </div>
 
                                     <div class="col-xs-6">
-                                        <label for="sexs"><h4>Sex</h4></label>
+                                        <label for="sexs"><h4>Gender</h4></label>
                                         <input id="sex" name="sex" list="sexs" class="form-control" placeholder="Sex" value="{{$user->sex}}" required>
                                         <datalist id="sexs">
                                             <option value="Male">
