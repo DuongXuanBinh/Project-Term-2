@@ -183,7 +183,6 @@ class HomeController extends Controller
         $ori_airports = array();
         $arr_airports = array();
         $seat = array();
-
         for ($i = 0; $i < count($tickets); $i++) {
             $passenger[$i] = $tickets[$i]->customer;
             $flight[$i] = $tickets[$i]->flight;
@@ -223,7 +222,6 @@ class HomeController extends Controller
         }
         if(!$request->new_arrival_date){
             $depart_date = $request->get('new_depart_date');
-            $arr_date = null;
         }elseif ($request->new_arrival_date){
             $depart_date = $request->get('new_depart_date');
             $arr_date = $request->get('new_arrival_date');
@@ -238,7 +236,7 @@ class HomeController extends Controller
             'senior'=>0
         ];
         $pass = new BookingController();
-        $pass->create_rechedule($require,$passengers,$order->toArray());
+        $pass->create($require,$passengers);
     }
 
     public function getDataForMail($code){

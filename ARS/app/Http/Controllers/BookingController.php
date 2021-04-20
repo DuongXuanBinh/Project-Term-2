@@ -53,7 +53,7 @@ class BookingController extends Controller
     {
 
         // HANDLER DATE
-        if ($request ){
+        if ($request->place_from && (!$request->require)){
             $origin_airport = Airport::where('name', '=', $request->place_from)->first();
             $arrival_airport = Airport::where('name', '=', $request->place_to)->first();
             $flight_from_transit_outbound = collect();
@@ -308,14 +308,13 @@ class BookingController extends Controller
 
             return redirect('/booking/show_flights');
         }
+        if ((!$request->place_from) && $request->require){
+            dd($request);
+        }
         else{
             return redirect('/');
         }
 
-    }
-
-    public function create_rechedule(array $require, array $passengers, array $order){
-        dd($require, $passengers, $order);
     }
 
     public function show_flights(){
@@ -365,13 +364,9 @@ class BookingController extends Controller
 
 
             $output_outbound = '';
-            if (count(session('outbound_details')) == 0){
-                $output_outbound .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
-            }
-            else{
-                foreach (session('outbound_details') as $outbound_detail ){
+            foreach (session('outbound_details') as $outbound_detail ){
 
-                    $output_outbound .= '<div class="row col-md-12 flight-detail">
+                $output_outbound .= '<div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
                     <input type="radio" required name="flight_outbound" value="'.$outbound_detail->id.'" >
                 </div>
@@ -380,27 +375,25 @@ class BookingController extends Controller
                 <table>
                     <tr>
                         <td rowspan="2">' . $outbound_detail->id . '</td>'.
-                        ' <td>'. session("place_from") .' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'. session("place_to"). '</td>'.
-                        '<td>Date:</td>'.
-                        '<td>' . Carbon::parse($outbound_detail->departure_date)->format("d/m/Y") .'</td>'.
-                        '<td>Departure:</td>'.
-                        '<td>'.Carbon::parse($outbound_detail->departure_date)->format("H:i").'</td>'.
-                        '<td rowspan="2">USD  '. $outbound_detail->price.' </td>'.
-                        '</tr>
+                    ' <td>'. session("place_from") .' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'. session("place_to"). '</td>'.
+                    '<td>Date:</td>'.
+                    '<td>' . Carbon::parse($outbound_detail->departure_date)->format("d/m/Y") .'</td>'.
+                    '<td>Departure:</td>'.
+                    '<td>'.Carbon::parse($outbound_detail->departure_date)->format("H:i").'</td>'.
+                    '<td rowspan="2">USD  '. $outbound_detail->price.' </td>'.
+                    '</tr>
                     <tr>
                         <td>' . $outbound_detail->seats_left . 'seat(s) left</td>'.
-                        '<td>Duration: </td>'.
-                        '<td>'. $outbound_detail->duration .' hour(s)</td>'.
-                        ' <td>Arrival:</td>
+                    '<td>Duration: </td>'.
+                    '<td>'. $outbound_detail->duration .' hour(s)</td>'.
+                    ' <td>Arrival:</td>
                         <td>'.Carbon::parse($outbound_detail->arrival_date)->format("H:i").'</td>'.
-                        ' </tr>
+                    ' </tr>
                 </table>
             </div>
         </div>';
 
-                }
             }
-
             echo $output_outbound;
 
         }
@@ -432,12 +425,8 @@ class BookingController extends Controller
             session(['return_details'=>$flight_return]);
 
             $output_return = '';
-            if (count(session('return_details'))==0){
-                $output_return .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
-            }
-            else{
-                foreach (session('return_details') as $return_detail){
-                    $output_return .= '<div class="row col-md-12 flight-detail">
+            foreach (session('return_details') as $return_detail){
+                $output_return .= '<div class="row col-md-12 flight-detail">
                 <div class="col-md-1">
                     <input type="radio" required name="flight_return" value="'.$return_detail->id.'" >
 
@@ -447,26 +436,24 @@ class BookingController extends Controller
                 <table>
                     <tr>
                         <td rowspan="2">' . $return_detail->id . '</td>'.
-                        ' <td>'. session("place_to") .' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'. session("place_from"). '</td>'.
-                        '<td>Date:</td>'.
-                        '<td>' . Carbon::parse($return_detail->departure_date)->format("d/m/Y") .'</td>'.
-                        '<td>Departure:</td>'.
-                        '<td>'.Carbon::parse($return_detail->departure_date)->format("H:i").'</td>'.
-                        '<td rowspan="2">USD  '. $return_detail->price.' </td>'.
-                        '</tr>
+                    ' <td>'. session("place_to") .' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'. session("place_from"). '</td>'.
+                    '<td>Date:</td>'.
+                    '<td>' . Carbon::parse($return_detail->departure_date)->format("d/m/Y") .'</td>'.
+                    '<td>Departure:</td>'.
+                    '<td>'.Carbon::parse($return_detail->departure_date)->format("H:i").'</td>'.
+                    '<td rowspan="2">USD  '. $return_detail->price.' </td>'.
+                    '</tr>
                     <tr>
                         <td>' . $return_detail->seats_left . 'seat(s) left</td>'.
-                        '<td>Duration: </td>'.
-                        '<td>'. $return_detail->duration .' hour(s)</td>'.
-                        ' <td>Arrival:</td>
+                    '<td>Duration: </td>'.
+                    '<td>'. $return_detail->duration .' hour(s)</td>'.
+                    ' <td>Arrival:</td>
                         <td>'.Carbon::parse($return_detail->arrival_date)->format("H:i").'</td>'.
-                        ' </tr>
+                    ' </tr>
                 </table>
             </div>
         </div>';
-                }
             }
-
             echo $output_return;
         }
 
@@ -538,12 +525,8 @@ class BookingController extends Controller
                 'transit_to_outbound_details'=>$flight_transit_to_outbound]);
 
             $output_outbound_transit = '';
-            if (count(session('from_transit_outbound_details'))==0){
-                $output_outbound_transit.= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
-            }
-            else{
-                for ($i = 0; $i< count(session('from_transit_outbound_details')); $i++){
-                    $output_outbound_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
+            for ($i = 0; $i< count(session('from_transit_outbound_details')); $i++){
+                $output_outbound_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
                         <input type="radio" required name="flight_outbound_from_transit" value="'.session("from_transit_outbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
                         <input type="hidden" name="flight_outbound_transit_to" value="'.session('transit_to_outbound_details')[$i]->id.'">
@@ -552,34 +535,34 @@ class BookingController extends Controller
                         <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
                             <tr>
                                 <td rowspan="2">'.session("from_transit_outbound_details")[$i]->id.'</td>'.
-                        '<td style="    width: 280px;">'.session("place_from").' &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session("from_transit_outbound_details")[$i]->airport_transit.'</td>'.
-                        '<td>Date:</td>
+                    '<td style="    width: 280px;">'.session("place_from").' &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session("from_transit_outbound_details")[$i]->airport_transit.'</td>'.
+                    '<td>Date:</td>
                                 <td>'.Carbon::parse(session("from_transit_outbound_details")[$i]->departure_date)->format("d/m/Y").'</td>'.
-                        '<td>Departure:</td>
+                    '<td>Departure:</td>
                                 <td>'.Carbon::parse(session("from_transit_outbound_details")[$i]->departure_date)->format("H:i").'</td>'.
-                        '<td rowspan="2">USD '.session('from_transit_outbound_details')[$i]->price.'</td>'.
-                        '</tr>
+                    '<td rowspan="2">USD '.session('from_transit_outbound_details')[$i]->price.'</td>'.
+                    '</tr>
                             <tr>
                                 <td>'.session('from_transit_outbound_details')[$i]->seats_left.'  seat(s) left</td>'.
-                        ' <td>Duration: </td>
+                    ' <td>Duration: </td>
                                 <td>'.session('from_transit_outbound_details')[$i]->duration. ' hour(s)</td>'.
-                        '<td>Arrival:</td>
+                    '<td>Arrival:</td>
                                 <td>'.Carbon::parse(session('from_transit_outbound_details')[$i]->arrival_date)->format('H:i').'</td>'.
-                        ' </tr>
+                    ' </tr>
                         </table>
                         <table>
                             <tr>
                                 <td rowspan="2">'.session('transit_to_outbound_details')[$i]->id.'</td>'.
-                        '<td style="    width: 280px;">'.session('from_transit_outbound_details')[$i]->airport_transit.' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session('place_to').'</td>'.
-                        '<td>Date:</td>
+                    '<td style="    width: 280px;">'.session('from_transit_outbound_details')[$i]->airport_transit.' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session('place_to').'</td>'.
+                    '<td>Date:</td>
                                 <td>'.Carbon::parse(session('transit_to_outbound_details')[$i]->departure_date)->format('d/m/Y').'</td>'.
-                        '<td>Departure:</td>
+                    '<td>Departure:</td>
                                 <td>'.Carbon::parse(session('transit_to_outbound_details')[$i]->departure_date)->format('H:i').'</td>'.
-                        '<td rowspan="2">USD '.session('transit_to_outbound_details')[$i]->price.'</td>'.
-                        ' </tr>
+                    '<td rowspan="2">USD '.session('transit_to_outbound_details')[$i]->price.'</td>'.
+                    ' </tr>
                             <tr>
                                 <td>'.session('transit_to_outbound_details')[$i]->seats_left.' seat(s) left</td>'.
-                        ' <td>Duration: </td>
+                    ' <td>Duration: </td>
                                 <td>'.session('transit_to_outbound_details')[$i]->duration.' hour(s)</td>
                                 <td>Arrival:</td>
                                 <td>'.Carbon::parse(session('transit_to_outbound_details')[$i]->arrival_date)->format('H:i').'</td>
@@ -588,9 +571,7 @@ class BookingController extends Controller
                     </div>
                 </div>';
 
-                }
             }
-
             echo $output_outbound_transit;
         }
 
@@ -662,12 +643,8 @@ class BookingController extends Controller
                 'transit_to_inbound_details'=>$flight_transit_to_inbound]);
 
             $output_return_transit = '';
-            if (count(session('from_transit_inbound_details'))==0){
-                $output_return_transit .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
-            }
-            else{
-                for ($i = 0; $i< count(session('from_transit_inbound_details')); $i++){
-                    $output_return_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
+            for ($i = 0; $i< count(session('from_transit_inbound_details')); $i++){
+                $output_return_transit.= '<div class="row col-md-12 flight-detail" style="height: 130px">
                     <div class="col-md-1">
                         <input type="radio" required name="flight_return_from_transit" value="'.session("from_transit_inbound_details")[$i]->id.'" style="height: 70px;cursor: pointer">
                         <input type="hidden" name="flight_return_transit_to" value="'.session('transit_to_inbound_details')[$i]->id.'">
@@ -676,34 +653,34 @@ class BookingController extends Controller
                         <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
                             <tr>
                                 <td rowspan="2">'.session("from_transit_inbound_details")[$i]->id.'</td>'.
-                        '<td style="    width: 280px;">'.session("place_to").' &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session("from_transit_outbound_details")[$i]->airport_transit.'</td>'.
-                        '<td>Date:</td>
+                    '<td style="    width: 280px;">'.session("place_to").' &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session("from_transit_outbound_details")[$i]->airport_transit.'</td>'.
+                    '<td>Date:</td>
                                 <td>'.Carbon::parse(session("from_transit_inbound_details")[$i]->departure_date)->format("d/m/Y").'</td>'.
-                        '<td>Departure:</td>
+                    '<td>Departure:</td>
                                 <td>'.Carbon::parse(session("from_transit_inbound_details")[$i]->departure_date)->format("H:i").'</td>'.
-                        '<td rowspan="2">USD '.session('from_transit_inbound_details')[$i]->price.'</td>'.
-                        '</tr>
+                    '<td rowspan="2">USD '.session('from_transit_inbound_details')[$i]->price.'</td>'.
+                    '</tr>
                             <tr>
                                 <td>'.session('from_transit_inbound_details')[$i]->seats_left.'  seat(s) left</td>'.
-                        ' <td>Duration: </td>
+                    ' <td>Duration: </td>
                                 <td>'.session('from_transit_inbound_details')[$i]->duration. ' hour(s)</td>'.
-                        '<td>Arrival:</td>
+                    '<td>Arrival:</td>
                                 <td>'.Carbon::parse(session('from_transit_inbound_details')[$i]->arrival_date)->format('H:i').'</td>'.
-                        ' </tr>
+                    ' </tr>
                         </table>
                         <table>
                             <tr>
                                 <td rowspan="2">'.session('transit_to_inbound_details')[$i]->id.'</td>'.
-                        '<td style="    width: 280px;">'.session('from_transit_inbound_details')[$i]->airport_transit.' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session('place_from').'</td>'.
-                        '<td>Date:</td>
+                    '<td style="    width: 280px;">'.session('from_transit_inbound_details')[$i]->airport_transit.' &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;'.session('place_from').'</td>'.
+                    '<td>Date:</td>
                                 <td>'.Carbon::parse(session('transit_to_inbound_details')[$i]->departure_date)->format('d/m/Y').'</td>'.
-                        '<td>Departure:</td>
+                    '<td>Departure:</td>
                                 <td>'.Carbon::parse(session('transit_to_inbound_details')[$i]->departure_date)->format('H:i').'</td>'.
-                        '<td rowspan="2">USD '.session('transit_to_inbound_details')[$i]->price.'</td>'.
-                        ' </tr>
+                    '<td rowspan="2">USD '.session('transit_to_inbound_details')[$i]->price.'</td>'.
+                    ' </tr>
                             <tr>
                                 <td>'.session('transit_to_inbound_details')[$i]->seats_left.' seat(s) left</td>'.
-                        ' <td>Duration: </td>
+                    ' <td>Duration: </td>
                                 <td>'.session('transit_to_inbound_details')[$i]->duration.' hour(s)</td>
                                 <td>Arrival:</td>
                                 <td>'.Carbon::parse(session('transit_to_inbound_details')[$i]->arrival_date)->format('H:i').'</td>
@@ -712,7 +689,6 @@ class BookingController extends Controller
                     </div>
                 </div>';
 
-                }
             }
             echo $output_return_transit;
 

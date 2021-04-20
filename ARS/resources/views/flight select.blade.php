@@ -14,7 +14,7 @@
                         <p style="margin-bottom: 0">You have not sign-in yet? Please sign-in to continue </p>
                     </div>
                     <div class="modal-footer" style="text-align: center">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         <button id="select_flight_sign_in" type="button" class="btn btn-primary">Sign-in</button>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                 <h2 style="text-align: center;letter-spacing: 2px;margin-top: 20px">SELECT A FLIGHT</h2>
             </div>
         @if(!session('outbound_details') & !session('from_transit_outbound_details'))
-            <h2 style="text-align: center;
-    padding: 200px;"> No Flights Found. Please try later!</h2>
+            <h1 style="text-align: center;
+    padding: 200px;"> No Flights Found! Please try later!!!</h1>
         @else
             <!--        OUT-->
             <div class="row">

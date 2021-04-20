@@ -14,7 +14,7 @@
                     <p style="margin-bottom: 0">You have not sign-in yet? Please sign-in to continue </p>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <button id="select_flight_sign_in" type="button" class="btn btn-primary">Sign-in</button>
                 </div>
             </div>
