@@ -455,13 +455,18 @@ $('.btn_other_return_transit div button.date-button').on('click',function (){
     })
 });
 
-$('#btn_check_sign_in').on('click',function (e){
-    e.preventDefault();
-    $('.modal_select_flight').html();
-
-
+$(document).ready(function (){
+    $('#notification_').modal('hide')
 });
 
+
+$('#btn_check_sign_in').on('click',function (e){
+    e.preventDefault();
+});
+
+$('#select_flight_sign_in').on('click',function (){
+    $('#form_choose_flight').submit();
+});
 
 
 $.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
