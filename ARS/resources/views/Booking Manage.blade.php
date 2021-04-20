@@ -287,7 +287,7 @@
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <label for="new-depart_date">New daparture date:</label>
-                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
+                                                                                <input type="text" id="new-depart-date" name="new_depart_date" required>
                                                                                 <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                             </div>
                                                                             <div class="modal-footer">
