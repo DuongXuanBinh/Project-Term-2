@@ -26,6 +26,10 @@ class HomeController extends Controller
         session()->forget('return_details');
         session()->forget('date_return');
         session()->forget('no_flight');
+        session()->forget('flight_outbound_choose');
+        session()->forget('flight_outbound_from_transit_choose');
+        session()->forget('passengers');
+        session()->forget('total_price');
         $airports = Airport::all();
 
         return view('index')->with('airports',$airports);

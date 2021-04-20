@@ -2066,6 +2066,7 @@ table.business-class tr td:nth-child(5),
 table.economy-class tr td:nth-child(4),
 table.economy-class tr td:nth-child(8){
   font-weight: bold;
+    font-size: 13px;
 }
 table.business-class tr td,
 table.economy-class tr td{
@@ -2107,7 +2108,7 @@ table.economy-class:last-of-type{
 }
 .plane-787 .right-labotory{
   top:5px;
-  left:135px;
+  left:115px;
 }
 .plane-787 .kitchen{
   top: 5px;

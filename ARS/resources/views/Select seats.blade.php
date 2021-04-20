@@ -110,7 +110,7 @@
                                                                             {{'Mrs'}}
                                                                         @endif
                                                                 .</span></div>
-                                                                <div class="col-md-7">{{$passenger['firstname']}} {{$passenger['lastname']}}</div>
+                                                                <div class="col-md-7">{{$passenger['firstname']}} / {{$passenger['lastname']}}</div>
                                                                 <div class="col-md-3" style="padding: 0">
                                                                     <p class="btn_select_seat">(Select Seat)</p>
                                                                     <input type="hidden" name="seat[]">
@@ -174,7 +174,7 @@
                                                                         {{'Mrs'}}
                                                                     @endif
                                                                 .</span></div>
-                                                            <div class="col-md-7">{{$passenger['firstname']}} {{$passenger['lastname']}}</div>
+                                                            <div class="col-md-7">{{$passenger['firstname']}} / {{$passenger['lastname']}}</div>
                                                             <div class="col-md-3" style="padding: 0">
                                                                 <p class="btn_select_seat">(Select Seat)</p>
                                                                 <input type="hidden" name="seat[]">

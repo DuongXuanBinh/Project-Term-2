@@ -402,6 +402,7 @@ $('.btn_other_outbound div button.date-button').on('click',function (){
 });
 
 
+
 $('.btn_other_return div button.date-button').on('click',function (){
     var other_return =  $(this).siblings('input[name="other_day_return"]').val();
     $.ajax({
@@ -453,6 +454,15 @@ $('.btn_other_return_transit div button.date-button').on('click',function (){
         }
     })
 });
+
+$('#btn_check_sign_in').on('click',function (e){
+    e.preventDefault();
+    $('.modal_select_flight').html();
+
+
+});
+
+
 
 $.ajaxSetup({ headers: { csrftoken : '{{ csrf_token() }}' } });
 
