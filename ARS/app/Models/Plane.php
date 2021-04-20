@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
     use HasFactory;
-    public function plane_type(){
+    public function plane_types(){
         return $this->belongsTo(Plane_type::class,'plane_type','id');
     }
     public function flights(){

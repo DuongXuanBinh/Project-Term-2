@@ -20,7 +20,7 @@
             </div>
         </div>
     @endif
-    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/ErCSon6XMAYN7jw.jpg)">
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/ErCSon6XMAYN7jw.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">
             <div class="row">
@@ -93,7 +93,7 @@
                                     <label for="su-phonenumber" class="su-phonenumber">Phone Number</label>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input name="phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required><svg  style="position: absolute;top: 23px;left: 277px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-phonenumber" viewBox="0 0 16 16">
+                                    <input name="phone" type="tel" pattern="^0[0-9]{9}" id="su-phonenumber" class="form-control" placeholder="Phone Number" required><svg  style="position: absolute;top: 23px;left: 277px;display: none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-phonenumber" viewBox="0 0 16 16">
                                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                     </svg>
                                 </div>
@@ -103,7 +103,7 @@
                                     <label for="su-creditcard" class="su-creditcard">Credit Card</label><br>
                                 </div>
                                 <div class="row col-md-12"  style="padding-right: 0">
-                                    <input name="credit_number" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required><svg style="position: absolute;top: 23px;left: 300px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-creditcard" viewBox="0 0 16 16">
+                                    <input name="credit_number" type="text" pattern="[0-9]{10}" id="su-creditcard" class="form-control" placeholder="Credit Card Number" required><svg style="position: absolute;top: 23px;left: 300px;display: none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-creditcard" viewBox="0 0 16 16">
                                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                     </svg>
                                 </div>
@@ -125,7 +125,7 @@
 
 
                         <label for="su-email" class="su-email">Email</label>
-                        <input name="email" type="email" id="su-email" class="form-control" placeholder="Email Address" required><svg style="position: absolute;top: 557px;left: 838px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-email" viewBox="0 0 16 16">
+                        <input name="email" type="email" id="su-email" class="form-control" placeholder="Email Address" required><svg style="position: absolute;top: 557px;left: 838px;display: none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-email" viewBox="0 0 16 16">
                             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                         </svg>
 
@@ -133,7 +133,7 @@
                         <input name="password" type="password" id="su-password" pattern="[A-Za-z0-9]{6,}" class="form-control" placeholder="Password" required>
 
                         <label for="su-password1" class="su-password1">Confirm Password</label>
-                        <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required><svg style="position: absolute;top: 755px;left: 840px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-password1" viewBox="0 0 16 16">
+                        <input name="su_cfpassword" type="password" id="su-password1" class="form-control" placeholder="Confirm Password" required><svg style="position: absolute;top: 755px;left: 840px;display: none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#09c5a9" class="bi bi-check2 su-password1" viewBox="0 0 16 16">
                             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
 
                         <div class="policy-box">

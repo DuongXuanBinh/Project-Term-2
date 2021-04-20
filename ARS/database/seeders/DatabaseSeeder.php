@@ -40,13 +40,14 @@ class DatabaseSeeder extends Seeder
             ],[
                 'id'=>2,
                 'name'=>'Blocked',
-            ],
-            [
-                'id'=>3,
-                'name'=>'Cancelled'
             ]
         ]);
         DB::table('refund_policies')->insert([
+            [
+                'days_before_departure'=>2,
+                'percentage of refund'=>'0%',
+                'number'=>0,
+            ],
             [
                 'days_before_departure'=>3,
                 'percentage of refund'=>'30%',
@@ -284,7 +285,7 @@ class DatabaseSeeder extends Seeder
                 'id'=>'SO-AKEB',
                 'account_id'=>1,
                 'order_status'=>1,
-                'total_price'=>'191',
+                'total_price'=>291,
                 'total_skymiles'=>4884,
                 'flight_route'=>2
             ],
@@ -292,7 +293,7 @@ class DatabaseSeeder extends Seeder
                 'id'=>'SO-HTBN',
                 'account_id'=>2,
                 'order_status'=>1,
-                'total_price'=>'90',
+                'total_price'=>140,
                 'total_skymiles'=>2442,
                 'flight_route'=>1
             ],
@@ -300,7 +301,7 @@ class DatabaseSeeder extends Seeder
                 'id'=>'SO-MLTK',
                 'account_id'=>3,
                 'order_status'=>1,
-                'total_price'=>272,
+                'total_price'=>372,
                 'total_skymiles'=>3020,
                 'flight_route'=>1
             ],

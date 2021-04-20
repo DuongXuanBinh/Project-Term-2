@@ -2,7 +2,7 @@
 @section('title','Promotion')
 
 @section('body')
-    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/A330_Airspace_hero_022b.jpg)">
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/A330_Airspace_hero_022b.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">
             <<div class="row">

@@ -16,6 +16,11 @@ class Refund_policy extends Seeder
     {
         DB::table('refund_policies')->insert([
             [
+                'days_before_departure'=>2,
+                'percentage of refund'=>'0%',
+                'number'=>0,
+            ],
+            [
                 'days_before_departure'=>3,
                 'percentage of refund'=>'30%',
                 'number'=>0.3,
