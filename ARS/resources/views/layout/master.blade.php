@@ -65,7 +65,7 @@
                     <ul>
                         <li><a href="./">Book Flight</a></li>
                         <li class="has-dropdown">
-                            <a href="#">Discover</a>
+                            <a style="cursor: pointer">Discover</a>
                             <ul class="dropdown">
                                 <li><a href="./destination">Destination</a></li>
                                 <li><a href="./policy">Policy</a></li>

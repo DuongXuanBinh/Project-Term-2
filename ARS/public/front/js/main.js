@@ -310,7 +310,7 @@ $("#new-arrival-date").datepicker({
     minDate:0,
     maxDate:"+21d",
 });
-$( "#new-depart-date" ).datepicker({
+$("#new-depart-date" ).datepicker({
     onSelect: function(dateText) {
         var date = $(this).datepicker('getDate');
         $("#new-arrival-date").datepicker('option', 'minDate', date );

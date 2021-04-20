@@ -33,7 +33,7 @@
     session()->forget('code');
     ?>
         @if(!session('flights'))
-            <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/5.jpg)">
+            <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/5.jpg)">
                 <div class="overlay"></div>
                 <div class="gtco-container">
                     <div class="row">
@@ -88,7 +88,7 @@
         @elseif(session('flights'))
 
                 @if(count(session('flights')) <= 2)
-                    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/5.jpg)">
+                    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/5.jpg)">
                         <div class="overlay"></div>
                         <div class="gtco-container">
                             <div class="row">
@@ -147,7 +147,7 @@
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <label for="new-depart_date">New daparture date:</label>
-                                                                                <input type="text" id="new-depart_date" name="new_depart_date" required>
+                                                                                <input type="text" id="new-depart-date" name="new_depart_date" required>
                                                                                 <input type="hidden" name="booking_code" value="{{strtoupper($code)}}">
                                                                             </div>
                                                                             <div class="modal-footer">
@@ -534,7 +534,7 @@
                                             </div>
                     @endif
                 @elseif(count(session('flights')) > 2)
-                    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/5.jpg);height: 850px">
+                    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/5.jpg);height: 850px">
                         <div class="overlay"></div>
                             <div class="gtco-container">
                                 <div class="row">

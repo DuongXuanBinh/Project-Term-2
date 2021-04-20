@@ -50,10 +50,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/modernizr-2.6.2.min.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-    <script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/respond.min.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -90,7 +90,7 @@
         </div>
     </nav>
 
-    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/images/NATSControl-centre0080a1-Copy.jpg)">
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/NATSControl-centre0080a1-Copy.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">
             <<div class="row">
@@ -118,31 +118,31 @@
 </div>
 
 <!-- jQuery -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <!-- jQuery Easing -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
 <!-- Carousel -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/owl.carousel.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
 <!-- countTo -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.countTo.js"></script>
+<script src="/js/jquery.countTo.js"></script>
 
 <!-- Stellar Parallax -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.stellar.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
 
 <!-- Magnific Popup -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/jquery.magnific-popup.min.js"></script>
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/magnific-popup-options.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/magnific-popup-options.js"></script>
 
 <!-- Datepicker -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
 
 
 <!-- Main -->
-<script src="../../../../../../../Aptech/GitHub/Project-Term-2/dat/traveler-master/js/main.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>
