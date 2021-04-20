@@ -33,27 +33,34 @@
     <div class="row ticket-details">
         <div class="col-8">
             <table>
-                <tr>
 
-                    <td rowspan="{{count($passengers)}}">Passenger Name:</td>
                     @for($i=0;$i<count($passengers);$i++)
-                    <td>Mr.{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
-                        @endfor
-                </tr>
+                        @if($i>0)
+                            <tr>
+                                <td></td>
+                                <td>{{$passenger->sex = 'Male' ? 'Mr. ' : 'Mrs/Ms. '}}{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
+                            </tr>
+                        @else
+                        <tr>
+                            <td rowspan="{{count($passengers)}}">Passenger Name:</td>
+                                <td>{{$passenger->sex = 'Male' ? 'Mr. ' : 'Mrs/Ms. '}}{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
+                            </tr>
+                        @endif
+                    @endfor
                 <tr>
                     <td>E-mail:</td>
                     <td>{{$account->email}}</td>
                 </tr>
                 <tr>
                     <td>Phone number:</td>
-                    <td>@@@</td>
+                    <td>{{$account->phone}}</td>
                 </tr>
             </table>
         </div>
         <div class="col-4">
             <!--            qr code den website-->
             <img src="https://lh3.googleusercontent.com/QTyhEBiJJu1O8fHSCtNMNWoOALoe_36vM2pNN-51G__WgtpsbBeVaSBFKXaZlh5LvXQGeATZ32WSZ-PxbXuID4olOM6tPy87xi-evoNPqiO94fL9hhWk3iv49oXHhQIuONH596_MMElB0IqmvC_ii_b5kl05psX8gzP3CDJSMjWCkSjB1NHAicVsW_Yo7kfuNZmiX2cIy9s-6MIiiyO3jAUUy_2PzvZ-7dqPuFkOjnhri8HvbbztQjdIhHxpw6DuzKJg-PGZ6xotEHpD-Sy1t9NEl3dmeRWq40rgJ9uf1CEdQvMWilnSoaYS5ncO5A4nd9gb3pqH9e4nh1P5uwLHLVZQ0N159cvDrGYi50mozjmCy_JZJJCyHpWyrFZgwghLPKThEiQV51t_6muaqSI_xwTH2quGAHtL_pVd1qZ8VhsAUTwD4CzmHbbz5rnupwIQsX-t6JF9fX86B1A049bVDLrUJeXwhoPsARZUUTbh-Z2sGlS_lwsEZsfuGlR26b5g_yPMIdt898HyhcOjUR4dwer7kKhK79yLSXiA8LW7UjUNiY2w9LWN6nDM23EUt7_TXi6tYkOZ_SaWArETKScnn6Ytq7Q-O4jyEVfqJd7GWYeQOswyizRh71IhyRMI0SCqvFc3Yp72f563p7B9LZaHv-8nLrfDGJt6MIGgOGbGpcKdHkfIWryyJGUtXQUC2FePD9X_Qw-HHCwKNCDzIpHPCxTJ=s200-no?authuser=0" height="60" width="60"/>
-            <p>Reservation code: AAAA</p>
+            <p>Reservation code: {{$code}}</p>
         </div>
     </div>
     <p><img src="https://lh3.googleusercontent.com/HDORnlEa6fzHozYGtBSwBnb3sXwLZ5A83ux1VuxqitdG805uge_X_dcHKVIJVF0KKQFipFZ6b6vaE2LHxFnaNWpZ_OPFmLFZArleMhDgD-_sCRRINIe8TeyPYwvDrP6zD-QNOPO4A_LxqRZvdbDrqvtjwp3EmmmAhEkzunU_UO73QG3648nYiY-CoKIOGS21vXmgvfyGdmQNiOQJH0DDQkWN7gmE3hxFi8EWVtj6S1e8DCrwtjMeNy9AUCswdfyiE0nAU-gxvUMgSfVF_7KHHJ_AEX9z9fzGycp4EcFe4tmx1H_wjMkBbHS_vOB90va_iFECWxraCQui7jZq7_q1Q6CC6RfLY6MTL97bhmqoVflnM0XzrPtRgVjBQark978c5b8QwnFrKW7tzBDxc9e4GDvcgvRqLdKe42a0RD5h62eezPCYnqOJvOtSJ0jSU1ZA8tqt-2gf9g7TlzLUgD72MrW3PmODy8v63NGDoLco1U3sJC1G4mx1K8YrSypAn-EJQE1JDasx1gEXCUlVoBevr3kCHPwiitlxPRLrgnYwwkJ2FlS5FBZb4XhPXFvNz4uQOGcdPo_Y8mzZrUixNs54eHs0kEW20COsjRVmLP-bJXPmpe6hVTlEELZBn4BxfLGzGIRX35P3GJH2dyoD6tL0ge70PdJZz4FSrbzm3g_p3wHkuPW_cNl4uhJl8y-KkxS3oGlSfHZ13Zn0ptm4DYQrT8Ei=s84-no?authuser=0" height="30" width="30"/> Departure: <span class="depart-date">November 10th, 2021</span></p>

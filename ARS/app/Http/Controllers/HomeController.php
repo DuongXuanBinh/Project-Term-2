@@ -134,10 +134,11 @@ class HomeController extends Controller
         $status = Order::select('order_status')->where('id', $code)->first();
         $order = Order::where('id', $code)->first();
         $account = Account::where('id', session('check')->id)->first();
-        $account->sky_miles = $account->sky_miles - $mile->total_skymiles;
-        $ticket = $code->ticket_details;
+        $account->sky_miles-= $mile->total_skymiles;
+        $ticket = $order->ticket_details;
         $passenger = array();
         $customer = array();
+//        dd($mile);
         if ($status->order_status == 1) {
             $mailType = 5;
         }
@@ -145,6 +146,7 @@ class HomeController extends Controller
             $mailType = 1;
         }
         $array = session('array',$this->getDataForMail($code));
+        $this->sendEmail($array,$mailType);
         DB::beginTransaction();
         try{
             for ($i=0;$i<count($ticket);$i++){
@@ -249,9 +251,9 @@ class HomeController extends Controller
             $flight[$i] = $tickets[$i]->flight;
         }
         $total = $order->total_price;
-        $price = $total - 25*count($flight)*count($passenger);
         $flights = array_values(array_unique($flight));
         $passengers = array_values(array_unique($passenger));
+        $price = $total - 25*count($flights)*count($passengers);
         usort($flights, function ($a, $b){
             if(strtotime($a->departure_date)==strtotime($b->departure_date))
                 return 0;
@@ -273,7 +275,7 @@ class HomeController extends Controller
                 'ori_airports'=>$ori_airports,
                 'arr_airports'=>$arr_airports,
                 'code'=>$code,
-                'flight'=>$flights,
+                'flights'=>$flights,
                 'price'=>$price];
     }
 
@@ -286,10 +288,11 @@ class HomeController extends Controller
         $flights = $array['flights'];
         $ori_airports = $array['ori_airports'];
         $arr_airports = $array['arr_airports'];
-        $planeId = $array['planeID'];
+        $planeId = $array['planeId'];
         $duration =$array['duration'];
-//        $email_to = $account->email;
-//        $name = $account->lastname;
+        $email_to = $account->email;
+        $name = $account->lastname;
+        dd($duration,$planeId,$flights,$arr_airports,$ori_airports,$passengers,$account,$code,$way,$price);
 //        if($mailType==1) {
 //            Mail::send('mail.block_cancel', compact('code', 'way','account','price','passengers','flights','ori_airports','arr_airports'
 //            ,'planeId','duration'), function ($message) use ($name, $email_to) {
@@ -340,8 +343,8 @@ class HomeController extends Controller
 //                $message->subject('Reschedule Confirmation');
 //            });
 //        }
-
-
+//        session()->forget(['code','way','account','price','passengers','flights',
+//            'ori_airports','arr_airports','plnaeId','duration']);
     }
 
 }
