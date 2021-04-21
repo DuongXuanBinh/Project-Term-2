@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="front/css/style.css">
     <script src="front/js/jquery-ui.min.js"></script>
 </head>
-<body style="background-color: #393c3b24">
+<body style="background-color: #393c3b24;color: black">
 <div class="container mail-page">
     <!--    header cua mail-->
     <div class="row">
@@ -32,70 +32,76 @@
     <div class="row ticket-details">
         <div class="col-8">
             <table>
-                @foreach($passengers as $passenger)
+                @for($i=0;$i<count($passengers);$i++)
+                    @if($i>0)
+                        <tr>
+                            <td>@if($passengers[$i]->sex == 'Male')Mr. &nbsp;&nbsp;@else Mrs/Ms. &nbsp;&nbsp;@endif{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td class="menu" rowspan="{{count($passengers)}}">Passenger Name:</td>
+                            <td>@if($passengers[$i]->sex == 'Male')Mr. &nbsp;&nbsp;@else Mrs/Ms. &nbsp;&nbsp;@endif{{strtoupper($passengers[$i]->lastname)}}/{{strtoupper($passengers[$i]->firstname)}}</td>
+                        </tr>
+                    @endif
+                @endfor
                 <tr>
-                    <td>Passenger Name:</td>
-                    <td></td>
+                    <td class="menu">E-mail:</td>
+                    <td>{{$account->email}}</td>
                 </tr>
-                @endforeach
                 <tr>
-                    <td>E-mail:</td>
-                    <td>@@@</td>
-                </tr>
-                <tr>
-                    <td>Phone number:</td>
-                    <td>@@@</td>
+                    <td class="menu">Phone number:</td>
+                    <td>{{$account->phone}}</td>
                 </tr>
             </table>
         </div>
         <div class="col-4">
             <!--            qr code den website-->
             <img src="https://lh3.googleusercontent.com/QTyhEBiJJu1O8fHSCtNMNWoOALoe_36vM2pNN-51G__WgtpsbBeVaSBFKXaZlh5LvXQGeATZ32WSZ-PxbXuID4olOM6tPy87xi-evoNPqiO94fL9hhWk3iv49oXHhQIuONH596_MMElB0IqmvC_ii_b5kl05psX8gzP3CDJSMjWCkSjB1NHAicVsW_Yo7kfuNZmiX2cIy9s-6MIiiyO3jAUUy_2PzvZ-7dqPuFkOjnhri8HvbbztQjdIhHxpw6DuzKJg-PGZ6xotEHpD-Sy1t9NEl3dmeRWq40rgJ9uf1CEdQvMWilnSoaYS5ncO5A4nd9gb3pqH9e4nh1P5uwLHLVZQ0N159cvDrGYi50mozjmCy_JZJJCyHpWyrFZgwghLPKThEiQV51t_6muaqSI_xwTH2quGAHtL_pVd1qZ8VhsAUTwD4CzmHbbz5rnupwIQsX-t6JF9fX86B1A049bVDLrUJeXwhoPsARZUUTbh-Z2sGlS_lwsEZsfuGlR26b5g_yPMIdt898HyhcOjUR4dwer7kKhK79yLSXiA8LW7UjUNiY2w9LWN6nDM23EUt7_TXi6tYkOZ_SaWArETKScnn6Ytq7Q-O4jyEVfqJd7GWYeQOswyizRh71IhyRMI0SCqvFc3Yp72f563p7B9LZaHv-8nLrfDGJt6MIGgOGbGpcKdHkfIWryyJGUtXQUC2FePD9X_Qw-HHCwKNCDzIpHPCxTJ=s200-no?authuser=0" height="60" width="60"/>
-            <p>Reservation code: AAAA</p>
+            <p>Reservation code: {{$code}}</p>
         </div>
     </div>
-    <p><img src="https://lh3.googleusercontent.com/HDORnlEa6fzHozYGtBSwBnb3sXwLZ5A83ux1VuxqitdG805uge_X_dcHKVIJVF0KKQFipFZ6b6vaE2LHxFnaNWpZ_OPFmLFZArleMhDgD-_sCRRINIe8TeyPYwvDrP6zD-QNOPO4A_LxqRZvdbDrqvtjwp3EmmmAhEkzunU_UO73QG3648nYiY-CoKIOGS21vXmgvfyGdmQNiOQJH0DDQkWN7gmE3hxFi8EWVtj6S1e8DCrwtjMeNy9AUCswdfyiE0nAU-gxvUMgSfVF_7KHHJ_AEX9z9fzGycp4EcFe4tmx1H_wjMkBbHS_vOB90va_iFECWxraCQui7jZq7_q1Q6CC6RfLY6MTL97bhmqoVflnM0XzrPtRgVjBQark978c5b8QwnFrKW7tzBDxc9e4GDvcgvRqLdKe42a0RD5h62eezPCYnqOJvOtSJ0jSU1ZA8tqt-2gf9g7TlzLUgD72MrW3PmODy8v63NGDoLco1U3sJC1G4mx1K8YrSypAn-EJQE1JDasx1gEXCUlVoBevr3kCHPwiitlxPRLrgnYwwkJ2FlS5FBZb4XhPXFvNz4uQOGcdPo_Y8mzZrUixNs54eHs0kEW20COsjRVmLP-bJXPmpe6hVTlEELZBn4BxfLGzGIRX35P3GJH2dyoD6tL0ge70PdJZz4FSrbzm3g_p3wHkuPW_cNl4uhJl8y-KkxS3oGlSfHZ13Zn0ptm4DYQrT8Ei=s84-no?authuser=0" height="30" width="30"/> Departure: <span class="depart-date">November 10th, 2021</span></p>
-    <div class="row departure-details">
-        <div class="col-4" style="clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%);">
-            <p>Helvetic Airline</p>
-            <p>HV111 - (aircraft)</p>
-            <p>Duration: hr(s) min(s)</p>
-            <p>Cabin: </p>
+    @for($i = 0;$i<count($flights);$i++)
+        <p><img src="https://lh3.googleusercontent.com/sdKPStBDtWHr6LC2EOQZxamRxoOXM39dSYiNZTjpekbup5iyMcDEqDkd0lFT1l2rMypXA-XqvFywE6JiOfvKws1MfsU2acNXS6Br3aT23YEAWxztV178aM4HZAeK50voOAgiucRVzwE2fFX2fJ3Cl75WT81xxwMymmlUBYtrAk0ysCCT1KSduN68-tE1RSLJkHiSS-3cdDR_mU_r5oEhXF5XwEk1FTk_MAhIiY7AjANs4ZQnZ7_307JH79hLAF7IlQJsAhUx472HimGKtS9SUEr-qPKJwT3Ri9zKNcrSLchxin7larVzpIJzuixVm7AcrsUiRhIrDPpCa3VHTAGtQAh96c8VwihMtn3z0r7kfViiPn66KcwtaIznFUn8K__Y0HO40kJ9uq4COdO5CqJdc4vg1aevD-pilL8QOt8490mxwFYIfLiac12rfLncpYnKwXfHTAT_3MImlz9Brg5O2HXyyXnWVRUrl8wGBdcLaSio1thDtgxfsDx_6E0KXxYyron3vaWxgsrDobbAT0-lmpjb7Enb7MIF25byytvcSGoqB887HgnT5D6QAbr3Oden6Y2eo4sdkcNkcCC7s9VaWq92PPnMLm_3MCakNcXrKjMRRGgYISMtoCSMQ4eP0raL11HwoxzrMKaqCQMYTvEooDUhpELRpT8aQ0gyrz-s51SPFKQexRnJ5NSstKDdyBmvBjPlXQ_peQizaICcadKRP02b=s84-no?authuser=0" height="30" width="30"/> Departure: <span class="depart-date">{{date('F j, Y',strtotime($flights[$i]->departure_date))}}</span></p>
+        <div class="row departure-details">
+            <div class="col-4" style="-webkit-clip-path: polygon(15% 0%,100% 0%,100% 100%, 0% 100%,0% 15%); !important;">
+                <p>Helvetic Airline</p>
+                <p>{{$flights[$i]->id}} - {{$plane_type[$i]}}</p>
+                <p>Duration: {{date('H',strtotime($duration[$i]))}} hr(s) {{date('i',strtotime($duration[$i]))}} min(s)</p>
+            </div>
+            <div class="col-8">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="https://lh3.googleusercontent.com/M6el8SGgFEKhBrET4dJDj0sZPs06JEEbH-wYb7tXKgAjGRbQ3CvdPSL0KVdbUQJGZl97JB9ninaMUSiZD7gHI7RpGkOuKISca3n2-qd6ImgD3d0l0-sGpYEqBscPd8oN4ur8PSdOPlG9XDhsIip6Q0-Qh4fVQ6EA5cY8pd-ljgDfOdEPtgCuWsT3CEqUgpKngStlBPj0yoQ4-ovkw5-tc04VBVqQ59TAvNdEGFn96IlwBvyIsEdj7WJLal6zQRXWovDIriTWcL5_onqC6soTSPa2GE1bKxY4z4Rfle9789X2BssEGbBS2SMIVUNmrs7ZjeDvJRlolN3bnQfJ7cCzPBl6ehNDGaabn8rP4QSqkbKjzMIBwpaZXrZJCBQljKkOtRjlHdS7AN1LOwRGhAb4k2cFpMzG4zO3zUkDaMdJSkGSO5NNQrIwO9z8CUYJSsKic6RObpPB2TbnX_xBdrs_ljLOP_mwha8NDz-7zxf1iStL1u5CaUg8dCy-4VAymTmlsa6fvxRWhenBe6BRLw_WNpi9p9GZx9_hKhxr_BObbe_bG_zPyVbwAwBQV60npqBeMRbzaPo8ffPLBDIBadgE3MD2Tfwx_RIoSLyL4cP_k2_gIByiwUCV2SWwpQQZ3eLk__BYJGG8voi5plsx-xCpYclgKTfhdgpF7ZC4V5pfFI3K6t8V8WnFQeYE6_3zHg0Usy6LctxPnKEscsdLfexaqsBh=s128-no?authuser=0" height="50" width="50"/>
+                            <span>{{$ori_airports[$i]->id}}</span>
+                            <p>{{$ori_airports[$i]->name}}</p>
+                        </td>
+                        <td>
+                            <img src="https://lh3.googleusercontent.com/C1FBvbRHFXD-92E61uOSJ2XkUhjsiO0bcLqXRI-nPQDn3TwphhGZ80zqdnTmS_bIufDAqzJKvPJv7jiFFfhc3CainEjIjAIsUneb_GhldGUD4kSwsEhc9oy1Kfnw6LNjtOMQAkxQ2v6ATHHIxwGHaQ64rARKSKvNE9Y5p2VWFNlCEhMtbsFhsypB-cJoEeMIsW1auJxXyIiNnm1dahh_pRkABFoeHOB7IfAic7lJtXTbzgGjHEqW-XNUJuCQRVXuOJ9VWyo2D7PglxbWvK3EBtbh76fQixOVmB3b7k0Chay4UQTb6J6OcdjVjdDYBsQ_Tk0Qm2Xpm1fFtvznt05Kk9IQMZD4mCKoiHZMgglh1sZml7Dm0HK1snhc7doGlmhHdFpLFNUiwtzOUEkpR-1MRFT2EIxV6u7xVl59V9MajZh6tN0ZUiGJjqqfOflL-n2S2om9w823GxXKtO5-M6pUygD9FjzJyQxX7-mpuRa_6K0kOxHBkvwPNCVYw45U2uQxhUMJ15w8XeI6D9GYXN45RoSNmMfPEb8w9A8SWcsAdC-hvisXSG_gzd-7sSzHGim-WL0hzseSczgbX12Gvje2en2N_jb-zyde5WVKRSzn2Q2AryEIVWMFUmf6liEDIEh9n5FKJxnMdheqbQj7R1QKm-rG8I5g_R0or4dVQNHv1lLJx6EAn8QjM8LsYa9lKn5NasXOU8R8N0_kT9CdhS-DT1Wr=s128-no?authuser=0" height="50" width="50"/>
+                            <span>{{$arr_airports[$i]->id}}</span>
+                            <p>{{$arr_airports[$i]->name}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Departuring at: <span>{{date('H:i',strtotime($flights[$i]->departure_date))}}</span></p>
+                        </td>
+                        <td>
+                            <p>Arriving at: <span>{{date('H:i',strtotime($flights[$i]->arrival_date))}}</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Terminal: 2</p>
+                        </td>
+                        <td>
+                            <p>Terminal: 1</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="col-8">
-            <table>
-                <tr>
-                    <td>
-                        <img src="https://lh3.googleusercontent.com/M6el8SGgFEKhBrET4dJDj0sZPs06JEEbH-wYb7tXKgAjGRbQ3CvdPSL0KVdbUQJGZl97JB9ninaMUSiZD7gHI7RpGkOuKISca3n2-qd6ImgD3d0l0-sGpYEqBscPd8oN4ur8PSdOPlG9XDhsIip6Q0-Qh4fVQ6EA5cY8pd-ljgDfOdEPtgCuWsT3CEqUgpKngStlBPj0yoQ4-ovkw5-tc04VBVqQ59TAvNdEGFn96IlwBvyIsEdj7WJLal6zQRXWovDIriTWcL5_onqC6soTSPa2GE1bKxY4z4Rfle9789X2BssEGbBS2SMIVUNmrs7ZjeDvJRlolN3bnQfJ7cCzPBl6ehNDGaabn8rP4QSqkbKjzMIBwpaZXrZJCBQljKkOtRjlHdS7AN1LOwRGhAb4k2cFpMzG4zO3zUkDaMdJSkGSO5NNQrIwO9z8CUYJSsKic6RObpPB2TbnX_xBdrs_ljLOP_mwha8NDz-7zxf1iStL1u5CaUg8dCy-4VAymTmlsa6fvxRWhenBe6BRLw_WNpi9p9GZx9_hKhxr_BObbe_bG_zPyVbwAwBQV60npqBeMRbzaPo8ffPLBDIBadgE3MD2Tfwx_RIoSLyL4cP_k2_gIByiwUCV2SWwpQQZ3eLk__BYJGG8voi5plsx-xCpYclgKTfhdgpF7ZC4V5pfFI3K6t8V8WnFQeYE6_3zHg0Usy6LctxPnKEscsdLfexaqsBh=s128-no?authuser=0" height="50" width="50"/>
-                        <span>HAN</span>
-                        <p>Ha Noi, Vietnam</p>
-                    </td>
-                    <td>
-                        <img src="https://lh3.googleusercontent.com/C1FBvbRHFXD-92E61uOSJ2XkUhjsiO0bcLqXRI-nPQDn3TwphhGZ80zqdnTmS_bIufDAqzJKvPJv7jiFFfhc3CainEjIjAIsUneb_GhldGUD4kSwsEhc9oy1Kfnw6LNjtOMQAkxQ2v6ATHHIxwGHaQ64rARKSKvNE9Y5p2VWFNlCEhMtbsFhsypB-cJoEeMIsW1auJxXyIiNnm1dahh_pRkABFoeHOB7IfAic7lJtXTbzgGjHEqW-XNUJuCQRVXuOJ9VWyo2D7PglxbWvK3EBtbh76fQixOVmB3b7k0Chay4UQTb6J6OcdjVjdDYBsQ_Tk0Qm2Xpm1fFtvznt05Kk9IQMZD4mCKoiHZMgglh1sZml7Dm0HK1snhc7doGlmhHdFpLFNUiwtzOUEkpR-1MRFT2EIxV6u7xVl59V9MajZh6tN0ZUiGJjqqfOflL-n2S2om9w823GxXKtO5-M6pUygD9FjzJyQxX7-mpuRa_6K0kOxHBkvwPNCVYw45U2uQxhUMJ15w8XeI6D9GYXN45RoSNmMfPEb8w9A8SWcsAdC-hvisXSG_gzd-7sSzHGim-WL0hzseSczgbX12Gvje2en2N_jb-zyde5WVKRSzn2Q2AryEIVWMFUmf6liEDIEh9n5FKJxnMdheqbQj7R1QKm-rG8I5g_R0or4dVQNHv1lLJx6EAn8QjM8LsYa9lKn5NasXOU8R8N0_kT9CdhS-DT1Wr=s128-no?authuser=0" height="50" width="50"/>
-                        <span>HCM</span>
-                        <p>Ho Chi Minh, Vietnam</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Departuring at: <span>9:50</span></p>
-
-                    </td>
-                    <td>
-                        <p>Arriving at: <span>9:50</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Terminal: 2</p>
-                    </td>
-                    <td>
-                        <p>Terminal: 1</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    @endfor
     <div class="row col-12">
     <p class="last-thanks">Thank you! We wish to fly with you next time!</p>
     </div>
