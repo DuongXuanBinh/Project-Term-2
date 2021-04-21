@@ -22,6 +22,7 @@ class CreateTableRouteDirects extends Migration
             $table->integer('skymile');
             $table->string('duration');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

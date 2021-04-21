@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Airport extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
         public function route_direct_origins(){
             return $this->hasMany(Route_direct::class,'origin_airportid','id');
@@ -29,4 +31,5 @@ class Airport extends Model
     ];
     public $timestamps = true;
     public $incrementing = false;
+    protected $dates = ['deleted_at'];
 }

@@ -24,6 +24,7 @@ class CreateTableTicketDetails extends Migration
             $table->foreign('passenger_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->double('price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

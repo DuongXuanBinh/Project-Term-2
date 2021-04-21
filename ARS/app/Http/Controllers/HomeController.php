@@ -71,8 +71,6 @@ class HomeController extends Controller
         return view('Booking Manage');
     }
 
-
-
     public function bookingManage(Request $request)
     {
         $code = $request->get('confirm-code');
@@ -133,6 +131,7 @@ class HomeController extends Controller
            return back()->with('manage-notif','You have to sign in to search your booking details');
         }
     }
+
     public function bookingDelete(Request $request)
     {
         $code = $request->get('booking_code');
@@ -152,23 +151,23 @@ class HomeController extends Controller
             $mailType = 1;
         }
         $array = session('array',$this->getDataForMail($code));
-//        DB::beginTransaction();
-//        try{
-//            for ($i=0;$i<count($ticket);$i++){
-//                $passenger[$i] = $ticket[$i]->customer->id;
-//            }
-//            $passengers = array_values(array_unique($passenger));
-//            for($i=0;$i<count($passengers);$i++){
-//                $customer[$i]=Customer::where('id',$passengers[$i])->first();
-//                $customer[$i]->delete();
-//            }
-//            $order->delete();
-//            $account->save();
-//            DB::commit();
-//        }catch (\Exception $e){
-//            DB::rollBack();
-//            return redirect('/')->with('notification', 'Something is wrong. Please try again');
-//        }
+        DB::beginTransaction();
+        try{
+            for ($i=0;$i<count($ticket);$i++){
+                $passenger[$i] = $ticket[$i]->customer->id;
+            }
+            $passengers = array_values(array_unique($passenger));
+            for($i=0;$i<count($passengers);$i++){
+                $customer[$i]=Customer::where('id',$passengers[$i])->first();
+                $customer[$i]->delete();
+            }
+            $order->delete();
+            $account->save();
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect('/')->with('notification', 'Something is wrong. Please try again');
+        }
         $this->sendEmail($array,$mailType);
         return redirect('/')->with('notification', 'Your booking has been cancelled. Please check your email');
 }

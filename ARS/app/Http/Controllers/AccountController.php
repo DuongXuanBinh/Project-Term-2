@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Console\Input\Input;
 
@@ -36,17 +38,24 @@ class AccountController extends Controller
             $username = $request->get('si_email');
             $password = $request->get('si_password');
             $check = Account::where('email', $username)->where('password', $password)->first();
+            $role = $check->role;
+//            dd($role);
             if ($check != null) {
-                session(['email' => $username, 'password' => $password, 'check' => $check]);
-                switch (session('page')) {
-                    case 'home':
-                        return redirect('/');
-                    case 'manage':
-                        return redirect('/booking-manage');
-                    case 'choose_flight':
-                        return redirect('/booking/passenger_index');
+                if ($role==1) {
+                    session(['email' => $username, 'password' => $password, 'check' => $check]);
+                    switch (session('page')) {
+                        case 'home':
+                            return redirect('/');
+                        case 'manage':
+                            return redirect('/booking-manage');
+                        case 'choose_flight':
+                            return redirect('/booking/passenger_index');
+                    }
+                }elseif ($role ==2 ){
+                    session(['email' => $username, 'password' => $password, 'check' => $check]);
+                    return view('controlcenter');
                 }
-            } else {
+            }else {
                 return redirect()->back()->withInput()->withErrors([
                     'approve' => 'Wrong password or this account not approved yet.']);
             }
@@ -87,7 +96,6 @@ class AccountController extends Controller
             'age' => 'required',
         ], $messages);
         if ($validate->fails()) {
-
             return back()->withInput()->withErrors($validate);
         } else {
             $account->firstname = $request->first_name;
@@ -165,4 +173,29 @@ class AccountController extends Controller
             return redirect('/sign-in')->with('signUp-notif','Welcome to Helvetic Home. Your account has been generated.');
 
     }
+    public function forgot(Request $request){
+        $email = $request->forgot_email;
+        $code =  Str::upper(Str::random(4));
+        Mail::send('mail.reset_password',compact('code'),function ($message) use ($email) {
+            $message->from('xuanbinh1011@gmail.com', 'Helvetic Airline');
+            $message->to($email, $email);
+            $message->subject('Reset Password');
+        });
+        return redirect('/sign-in')->with('code',$code)->with('email',$email);
+    }
+    public function forgotCheck(Request $request){
+        $query = $request->get('query');
+        $data = Account::where('email', strtolower($query))->first();
+        return $data;
+    }
+    public function updatePassword(Request $request){
+        $email = $request->forgot_email;
+        $pass = $request->new_pass;
+
+        $account = Account::where('email',$email)->first();
+        $account->password = $pass;
+        $account->save();
+        return redirect('/sign-in')->with('signUp-notif','Your password has been changed successfully');
+    }
+
 }

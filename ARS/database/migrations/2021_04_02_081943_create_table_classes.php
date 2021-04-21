@@ -19,6 +19,7 @@ class CreateTableClasses extends Migration
             $table->string('hand_baggage');
             $table->string('checked_baggage');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

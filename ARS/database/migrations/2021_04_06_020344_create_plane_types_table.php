@@ -20,6 +20,7 @@ class CreatePlaneTypesTable extends Migration
             $table->integer('economy_seats')->unsigned();
             $table->integer('total_seats')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

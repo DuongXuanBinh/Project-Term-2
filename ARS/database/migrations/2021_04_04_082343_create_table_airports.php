@@ -17,6 +17,7 @@ class CreateTableAirports extends Migration
             $table->string('id')->unique();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

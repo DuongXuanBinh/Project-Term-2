@@ -28,6 +28,7 @@ class CreateTableAccounts extends Migration
             $table->unsignedBigInteger('role')->default(1);
             $table->foreign('role')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

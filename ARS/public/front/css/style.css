@@ -2119,7 +2119,7 @@ table.economy-class:last-of-type{
 }
 .plane-787 .kitchen{
   top: 5px;
-  left: 65px;
+  left: 56px;
 }
 div.seat-map>div{
   margin: 0;
@@ -2659,6 +2659,7 @@ h1.su-text{
 .owl-carousel .owl-item img{
   display: inline !important;
   width: 200px !important;
+    height: auto;
 }
 .carousel_item h2{
   font-weight: 300;
@@ -3049,4 +3050,13 @@ form .seat-note:first-of-type{
 div.modal-header{
     background-color: #09c5a9;
     color: white;
+}
+#reset div.modal-body table tr td:first-of-type{
+    width: 40%;
+}
+#reset div.modal-body table tr{
+    margin: 10px 0;
+}
+#reset div.modal-body table tr td{
+    padding-bottom: 10px;
 }

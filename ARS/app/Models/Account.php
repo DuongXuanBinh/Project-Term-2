@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 class Account extends Model
 {
+    use SoftDeletes;
     use HasFactory , Notifiable;
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,7 @@ class Account extends Model
         'sky_miles',
         'role',
     ];
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -19,6 +19,7 @@ class CreateRefundPolicyTable extends Migration
             $table->string('percentage of refund');
             $table->double('number');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -35,7 +35,7 @@
                     <p style="text-align: center;cursor:pointer;"  data-toggle="modal" data-target="#myModal"><i>Change password</i></p>
                     <div class="modal fade password-change" id="myModal" tabindex="-1">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" style="top: 100px">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Change password</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

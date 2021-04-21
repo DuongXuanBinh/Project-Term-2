@@ -333,10 +333,59 @@ $(".flight-detail").on('click',function (){
 });
 $(window).on('load', function() {
     $('#notification').modal('show');
+    $('#reset').modal('show');
 });
 // ------------
 
 $(document).ready(function () {
+    $("#code").blur(function (){
+       var code = $(this).val();
+       var veri_code = $("#veri_code").val();
+       if (code!==veri_code){
+           $(this).next().empty();
+           $(this).next().after("<td style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Code doesn't match</td></tr>");
+           $("#reset-password").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+       }else{
+           $(this).next().empty();
+           $("#reset-password").after("<input type='hidden' class='flag7' value='true'>");
+       }
+    });
+    $("#cf_newpass").keyup(function (){
+        var cfpass = $(this).val();
+        var pass = $("#new_pass").val();
+        if (cfpass!==pass){
+            $(this).next().empty();
+            $(this).next().after("<td style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Password doesn't match</td></tr>");
+            $("#reset-password").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+        }else{
+            var a = $("input.flag7").val()
+            if(a=='true'){
+                $(this).next().empty();
+                $("#reset-password").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+            }
+        }
+    });
+    $("#forgot_email").keyup(function (){
+        var query = $(this).val();
+        if (query !== '') {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                type: "get",
+                url: "/sign-in/forgot/check",
+                data: {query: query, _token: _token},
+                success: function (data) {
+                    if (!$.trim(data)){
+                        $("#forgot_email").nextUntil("#p1").empty();
+                        $("#forgot_email").after("<p style='margin: 5px 0 10px; color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Email doesn't exist</p>");
+                        $("#submit_email").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+                    }else{
+                        $("#forgot_email").nextUntil("#p1").empty();
+                        $("#submit_email").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+                    }
+                }
+            })
+        }
+    });
     $("#su-phonenumber").on('blur', function () {
         var query = $(this).val();
         var name = $(this).attr('name');

@@ -20,6 +20,7 @@ class CreateTableCustomerTypes extends Migration
             $table->integer('max_age')->unsigned();
             $table->double('fare_diff');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

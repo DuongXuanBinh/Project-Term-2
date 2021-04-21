@@ -21,6 +21,7 @@ class CreateTableSeats extends Migration
             $table->unsignedBigInteger('plane_type');
             $table->foreign('plane_type')->references('id')->on('plane_types')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

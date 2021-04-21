@@ -2,6 +2,47 @@
 @section('title','Sign-In')
 
 @section('body')
+    @if(session('code'))
+        <div class="modal fade password-change" id="reset" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <form action="sign-in/forgot/change-password">
+                    @csrf
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title">RESET PASSWORD</h5>
+                        <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <table style="width:80%;margin: 0 auto;">
+                            <tr>
+                                <td>
+                                    Enter verification code:
+                                </td>
+                                <td>
+                                    <input type="text" id="code" name="code" style="width: 100%" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Enter new password:</td>
+                                <td><input type="password" id="new_pass" pattern="[a-zA-z0-9]{6,}" name="new_pass" style="width: 100%" required></td>
+                            </tr>
+                            <tr>
+                                <td>Confirm new password:</td>
+                                <td><input type="password" id="cf_newpass" pattern="[a-zA-z0-9]{6,}" name="cf_newpass" style="width: 100%" required></td>
+                            </tr>
+                        </table>
+                        <input type="hidden" id="veri_code" name="veri_code" value="{{session('code')}}">
+                        <input type="hidden" name="forgot_email" value="{{session('email')}}">
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
+                        <button type="submit" id="reset-password" class="btn btn-secondary" style="width: 30%">Submit</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    @endif
     <form action="sign-in/forgot">
         @csrf
         <div class="modal fade password-change" id="forgot" tabindex="-1" role="dialog">
@@ -12,13 +53,13 @@
                         <button type="button" style="margin-top: -24px;padding-left: 180px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body" style="text-align: center">
-                        <label style="font-weight: normal">Enter you email: </label>
-                        <input type="email" name="forgot_email">
-                        <p style="margin-bottom: 0;margin-top: 10px">Please check your mail for validation code</p>
+                        <label style="font-weight: normal">Enter you email:</label>
+                        <input type="email" id="forgot_email" name="forgot_email" style="width: 50%" required>
+                        <p id="p1" style="margin-bottom: 0;margin-top: 10px">Please check your mail for validation code</p>
                     </div>
                     <div class="modal-footer" style="text-align: center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
-                        <button type="submit" class="btn btn-primary" style="width: 30%">Submit</button>
+                        <button type="submit" class="btn btn-secondary" id="submit_email" style="width: 30%">Submit</button>
                     </div>
                 </div>
             </div>

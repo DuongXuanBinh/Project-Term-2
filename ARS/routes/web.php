@@ -22,7 +22,9 @@ Route::prefix('/sign-in')->group(function (){
     Route::post('/register',[Controllers\AccountController::class,'signUp']);
     Route::get('/register/check',[Controllers\AccountController::class,'checkSignUp']);
     Route::get('/register/validate',[Controllers\AccountController::class,'validateSignUp']);
-    Route::get('/register/forgot',[Controllers\AccountController::class,'validateSignUp']);
+    Route::get('/forgot',[Controllers\AccountController::class,'forgot']);
+    Route::get('/forgot/check',[Controllers\AccountController::class,'forgotCheck']);
+    Route::get('/forgot/change-password',[Controllers\AccountController::class,'updatePassword']);
 });
 Route::prefix('/profile')->group(function(){
     Route::get('/',[Controllers\AccountController::class,'showProfile']);

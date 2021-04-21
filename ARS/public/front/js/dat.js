@@ -194,7 +194,7 @@ $(".form-signup input:checkbox").on(
         var d = $(".flag4").val();
         var e = $(".flag5").val();
         if (this.checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
-            $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('cursor','pointer');
+            $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
         }
         else{
             $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
@@ -456,7 +456,7 @@ $('.btn_other_return_transit div button.date-button').on('click',function (){
 });
 
 $(document).ready(function (){
-    $('#notification_').modal('hide')
+    $('#notification').modal('hide')
 });
 
 
