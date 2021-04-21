@@ -32,7 +32,7 @@ class HomeController extends Controller
         session()->forget('passengers');
         session()->forget('total_price');
         session()->forget(['code','way','account','price','passengers','flights',
-            'ori_airports','arr_airports','planeId','duration']);
+            'ori_airports','arr_airports','planeId','duration','reschedule']);
         $airports = Airport::all();
 
         return view('index')->with('airports',$airports);
@@ -256,12 +256,9 @@ class HomeController extends Controller
                 'arr_flights_id'=>$arr_flights_id
             ];
         }
-
         $pass = new BookingController();
         $pass->create_reschedule($require,$passengers,$order->toArray());
-
-        dd(session('total_passengers'));
-
+        session(['reschedule'=>true]);
         return redirect('/booking/show_flights');
     }
 

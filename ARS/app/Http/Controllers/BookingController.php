@@ -330,7 +330,7 @@ class BookingController extends Controller
         session()->forget('total_price');
         session()->forget('total_passengers');
         session()->forget(['code','way','account','price','passengers','flights',
-            'ori_airports','arr_airports','planeId','duration']);
+            'ori_airports','arr_airports','planeId','duration','reschedule']);
         session(['passengers'=>$passengers,'old_order'=>$order]);
         $seat_location_first = $order['ticket_details'][0]['seat_location'];
         $plane_id = $order['ticket_details'][0]['flight']['planeid'];
@@ -1134,8 +1134,13 @@ class BookingController extends Controller
 
         }
 
+        if(session('total_passenger')){
+            session(['flights_choose'=>$flight,'total_price_one'=>$total_price_one]);
+        }
+        else{
+            session(['flights_choose'=>$flight,'total_price_one'=>$total_price_one,'total_passengers'=>$total_passengers]);
+        }
 
-        session(['flights_choose'=>$flight,'total_price_one'=>$total_price_one,'total_passengers'=>$total_passengers]);
     }
 
     public  function set_type_customer(int $age):int{
@@ -1159,65 +1164,98 @@ class BookingController extends Controller
 
     public function create_passengers(Request $request){
 
-        $passengers = array();
-        $children_min = 0;
-        $children_max = 10;
-        $adult_min = 11;
-        $adult_max = 65;
-        $senior_min = 66;
-        $total_price_one = session('total_price_one');
-        $total_price = 0;
-        $last_passenger = DB::table('customers')->orderBy('id', 'DESC')->first();
-        $last_id_passenger =  $last_passenger->id;
-        for ($i=0; $i< count($request->first_name); $i++){
-            if ($i==0){
-                ++$last_id_passenger;
-                $passengers[$i]['id'] = $last_id_passenger;
-                $passengers[$i]['firstname'] = $request->first_name[$i];
-                $passengers[$i]['lastname'] = $request->last_name[$i];
-                $passengers[$i]['phone'] = session('check')->phone;
-                $passengers[$i]['email'] = session('email');
-                $passengers[$i]['dob'] = $request->dob[$i];
-                $passengers[$i]['sex'] = $request->sex[$i];
-                $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
-                $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
-                switch ($passengers[$i]['type']){
-                    case '1':
-                        $total_price+= $total_price_one * 0.6;
-                        break;
-                    case '2':
-                        $total_price+= $total_price_one;
-                        break;
-                    case '3':
-                        $total_price+= $total_price_one * 0.8;
-                        break;
+        if (!session('reschedule')){
+            $passengers = array();
+            $children_min = 0;
+            $children_max = 10;
+            $adult_min = 11;
+            $adult_max = 65;
+            $senior_min = 66;
+            $total_price_one = session('total_price_one');
+            $total_price = 0;
+            $last_passenger = DB::table('customers')->orderBy('id', 'DESC')->first();
+            $last_id_passenger =  $last_passenger->id;
+            for ($i=0; $i< count($request->first_name); $i++){
+                if ($i==0){
+                    ++$last_id_passenger;
+                    $passengers[$i]['id'] = $last_id_passenger;
+                    $passengers[$i]['firstname'] = $request->first_name[$i];
+                    $passengers[$i]['lastname'] = $request->last_name[$i];
+                    $passengers[$i]['phone'] = session('check')->phone;
+                    $passengers[$i]['email'] = session('email');
+                    $passengers[$i]['dob'] = $request->dob[$i];
+                    $passengers[$i]['sex'] = $request->sex[$i];
+                    $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
+                    $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+                    switch ($passengers[$i]['type']){
+                        case '1':
+                            $total_price+= $total_price_one * 0.6;
+                            break;
+                        case '2':
+                            $total_price+= $total_price_one;
+                            break;
+                        case '3':
+                            $total_price+= $total_price_one * 0.8;
+                            break;
+                    }
+                }
+                elseif ($i != 0){
+                    ++$last_id_passenger;
+                    $passengers[$i]['id'] = $last_id_passenger;
+                    $passengers[$i]['firstname'] = $request->first_name[$i];
+                    $passengers[$i]['lastname'] = $request->last_name[$i];
+                    $passengers[$i]['dob'] = $request->dob[$i];
+                    $passengers[$i]['sex'] = $request->sex[$i];
+                    $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
+                    $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+                    switch ($passengers[$i]['type']){
+                        case '1':
+                            $total_price+= $total_price_one * 0.6;
+                            break;
+                        case '2':
+                            $total_price+= $total_price_one;
+                            break;
+                        case '3':
+                            $total_price+= $total_price_one * 0.8;
+                            break;
+                    }
                 }
             }
-            elseif ($i != 0){
-                ++$last_id_passenger;
-                $passengers[$i]['id'] = $last_id_passenger;
-                $passengers[$i]['firstname'] = $request->first_name[$i];
-                $passengers[$i]['lastname'] = $request->last_name[$i];
-                $passengers[$i]['dob'] = $request->dob[$i];
-                $passengers[$i]['sex'] = $request->sex[$i];
-                $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
-                $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
-                switch ($passengers[$i]['type']){
-                    case '1':
-                        $total_price+= $total_price_one * 0.6;
-                        break;
-                    case '2':
-                        $total_price+= $total_price_one;
-                        break;
-                    case '3':
-                        $total_price+= $total_price_one * 0.8;
-                        break;
-                }
+
+            session(['passengers'=>$passengers,'total_price'=>$total_price]);
+            return redirect('/booking/show_seats');
+        }
+        elseif (session('reschedule')){
+            $passengers = session('passengers');
+            $children_min = 0;
+            $children_max = 10;
+            $adult_min = 11;
+            $adult_max = 65;
+            $senior_min = 66;
+            $total_price_one = session('total_price_one');
+            $total_price = 0;
+            for ($i=0; $i< count($request->first_name); $i++){
+                    $passengers[$i]['age'] = Carbon::parse($request->dob[$i])->age;
+                    $passengers[$i]['type'] = $this->set_type_customer(Carbon::parse($request->dob[$i])->age);
+                    switch ($passengers[$i]['type']){
+                        case '1':
+                            $total_price+= $total_price_one * 0.6;
+                            break;
+                        case '2':
+                            $total_price+= $total_price_one;
+                            break;
+                        case '3':
+                            $total_price+= $total_price_one * 0.8;
+                            break;
+                    }
             }
+
+            session(['passengers'=>$passengers,'total_price'=>$total_price]);
+            $diff_amount = $total_price + 25*session('total_passengers')*count(session('flights_choose')) - session('old_order')['total_price'];
+            session(['diff_amount'=>$diff_amount]);
+            return redirect('/booking/show_seats');
         }
 
-        session(['passengers'=>$passengers,'total_price'=>$total_price]);
-        return redirect('/booking/show_seats');
     }
 
     public function show_seats(){
@@ -1233,73 +1271,143 @@ class BookingController extends Controller
 
     public function select_seats(Request $request){
 
-
-        if (session('email') && session('password') && (session('flight_outbound_choose') || session('flight_outbound_from_transit_choose'))
-            && session('passengers') && session('total_price') && $request!= null){
-            $seats = $request->seat;
-            $flights = session('flights_choose');
-            $passengers = session('passengers');
-            $tickets = array();
-            $count = 0;
-            if ($seats){
-                for ($i = 0; $i < count($flights); $i++){
-                    for ($j = 0; $j < count($passengers); $j++){
-                        $tickets[$count]['flight_id']  = $flights[$i]->id;
-                        $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
-                        $tickets[$count]['seat_location'] = $seats[$count];
-                        $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
-                            ->where('class_id','=',session('class_id')) ->first()->price;
-                        switch ($passengers[$j]['type']){
-                            case '1':
-                                $price*=0.6;
-                                break;
-                            case '2':
-                                $price*=1;
-                                break;
-                            case '3':
-                                $price*=0.8;
-                                break;
+        if (!session('reschedule')){
+            if (session('email') && session('password') && (session('flight_outbound_choose') || session('flight_outbound_from_transit_choose'))
+                && session('passengers') && session('total_price') && $request!= null){
+                $seats = $request->seat;
+                $flights = session('flights_choose');
+                $passengers = session('passengers');
+                $tickets = array();
+                $count = 0;
+                if ($seats){
+                    for ($i = 0; $i < count($flights); $i++){
+                        for ($j = 0; $j < count($passengers); $j++){
+                            $tickets[$count]['flight_id']  = $flights[$i]->id;
+                            $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                            $tickets[$count]['seat_location'] = $seats[$count];
+                            $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                                ->where('class_id','=',session('class_id')) ->first()->price;
+                            switch ($passengers[$j]['type']){
+                                case '1':
+                                    $price*=0.6;
+                                    break;
+                                case '2':
+                                    $price*=1;
+                                    break;
+                                case '3':
+                                    $price*=0.8;
+                                    break;
+                            }
+                            $tickets[$count]['price'] = $price;
+                            $count++;
                         }
-                        $tickets[$count]['price'] = $price;
-                        $count++;
                     }
                 }
-            }
-            elseif (! $seats){
-                for ($i = 0; $i < count($flights); $i++){
-                    for ($j = 0; $j < count($passengers); $j++){
-                        $tickets[$count]['flight_id']  = $flights[$i]->id;
-                        $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
-                        $tickets[$count]['seat_location'] = null;
-                        $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
-                            ->where('class_id','=',session('class_id')) ->first()->price;
-                        switch ($passengers[$j]['type']){
-                            case '1':
-                                $price*=0.6;
-                                break;
-                            case '2':
-                                $price*=1;
-                                break;
-                            case '3':
-                                $price*=0.8;
-                                break;
+                elseif (! $seats){
+                    for ($i = 0; $i < count($flights); $i++){
+                        for ($j = 0; $j < count($passengers); $j++){
+                            $tickets[$count]['flight_id']  = $flights[$i]->id;
+                            $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                            $tickets[$count]['seat_location'] = null;
+                            $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                                ->where('class_id','=',session('class_id')) ->first()->price;
+                            switch ($passengers[$j]['type']){
+                                case '1':
+                                    $price*=0.6;
+                                    break;
+                                case '2':
+                                    $price*=1;
+                                    break;
+                                case '3':
+                                    $price*=0.8;
+                                    break;
+                            }
+                            $tickets[$count]['price'] = $price;
+                            $count++;
                         }
-                        $tickets[$count]['price'] = $price;
-                        $count++;
                     }
                 }
+
+                session(['tickets'=>$tickets]);
+
+                $now = Carbon::today('Asia/Ho_Chi_Minh');
+                $first_departure = Carbon::parse(session('flights_choose')[0]->departure_date);
+                $diff_date = $first_departure->diffInDays($now);
+                return view('check_out')->with('diff_date',$diff_date);
             }
-
-            session(['tickets'=>$tickets]);
-
-            $now = Carbon::today('Asia/Ho_Chi_Minh');
-            $first_departure = Carbon::parse(session('flights_choose')[0]->departure_date);
-            $diff_date = $first_departure->diffInDays($now);
-            return view('check_out')->with('diff_date',$diff_date);
+            else{
+                return redirect('/');
+            }
         }
-        else{
-            return redirect('/');
+        elseif(session('reschedule')){
+            if (session('email') && session('password') && (session('flight_outbound_choose') || session('flight_outbound_from_transit_choose'))
+                && session('passengers') && session('total_price') && $request!= null){
+                $seats = $request->seat;
+                $flights = session('flights_choose');
+                $passengers = session('passengers');
+                $tickets = array();
+                $count = 0;
+                if ($seats){
+                    for ($i = 0; $i < count($flights); $i++){
+                        for ($j = 0; $j < count($passengers); $j++){
+                            $tickets[$count]['flight_id']  = $flights[$i]->id;
+                            $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                            $tickets[$count]['seat_location'] = $seats[$count];
+                            $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                                ->where('class_id','=',session('class_id')) ->first()->price;
+                            switch ($passengers[$j]['type']){
+                                case '1':
+                                    $price*=0.6;
+                                    break;
+                                case '2':
+                                    $price*=1;
+                                    break;
+                                case '3':
+                                    $price*=0.8;
+                                    break;
+                            }
+                            $tickets[$count]['price'] = $price;
+                            $count++;
+                        }
+                    }
+                }
+                elseif (! $seats){
+                    for ($i = 0; $i < count($flights); $i++){
+                        for ($j = 0; $j < count($passengers); $j++){
+                            $tickets[$count]['flight_id']  = $flights[$i]->id;
+                            $tickets[$count]['passenger_id'] = $passengers[$j]['id'];
+                            $tickets[$count]['seat_location'] = null;
+                            $price = Ticket_price::where('flight_id','=',$flights[$i]->id)
+                                ->where('class_id','=',session('class_id')) ->first()->price;
+                            switch ($passengers[$j]['type']){
+                                case '1':
+                                    $price*=0.6;
+                                    break;
+                                case '2':
+                                    $price*=1;
+                                    break;
+                                case '3':
+                                    $price*=0.8;
+                                    break;
+                            }
+                            $tickets[$count]['price'] = $price;
+                            $count++;
+                        }
+                    }
+                }
+
+                session(['tickets'=>$tickets]);
+
+                $now = Carbon::today('Asia/Ho_Chi_Minh');
+                $first_departure = Carbon::parse(session('flights_choose')[0]->departure_date);
+                $diff_date = $first_departure->diffInDays($now);
+                return view('check_out')->with('diff_date',$diff_date);
+            }
+            else{
+                return redirect('/');
+            }
         }
+
     }
 
     public function choose_transaction(Request  $request){
@@ -1374,7 +1482,6 @@ class BookingController extends Controller
                 return redirect('/')->with('notification',$notification);
             }
         }
-
 
         DB::beginTransaction();
         try {
