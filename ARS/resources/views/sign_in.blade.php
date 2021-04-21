@@ -2,6 +2,7 @@
 @section('title','Sign-In')
 
 @section('body')
+
     @if(session('code'))
         <div class="modal fade password-change" id="reset" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -43,6 +44,7 @@
             </div>
         </div>
     @endif
+
     <form action="sign-in/forgot">
         @csrf
         <div class="modal fade password-change" id="forgot" tabindex="-1" role="dialog">

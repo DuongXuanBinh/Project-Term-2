@@ -144,7 +144,6 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
                                                                         <form method="get" action="/booking-manage/reschedule">
-                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <label for="new-depart_date">New daparture date:</label>
                                                                                 <input type="text" id="new-depart-date" name="new_depart_date" required>
@@ -172,7 +171,6 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                         </div>
                                                                         <form method="get" action="/booking-manage/delete">
-                                                                            @csrf
                                                                             <div class="modal-body">
                                                                                 <p>Once you cancelled booking, you can't reverse the progress</p>
                                                                                 <p>You will be refunded according to our policy. The amount depends on each case</p>

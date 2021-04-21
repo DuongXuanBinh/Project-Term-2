@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Plane;
 use App\Models\Plane_type;
 use App\Models\Route_direct;
+use App\Models\Seat;
 use App\Models\Ticket_details;
 use App\Models\Ticket_price;
 use App\Utilities\VNPay;
@@ -314,8 +315,262 @@ class BookingController extends Controller
 
     }
 
-    public function create_rechedule(array $require, array $passengers, array $order){
-        dd($require, $passengers, $order);
+    public function create_reschedule(array $require, array $passengers, array $order){
+        session()->forget('from_transit_outbound_details');
+        session()->forget('transit_to_outbound_details');
+        session()->forget('from_transit_inbound_details');
+        session()->forget('transit_to_inbound_details');
+        session()->forget('outbound_details');
+        session()->forget('return_details');
+        session()->forget('date_return');
+        session()->forget('no_flight');
+        session()->forget('flight_outbound_choose');
+        session()->forget('flight_outbound_from_transit_choose');
+        session()->forget('passengers');
+        session()->forget('total_price');
+        session()->forget('total_passengers');
+        session()->forget(['code','way','account','price','passengers','flights',
+            'ori_airports','arr_airports','planeId','duration']);
+        session(['passengers'=>$passengers,'old_order'=>$order]);
+        $seat_location_first = $order['ticket_details'][0]['seat_location'];
+        $plane_id = $order['ticket_details'][0]['flight']['planeid'];
+        $plane_type = Plane::find($plane_id)->plane_type;
+        $class_id = Seat::where('seat_location','=',$seat_location_first)
+            ->where('plane_type','=',$plane_type)->first()->class_id;
+        $origin_airport = Airport::where('name', '=', $require['place_from'])->first();
+        $arrival_airport = Airport::where('name', '=', $require['place_to'])->first();
+        $flight_from_transit_outbound = collect();
+        $flight_transit_to_outbound = collect();
+        $flight_from_transit_inbound = collect();
+        $flight_transit_to_inbound = collect();
+        $flight_return = collect();
+        if ($origin_airport != null &   $arrival_airport!= null & $origin_airport != $arrival_airport){
+            $route_outbound = Route_direct::where('origin_airportid', '=', $origin_airport->id)
+                ->where('arrival_airportid', '=', $arrival_airport->id)
+                ->first();
+            session(['place_from'=>$require['place_from'], 'place_to'=>$require['place_to'],
+                'date_outbound'=>$require['date_outbound'],'date_return'=>$require['date_return'],
+                'class_id'=>$class_id,'total_passengers'=>$require['adult']
+            ]);
+            if ($route_outbound) {
+                session(['route_outbound_id '=>$route_outbound->id]);
+                $flight_outbound = Flight::where('route_id', '=', $route_outbound->id)
+                    ->whereDate('departure_date', '=',$require['date_outbound'])
+                    ->take(30)->get();
+                // flight return
+
+                if ($require['date_return'] != null) {
+                    $route_return = Route_direct::where('origin_airportid', '=', $arrival_airport->id)
+                        ->where('arrival_airportid', '=', $origin_airport->id)
+                        ->first();
+                    $flight_return = Flight::where('route_id', '=', $route_return->id)
+                        ->whereDate('departure_date','=',$require['date_return'])
+                        ->take(30)->get();
+                    if ($route_return != null){session(['route_return_id'=>$route_return->id]);}
+                }
+                $outbound_details = array();
+                $return_details = array();
+                for ($i=0;$i<count($flight_outbound); $i++){
+                    $outbound_details[$i] = $flight_outbound[$i];
+                    $outbound_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_outbound[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_outbound[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_outbound[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $outbound_details[$i]['seats_left'] = $seats_left;
+                    $outbound_details[$i]['duration'] = Route_direct::where('id','=',$flight_outbound[$i]->route_id)
+                        ->first()->duration;
+                }
+
+                for ($i=0;$i<count($flight_return); $i++){
+                    $return_details[$i] = $flight_return[$i];
+                    $return_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_return[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_return[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_return[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $return_details[$i]['seats_left'] = $seats_left;
+                    $return_details[$i]['duration'] = Route_direct::where('id','=',$flight_return[$i]->route_id)
+                        ->first()->duration;
+                }
+
+                session(['outbound_details'=>$outbound_details, 'return_details'=>$return_details]);
+                session()->forget('from_transit_outbound_details');
+                session()->forget('transit_to_outbound_details');
+                session()->forget('from_transit_inbound_details');
+                session()->forget('transit_to_inbound_details');
+            } elseif (!$route_outbound) {
+                $route_from_transit_outbounds = Route_direct::where('origin_airportid', '=', $origin_airport->id)
+                    ->take(10)
+                    ->get();
+
+                $route_transit_to_outbounds = Route_direct::where('arrival_airportid', '=', $arrival_airport->id)
+                    ->take(10)
+                    ->get();
+
+                $route_from_transit_outbound = collect();
+                $route_transit_to_outbound = collect();
+                for ($i = 0; $i < count($route_from_transit_outbounds); $i++) {
+                    for ($j = 0; $j < count($route_transit_to_outbounds); $j++) {
+                        if ($route_from_transit_outbounds[$i]->arrival_airportid == $route_transit_to_outbounds[$j]->origin_airportid) {
+                            $route_from_transit_outbound->push($route_from_transit_outbounds[$i]);
+                            $route_transit_to_outbound->push($route_transit_to_outbounds[$j]);
+                        }
+                    }
+                }
+                session(['route_from_transit_outbound'=>$route_from_transit_outbound,
+                        'route_transit_to_outbound'=>$route_transit_to_outbound]
+                );
+                for ($i = 0; $i < count($route_from_transit_outbound); $i++) {
+                    $flight_one = Flight::where('route_id', '=', $route_from_transit_outbound[$i]->id)
+                        ->whereDate('departure_date', '=', $require['date_outbound'])
+                        ->first();
+                    if ($flight_one != null) {
+                        $flight_from_transit_outbound->push($flight_one);
+                        $flight_two = Flight::where('route_id', '=', $route_transit_to_outbound[$i]->id)
+                            ->whereDate('departure_date', '=', $require['date_outbound'])
+                            ->first();
+                        if ($flight_two != null) {
+                            $flight_transit_to_outbound->push($flight_two);
+                        }
+                    } else {
+                        continue;
+                    }
+
+                }
+                if ($require['date_return'] != null) {
+                    $route_from_transit_inbounds = Route_direct::where('origin_airportid', '=', $arrival_airport->id)
+                        ->take(10)
+                        ->get();
+
+                    $route_transit_to_inbounds = Route_direct::where('arrival_airportid', '=', $origin_airport->id)
+                        ->take(10)
+                        ->get();
+
+                    $route_from_transit_inbound = collect();
+                    $route_transit_to_inbound = collect();
+                    for ($x = 0; $x < count($route_from_transit_inbounds); $x++) {
+                        for ($y = 0; $y < count($route_transit_to_inbounds); $y++) {
+                            if ($route_from_transit_inbounds[$x]->arrival_airportid == $route_transit_to_inbounds[$y]->origin_airportid) {
+                                $route_from_transit_inbound->push($route_from_transit_inbounds[$x]);
+                                $route_transit_to_inbound->push($route_transit_to_inbounds[$y]);
+                            }
+                        }
+                    }
+
+                    session(['route_from_transit_inbound'=>$route_from_transit_inbound,
+                        'route_transit_to_inbound'=> $route_transit_to_inbound]);
+
+
+
+                    for ($i = 0; $i < count($route_from_transit_inbound); $i++) {
+                        $flight_three = Flight::where('route_id', '=', $route_from_transit_inbound[$i]->id)
+                            ->whereDate('departure_date', '=', $require['date_return'])
+                            ->first();
+                        if ($flight_three != null) {
+                            $flight_from_transit_inbound->push($flight_three);
+                            $flight_four = Flight::where('route_id', '=', $route_transit_to_inbound[$i]->id)
+                                ->whereDate('departure_date', '=', $require['date_return'])
+                                ->first();
+                            if ($flight_four != null) {
+                                $flight_transit_to_inbound->push($flight_four);
+                            }
+                        } else {
+                            continue;
+                        }
+
+                    }
+
+                }
+
+                $from_transit_outbound_details = array();
+                $transit_to_outbound_details = array();
+                $from_transit_inbound_details = array();
+                $transit_to_inbound_details = array();
+
+                for ($i=0;$i<count($flight_from_transit_outbound); $i++){
+                    $from_transit_outbound_details[$i] = $flight_from_transit_outbound[$i];
+                    $from_transit_outbound_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_from_transit_outbound[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_from_transit_outbound[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_from_transit_outbound[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $from_transit_outbound_details[$i]['seats_left'] = $seats_left;
+                    $from_transit_outbound_details[$i]['duration'] = Route_direct::where('id','=',$flight_from_transit_outbound[$i]->route_id)
+                        ->first()->duration;
+                    $airport_transit_id1 = Route_direct::where('id','=',$flight_from_transit_outbound[$i]->route_id)
+                        ->first()->arrival_airportid;
+                    $airport_transit1 = Airport::where('id','=', $airport_transit_id1)-> first() -> name;
+                    $from_transit_outbound_details[$i]['airport_transit'] = $airport_transit1;
+                }
+
+                for ($i=0;$i<count($flight_transit_to_outbound); $i++){
+                    $transit_to_outbound_details[$i] = $flight_transit_to_outbound[$i];
+                    $transit_to_outbound_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_transit_to_outbound[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_transit_to_outbound[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_transit_to_outbound[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $transit_to_outbound_details[$i]['seats_left'] = $seats_left;
+                    $transit_to_outbound_details[$i]['duration'] = Route_direct::where('id','=',$flight_transit_to_outbound[$i]->route_id)
+                        ->first()->duration;
+                }
+
+                for ($i=0;$i<count($flight_from_transit_inbound); $i++){
+                    $from_transit_inbound_details[$i] = $flight_from_transit_inbound[$i];
+                    $from_transit_inbound_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_from_transit_inbound[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_from_transit_inbound[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_from_transit_inbound[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $from_transit_inbound_details[$i]['seats_left'] = $seats_left;
+                    $from_transit_inbound_details[$i]['duration'] = Route_direct::where('id','=',$flight_from_transit_inbound[$i]->route_id)
+                        ->first()->duration;
+                    $airport_transit_id2 = Route_direct::where('id','=',$flight_from_transit_inbound[$i]->route_id)
+                        ->first()->arrival_airportid;
+                    $airport_transit2 = Airport::where('id','=', $airport_transit_id2) ->first() -> name;
+                    $from_transit_inbound_details[$i]['airport_transit'] = $airport_transit2;
+                }
+
+                for ($i=0;$i<count($flight_transit_to_inbound); $i++){
+                    $transit_to_inbound_details[$i] = $flight_transit_to_inbound[$i];
+                    $transit_to_inbound_details[$i]['price'] = Ticket_price::where('flight_id','=',$flight_transit_to_inbound[$i]->id)
+                        ->where('class_id','=',$class_id) ->first()->price;
+                    $plane_type_id = Plane::where('id','=',$flight_transit_to_inbound[$i]->planeid)
+                        ->first()->plane_type;
+                    $total_seats = Plane_type::where('id','=',$plane_type_id)
+                        ->first()->total_seats;
+                    $seats_not_avalable = count(Ticket_details::where('flight_id','=',$flight_transit_to_inbound[$i]->id)->take(400)->get());
+                    $seats_left = $total_seats - $seats_not_avalable;
+                    $transit_to_inbound_details[$i]['seats_left'] = $seats_left;
+                    $transit_to_inbound_details[$i]['duration'] = Route_direct::where('id','=',$flight_transit_to_inbound[$i]->route_id)
+                        ->first()->duration;
+                }
+
+                session(['from_transit_outbound_details'=> $from_transit_outbound_details,
+                    'transit_to_outbound_details' => $transit_to_outbound_details,
+                    'from_transit_inbound_details' =>  $from_transit_inbound_details,
+                    'transit_to_inbound_details' =>  $transit_to_inbound_details]);
+                session()->forget('outbound_details');
+                session()->forget('return_details');
+            }
+        }
+
     }
 
     public function show_flights(){
@@ -326,7 +581,7 @@ class BookingController extends Controller
         elseif (session('from_transit_outbound_details')){
             return view('flight select transit');
         }
-        elseif (!session('outbound_details') & !session('from_transit_outbound_details')){
+        elseif (!session('outbound_details') && !session('from_transit_outbound_details')){
             return view('flight select');
         }
 
@@ -962,7 +1217,6 @@ class BookingController extends Controller
         }
 
         session(['passengers'=>$passengers,'total_price'=>$total_price]);
-
         return redirect('/booking/show_seats');
     }
 
@@ -1186,22 +1440,6 @@ class BookingController extends Controller
         return redirect('/')->with('notification',$notification);
     }
 
-//    public function checkVNpay(Request $request){
-//    $vnp_ResponseCode = $request->get('vnp_ResponseCode');
-//    $vnp_TxnRef = $request->get('vnp_TxnRef');
-//    $vnp_Amount = $request->get('vnp_Amount');
-//
-//    if ($vnp_ResponseCode != null) {
-//        //thanh cong
-//        if ($vnp_ResponseCode == 00) {
-//            $order_id = $vnp_TxnRef;
-//            $order_status = 1;
-//            echo $order_id;
-//        } else {
-//
-//        }
-//    }
-//
-//}
+
 
 }

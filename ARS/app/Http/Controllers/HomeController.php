@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Flight;
 use App\Models\Order;
 use App\Models\Ticket_details;
+use Carbon\Carbon;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,7 @@ class HomeController extends Controller
         session()->forget('passengers');
         session()->forget('total_price');
         session()->forget(['code','way','account','price','passengers','flights',
-            'ori_airports','arr_airports','plnaeId','duration']);
+            'ori_airports','arr_airports','planeId','duration']);
         $airports = Airport::all();
 
         return view('index')->with('airports',$airports);
@@ -182,6 +183,7 @@ class HomeController extends Controller
         $ori_airports = array();
         $arr_airports = array();
         $seat = array();
+        $require = array();
 
         for ($i = 0; $i < count($tickets); $i++) {
             $passenger[$i] = $tickets[$i]->customer;
@@ -194,6 +196,13 @@ class HomeController extends Controller
                 return 0;
             return  (strtotime($a->departure_date)<strtotime($b->departure_date)) ? -1 : 1;
         });
+
+        $arr_flights_id = array();
+        $x = 0;
+        foreach ($flights as $flight){
+            $arr_flights_id[0] = $flight->id;
+            $x++;
+        }
 
 
         for($i=0;$i<count($flights);$i++){
@@ -223,21 +232,37 @@ class HomeController extends Controller
         if(!$request->new_arrival_date){
             $depart_date = $request->get('new_depart_date');
             $arr_date = null;
+            $require = [
+                'place_from'=>$ori,
+                'place_to'=>$arr,
+                'date_outbound'=> Carbon::parse($depart_date)->format("Y-m-d") ,
+                'date_return'=>null,
+                'adult'=>count($passengers),
+                'children'=>0,
+                'senior'=>0,
+                'arr_flights_id'=>$arr_flights_id
+            ];
         }elseif ($request->new_arrival_date){
             $depart_date = $request->get('new_depart_date');
             $arr_date = $request->get('new_arrival_date');
+            $require = [
+                'place_from'=>$ori,
+                'place_to'=>$arr,
+                'date_outbound'=> Carbon::parse($depart_date)->format("Y-m-d") ,
+                'date_return'=>Carbon::parse($arr_date)->format("Y-m-d"),
+                'adult'=>count($passengers),
+                'children'=>0,
+                'senior'=>0,
+                'arr_flights_id'=>$arr_flights_id
+            ];
         }
-        $require = [
-            'place_from'=>$ori,
-            'place_to'=>$arr,
-            'date_outbound'=>$depart_date,
-            'date_return'=>$arr_date,
-            'adult'=>count($passengers),
-            'children'=>0,
-            'senior'=>0
-        ];
+
         $pass = new BookingController();
-        $pass->create_rechedule($require,$passengers,$order->toArray());
+        $pass->create_reschedule($require,$passengers,$order->toArray());
+
+        dd(session('total_passengers'));
+
+        return redirect('/booking/show_flights');
     }
 
     public function getDataForMail($code){

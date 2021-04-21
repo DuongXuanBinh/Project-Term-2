@@ -61,14 +61,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="first_name{{$i+1}}"><h4>First name</h4></label>
-                                                <input type="text" required class="form-control" name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
+                                                <input type="text" @if(session('passengers')) value="{{session('passengers')[$i]['firstname']}}" @endif required class="form-control" name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="last_name{{$i+1}}"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" required name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
+                                                <input type="text" class="form-control" @if(session('passengers')) value="{{session('passengers')[$i]['lastname']}}" @endif required name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
                                             </div>
                                         </div>
 
@@ -89,14 +89,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="dob{{$i+1}}"><h4>Date of birth</h4></label>
-                                                <input type="date" data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
+                                                <input type="date" @if(session('passengers')) value="{{session('passengers')[$i]['dob']}}" @endif data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="sexs{{$i+1}}"><h4>Gender</h4></label>
-                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Gender" required>
+                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" @if(session('passengers')) value="{{session('passengers')[$i]['sex']}}" @endif name="sex[]" class="form-control" placeholder="Gender" required>
                                                 <datalist id="sexs{{$i+1}}">
                                                     <option value="Male">
                                                     <option value="Female">
@@ -111,14 +111,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="first_name{{$i+1}}"><h4>First name</h4></label>
-                                                <input type="text" class="form-control" required name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
+                                                <input type="text" class="form-control" @if(session('passengers')) value="{{session('passengers')[$i]['firstname']}}" @endif required name="first_name[]" id="first_name{{$i+1}}" placeholder="First name" title="enter your first name if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="last_name{{$i+1}}"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" required name="last_name[]" id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
+                                                <input type="text" class="form-control" required name="last_name[]" @if(session('passengers')) value="{{session('passengers')[$i]['lastname']}}" @endif id="last_name{{$i+1}}" placeholder="Last name" title="enter your last name if any.">
                                             </div>
                                         </div>
 
@@ -126,14 +126,14 @@
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="dob{{$i+1}}"><h4>Date of birth</h4></label>
-                                                <input type="date" data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
+                                                <input type="date" @if(session('passengers')) value="{{session('passengers')[$i]['dob']}}" @endif data-toggle="datepicker" required class="form-control" name="dob[]" id="dob{{$i+1}}" placeholder="date of birth" title="enter date of birth">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="sexs{{$i+1}}"><h4>Gender</h4></label>
-                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" name="sex[]" class="form-control" placeholder="Gender" required>
+                                                <input id="sex{{$i+1}}" list="sexs{{$i+1}}" @if(session('passengers')) value="{{session('passengers')[$i]['sex']}}" @endif name="sex[]" class="form-control" placeholder="Gender" required>
                                                 <datalist id="sexs{{$i+1}}">
                                                     <option value="Male">
                                                     <option value="Female">
