@@ -20,9 +20,9 @@ class FlightSeeder extends Seeder
                'id'=>'HV111',
 
                'route_id'=>1,
-               'departure_date'=>'2021/4/1 09:30',
-               'arrival_date'=>'2021/4/1 11:20',
-               'statusid'=>4,
+               'departure_date'=>'2021/5/1 09:30',
+               'arrival_date'=>'2021/5/1 11:20',
+               'statusid'=>1,
                'planeid'=>2,
            ],
             [
@@ -103,9 +103,9 @@ class FlightSeeder extends Seeder
                 'id'=>'HV112',
 
                 'route_id'=>2,
-                'departure_date'=>'2021/4/2 14:10',
-                'arrival_date'=>'2021/4/2 16:00',
-                'statusid'=>4,
+                'departure_date'=>'2021/5/2 14:10',
+                'arrival_date'=>'2021/5/2 16:00',
+                'statusid'=>1,
                 'planeid'=>1,
             ],
             [
@@ -184,9 +184,9 @@ class FlightSeeder extends Seeder
                 'id'=>'HV113',
 
                 'route_id'=>9,
-                'departure_date'=>'2021/4/2 20:20',
-                'arrival_date'=>'2021/4/2 22:00',
-                'statusid'=>4,
+                'departure_date'=>'2021/5/2 20:20',
+                'arrival_date'=>'2021/5/2 22:00',
+                'statusid'=>1,
                 'planeid'=>1,
             ],
             [

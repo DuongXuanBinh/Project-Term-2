@@ -22,6 +22,7 @@ class CreateTableCustomers extends Migration
             $table->unsignedBigInteger('account_id');
             $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -46,7 +46,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id'=>3,
-                'email'=>'xuanbinh1011@gmail.com',
+                'email'=>'xubiii.95@gmail.com',
                 'password'=>'111111',
                 'firstname'=>'Nguyen Thai',
                 'lastname'=>'Son',
@@ -60,7 +60,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id'=>4,
-                'email'=>'xubiii.95@gmail.com',
+                'email'=>'xuanbinh1011@gmail.com',
                 'password'=>'111111',
                 'firstname'=>'Admin',
                 'lastname'=>'Admin',

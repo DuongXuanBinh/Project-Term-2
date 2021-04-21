@@ -24,6 +24,7 @@ class CreateTableFlights extends Migration
             $table->unsignedBigInteger('planeid');
             $table->foreign('planeid')->references('id')->on('planes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

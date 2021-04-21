@@ -23,6 +23,7 @@ class CreateTableOrders extends Migration
             $table->unsignedInteger('total_skymiles');
             $table->integer('flight_route');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
