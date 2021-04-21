@@ -1326,6 +1326,7 @@ class BookingController extends Controller
                 while($x == false);
 
                 $order_status = 2;
+                $mailType = 2;
 
             }
             elseif ($request->transaction == 'buy'){
@@ -1346,7 +1347,7 @@ class BookingController extends Controller
 
                 }
                 while($x == false);
-
+                $mailType = 6;
                 $order_status = 1;
                 $data_url = VNPay::vnpay_create_payment([
                     'vnp_TxnRef' =>  $order_id, //ID cua don hang
@@ -1428,16 +1429,18 @@ class BookingController extends Controller
             $account->save();
 
             DB::commit();
-            $notification = 'Your booking has been recored ! Your booking code is '.$order_id.' Please check your email';
+            $notification = 'Booking code: ';
         }  catch (\Exception $e) {
             DB::rollBack();
-            $notification = 'Somethings is wrong. Please check again! Thanks!';
+            $notification = 'Somethings is wrong. Please try again.';
         }
-
+        $mail = new HomeController();
+        $array = $mail->getDataForMail($order_id);
+        $mail->sendEmail($array,$mailType);
         session()->forget('passengers');
         session()->forget('flights_choose');
         session()->forget('tickets');
-        return redirect('/')->with('notification',$notification);
+        return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
     }
 
 
