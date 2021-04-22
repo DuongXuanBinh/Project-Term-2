@@ -1411,101 +1411,148 @@ class BookingController extends Controller
     }
 
     public function choose_transaction(Request  $request){
-        $order_id = '';
-        $order_status = 0;
-        $notification = '';
-        $mailType = 0;
-        if (!$request->get('vnp_ResponseCode')){
-            if ($request->transaction == 'block'){
-                $x = false;
-                do{
-                    $order_id ='BO-';
-                    $after_code = Str::upper(Str::random(4)) ;
-                    $order_id.=$after_code;
-                    $same_order_id = Order::where('id','=',$order_id)->first();
-                    if ($same_order_id){
-                        $x = false;
+        if(!session('reschedule')){
+            $order_id = '';
+            $order_status = 0;
+            $notification = '';
+
+            if (!$request->get('vnp_ResponseCode')){
+                if ($request->transaction == 'block'){
+                    $x = false;
+                    do{
+                        $order_id ='BO-';
+                        $after_code = Str::upper(Str::random(4)) ;
+                        $order_id.=$after_code;
+                        $same_order_id = Order::where('id','=',$order_id)->first();
+                        if ($same_order_id){
+                            $x = false;
+                        }
+                        else{
+                            $x = true;
+                        }
+
                     }
-                    else{
-                        $x = true;
-                    }
+                    while($x == false);
+
+                    $order_status = 2;
+                    $mailType = 2;
 
                 }
-                while($x == false);
+                elseif ($request->transaction == 'buy'){
 
-                $order_status = 2;
-                $mailType = 2;
-
-            }
-            elseif ($request->transaction == 'buy'){
-
-                //01. lay URL thanh toan VNpay
-                $x = false;
-                do{
-                    $order_id ='SO-';
-                    $after_code = Str::upper(Str::random(4)) ;
-                    $order_id.=$after_code;
-                    $same_order_id = Order::where('id','=',$order_id)->first();
-                    if ($same_order_id){
-                        $x = false;
+                    //01. lay URL thanh toan VNpay
+                    $x = false;
+                    do{
+                        $order_id ='SO-';
+                        $after_code = Str::upper(Str::random(4)) ;
+                        $order_id.=$after_code;
+                        $same_order_id = Order::where('id','=',$order_id)->first();
+                        if ($same_order_id){
+                            $x = false;
+                        }
+                        else{
+                            $x = true;
+                        }
                     }
-                    else{
-                        $x = true;
-                    }
+                    while($x == false);
 
-                }
-                while($x == false);
-
-                $order_status = 1;
-                $data_url = VNPay::vnpay_create_payment([
-                    'vnp_TxnRef' =>  $order_id, //ID cua don hang
-                    'vnp_OrderInfo' => 'Thanh toan hoa don mua ve', //mo ta san pham o day
-                    'vnp_Amount' => (session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))) *23000 , // doi ra VND
-                ]);
-                //02. Chuyen huowng toi URL lay duoc
+                    $order_status = 1;
+                    $data_url = VNPay::vnpay_create_payment([
+                        'vnp_TxnRef' =>  $order_id, //ID cua don hang
+                        'vnp_OrderInfo' => 'Thanh toan hoa don mua ve', //mo ta san pham o day
+                        'vnp_Amount' => (session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))) *23000 , // doi ra VND
+                    ]);
+                    //02. Chuyen huowng toi URL lay duoc
 //                dd($data_url);
-                return redirect() ->to($data_url);
+                    return redirect() ->to($data_url);
+                }
+            }
+            elseif ($request->get('vnp_ResponseCode')){
+                $vnp_ResponseCode = $request->get('vnp_ResponseCode');
+                $vnp_TxnRef = $request->get('vnp_TxnRef');
+                if ($vnp_ResponseCode == 00){
+                    $order_id = $vnp_TxnRef;
+                    $order_status = 1;
+                    $mailType = 6;
+                }
+                else{
+                    $notification = 'Somethings is wrong. Please check again! Thanks!';
+                    session()->forget('passengers');
+                    session()->forget('flights_choose');
+                    session()->forget('tickets');
+                    return redirect('/')->with('notification',$notification);
+                }
+            }
+            DB::beginTransaction();
+            try {
+                $account_id = session('check')->id;
+                foreach (session('passengers') as $passenger){
+                    DB::table('customers')->insert([
+                        'id' => $passenger['id'],
+                        'firstname' => $passenger['firstname'],
+                        'lastname' => $passenger['lastname'],
+                        'sex' => $passenger['sex'],
+                        'dob' => $passenger['dob'],
+                        'account_id' => $account_id
+                    ]);
+                }
+                $flight_route = 0;
+                if (!session('date_return')){
+                    $flight_route = 1;
+                }
+                elseif (session('date_return')){
+                    $flight_route = 2;
+                }
+                $total_skymiles = 0;
+                $skymile_one_passenger = 0;
+                foreach (session('flights_choose') as $flight){
+                    $skymile_one_passenger+= $flight->route_direct->skymile;
+                }
+                $total_skymiles = $skymile_one_passenger * count(session('passengers'));
 
-            }
-        }
-        elseif ($request->get('vnp_ResponseCode')){
-            $vnp_ResponseCode = $request->get('vnp_ResponseCode');
-            $vnp_TxnRef = $request->get('vnp_TxnRef');
-            if ($vnp_ResponseCode == 00){
-                $order_id = $vnp_TxnRef;
-                $order_status = 1;
-                $mailType = 6;
-            }
-            else{
-                $notification = 'Somethings is wrong. Please check again! Thanks!';
-                session()->forget('passengers');
-                session()->forget('flights_choose');
-                session()->forget('tickets');
-                return redirect('/')->with('notification',$notification);
-            }
-        }
-
-        DB::beginTransaction();
-        try {
-            $account_id = session('check')->id;
-            foreach (session('passengers') as $passenger){
-                DB::table('customers')->insert([
-                    'id' => $passenger['id'],
-                    'firstname' => $passenger['firstname'],
-                    'lastname' => $passenger['lastname'],
-                    'sex' => $passenger['sex'],
-                    'dob' => $passenger['dob'],
-                    'account_id' => $account_id
+                DB::table('orders')->insert([
+                    'id' => $order_id,
+                    'account_id' => $account_id,
+                    'order_status'=>$order_status,
+                    'total_price'=>(session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))),
+                    'total_skymiles'=>$total_skymiles,
+                    'flight_route'=>$flight_route
                 ]);
-            }
-            $flight_route = 0;
-            if (!session('date_return')){
-                $flight_route = 1;
-            }
-            elseif (session('date_return')){
-                $flight_route = 2;
-            }
 
+                foreach (session('tickets') as $ticket){
+                    DB::table('ticket_details')->insert([
+                        'flight_id' => $ticket['flight_id'],
+                        'seat_location' => $ticket['seat_location'],
+                        'order_id' => $order_id,
+                        'passenger_id' => $ticket['passenger_id'],
+                        'price' => $ticket['price']
+                    ]);
+                }
+
+                $account = Account::find($account_id);
+                $account->sky_miles+=$total_skymiles;
+                $account->save();
+
+                DB::commit();
+                $notification = 'Booking code: ';
+            }  catch (\Exception $e) {
+                DB::rollBack();
+                $notification = 'Somethings is wrong. Please try again.';
+            }
+            $mail = new HomeController();
+            $array = $mail->getDataForMail($order_id);
+            $mail->sendEmail($array,$mailType);
+            session()->forget('passengers');
+            session()->forget('flights_choose');
+            session()->forget('tickets');
+            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
+        }
+        elseif (session('reschedule')){
+
+            $old_order = session('old_order');
+            $order_id = $old_order['id'];
+            $passengers = session('passengers');
+            $account_id = session('check')->id;
             $total_skymiles = 0;
             $skymile_one_passenger = 0;
             foreach (session('flights_choose') as $flight){
@@ -1513,49 +1560,32 @@ class BookingController extends Controller
             }
             $total_skymiles = $skymile_one_passenger * count(session('passengers'));
 
-            DB::table('orders')->insert([
-                'id' => $order_id,
-                'account_id' => $account_id,
-                'order_status'=>$order_status,
-                'total_price'=>(session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))),
-                'total_skymiles'=>$total_skymiles,
-                'flight_route'=>$flight_route
-            ]);
-
-            foreach (session('tickets') as $ticket){
-                DB::table('ticket_details')->insert([
-                    'flight_id' => $ticket['flight_id'],
-                    'seat_location' => $ticket['seat_location'],
-                    'order_id' => $order_id,
-                    'passenger_id' => $ticket['passenger_id'],
-                    'price' => $ticket['price']
-                ]);
+            if ($request->transaction == 'block' && $old_order['order_status'] == 2){
+                DB::beginTransaction();
+                try {
+                    DB::table('orders')->where('id','=',$old_order['id'])
+                        ->update(['total_price'=>(session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))),
+                            'total_skymiles'=>$total_skymiles]);
+//                    DB::table('accounts')->where('id','=',$account_id)
+//                        ->update(['sky_miles'=>(-$old_order['sky_miles'] + $total_skymiles)]);
+                   $or1 = Order::where('id','=',$old_order['id'])->first();
+                   dd($or1);
+                    DB::commit();
+                    $notification = 'Successfully updated. Please check your email ';
+                }  catch (\Exception $e) {
+                    DB::rollBack();
+                    $notification = 'Somethings is wrong. Please try again.';
+                    return redirect('/')->with('notification',$notification);
+                }
+                $mail = new HomeController();
+                $mailType = 7;
+                $array = $mail->getDataForMail($order_id);
+                $mail->sendEmail($array,$mailType);
+                session()->forget('passengers');
+                session()->forget('flights_choose');
+                session()->forget('tickets');
+                return redirect('/')->with('notification',$notification);
             }
-
-            $account = Account::find($account_id);
-            $account->sky_miles+=$total_skymiles;
-            $account->save();
-            $notification = 'Booking code: ';
-            DB::commit();
-        }  catch (\Exception $e) {
-            $order_id = null;
-            $notification = 'Somethings is wrong. Please try again.';
-            session()->forget('passengers');
-            session()->forget('flights_choose');
-            session()->forget('tickets');
-            DB::rollBack();
-            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
         }
-        $mail = new HomeController();
-        $array = $mail->getDataForMail($order_id);
-//        dd($mailType);
-        $mail->sendEmail($array,$mailType);
-        session()->forget('passengers');
-        session()->forget('flights_choose');
-        session()->forget('tickets');
-        return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
     }
-
-
-
 }
