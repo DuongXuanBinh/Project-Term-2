@@ -2,6 +2,10 @@
 @section('title','Home')
 
 @section('body')
+    <?php
+        $flights= session('flightss');
+        $refund = session('refund');
+    ?>
     @if(session('notification'))
         <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -11,7 +15,16 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body" style="text-align: center">
+                        @if(session('flightss'))
                         <p style="margin-bottom: 0">{{session('notification')}}</p>
+                        <p style="margin-bottom: 0">Due to our policy, you will be refunded by <br>
+                            @for($i = 0;$i<count($flights);$i++)
+                            <span style="font-weight: bold;font-size: 1.2em">{{$refund[$i]}}</span> for flight <span style="font-weight: bold;font-size: 1.2em">{{$flights[$i]->id}}</span></p>
+                            @endfor
+                            <p>Please check your email</p>
+                        @else
+                            <p style="margin-bottom: 0">{{session('notification')}}</p>
+                        @endif
                     </div>
                     <div class="modal-footer" style="display: unset;text-align: center" >
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

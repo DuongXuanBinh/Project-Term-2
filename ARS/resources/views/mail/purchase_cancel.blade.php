@@ -145,9 +145,6 @@
         </table>
     </div>
     <div class="row col-12">
-        <p>According to our policy, you will be refunded <b>50%</b> of total fare which is <b><u>VND 1000</u></b></p>
-    </div>
-    <div class="row col-12">
         <p>The refund will be proceeded within <b>2 weeks</b> from today.</p>
     </div>
     <div class="row col-12">

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Refund_Policy extends Model
 {
+    protected $table ='refund_policies';
     use HasFactory;
     use SoftDeletes;
     protected $dates = ['deleted_at'];

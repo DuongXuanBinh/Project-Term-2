@@ -310,7 +310,7 @@ if (session('old_order')){
         <div class="row back-continue" >
             <div class="col-md-8"></div>
             <div class="col-md-4">
-                <button class="btn btn-secondary" type="button"><a href="./booking/show_seats">Back</a></button>
+                <a href="./booking/show_seats"><button class="btn btn-secondary" type="button">Back</button></a>
                 <button class="btn btn-primary" type="submit">Continue</button>
             </div>
         </div>

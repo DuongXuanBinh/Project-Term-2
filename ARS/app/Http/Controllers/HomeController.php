@@ -7,6 +7,7 @@ use App\Models\Airport;
 use App\Models\Customer;
 use App\Models\Flight;
 use App\Models\Order;
+use App\Models\Refund_Policy;
 use App\Models\Ticket_details;
 use Carbon\Carbon;
 use Faker\Provider\DateTime;
@@ -80,8 +81,8 @@ class HomeController extends Controller
             session()->forget('page');
             session(['code'=>$code]);
             $order = Order::where('id',strtoupper($code))->where('account_id',session('check')->id)->first();
-            $order_status = $order->order_status;
             if ($order) {
+                $order_status = $order->order_status;
                 $way = $order->flight_route;
                 $tickets = $order->ticket_details;
                 $passenger = array();
@@ -138,15 +139,16 @@ class HomeController extends Controller
     public function bookingDelete(Request $request)
     {
         $code = $request->get('booking_code');
-        $mile = Order::select('total_skymiles')->where('id', $code)->first();
+        $mile = Order::where('id','=', $code)->first();
         $status = Order::select('order_status')->where('id', $code)->first();
         $order = Order::where('id', $code)->first();
         $account = Account::where('id', session('check')->id)->first();
         $account->sky_miles=$account->sky_miles - $mile->total_skymiles;
+
         $ticket = $order->ticket_details;
         $passenger = array();
         $customer = array();
-//        dd($code,$status,$mile);
+
         if ($status->order_status == 1) {
             $mailType = 5;
         }
@@ -156,23 +158,45 @@ class HomeController extends Controller
         $array = session('array',$this->getDataForMail($code));
         DB::beginTransaction();
         try{
-            for ($i=0;$i<count($ticket);$i++){
-                $passenger[$i] = $ticket[$i]->customer->id;
-            }
-            $passengers = array_values(array_unique($passenger));
-            for($i=0;$i<count($passengers);$i++){
-                $customer[$i]=Customer::where('id',$passengers[$i])->first();
-                $customer[$i]->delete();
-            }
-            $order->delete();
-            $account->save();
+//            for($i=0;$i<count($ticket);$i++){
+//                $ticket[$i]->delete();
+//            }
+//            for ($i=0;$i<count($ticket);$i++){
+//                $passenger[$i] = $ticket[$i]->customer->id;
+//            }
+//            $passengers = array_values(array_unique($passenger));
+//            for($i=0;$i<count($passengers);$i++){
+//                $customer[$i]=Customer::where('id',$passengers[$i])->first();
+//                $customer[$i]->delete();
+//            }
+//            $order->delete();
+//            $account->save();
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
             return redirect('/')->with('notification', 'Something is wrong. Please try again');
         }
+        if ($mailType == 5){
         $this->sendEmail($array,$mailType);
-        return redirect('/')->with('notification', 'Your booking has been cancelled. Please check your email');
+        for($i=0;$i<count($ticket);$i++){
+            $flight[$i] = $ticket[$i]->flight;
+        }
+        $refund = array();
+        $flights = array_values(array_unique($flight));
+        for($i = 0;$i<count($flights);$i++){
+            $departure[$i] = Carbon::parse($flights[$i]->departure_date);
+            $today = Carbon::today('Asia/Ho_Chi_Minh');
+            $date_diff[$i] = $departure[$i]->diffInDays($today);
+            $refund[$i]= Refund_Policy::where('days_before_departure','<=',$date_diff[$i])->orderByDesc('id')->first()->percentage_of_refund;
+        }
+        return redirect('/')->with('notification', 'Your booking has been cancelled.')
+            ->with('refund',$refund)
+            ->with('flightss',$flights);
+        }else{
+            $this->sendEmail($array,$mailType);
+            return redirect('/')->with('notification', 'Your booking has been cancelled.');
+        }
+
 }
 
     public function bookingReschedule(Request $request){
