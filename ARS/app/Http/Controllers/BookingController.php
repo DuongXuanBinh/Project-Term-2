@@ -1454,7 +1454,6 @@ class BookingController extends Controller
                         else{
                             $x = true;
                         }
-
                     }
                     while($x == false);
 
@@ -1507,7 +1506,6 @@ class BookingController extends Controller
                 elseif (session('date_return')){
                     $flight_route = 2;
                 }
-
                 $total_skymiles = 0;
                 $skymile_one_passenger = 0;
                 foreach (session('flights_choose') as $flight){
@@ -1592,7 +1590,6 @@ class BookingController extends Controller
                 return redirect('/')->with('notification',$notification);
             }
         }
-
     }
 
 
