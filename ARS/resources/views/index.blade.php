@@ -20,6 +20,53 @@
             </div>
         </div>
     @endif
+    @if(session('notification1'))
+        <div class="modal fade password-change" style="display: flow" id="notification" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="top: 100px">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="margin-left: 170px">NOTIFICATION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    @if(session('order_id'))
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#09c5a9" class="bi bi-check-circle-fill" viewBox="0 0 16 16" style="display: block;margin: 30px auto">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <h4 style="color: inherit">{{session('notification1')}}<span style="color: #0ac5a9;font-size: 1.5em">{{session('order_id')}}</span></h4>
+                                        <span><i>Please check your email for ticket details</i></span>
+                                        <span><i>Thank you for choosing Helvetic Airline</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#b90000" class="bi bi-x-circle-fill" viewBox="0 0 16 16" style="display: block;margin: 30px auto">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                    </svg>
+                                </div>
+                                <div class="col-md-8">
+                                    <h3 style="color: inherit">Failed!</h3>
+                                    <span>{{session('notification')}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="modal-footer" style="display: unset;text-align: center" >
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style=" height: 600px ; background-image: url(front/images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">

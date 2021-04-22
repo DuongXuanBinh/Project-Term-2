@@ -273,7 +273,7 @@
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button"><a href="./booking/passenger_index">Back</a></button>
+                        <a href="./booking/passenger_index"><button class="btn btn-secondary" type="button">Back</button></a>
                         <button  class="btn btn-primary"  type="submit">Continue</button>
                     </div>
                 </div>
