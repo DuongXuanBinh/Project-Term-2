@@ -1578,13 +1578,14 @@ class BookingController extends Controller
                                 ]);
                         }
                         DB::commit();
-                        $notification = 'Successfully updated. Please check your email ';
+                        $notification = 'Booking Code: ';
                     }  catch (\Exception $e) {
                         DB::rollBack();
                         $notification = 'Somethings is wrong. Please try again.';
-                        return redirect('/')->with('notification',$notification);
+                        $order_id=null;
+                        return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
                     }
-
+                    $mailType = 7;
                 }
                 elseif ($old_order['order_status'] == 2 && $request->transaction == 'buy'){
                     $data_url = VNPay::vnpay_create_payment([
@@ -1614,12 +1615,14 @@ class BookingController extends Controller
                                     ]);
                             }
                             DB::commit();
-                            $notification = 'Successfully updated. Please check your email ';
+                            $notification = 'Booking Code: ';
                         }  catch (\Exception $e) {
                             DB::rollBack();
                             $notification = 'Somethings is wrong. Please try again.';
-                            return redirect('/')->with('notification',$notification);
+                            $order_id=null;
+                            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
                         }
+                        $mailType = 7;
                     }
                     else{
                         $data_url = VNPay::vnpay_create_payment([
@@ -1638,7 +1641,6 @@ class BookingController extends Controller
                     $vnp_ResponseCode = $request->get('vnp_ResponseCode');
                     $vnp_TxnRef = $request->get('vnp_TxnRef');
                     if ($vnp_ResponseCode == 00){
-                        $mailType =6;
                         DB::beginTransaction();
                         try {
                             DB::table('orders')->where('id','=',$old_order['id'])
@@ -1656,12 +1658,15 @@ class BookingController extends Controller
                                     ]);
                             }
                             DB::commit();
-                            $notification = 'Successfully updated. Please check your email ';
+                            $notification = 'Booking Code: ';
                         }  catch (\Exception $e) {
                             DB::rollBack();
                             $notification = 'Somethings is wrong. Please try again.';
-                            return redirect('/')->with('notification',$notification);
+                            $order_id = null;
+                            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
                         }
+
+                        $mailType = 7;
                     }  else{
                         $notification = 'Somethings is wrong. Please check again! Thanks!';
                         session()->forget('passengers');
@@ -1676,7 +1681,7 @@ class BookingController extends Controller
                     $vnp_ResponseCode = $request->get('vnp_ResponseCode');
                     $vnp_TxnRef = $request->get('vnp_TxnRef');
                     if ($vnp_ResponseCode == 00){
-                        $mailType =6;
+
                         DB::beginTransaction();
                         try {
                             DB::table('orders')->where('id','=',$old_order['id'])
@@ -1693,12 +1698,14 @@ class BookingController extends Controller
                                     ]);
                             }
                             DB::commit();
-                            $notification = 'Successfully updated. Please check your email ';
+                            $notification = 'Booking Code: ';
                         }  catch (\Exception $e) {
                             DB::rollBack();
                             $notification = 'Somethings is wrong. Please try again.';
-                            return redirect('/')->with('notification',$notification);
+                            $order_id = null;
+                            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
                         }
+                        $mailType =7;
                     }  else{
                         $notification = 'Somethings is wrong. Please check again! Thanks!';
                         session()->forget('passengers');
@@ -1712,13 +1719,13 @@ class BookingController extends Controller
             }
 
             $mail = new HomeController();
-            $mailType = 7;
+
             $array = $mail->getDataForMail($order_id);
             $mail->sendEmail($array,$mailType);
             session()->forget('passengers');
             session()->forget('flights_choose');
             session()->forget('tickets');
-            return redirect('/')->with('notification',$notification);
+            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
 
         }
     }

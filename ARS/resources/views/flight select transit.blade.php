@@ -14,7 +14,7 @@
                     <p style="margin-bottom: 0">You have not sign-in yet? Please sign-in to continue </p>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button id="select_flight_sign_in" type="button" class="btn btn-primary">Sign-in</button>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         </svg>Back</a>
                 </div>
             </div>
-            <form action="./booking/choose_flight" method="get">
+            <form action="./booking/choose_flight" id="form_choose_flight" method="get">
                 <div class="row col-md-12">
                     <div class="btn-group group1 btn_other_outbound_transit" style="display: flex" role="group" aria-label="Basic example">
                         <div>

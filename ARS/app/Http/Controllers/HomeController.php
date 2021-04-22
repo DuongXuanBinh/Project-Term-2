@@ -161,19 +161,19 @@ class HomeController extends Controller
         $array = session('array',$this->getDataForMail($code));
         DB::beginTransaction();
         try{
-//            for($i=0;$i<count($ticket);$i++){
-//                $ticket[$i]->delete();
-//            }
-//            for ($i=0;$i<count($ticket);$i++){
-//                $passenger[$i] = $ticket[$i]->customer->id;
-//            }
-//            $passengers = array_values(array_unique($passenger));
-//            for($i=0;$i<count($passengers);$i++){
-//                $customer[$i]=Customer::where('id',$passengers[$i])->first();
-//                $customer[$i]->delete();
-//            }
-//            $order->delete();
-//            $account->save();
+            for($i=0;$i<count($ticket);$i++){
+                $ticket[$i]->delete();
+            }
+            for ($i=0;$i<count($ticket);$i++){
+                $passenger[$i] = $ticket[$i]->customer->id;
+            }
+            $passengers = array_values(array_unique($passenger));
+            for($i=0;$i<count($passengers);$i++){
+                $customer[$i]=Customer::where('id',$passengers[$i])->first();
+                $customer[$i]->delete();
+            }
+            $order->delete();
+            $account->save();
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();

@@ -262,7 +262,7 @@
                                                             </tr>
                                                             @for($i=0;$i<count($passengers);$i++)
                                                                 <tr>
-                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    <td>{{strtoupper($passengers[$i]->firstname)}} {{strtoupper($passengers[$i]->lastname)}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
                                                                         @if($seats[$i][$j]->seat_location==null)
                                                                             <td></td>
@@ -272,7 +272,11 @@
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
-
+                                                            @if(session('order_status')==2)
+                                                                <tr style="height: 25px">
+                                                                    <td colspan="2"><a style="cursor: pointer" href="/booking/payment/{{$code}}" data-toggle="modal" data-target="#cancel">PURCHASE</a></td>
+                                                                </tr>
+                                                            @endif
                                                             <tr style="margin-top: 10px;height: 25px">
                                                                 <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
@@ -402,7 +406,7 @@
                                                             </tr>
                                                             @for($i=0;$i<count($passengers);$i++)
                                                                 <tr>
-                                                                    <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    <td>{{strtoupper($passengers[$i]->firstname)}} {{strtoupper($passengers[$i]->lastname)}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
                                                                         @if($seats[$i][$j]->seat_location==null)
                                                                             <td></td>
@@ -412,6 +416,11 @@
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
+                                                            @if(session('order_status')==2)
+                                                                <tr style="height: 25px">
+                                                                    <td colspan="2"><a style="cursor: pointer" href="/booking/payment/{{$code}}" data-toggle="modal" data-target="#cancel">PURCHASE</a></td>
+                                                                </tr>
+                                                            @endif
                                                             <tr  style="margin-top: 10px;height: 25px">
                                                                 <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
@@ -563,29 +572,34 @@
                                                         <table>
                                                             <tr>
                                                                 <th>Passenger</th>
-                                                                <th>Seat ID</th>
+                                                                <th colspan="2">Seat ID</th>
                                                             </tr>
                                                             @for($i=0;$i<count($passengers);$i++)
                                                                 <tr>
-                                                                    <td rowspan="2">{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                    <td rowspan="2">{{strtoupper($passengers[$i]->firstname)}} {{strtoupper($passengers[$i]->lastname)}}</td>
                                                                     @for($j=0;$j<count($flights);$j++)
                                                                         @if($seats[$i][$j]->seat_location==null)
                                                                             <td></td>
                                                                         @else
                                                                             <td>{{$seats[$i][$j]->seat_location}}</td>
                                                                         @endif
-                                                                        @if($j=1)
+                                                                        @if($j==1)
                                                                             </tr>
                                                                             <tr>
                                                                         @endif
                                                                     @endfor
                                                                 </tr>
                                                             @endfor
+                                                            @if(session('order_status')==2)
+                                                                <tr style="height: 25px">
+                                                                    <td colspan="3"><a style="cursor: pointer" href="/booking/payment/{{$code}}" data-toggle="modal" data-target="#cancel">PURCHASE</a></td>
+                                                                </tr>
+                                                            @endif
                                                             <tr  style="margin-top: 10px;height: 25px">
-                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>
                                                             <tr style="height: 25px">
-                                                                <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
+                                                                <td colspan="3"><a style="cursor: pointer" data-toggle="modal" data-target="#cancel">CANCEL</a></td>
                                                             </tr>
 
                                                             <div class="modal fade password-change" id="reschedule" tabindex="-1">
