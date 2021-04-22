@@ -1472,7 +1472,7 @@ class BookingController extends Controller
                         'vnp_Amount' => (session('total_price')+ 25*session('total_passengers')*count(session('flights_choose'))) *23000 , // doi ra VND
                     ]);
                     //02. Chuyen huowng toi URL lay duoc
-
+//                dd($data_url);
                     return redirect() ->to($data_url);
                 }
             }

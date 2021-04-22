@@ -119,7 +119,7 @@
                                                             </tr>
                                                             @for($i=0;$i<count($passengers);$i++)
                                                             <tr>
-                                                                <td>{{$passengers[$i]->firstname}} {{$passengers[$i]->lastname}}</td>
+                                                                <td>{{strtoupper($passengers[$i]->firstname)}} {{strtoupper($passengers[$i]->lastname)}}</td>
                                                                 @for($j=0;$j<count($flights);$j++)
                                                                     @if($seats[$i][$j]->seat_location==null)
                                                                         <td></td>

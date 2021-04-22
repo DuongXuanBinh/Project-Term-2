@@ -93,6 +93,19 @@
         </div>
     </header>
 
+
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-4 admin-menu">
+
+            </div>
+            <div class="col-md-8">
+
+            </div>
+        </div>
+    </div>
+
+
     <footer id="gtco-footer" role="contentinfo" style="height: 200px;
     background-color: #000002;">
         <div class="gtco-container">

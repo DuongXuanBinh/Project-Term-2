@@ -16,7 +16,7 @@ class CreateRefundPolicyTable extends Migration
         Schema::create('refund_policies', function (Blueprint $table) {
             $table->id();
             $table->integer('days_before_departure');
-            $table->string('percentage of refund');
+            $table->string('percentage_of_refund');
             $table->double('number');
             $table->timestamps();
             $table->softDeletes();
