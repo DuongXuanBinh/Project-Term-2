@@ -2,6 +2,12 @@
 @section('title','Checkout')
 
 @section('body')
+<?php
+    $old_order_status = 0;
+if (session('old_order')){
+    $old_order_status = session('old_order')['order_status'];
+}
+?>
 <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(front/images/HEL_Popup_Teaser_E22.jpg); height: 400px">
     <div class="overlay"></div>
     <div class="gtco-container">
@@ -40,6 +46,7 @@
 
 
 <div class="gtco-container check_out">
+
     <form method="get" action="./booking/transaction">
     <div class="col-md-12 mt-text animate-box" style="padding: 0" data-animate-effect="fadeInUp">
         <div class="row" style="margin: 20px 0 20px;">
@@ -47,7 +54,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form action="#" method="post" >
-                            <div class="row">
+                            @if(!session('reschedule'))
+                                <div class="row">
                                 @if($diff_date >= 2)
                                     <div class="col-md-12 radio_choose radio_block ">
                                     <div class="row">
@@ -104,6 +112,103 @@
                                     </div>
                                 </div>
                             </div>
+                            @elseif(session('reschedule'))
+                                @if($old_order_status == 2)
+                                    <div class="row">
+                                        @if($diff_date >= 2)
+                                            <div class="col-md-12 radio_choose radio_block ">
+                                                <div class="row">
+                                                    <div class="form-check col-md-12">
+                                                        <input class="form-check-input" required type="radio" name="transaction" value="block" id="block_ticket">
+                                                        <label class="form-check-label" for="block_ticket">
+                                                            BLOCK
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: 15px">
+                                                        Your seat will be reserved until the purchase is made. According to our policy, unless you proceed purchase
+                                                        at least 2 days before departure, your block seat will be automatically cancelled.
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: 15px">
+                                                        <p>Your payment deadline:</p>
+                                                        <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d:m:Y')}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @elseif($diff_date >=0 && $diff_date < 2)
+                                            <div class="col-md-12 radio_choose radio_block not_allow ">
+                                                <div class="row">
+                                                    <div class="form-check col-md-12">
+                                                        <input class="form-check-input"   type="radio" name="transaction" value="block" id="block_ticket">
+                                                        <label class="form-check-label" for="block_ticket">
+                                                            BLOCK
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9" style="margin-top: 15px">
+                                                        Your seat will be reserved until the purchase is made. According to our policy, unless you proceed purchase
+                                                        at least 2 days before departure, your block seat will be automatically cancelled.
+                                                    </div>
+                                                    <div class="col-md-3" style="margin-top: 15px">
+                                                        <p style="color: darkred; text-align: center">You are not allowed to block tickets</p>
+                                                        <p class="deadline-date"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <div class="col-md-12 radio_choose_active radio_choose radio_buy">
+                                            <div class="row">
+                                                <div class="form-check col-md-12">
+                                                    <input class="form-check-input" type="radio" required name="transaction" value="buy" id="buy_ticket" checked>
+                                                    <label class="form-check-label" for="buy_ticket">
+                                                        PURCHASE
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p style="margin-top: 15px">
+                                                        <img src="front/images/Logo-VNPAYQR-update.png" width="150" alt="">
+                                                        Online payment with VNPAY
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif($old_order_status == 1)
+                                    <div class="col-md-12 radio_choose radio_block not_allow ">
+                                        <div class="row">
+                                            <div class="form-check col-md-12">
+                                                <input class="form-check-input"   type="radio" name="transaction" value="block" id="block_ticket">
+                                                <label class="form-check-label" for="block_ticket">
+                                                    BLOCK
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9" style="margin-top: 15px">
+                                                Your seat will be reserved until the purchase is made. According to our policy, unless you proceed purchase
+                                                at least 2 days before departure, your block seat will be automatically cancelled.
+                                            </div>
+                                            <div class="col-md-3" style="margin-top: 15px">
+                                                <p style="color: darkred; text-align: center">You are not allowed to block tickets</p>
+                                                <p class="deadline-date"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 radio_choose_active radio_choose radio_buy">
+                                        <div class="row">
+                                            <div class="form-check col-md-12">
+                                                <input class="form-check-input" type="radio" required name="transaction" value="buy" id="buy_ticket" checked>
+                                                <label class="form-check-label" for="buy_ticket">
+                                                    PURCHASE
+                                                </label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p style="margin-top: 15px">
+                                                    <img src="front/images/Logo-VNPAYQR-update.png" width="150" alt="">
+                                                    Online payment with VNPAY
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+                            @endif
                         </form>
                     </div>
                 </div>
@@ -179,6 +284,25 @@
                             <td><b>Subtotal</b></td>
                             <td colspan="2"><b>USD {{session('total_price') +( 25*session('total_passengers')*count(session('flights_choose')))}}</b></td>
                         </tr>
+                        @if($old_order_status == 1 && session('diff_amount')>0)
+                            <tr>
+                                <td><b>Old Subtotal</b></td>
+                                <td colspan="2"><b>USD {{session('old_order')['total_price']}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>Reschedule Fee</b></td>
+                                <td colspan="2"><b>USD {{session('diff_amount')}}</b></td>
+                            </tr>
+                        @elseif($old_order_status == 1 && session('diff_amount')<=0)
+                            <tr>
+                                <td><b>Old Subtotal</b></td>
+                                <td colspan="2"><b>USD {{session('old_order')['total_price']}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>Reschedule Fee</b></td>
+                                <td colspan="2"><b>USD 0</b></td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
             </div>
