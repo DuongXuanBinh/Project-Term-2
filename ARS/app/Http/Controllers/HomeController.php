@@ -29,10 +29,12 @@ class HomeController extends Controller
         session()->forget('no_flight');
         session()->forget('flight_outbound_choose');
         session()->forget('flight_outbound_from_transit_choose');
-        session()->forget('passengers');
+        session()->forget('total_passengers');
         session()->forget('total_price');
         session()->forget(['code','way','account','price','passengers','flights',
             'ori_airports','arr_airports','planeId','duration','reschedule']);
+        session()->forget('flights_choose');
+        session()->forget('tickets');
         $airports = Airport::all();
 
         return view('index')->with('airports',$airports);
@@ -80,6 +82,7 @@ class HomeController extends Controller
             session()->forget('page');
             session(['code'=>$code]);
             $order = Order::where('id',strtoupper($code))->where('account_id',session('check')->id)->first();
+            $order_status = $order->order_status;
             if ($order) {
                 $way = $order->flight_route;
                 $tickets = $order->ticket_details;
@@ -121,6 +124,7 @@ class HomeController extends Controller
                     ->with('flights', $flights)
                     ->with('way', $way)
                     ->with('seat',$seat)
+                    ->with('order_status',$order_status)
                     ->withInput();
             }
             else{

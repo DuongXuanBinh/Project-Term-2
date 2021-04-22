@@ -44,6 +44,7 @@ Route::prefix('booking')->group(function (){
     Route::get('/show_seats',[Controllers\BookingController::class,'show_seats']);
     Route::get('/select_seats',[Controllers\BookingController::class,'select_seats']);
     Route::get('/transaction',[Controllers\BookingController::class,'choose_transaction']);
+    Route::get('/payment/{id}',[Controllers\BookingController::class,'payBooking']);
 });
 Route::prefix('/')->group(function(){
     Route::get('/',[Controllers\HomeController::class,'homeIndex']);
