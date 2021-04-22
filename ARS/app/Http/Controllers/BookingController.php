@@ -621,7 +621,7 @@ class BookingController extends Controller
 
             $output_outbound = '';
             if (count(session('outbound_details')) == 0){
-                $output_outbound .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
+                $output_outbound .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
             }
             else{
                 foreach (session('outbound_details') as $outbound_detail ){
@@ -688,7 +688,7 @@ class BookingController extends Controller
 
             $output_return = '';
             if (count(session('return_details'))==0){
-                $output_return .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
+                $output_return .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
             }
             else{
                 foreach (session('return_details') as $return_detail){
@@ -794,7 +794,7 @@ class BookingController extends Controller
 
             $output_outbound_transit = '';
             if (count(session('from_transit_outbound_details'))==0){
-                $output_outbound_transit.= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
+                $output_outbound_transit.= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
             }
             else{
                 for ($i = 0; $i< count(session('from_transit_outbound_details')); $i++){
@@ -918,7 +918,7 @@ class BookingController extends Controller
 
             $output_return_transit = '';
             if (count(session('from_transit_inbound_details'))==0){
-                $output_return_transit .= '<h5 style="text-align: center; margin-top: 20px">There is no flights found</h5>';
+                $output_return_transit .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
             }
             else{
                 for ($i = 0; $i< count(session('from_transit_inbound_details')); $i++){
@@ -1414,7 +1414,7 @@ class BookingController extends Controller
         $order_id = '';
         $order_status = 0;
         $notification = '';
-
+        $mailType = 0;
         if (!$request->get('vnp_ResponseCode')){
             if ($request->transaction == 'block'){
                 $x = false;
@@ -1455,7 +1455,7 @@ class BookingController extends Controller
 
                 }
                 while($x == false);
-                $mailType = 6;
+
                 $order_status = 1;
                 $data_url = VNPay::vnpay_create_payment([
                     'vnp_TxnRef' =>  $order_id, //ID cua don hang
@@ -1474,6 +1474,7 @@ class BookingController extends Controller
             if ($vnp_ResponseCode == 00){
                 $order_id = $vnp_TxnRef;
                 $order_status = 1;
+                $mailType = 6;
             }
             else{
                 $notification = 'Somethings is wrong. Please check again! Thanks!';
@@ -1534,15 +1535,20 @@ class BookingController extends Controller
             $account = Account::find($account_id);
             $account->sky_miles+=$total_skymiles;
             $account->save();
-
-            DB::commit();
             $notification = 'Booking code: ';
+            DB::commit();
         }  catch (\Exception $e) {
-            DB::rollBack();
+            $order_id = null;
             $notification = 'Somethings is wrong. Please try again.';
+            session()->forget('passengers');
+            session()->forget('flights_choose');
+            session()->forget('tickets');
+            DB::rollBack();
+            return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
         }
         $mail = new HomeController();
         $array = $mail->getDataForMail($order_id);
+//        dd($mailType);
         $mail->sendEmail($array,$mailType);
         session()->forget('passengers');
         session()->forget('flights_choose');

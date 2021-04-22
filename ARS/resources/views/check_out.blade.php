@@ -71,7 +71,7 @@ if (session('old_order')){
                                         </div>
                                         <div class="col-md-3" style="margin-top: 15px">
                                             <p>Your payment deadline:</p>
-                                            <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d:m:Y')}}</p>
+                                            <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d/m/Y')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,13 +100,13 @@ if (session('old_order')){
                                         <div class="form-check col-md-12">
                                             <input class="form-check-input" type="radio" required name="transaction" value="buy" id="buy_ticket" checked>
                                             <label class="form-check-label" for="buy_ticket">
-                                                PURCHASE
+                                                PURCHASE WITH <img src="front/images/Logo-VNPAYQR-update.png" width="80" alt="">
                                             </label>
                                         </div>
                                         <div class="col-md-12">
                                             <p style="margin-top: 15px">
-                                                <img src="front/images/Logo-VNPAYQR-update.png" width="150" alt="">
-                                                Online payment with VNPAY
+                                                Feel the comfortability with our online payment in co-operate with VNPay
+
                                             </p>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@ if (session('old_order')){
                                                     </div>
                                                     <div class="col-md-3" style="margin-top: 15px">
                                                         <p>Your payment deadline:</p>
-                                                        <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d:m:Y')}}</p>
+                                                        <p class="deadline-date">23:59 {{Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->setDay(Carbon\Carbon::parse(session('flights_choose')[0]->departure_date)->day -2)->format('d/m/Y')}}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,13 +159,13 @@ if (session('old_order')){
                                                 <div class="form-check col-md-12">
                                                     <input class="form-check-input" type="radio" required name="transaction" value="buy" id="buy_ticket" checked>
                                                     <label class="form-check-label" for="buy_ticket">
-                                                        PURCHASE
+                                                        PURCHASE WITH <img src="front/images/Logo-VNPAYQR-update.png" width="80" alt="">
                                                     </label>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <p style="margin-top: 15px">
-                                                        <img src="front/images/Logo-VNPAYQR-update.png" width="150" alt="">
-                                                        Online payment with VNPAY
+                                                        Feel the comfortability with our online payment in co-operate with VNPay
+
                                                     </p>
                                                 </div>
                                             </div>
@@ -195,13 +195,13 @@ if (session('old_order')){
                                             <div class="form-check col-md-12">
                                                 <input class="form-check-input" type="radio" required name="transaction" value="buy" id="buy_ticket" checked>
                                                 <label class="form-check-label" for="buy_ticket">
-                                                    PURCHASE
+                                                    PURCHASE WITH <img src="front/images/Logo-VNPAYQR-update.png" width="80" alt="">
                                                 </label>
                                             </div>
                                             <div class="col-md-12">
                                                 <p style="margin-top: 15px">
-                                                    <img src="front/images/Logo-VNPAYQR-update.png" width="150" alt="">
-                                                    Online payment with VNPAY
+                                                    Feel the comfortability with our online payment in co-operate with VNPay
+
                                                 </p>
                                             </div>
                                         </div>

@@ -129,6 +129,11 @@
                                                                 @endfor
                                                             </tr>
                                                             @endfor
+                                                            @if(session('order_status')==2)
+                                                            <tr style="height: 25px">
+                                                                <td colspan="2"><a style="cursor: pointer" href="/booking/payment/{{$code}}" data-toggle="modal" data-target="#cancel">PURCHASE</a></td>
+                                                            </tr>
+                                                            @endif
                                                             <tr style="margin-top: 10px;height: 25px">
                                                                 <td colspan="2"><a style="cursor: pointer" data-toggle="modal" data-target="#reschedule">RESCHEDULE</a></td>
                                                             </tr>

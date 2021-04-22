@@ -28,7 +28,7 @@
                         <h5 class="modal-title" style="margin-left: 170px">NOTIFICATION</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    @if(session('order_id'))
+                    @if(session('order_id')!== null)
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-4">

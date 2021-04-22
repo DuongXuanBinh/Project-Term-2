@@ -2791,12 +2791,12 @@ h1.su-text{
   cursor: pointer;
 }
 .check_out .radio_block .form-check label, .radio_buy .form-check label{
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 15px;
   cursor: pointer;
 }
 .check_out .radio_choose{
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   padding-right: 10px;
     cursor: pointer;
 }
