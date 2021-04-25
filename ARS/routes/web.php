@@ -25,6 +25,7 @@ Route::prefix('/sign-in')->group(function (){
     Route::get('/forgot',[Controllers\AccountController::class,'forgot']);
     Route::get('/forgot/check',[Controllers\AccountController::class,'forgotCheck']);
     Route::get('/forgot/change-password',[Controllers\AccountController::class,'updatePassword']);
+    Route::get('/admin',[Controllers\AccountController::class,'admin']);
 });
 Route::prefix('/profile')->group(function(){
     Route::get('/',[Controllers\AccountController::class,'showProfile']);
