@@ -337,13 +337,13 @@
                                 <th>Min_age</th>
                                 <th>Max_Age</th>
                                 <th>Fare_diff</th>
-                    
+
                                 <th></th>
                             </tr>
                             <tr class="table-body">
                                     <td></td>
                                     <td></td>
-                                    
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -385,9 +385,9 @@
                                 <th>Arrival_date</th>
                                 <th>Status_id</th>
                                 <th>Plane_id</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
 {{--                            moi 1 chuyen bay la 1 form--}}
@@ -568,12 +568,12 @@
                                     <tr class="table-menu">
                                         <th>ID</th>
                                         <th>Name</th>
-                                       
+
                                         <th></th>
                                     </tr>
                                     <tr class="table-body">
                                         <td></td>
-                                      
+
                                         <td></td>
                                         <td>
                                             <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -602,11 +602,11 @@
                                     <tr class="table-menu">
                                         <th>ID</th>
                                         <th>Name</th>
-                                      
+
                                         <th></th>
                                     </tr>
                                     <tr class="table-body">
-                                        
+
                                         <td></td>
                                         <td></td>
                                         <td>
@@ -646,9 +646,9 @@
                             <th>Total_price</th>
                             <th>Total_skymile</th>
                             <th>Flight_route</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
-                            <th>Deleted_at</th>
+                            <th>Create</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                             <th></th>
                         </tr>
                         <tr class="table-body">
@@ -734,12 +734,12 @@
                                 <th>Flight_ID</th>
                                 <th>Class_ID</th>
                                 <th>Price</th>
-                          
+
                                 <th></th>
                             </tr>
                             <tr class="table-body">
                                 <td></td>
-                               
+
                                 <td></td>
                                 <td></td>
                                 <td></td>
