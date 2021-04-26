@@ -71,7 +71,6 @@ class HomeController extends Controller
             session()->forget('page');
             session(['code'=>$code]);
             $order = Order::where('id',strtoupper($code))->where('account_id',session('check')->id)->first();
-            $order_status = $order->order_status;
             if ($order) {
                 $order_status = $order->order_status;
                 $way = $order->flight_route;

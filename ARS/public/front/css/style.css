@@ -3104,21 +3104,83 @@ div.modal-header{
 }
 .admin-menu p.sign-out{
     height: 50px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     line-height: 50px;
 }
 .admin-menu p.sign-out:hover{
-    background-color: #4141413b;
+    background-color: rgba(65, 65, 65, 0.23);
 }
 .table-menu{
-    background-color: #09c5a9;
+    background-color: #50657acc;
     color: white;
 }
 .table-menu th{
     text-align: center;
 }
+tr.table-menu:nth-of-type(2) th{
+    border: 1px solid white;
+}
+tr.table-menu:nth-of-type(2) th:first-of-type{
+    border-left: none;
+}
+tr.table-menu:nth-of-type(2) th:last-of-type{
+    border-right: none;
+}
 .table-menu button{
     background-color: unset;
-    border: none;
     font-style: italic;
+    border: 1px solid white;
+    margin: 5px 10px 5px 0;
+    float: right;
+    border-radius: 3px;
+}
+.table-menu th>button:hover{
+    box-shadow: 3px 3px 3px inset #314356;
+}
+.admin-table table{
+    width: 100%;
+    margin-top: 10px;
+}
+.admin-table tr td button{
+    border: none;
+
+    padding: 0;
+}
+.admin-table tr td button:first-of-type{
+    margin-left: 5px;
+}
+.admin-table tr td>button:first-of-type{
+    color: #0adec0;
+}
+.admin-table tr td>button:last-of-type{
+    color: red;
+}
+.admin-table tr>td:last-of-type{
+    width: 45px;
+}
+.table-body{
+    background-color: #b5c7d942;
+    counter-reset: black;
+    text-align: left;
+}
+.table-body td{
+    border: 1px solid white;
+}
+.table-body td:first-of-type{
+    border-left: none;
+}
+.table-body td:last-of-type{
+    border-right: none;
+}
+.admin-table .modal-header{
+    background-color: #738495;
+}
+.admin-table .modal-body input{
+    width: 100%;
+}
+.admin-table .modal-body table tr td{
+    padding-bottom: 15px;
+}
+#edit-flight button,#cancel-flight button{
+    height: 40px;
 }

@@ -334,6 +334,7 @@ $(".flight-detail").on('click',function (){
 $(window).on('load', function() {
     $('#notification').modal('show');
     $('#reset').modal('show');
+    // $('#cancel-flight').modal('show');
 });
 // ------------
 
