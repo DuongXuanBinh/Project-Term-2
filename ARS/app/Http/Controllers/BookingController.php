@@ -52,6 +52,7 @@ class BookingController extends Controller
 
     public function create(Request $request)
     {
+        $this->clear_session();
 
         // HANDLER DATE
         if ($request ){
@@ -316,21 +317,9 @@ class BookingController extends Controller
     }
 
     public function create_reschedule(array $require, array $passengers, array $order){
-        session()->forget('from_transit_outbound_details');
-        session()->forget('transit_to_outbound_details');
-        session()->forget('from_transit_inbound_details');
-        session()->forget('transit_to_inbound_details');
-        session()->forget('outbound_details');
-        session()->forget('return_details');
-        session()->forget('date_return');
-        session()->forget('no_flight');
-        session()->forget('flight_outbound_choose');
-        session()->forget('flight_outbound_from_transit_choose');
-        session()->forget('passengers');
-        session()->forget('total_price');
-        session()->forget('total_passengers');
-        session()->forget(['code','way','account','price','passengers','flights',
-            'ori_airports','arr_airports','planeId','duration','reschedule']);
+
+        $this->clear_session();
+
         session(['passengers'=>$passengers,'old_order'=>$order,'total_passengers'=>$require['adult']]);
         $seat_location_first = $order['ticket_details'][0]['seat_location'];
         $plane_id = $order['ticket_details'][0]['flight']['planeid'];
@@ -1420,7 +1409,7 @@ class BookingController extends Controller
     }
 
     public function choose_transaction(Request  $request){
-        if(!session('reschedule')){
+        if(!session('reschedule') && !session('purchase_booking')){
             $order_id = '';
             $order_status = 0;
             $notification = '';
@@ -1556,7 +1545,7 @@ class BookingController extends Controller
             session()->forget('tickets');
             return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
         }
-        elseif (session('reschedule')){
+        elseif (session('reschedule') && !session('purchase_booking')){
 
             $old_order = session('old_order');
             $order_id = $old_order['id'];
@@ -1728,5 +1717,81 @@ class BookingController extends Controller
             return redirect('/')->with('notification1',$notification)->with('order_id',$order_id);
 
         }
+        elseif (!session('reschedule') && session('purchase_booking')){
+            if (($request->get('vnp_ResponseCode'))){
+                $vnp_ResponseCode = $request->get('vnp_ResponseCode');
+                $vnp_TxnRef = $request->get('vnp_TxnRef');
+                if ($vnp_ResponseCode == 00){
+                    $order_id = $vnp_TxnRef;
+                    DB::beginTransaction();
+                    try {
+                        DB::table('orders')->where('id','=',$order_id)
+                            ->update(['order_status'=>1]);
+                        DB::commit();
+                        $notification = 'Booking Code: ';
+                        $mailType = 6;
+                    }  catch (\Exception $e) {
+                        DB::rollBack();
+                        $notification = 'Somethings is wrong. Please try again.';
+                        $order_id = null;
+                        return redirect('/')->with('notification2',$notification)->with('order_id',$order_id);
+                    }
+                }
+                else{
+                    $notification = 'Somethings is wrong. Please check again! Thanks!';
+                    session()->forget('passengers');
+                    session()->forget('flights_choose');
+                    session()->forget('tickets');
+                    return redirect('/')->with('notification',$notification);
+                }
+
+                $mail = new HomeController();
+                $array = $mail->getDataForMail($order_id);
+                $mail->sendEmail($array,$mailType);
+                session()->forget('passengers');
+                session()->forget('flights_choose');
+                session()->forget('tickets');
+                return redirect('/')->with('notification2',$notification)->with('order_id',$order_id);
+            }
+        }
+
+    }
+
+    public function clear_session(){
+        session()->forget('from_transit_outbound_details');
+        session()->forget('transit_to_outbound_details');
+        session()->forget('from_transit_inbound_details');
+        session()->forget('transit_to_inbound_details');
+        session()->forget('outbound_details');
+        session()->forget('return_details');
+        session()->forget('date_return');
+        session()->forget('no_flight');
+        session()->forget('flight_outbound_choose');
+        session()->forget('flight_outbound_from_transit_choose');
+        session()->forget('passengers');
+        session()->forget('total_price');
+        session()->forget('total_passengers');
+        session()->forget(['code','way','account','price','passengers','flights',
+            'ori_airports','arr_airports','planeId','duration','reschedule']);
+        session()->forget('flights_choose');
+        session()->forget('tickets');
+        session()->forget('purchase_booking');
+    }
+
+    public function purchase_booking(Request $request){
+        if (!$request->get('vnp_ResponseCode')){
+            $this->clear_session();
+            session(['purchase_booking'=>$request->booking_code]);
+            $order_id = $request->booking_code;
+            $data_url = VNPay::vnpay_create_payment([
+                'vnp_TxnRef' =>  $order_id, //ID cua don hang
+                'vnp_OrderInfo' => 'Thanh toan hoa don mua ve', //mo ta san pham o day
+                'vnp_Amount' => Order::where('id','=',$order_id)->first()->total_price *23000 , // doi ra VND
+            ]);
+            //02. Chuyen huowng toi URL lay duoc
+//                dd($data_url);
+            return redirect() ->to($data_url);
+        }
+
     }
 }
