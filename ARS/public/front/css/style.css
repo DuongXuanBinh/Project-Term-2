@@ -3110,3 +3110,15 @@ div.modal-header{
 .admin-menu p.sign-out:hover{
     background-color: #4141413b;
 }
+.table-menu{
+    background-color: #09c5a9;
+    color: white;
+}
+.table-menu th{
+    text-align: center;
+}
+.table-menu button{
+    background-color: unset;
+    border: none;
+    font-style: italic;
+}
