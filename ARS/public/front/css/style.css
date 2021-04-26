@@ -2808,7 +2808,12 @@ h1.su-text{
     pointer-events: none;
 }
 
-
+.admin-menu div div ul li{
+    cursor: pointer;
+}
+.admin-menu div div ul li.active{
+    background-color: #3c3f41;
+}
 
 /*end dat style*/
 
