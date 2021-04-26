@@ -19,23 +19,11 @@ class HomeController extends Controller
 {
     public function homeIndex()
     {
+        $Booking_controller = new BookingController();
+        $Booking_controller->clear_session();
+
         session(['page'=>'home']);
-        session()->forget('from_transit_outbound_details');
-        session()->forget('transit_to_outbound_details');
-        session()->forget('from_transit_inbound_details');
-        session()->forget('transit_to_inbound_details');
-        session()->forget('outbound_details');
-        session()->forget('return_details');
-        session()->forget('date_return');
-        session()->forget('no_flight');
-        session()->forget('flight_outbound_choose');
-        session()->forget('flight_outbound_from_transit_choose');
-        session()->forget('total_passengers');
-        session()->forget('total_price');
-        session()->forget(['code','way','account','price','passengers','flights',
-            'ori_airports','arr_airports','planeId','duration','reschedule']);
-        session()->forget('flights_choose');
-        session()->forget('tickets');
+
         $airports = Airport::all();
 
         return view('index')->with('airports',$airports);
@@ -161,19 +149,19 @@ class HomeController extends Controller
         $array = session('array',$this->getDataForMail($code));
         DB::beginTransaction();
         try{
-//            for($i=0;$i<count($ticket);$i++){
-//                $ticket[$i]->delete();
-//            }
-//            for ($i=0;$i<count($ticket);$i++){
-//                $passenger[$i] = $ticket[$i]->customer->id;
-//            }
-//            $passengers = array_values(array_unique($passenger));
-//            for($i=0;$i<count($passengers);$i++){
-//                $customer[$i]=Customer::where('id',$passengers[$i])->first();
-//                $customer[$i]->delete();
-//            }
-//            $order->delete();
-//            $account->save();
+            for($i=0;$i<count($ticket);$i++){
+                $ticket[$i]->delete();
+            }
+            for ($i=0;$i<count($ticket);$i++){
+                $passenger[$i] = $ticket[$i]->customer->id;
+            }
+            $passengers = array_values(array_unique($passenger));
+            for($i=0;$i<count($passengers);$i++){
+                $customer[$i]=Customer::where('id',$passengers[$i])->first();
+                $customer[$i]->delete();
+            }
+            $order->delete();
+            $account->save();
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
@@ -410,5 +398,7 @@ class HomeController extends Controller
         }
 
     }
+
+
 
 }

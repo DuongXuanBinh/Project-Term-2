@@ -104,27 +104,6 @@
             </div>
         </div>
     @endfor
-    <p>Extra Fee</p>
-    <div class="row payment-details">
-        <table>
-            <tr>
-                <td>Payment Type</td>
-                <td>VN Pay</td>
-            </tr>
-            <tr>
-                <td>Status</td>
-                <td>Paid</td>
-            </tr>
-            <tr>
-                <td>Reschedule fee</td>
-                <td>$</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td>$</td>
-            </tr>
-        </table>
-    </div>
     <div class="row mail-note">
         <ul>Note:
             <li>The times and dates are local, which means that the arrival time is governed by the time zone at your destination airport.</li>
