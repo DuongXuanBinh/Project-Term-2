@@ -169,9 +169,9 @@
                             <th>Phone</th>
                             <th>Sky_miles</th>
                             <th>Role</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
-                            <th>Deleted_at</th>
+                            <th>Create</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                             <th></th>
                         </tr>
                             <tr class="table-body">
@@ -205,11 +205,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="8">CUSTOMER</th>
-                                <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <th colspan="7">CUSTOMER</th>
+                                <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>  Add customer</button></th>
@@ -221,9 +221,9 @@
                                 <th>Sex</th>
                                 <th>D.O.B</th>
                                 <th>Account_id</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
@@ -249,11 +249,11 @@
                             </tr>
                         </table>
                     </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <table>
                         <tr class="table-menu">
-                            <th colspan="7">CUSTOMER TYPE</th>
-                            <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <th colspan="3">CUSTOMER TYPE</th>
+                            <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>  Add customer</button></th>
@@ -264,9 +264,6 @@
                             <th>Min_age</th>
                             <th>Max_Age</th>
                             <th>Fare_diff</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
-                            <th>Deleted_at</th>
                             <th></th>
                         </tr>
                         <tr class="table-body">
@@ -275,9 +272,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -386,9 +381,9 @@
                                 <th>Arrival_date</th>
                                 <th>Status_id</th>
                                 <th>Plane_id</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
 {{--                            moi 1 chuyen bay la 1 form--}}
@@ -513,11 +508,11 @@
 
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="7">ROUTE</th>
-                                <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <th colspan="6">ROUTE</th>
+                                <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>  Add flight</button></th>
@@ -528,9 +523,9 @@
                                 <th>Arrival_airportid</th>
                                 <th>Distance</th>
                                 <th>Duration</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
@@ -555,12 +550,12 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class=row>
                             <div class="col-md-12">
                                 <table>
                                     <tr class="table-menu">
-                                        <th colspan="4">FLIGHT STATUS</th>
+                                        <th colspan="1">FLIGHT STATUS</th>
                                         <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -569,15 +564,9 @@
                                     <tr class="table-menu">
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Created_at</th>
-                                        <th>Updated_at</th>
-                                        <th>Deleted_at</th>
                                         <th></th>
                                     </tr>
                                     <tr class="table-body">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
@@ -598,7 +587,7 @@
                             <div class="col-md-12">
                                 <table>
                                     <tr class="table-menu">
-                                        <th colspan="4">AIRPORT</th>
+                                        <th colspan="1">AIRPORT</th>
                                         <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -607,15 +596,9 @@
                                     <tr class="table-menu">
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Created_at</th>
-                                        <th>Updated_at</th>
-                                        <th>Deleted_at</th>
                                         <th></th>
                                     </tr>
                                     <tr class="table-body">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
@@ -654,9 +637,9 @@
                             <th>Total_price</th>
                             <th>Total_skymile</th>
                             <th>Flight_route</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
-                            <th>Deleted_at</th>
+                            <th>Create</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                             <th></th>
                         </tr>
                         <tr class="table-body">
@@ -684,11 +667,11 @@
                 </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="8">TICKET</th>
-                                <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <th colspan="7">TICKET</th>
+                                <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>  Add ticket</button></th>
@@ -700,9 +683,9 @@
                                 <th>Order_id</th>
                                 <th>Passenger_id</th>
                                 <th>Price</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
@@ -728,10 +711,10 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="6">PRICE</th>
+                                <th colspan="3">PRICE</th>
                                 <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -742,15 +725,9 @@
                                 <th>Flight_ID</th>
                                 <th>Class_ID</th>
                                 <th>Price</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -772,7 +749,7 @@
 
 {{--                FOR PLANE--}}
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <table>
                             <tr class="table-menu">
                                 <th colspan="5">PLANE</th>
@@ -785,9 +762,9 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Plane_type</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
@@ -810,11 +787,11 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="7">PLANE TYPE</th>
-                                <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <th colspan="3">PLANE TYPE</th>
+                                <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>  Add type</button></th>
@@ -825,15 +802,9 @@
                                 <th>Business_seats</th>
                                 <th>Economy_seats</th>
                                 <th>Total_seats</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -854,7 +825,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <table>
                             <tr class="table-menu">
                                 <th colspan="6">SEAT</th>
@@ -868,9 +839,9 @@
                                 <th>Seat_location</th>
                                 <th>Class_id</th>
                                 <th>Plane_type</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
+                                <th>Create</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
@@ -894,11 +865,11 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <table>
                             <tr class="table-menu">
-                                <th colspan="6">CLASS</th>
-                                <th colspan="2"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <th colspan="3">CLASS</th>
+                                <th colspan="3"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                         </svg>  Add seat</button></th>
@@ -908,19 +879,13 @@
                                 <th>Name</th>
                                 <th>Hand_baggage</th>
                                 <th>Checked_baggage</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                                <th>Deleted_at</th>
                                 <th></th>
                             </tr>
                             <tr class="table-body">
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
