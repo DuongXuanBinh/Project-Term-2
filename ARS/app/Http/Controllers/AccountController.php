@@ -18,6 +18,11 @@ class AccountController extends Controller
     {
         return view('sign_in');
     }
+    public function admin(){
+        if(session('email')&&session('password')&&session('check')){
+            return view('controlcenter');
+        }
+    }
 
     public function signIn(Request $request)
     {
@@ -53,7 +58,7 @@ class AccountController extends Controller
                     }
                 }elseif ($role ==2 ){
                     session(['email' => $username, 'password' => $password, 'check' => $check]);
-                    return view('controlcenter');
+                    return redirect('/sign-in/admin');
                 }
             }else {
                 return redirect()->back()->withInput()->withErrors([
