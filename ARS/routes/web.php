@@ -68,3 +68,8 @@ Route::prefix('/')->group(function(){
         return view('promotion');
     });
 });
+
+Route::prefix('admin')->group(function (){
+    Route::get('/view_admin/{session}',[Controllers\AdminController::class,'view_admin']);
+});
+

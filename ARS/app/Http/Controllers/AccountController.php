@@ -20,7 +20,7 @@ class AccountController extends Controller
     }
     public function admin(){
         if(session('email')&&session('password')&&session('check')){
-            return view('controlcenter');
+            return redirect('admin/view_admin/account');
         }
     }
 
