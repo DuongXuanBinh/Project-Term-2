@@ -2,6 +2,9 @@
 @section('title','Policy')
 
 @section('body')
+    <?php
+    session()->forget('page');
+    ?>
     <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="height:625px;background-image: url(front/images/SPECIAL_CHARTER_11.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">

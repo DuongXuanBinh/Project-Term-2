@@ -71,5 +71,8 @@ Route::prefix('/')->group(function(){
 
 Route::prefix('admin')->group(function (){
     Route::get('/view_admin/{session}',[Controllers\AdminController::class,'view_admin']);
+    Route::get('/delete_flight/{id}',[Controllers\AdminController::class,'delete_flight']);
+    Route::post('/create_flight',[Controllers\AdminController::class,'create_flight']);
+    Route::get('/update_flight',[Controllers\AdminController::class,'update_flight']);
 });
 

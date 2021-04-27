@@ -15,6 +15,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
+{{--    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="front/css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -43,7 +45,9 @@
     <!--[if lt IE 9]>
     <script src="front/js/respond.min.js"></script>
     <![endif]-->
+    <style>
 
+    </style>
 </head>
 <body>
 
@@ -96,20 +100,23 @@
         <div class="modal fade password-change" id="notification" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style="top: 100px">
-                    <div class="modal-header">
-                        <h5 class="modal-title" style="margin-left: 170px">NOTIFICATION</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-header" style=" background-color: #738495">
+                        <h5 class="modal-title" style="text-align: center">NOTIFICATION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="position: absolute; top: 15px; right: 10px;" aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body" style="text-align: center">
                             <p style="margin-bottom: 0">{{session('notification')}}</p>
                     </div>
-                    <div class="modal-footer" style="display: unset;text-align: center" >
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <div class="modal-footer" style="text-align: center" >
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
     @endif
+    <?php
+    session()->forget('notification');
+    ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -144,78 +151,7 @@
                 </div>
             </div>
             <div class="col-md-10 admin-table">
-                {{--                addflight--}}
-                <div class="modal fade password-change" id="add-flight" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <form action="">
-                            @csrf
-                            <div class="modal-content" style="top: 100px">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">ADD FLIGHT</h5>
-                                    <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <table style="width:80%;margin: 0 auto;">
-                                        <tr>
-                                            <td>
-                                                From:
-                                            </td>
-                                            <td>
-                                                <input list="places_from" name="place_from" required placeholder="From">
-                                                <div id="place_from_list">
-                                                    <datalist  id="places_from">
-                                                        <option value=""></option>
-                                                    </datalist>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                To:
-                                            </td>
-                                            <td>
-                                                <input list="places_to" name="place_from" required placeholder="To">
-                                                <div id="place_to_list">
-                                                    <datalist  id="places_to">
-                                                        <option value=""></option>
-                                                    </datalist>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Departure time:</td>
-                                            <td><input type="datetime-local" name="departure_time" style="width: 100%" required></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status:</td>
-                                            <td><input list="status" name="status" required placeholder="Status">
-                                                <div id="flight_status">
-                                                    <datalist  id="status">
-                                                        <option value=""></option>
-                                                    </datalist>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Plane:</td>
-                                            <td><input list="plane" name="plane" required placeholder="Plane">
-                                                <div id="air_craft">
-                                                    <datalist  id="plane">
-                                                        <option value=""></option>
-                                                    </datalist>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="modal-footer" style="text-align: center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
-                                    <button type="submit" class="btn btn-primary" style="width: 30%;">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+
 
 {{--                FOR ACCOUNT--}}
             @if(session('view') == 'account')
@@ -237,7 +173,7 @@
                             <th>Lastname</th>
                             <th>Address</th>
                             <th>D.O.B</th>
-                            <th>Sex</th>
+                            <th>Gender</th>
                             <th>Credit_number</th>
                             <th>Phone</th>
                             <th>Sky_miles</th>
@@ -247,22 +183,23 @@
                             <th>Delete</th>
                             <th></th>
                         </tr>
+                        @foreach($accounts as $account)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$account->id}}</td>
+                                <td>{{$account->email}}</td>
+                                <td>{{$account->password}}</td>
+                                <td>{{$account->firstname}}</td>
+                                <td>{{$account->lastname}}</td>
+                                <td>{{$account->address}}</td>
+                                <td>{{$account->dob}}</td>
+                                <td>{{$account->sex}}</td>
+                                <td>{{$account->credit_number}}</td>
+                                <td>{{$account->phone}}</td>
+                                <td>{{$account->sky_miles}}</td>
+                                <td>{{$account->role}}</td>
+                                <td>{{$account->created_at}}</td>
+                                <td>{{$account->updated_at}}</td>
+                                <td>{{$account->deleted_at}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -274,6 +211,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                        @endforeach
                     </table>
                     </div>
                 </div>
@@ -291,7 +229,7 @@
                                 <th>ID</th>
                                 <th>Firstname</th>
                                 <th>Lastname</th>
-                                <th>Sex</th>
+                                <th>Gender</th>
                                 <th>D.O.B</th>
                                 <th>Account_id</th>
                                 <th>Create</th>
@@ -299,16 +237,17 @@
                                 <th>Delete</th>
                                 <th></th>
                             </tr>
-                            <tr class="table-body">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                            @foreach($customers as $customer)
+                                <tr class="table-body">
+                                    <td>{{$customer->id}}</td>
+                                    <td>{{$customer->firstname}}</td>
+                                    <td>{{$customer->lastname}}</td>
+                                    <td>{{$customer->sex}}</td>
+                                    <td>{{$customer->dob}}</td>
+                                    <td>{{$customer->account_id}}</td>
+                                    <td>{{$customer->created_at}}</td>
+                                    <td>{{$customer->updated_at}}</td>
+                                    <td>{{$customer->deleted_at}}</td>
                                     <td>
                                         <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -320,6 +259,7 @@
                                             </svg></button>
                                     </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="col-md-5">
@@ -340,13 +280,14 @@
 
                                 <th></th>
                             </tr>
+                            @foreach($customer_types as $customer_type)
                             <tr class="table-body">
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$customer_type->id}}</td>
+                                    <td>{{$customer_type->name}}</td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$customer_type->min_age}}</td>
+                                    <td>{{$customer_type->max_age}}</td>
+                                    <td>{{$customer_type->fare_diff}}</td>
                                     <td>
                                         <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -358,6 +299,7 @@
                                             </svg></button>
                                     </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -366,6 +308,87 @@
 
 {{--                    FOR FLIGHT--}}
             @elseif(session('view') == 'flight')
+                {{--                addflight--}}
+                <div class="modal fade password-change" id="add-flight" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <form action="./admin/create_flight" method="post" >
+                                @csrf
+                                <div class="modal-content" style="top: 100px">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">ADD FLIGHT</h5>
+                                        <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table style="width:80%;margin: 0 auto;">
+                                            <tr>
+                                                <td>
+                                                    From:
+                                                </td>
+                                                <td>
+                                                    <input list="places_from" name="place_from" required placeholder="From">
+                                                    <div id="place_from_list">
+                                                        <datalist  id="places_from">
+                                                            @foreach($airports as $airport)
+                                                                <option value="{{$airport->name}}"></option>
+                                                            @endforeach
+                                                        </datalist>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    To:
+                                                </td>
+                                                <td>
+                                                    <input list="places_to" name="place_to" required placeholder="To">
+                                                    <div id="place_to_list">
+                                                        <datalist  id="places_to">
+                                                            @foreach($airports as $airport)
+                                                                <option value="{{$airport->name}}"></option>
+                                                            @endforeach
+                                                        </datalist>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Departure time:</td>
+                                                <td><input type="datetime-local" name="departure_time" style="width: 100%" required></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td><input list="statues" name="status" required placeholder="Status">
+                                                    <div id="flight_status">
+                                                        <datalist  id="statues">
+                                                            @foreach($flight_statues as $flight_status)
+                                                                <option value="{{ $flight_status->name}}"></option>
+                                                            @endforeach
+                                                        </datalist>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Plane:</td>
+                                                <td><input list="planes" name="plane" required placeholder="Plane">
+                                                    <div id="air_craft">
+                                                        <datalist  id="planes">
+                                                            @foreach($planes as $plane)
+                                                                <option value="{{ $plane->name}}"></option>
+                                                            @endforeach
+                                                        </datalist>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer" style="text-align: center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
+                                        <button type="submit" class="btn btn-primary" style="width: 30%;">Add flight</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <table>
@@ -391,30 +414,30 @@
                                 <th></th>
                             </tr>
 {{--                            moi 1 chuyen bay la 1 form--}}
-                            <form>
+                            @foreach($flights as $flight)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$flight->id}}</td>
+                                <td>{{$flight->route_id}}</td>
+                                <td>{{$flight->departure_date}}</td>
+                                <td>{{$flight->arrival_date}}</td>
+                                <td>{{$flight->statusid}}</td>
+                                <td>{{$flight->planeid}}</td>
+                                <td>{{$flight->created_at}}</td>
+                                <td>{{$flight->updated_at}}</td>
+                                <td>{{$flight->deleted_at}}</td>
                                 <td>
 {{--                                    input value name la cua moi chuyen bay--}}
                                     <input type="hidden" name="" value="">
-                                    <button type="button" data-toggle="modal" data-target="#edit-flight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <button type="button" data-toggle="modal" data-target="#edit-flight{{$flight->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                         </svg></button>
-                                    <button type="button" data-toggle="modal" data-target="#cancel-flight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <button type="button" data-toggle="modal" data-target="#cancel-flight{{$flight->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg></button>
 {{--                                    modal cancel--}}
-                                    <div class="modal fade password-change" id="cancel-flight" tabindex="-1" role="dialog">
+                                    <div class="modal fade password-change" id="cancel-flight{{$flight->id}}" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content" style="top: 100px">
                                                 <div class="modal-header">
@@ -422,73 +445,66 @@
                                                     <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p style="text-align: center">Are you sure to cancel this flight?</p>
+                                                    <p style="text-align: center">Are you sure to cancel flight {{$flight->id}} ?</p>
                                                 </div>
                                                 <div class="modal-footer" style="text-align: center;margin-bottom: 0">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
-                                                    <button type="submit" class="btn btn-primary" style="width: 30%;">Submit</button>
+                                                    <button type="button" onclick="window.location='./admin/delete_flight/{{$flight->id}}'" class="btn btn-primary" style="width: 30%;">Cancel flight</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 {{--                                    modal edit--}}
-                                    <div class="modal fade password-change" id="edit-flight" tabindex="-1" role="dialog">
+                                    <div class="modal fade password-change" id="edit-flight{{$flight->id}}" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
-                                            <form action="">
-                                                @csrf
+                                            <form action="./admin/update_flight" id="form_{{$flight->id}}" method="get">
+                                                <input type="hidden" value="{{$flight->id}}" name="flight_id">
                                                 <div class="modal-content" style="top: 100px">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">EDIT FLIGHT</h5>
+                                                        <h5 class="modal-title">EDIT FLIGHT {{$flight->id}}</h5>
                                                         <button type="button" style="margin-top: -24px" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <table style="width:80%;margin: 0 auto;">
                                                             <tr>
                                                                 <td>
-                                                                    From:
+                                                                    Route:
                                                                 </td>
                                                                 <td>
-                                                                    <input list="places_from" name="place_from" required placeholder="From">
-                                                                    <div id="place_from_list">
-                                                                        <datalist  id="places_from">
-                                                                            <option value=""></option>
-                                                                        </datalist>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    To:
-                                                                </td>
-                                                                <td>
-                                                                    <input list="places_to" name="place_from" required placeholder="To">
-                                                                    <div id="place_to_list">
-                                                                        <datalist  id="places_to">
-                                                                            <option value=""></option>
+                                                                    <input list="routes" value="{{$flight->route_id}}" name="route" required placeholder="Route">
+                                                                    <div id="routes_list">
+                                                                        <datalist  id="routes">
+                                                                            @foreach($routes as $route)
+                                                                                <option value="{{$route->id}}"></option>
+                                                                            @endforeach
                                                                         </datalist>
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Departure time:</td>
-                                                                <td><input type="datetime-local" name="departure_time" style="width: 100%" required></td>
+                                                                <td><input type="datetime-local" value="{{$flight->departure_date}}"  name="departure_time" style="width: 100%" required></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Status:</td>
-                                                                <td><input list="status" name="status" required placeholder="Status">
+                                                                <td><input list="status" value="{{$flight->flight_status->name}}" name="status" required placeholder="Status">
                                                                     <div id="flight_status">
                                                                         <datalist  id="status">
-                                                                            <option value=""></option>
+                                                                            @foreach($flight_statues as $flight_status)
+                                                                                <option value="{{ $flight_status->name}}"></option>
+                                                                            @endforeach
                                                                         </datalist>
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Plane:</td>
-                                                                <td><input list="plane" name="plane" required placeholder="Plane">
+                                                                <td><input list="planes" value="{{$flight->plane->name}}" name="plane" required placeholder="Plane">
                                                                     <div id="air_craft">
-                                                                        <datalist  id="plane">
-                                                                            <option value=""></option>
+                                                                        <datalist  id="planes">
+                                                                            @foreach($planes as $plane)
+                                                                                <option value="{{ $plane->name}}"></option>
+                                                                            @endforeach
                                                                         </datalist>
                                                                     </div>
                                                                 </td>
@@ -497,7 +513,7 @@
                                                     </div>
                                                     <div class="modal-footer" style="text-align: center">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 30%">Close</button>
-                                                        <button type="submit" class="btn btn-primary" style="width: 30%;">Submit</button>
+                                                        <button type="button" onclick="this.form.submit()" class="btn btn-primary" style="width: 30%;">Submit</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -505,11 +521,13 @@
                                     </div>
                                 </td>
                             </tr>
-                            </form>
+                            @endforeach
                         </table>
                     </div>
                 </div>
-
+                    <div style="text-align: center">
+                        {!! $flights->links() !!}
+                    </div>
 
                 <div class="row">
                     <div class="col-md-8">
@@ -532,15 +550,16 @@
                                 <th>Delete</th>
                                 <th></th>
                             </tr>
+                            @foreach($routes as $route)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$route->id}}</td>
+                                <td>{{$route->origin_airportid}}</td>
+                                <td>{{$route->arrival_airportid}}</td>
+                                <td>{{$route->skymile}}</td>
+                                <td>{{$route->duration}}</td>
+                                <td>{{$route->created_at}}</td>
+                                <td>{{$route->updated_at}}</td>
+                                <td>{{$route->deleted_at}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -552,6 +571,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="col-md-4">
@@ -571,10 +591,12 @@
 
                                         <th></th>
                                     </tr>
+                                    @foreach($flight_statues as $flight_status)
                                     <tr class="table-body">
-                                        <td></td>
+                                        <td>{{$flight_status->id}}</td>
 
-                                        <td></td>
+                                        <td>{{$flight_status->name}}</td>
+
                                         <td>
                                             <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -586,6 +608,7 @@
                                                 </svg></button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -605,10 +628,11 @@
 
                                         <th></th>
                                     </tr>
+                                    @foreach($airports as $airport)
                                     <tr class="table-body">
+                                        <td>{{$airport->id}}</td>
+                                        <td>{{$airport->name}}</td>
 
-                                        <td></td>
-                                        <td></td>
                                         <td>
                                             <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -620,6 +644,7 @@
                                                 </svg></button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -651,16 +676,17 @@
                             <th>Delete</th>
                             <th></th>
                         </tr>
+                        @foreach($orders as $order)
                         <tr class="table-body">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$order->id}}</td>
+                            <td>{{$order->account_id}}</td>
+                            <td>{{$order->order_status}}</td>
+                            <td>{{$order->total_price}}</td>
+                            <td>{{$order->total_skymiles}}</td>
+                            <td>{{$order->flight_route}}</td>
+                            <td>{{$order->created_at}}</td>
+                            <td>{{$order->updated_at}}</td>
+                            <td>{{$order->deleted_at}}</td>
                             <td>
                                 <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -672,6 +698,7 @@
                                     </svg></button>
                             </td>
                         </tr>
+                        @endforeach
                     </table>
                 </div>
                 </div>
@@ -697,16 +724,17 @@
                                 <th>Delete</th>
                                 <th></th>
                             </tr>
+                            @foreach($tickets as $ticket)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$ticket->id}}</td>
+                                <td>{{$ticket->flight_id}}</td>
+                                <td>{{$ticket->seat_location}}</td>
+                                <td>{{$ticket->order_id}}</td>
+                                <td>{{$ticket->passenger_id}}</td>
+                                <td>{{$ticket->price}}</td>
+                                <td>{{$ticket->created_at}}</td>
+                                <td>{{$ticket->updated_at}}</td>
+                                <td>{{$ticket->deleted_at}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -718,6 +746,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="col-md-4">
@@ -737,12 +766,12 @@
 
                                 <th></th>
                             </tr>
+                            @foreach($prices as $price)
                             <tr class="table-body">
-                                <td></td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$price->id}}</td>
+                                <td>{{$price->flight_id}}</td>
+                                <td>{{$price->class_id}}</td>
+                                <td>{{$price->price}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -754,7 +783,11 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
+                        <div style="text-align: center">
+                            {!! $prices->links() !!}
+                        </div>
                     </div>
                 </div>
 
@@ -779,13 +812,14 @@
                                 <th>Delete</th>
                                 <th></th>
                             </tr>
+                            @foreach($planes as $plane)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$plane->id}}</td>
+                                <td>{{$plane->name}}</td>
+                                <td>{{$plane->plane_type}}</td>
+                                <td>{{$plane->created_at}}</td>
+                                <td>{{$plane->updated_at}}</td>
+                                <td>{{$plane->deleted_at}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -797,6 +831,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="col-md-5">
@@ -816,12 +851,13 @@
                                 <th>Total_seats</th>
                                 <th></th>
                             </tr>
+                            @foreach($plane_types as $plane_type)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$plane_type->id}}</td>
+                                <td>{{$plane_type->name}}</td>
+                                <td>{{$plane_type->business_seats}}</td>
+                                <td>{{$plane_type->economy_seats}}</td>
+                                <td>{{$plane_type->toal_seats}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -833,6 +869,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -856,14 +893,15 @@
                                 <th>Delete</th>
                                 <th></th>
                             </tr>
+                            @foreach($seats as $seat)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$seat->id}}</td>
+                                <td>{{$seat->seat_location}}</td>
+                                <td>{{$seat->class_id}}</td>
+                                <td>{{$seat->plane_type}}</td>
+                                <td>{{$seat->created_at}}</td>
+                                <td>{{$seat->updated_at}}</td>
+                                <td>{{$seat->deleted_at}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -875,7 +913,11 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
+                        <div style="text-align: center">
+                            {!! $seats->links() !!}
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <table>
@@ -893,11 +935,12 @@
                                 <th>Checked_baggage</th>
                                 <th></th>
                             </tr>
+                            @foreach($classes as $class)
                             <tr class="table-body">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$class->id}}</td>
+                                <td>{{$class->name}}</td>
+                                <td>{{$class->hand_baggage}}</td>
+                                <td>{{$class->checked_baggage}}</td>
                                 <td>
                                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -909,6 +952,7 @@
                                         </svg></button>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
