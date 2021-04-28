@@ -134,7 +134,7 @@
                         <h3>Inbound</h3>
                     </div>
                     <div class="row col-md-12">
-                        <div class="btn-group group1 btn_other_return" style="display: flex" role="group" aria-label="Basic example">
+                        <div class="btn-group group2 btn_other_return" style="display: flex" role="group" aria-label="Basic example">
                             <div>
                                 <input  type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -2)}}">
                                 <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>

@@ -421,7 +421,7 @@ $(document).ready(function () {
                             var c = $(".flag3").val();
                             var d = $(".flag4").val();
                             var e = $(".flag5").val();
-                            if (a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
                                 $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
                             }
                             else{
@@ -474,7 +474,7 @@ $(document).ready(function () {
                             var c = $(".flag3").val();
                             var d = $(".flag4").val();
                             var e = $(".flag5").val();
-                            if (a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
                                 $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
                             }
                             else{
@@ -527,7 +527,7 @@ $(document).ready(function () {
                             var c = $(".flag3").val();
                             var d = $(".flag4").val();
                             var e = $(".flag5").val();
-                            if (a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
                                 $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
                             }
                             else{
@@ -567,7 +567,7 @@ $(document).ready(function () {
             var c = $(".flag3").val();
             var d = $(".flag4").val();
             var e = $(".flag5").val();
-            if (a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
                 $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
             }
             else{
@@ -588,7 +588,7 @@ $(document).ready(function () {
             var c = $(".flag3").val();
             var d = $(".flag4").val();
             var e = $(".flag5").val();
-            if (a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
                 $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
             }
             else{

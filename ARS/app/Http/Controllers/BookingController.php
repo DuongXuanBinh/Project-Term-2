@@ -303,6 +303,7 @@ class BookingController extends Controller
                         'transit_to_outbound_details' => $transit_to_outbound_details,
                         'from_transit_inbound_details' =>  $from_transit_inbound_details,
                         'transit_to_inbound_details' =>  $transit_to_inbound_details]);
+//                    dd(session('from_transit_outbound_details'));
                     session()->forget('outbound_details');
                     session()->forget('return_details');
                 }
