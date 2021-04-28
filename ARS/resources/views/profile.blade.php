@@ -30,7 +30,7 @@
                     <ul class="list-group">
 <!--                        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>-->
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Sky miles</strong></span>{{$user->sky_miles}}</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Flights</strong></span> 3 </li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Member</strong></span> Silver </li>
                     </ul>
                     <p style="text-align: center;cursor:pointer;"  data-toggle="modal" data-target="#myModal"><i>Change password</i></p>
                     <div class="modal fade password-change" id="myModal" tabindex="-1">

@@ -610,7 +610,7 @@ class BookingController extends Controller
 
             $output_outbound = '';
             if (count(session('outbound_details')) == 0){
-                $output_outbound .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
+                $output_outbound .= '<h5 style="text-align: center; margin-top: 20px">Flight not found</h5>';
             }
             else{
                 foreach (session('outbound_details') as $outbound_detail ){
@@ -677,7 +677,7 @@ class BookingController extends Controller
 
             $output_return = '';
             if (count(session('return_details'))==0){
-                $output_return .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
+                $output_return .= '<h5 style="text-align: center; margin-top: 20px">Flight not found</h5>';
             }
             else{
                 foreach (session('return_details') as $return_detail){
@@ -783,7 +783,7 @@ class BookingController extends Controller
 
             $output_outbound_transit = '';
             if (count(session('from_transit_outbound_details'))==0){
-                $output_outbound_transit.= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
+                $output_outbound_transit.= '<h5 style="text-align: center; margin-top: 20px">Flight not found</h5>';
             }
             else{
                 for ($i = 0; $i< count(session('from_transit_outbound_details')); $i++){
@@ -907,7 +907,7 @@ class BookingController extends Controller
 
             $output_return_transit = '';
             if (count(session('from_transit_inbound_details'))==0){
-                $output_return_transit .= '<h5 style="text-align: center; margin-top: 20px">No flight found</h5>';
+                $output_return_transit .= '<h5 style="text-align: center; margin-top: 20px">Flight not found</h5>';
             }
             else{
                 for ($i = 0; $i< count(session('from_transit_inbound_details')); $i++){

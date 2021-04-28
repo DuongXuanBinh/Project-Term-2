@@ -31,7 +31,9 @@
     $seats = session('seat');
     $code = session('code');
     if (session('code')){
-        $money_purchase = \App\Models\Order::where('id','=',strtoupper($code))->first()->total_price;
+        $order_ = \App\Models\Order::where('id','=',session('code'))->first();
+        if($order_ != null)
+            $money_purchase = $order_->total_price;
     }
 
     session()->forget('code');

@@ -201,6 +201,7 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
+
 // start Select seats Flight[0]
 var id_first = "flight_0";
 var id_first_passenger = $("#"+id_first+" .select_seat_passenger:first").attr('id');
