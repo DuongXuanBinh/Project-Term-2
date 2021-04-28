@@ -339,6 +339,7 @@ $(window).on('load', function() {
 // ------------
 
 $(document).ready(function () {
+
     $("#code").blur(function (){
        var code = $(this).val();
        var veri_code = $("#veri_code").val();
@@ -398,7 +399,8 @@ $(document).ready(function () {
             $("label.su-phonenumber").next().next().empty();
             $("label.su-phonenumber").next().empty();
             $("label.su-phonenumber").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid phone number</span>");
-            $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='false'>")
+            $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='false'>");
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         }else {
             if (query !== '' && name !== '') {
                 var _token = $('input[name="_token"]').val();
@@ -414,6 +416,17 @@ $(document).ready(function () {
                             $("label.su-phonenumber").next().empty();
                             $("label.su-phonenumber").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this number</span>");
                             $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='true'>");
+                            var a = $(".flag1").val();
+                            var b = $(".flag2").val();
+                            var c = $(".flag3").val();
+                            var d = $(".flag4").val();
+                            var e = $(".flag5").val();
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                                $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+                            }
+                            else{
+                                $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+                            }
                         } else {
                             $("svg.su-phonenumber").css('display', 'none');
                             $("#su-phonenumber").css('border-color', 'red');
@@ -421,6 +434,7 @@ $(document).ready(function () {
                             $("label.su-phonenumber").next().empty();
                             $("label.su-phonenumber").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This number is already exist</span>");
                             $("label.su-phonenumber").after("<input type='hidden' class='flag1' value='false'>");
+                            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
                         }
                     }
                 })
@@ -439,6 +453,7 @@ $(document).ready(function () {
             $("label.su-creditcard").next().empty();
             $("label.su-creditcard").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid credit number</span>");
             $("label.su-creditcard").after("<input type='hidden' class='flag2' value='false'>");
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         }else {
             if (query !== '' && name !== '') {
                 var _token = $('input[name="_token"]').val();
@@ -454,6 +469,17 @@ $(document).ready(function () {
                             $("label.su-creditcard").next().empty();
                             $("label.su-creditcard").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this credit</span>");
                             $("label.su-creditcard").after("<input type='hidden' class='flag2' value='true'>");
+                            var a = $(".flag1").val();
+                            var b = $(".flag2").val();
+                            var c = $(".flag3").val();
+                            var d = $(".flag4").val();
+                            var e = $(".flag5").val();
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                                $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+                            }
+                            else{
+                                $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+                            }
                         } else {
                             $("svg.su-creditcard").css('display', 'none');
                             $("#su-creditcard").css('border-color', 'red');
@@ -461,6 +487,7 @@ $(document).ready(function () {
                             $("label.su-creditcard").next().empty();
                             $("label.su-creditcard").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This credit is already exist</span>");
                             $("label.su-creditcard").after("<input type='hidden' class='flag2' value='false'>");
+                            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
                         }
                     }
                 })
@@ -479,6 +506,7 @@ $(document).ready(function () {
             $("label.su-email").next().empty();
             $("label.su-email").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid email address</span>");
             $("label.su-email").after("<input type='hidden' class='flag3' value='false'>");
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         }else {
             if (query !== '' && name !== '') {
                 var _token = $('input[name="_token"]').val();
@@ -494,6 +522,17 @@ $(document).ready(function () {
                             $("label.su-email").next().empty();
                             $("label.su-email").after("<span style='color: #0ac5a9;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;You can use this email</span>");
                             $("label.su-email").after("<input type='hidden' class='flag3' value='true'>");
+                            var a = $(".flag1").val();
+                            var b = $(".flag2").val();
+                            var c = $(".flag3").val();
+                            var d = $(".flag4").val();
+                            var e = $(".flag5").val();
+                            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                                $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+                            }
+                            else{
+                                $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+                            }
                         } else {
                             $("svg.su-email").css('display', 'none');
                             $("#su-email").css('border-color', 'red');
@@ -501,6 +540,7 @@ $(document).ready(function () {
                             $("label.su-email").next().empty();
                             $("label.su-email").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;This email is already exist</span>");
                             $("label.su-email").after("<input type='hidden' class='flag3' value='false'>");
+                            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
                         }
                     }
                 })
@@ -515,12 +555,24 @@ $(document).ready(function () {
             $("#su-password").css('border-color', 'red');
             $("label.su-password").next().empty();
             $("label.su-password").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Invalid password</span>");
-            $(this).after("<input type='hidden' class='flag5' value='false'>")
+            $(this).after("<input type='hidden' class='flag5' value='false'>");
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         } else {
             $("svg.su-password").css('display', 'inline');
             $("#su-password").css('border-color', '#0000001a');
             $("label.su-password").next().empty();
-            $(this).after("<input type='hidden' class='flag5' value='true'>")
+            $(this).after("<input type='hidden' class='flag5' value='true'>");
+            var a = $(".flag1").val();
+            var b = $(".flag2").val();
+            var c = $(".flag3").val();
+            var d = $(".flag4").val();
+            var e = $(".flag5").val();
+            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+            }
+            else{
+                $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+            }
         }
     })
     $("#su-password1").on('blur',function(){
@@ -531,13 +583,25 @@ $(document).ready(function () {
             $("#su-password1").css('border-color', '#0000001a');
             $("label.su-password1").next().empty();
             $(this).after("<input type='hidden' class='flag4' value='true'>");
+            var a = $(".flag1").val();
+            var b = $(".flag2").val();
+            var c = $(".flag3").val();
+            var d = $(".flag4").val();
+            var e = $(".flag5").val();
+            if ($(".form-signup input:checkbox").checked && a == "true" && b == "true" && c == "true" && d == "true" && e == "true"){
+                $(".btn_sign_up").removeClass('btn-secondary').addClass('btn-primary').css('pointer-events','all').css('cursor','pointer');
+            }
+            else{
+                $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
+            }
         }
         else {
             $("svg.su-password1").css('display', 'none');
             $("#su-password1").css('border-color', 'red');
             $("label.su-password1").next().empty();
             $("label.su-password1").after("<span style='color: red;font-style: italic;font-size: 0.8em'>&nbsp;&nbsp;&nbsp;Password doesn't match</span>");
-            $(this).after("<input type='hidden' class='flag4' value='false'>")
+            $(this).after("<input type='hidden' class='flag4' value='false'>");
+            $(".btn_sign_up").removeClass('btn-primary').addClass('btn-secondary').css('pointer-events','none');
         }
     })
 

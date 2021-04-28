@@ -201,6 +201,7 @@ $(".form-signup input:checkbox").on(
         }
     }
 )
+
 // start Select seats Flight[0]
 var id_first = "flight_0";
 var id_first_passenger = $("#"+id_first+" .select_seat_passenger:first").attr('id');
@@ -363,9 +364,9 @@ function change_btn_sum_passenger(sum){
     if (sum === 2 || sum === 3  ) {
         $('.dropdown .btn_sum_passenger').text(sum + " Passengers")
     }
-    else {
-        $('.dropdown .btn_sum_passenger').text(3 + " Passengers")
-    }
+    // else {
+    //     $('.dropdown .btn_sum_passenger').text(3 + " Passengers")
+    // }
 }
 
 //display travel class in #travel_dropdown
@@ -395,7 +396,6 @@ $('.btn_other_outbound div button.date-button').on('click',function (){
             $('.outbound_flights').html(data);
         },
         error: function (error){
-            alert('failed');
             console.log(error);
         }
     })
@@ -510,6 +510,56 @@ $(document).ready(function (){
         $('#flight_3').find('div[name='+seat_unavailable+']').children('img').attr("src","front/images/icon-unavailable-seat.png");
         $('#flight_3').find('div[name='+seat_unavailable+']').css('pointer-events','none');
     }
+
+
+
+    // validate button date ajax
+
+
+    var input_date_outbound = $('.btn_other_outbound button.date-button.active').siblings('input[name="other_day_outbound"]').val();
+
+    for (i=0; i< $('.btn_other_return button.date-button').length; i++){
+
+        if(new Date(($('.btn_other_return button.date-button:eq('+i+')').siblings('input[name="other_day_return"]')).val()) < new Date(input_date_outbound)){
+            $('.btn_other_return button.date-button:eq('+i+')').css('pointer-events','none');
+        }
+    }
+
+    $('.btn_other_outbound div button.date-button').on('click',function () {
+        input_date_outbound = $(this).siblings('input[name="other_day_outbound"]').val();
+        for (i=0; i< $('.btn_other_return button.date-button').length; i++){
+
+            if(new Date(($('.btn_other_return button.date-button:eq('+i+')').siblings('input[name="other_day_return"]')).val()) < new Date(input_date_outbound)){
+                $('.btn_other_return button.date-button:eq('+i+')').css('pointer-events','none');
+            }
+            else {
+                $('.btn_other_return button.date-button:eq('+i+')').css('pointer-events','auto');
+            }
+        }
+    });
+
+    var input_transit_date_outbound = $('.btn_other_outbound_transit button.date-button.active').siblings('input[name="other_day_outbound"]').val();
+
+    for (i=0; i< $('.btn_other_return_transit button.date-button').length; i++){
+
+        if(new Date(($('.btn_other_return_transit button.date-button:eq('+i+')').siblings('input[name="other_day_return"]')).val()) < new Date(input_transit_date_outbound)){
+            $('.btn_other_return_transit button.date-button:eq('+i+')').css('pointer-events','none');
+        }
+    }
+
+    $('.btn_other_outbound_transit div button.date-button').on('click',function () {
+        input_transit_date_outbound = $(this).siblings('input[name="other_day_outbound"]').val();
+        for (i=0; i< $('.btn_other_return_transit button.date-button').length; i++){
+
+            if(new Date(($('.btn_other_return_transit button.date-button:eq('+i+')').siblings('input[name="other_day_return"]')).val()) < new Date(input_transit_date_outbound)){
+                $('.btn_other_return_transit button.date-button:eq('+i+')').css('pointer-events','none');
+            }
+            else {
+                $('.btn_other_return_transit button.date-button:eq('+i+')').css('pointer-events','auto');
+            }
+        }
+    });
+
 });
 
 // radio choose how to checkout

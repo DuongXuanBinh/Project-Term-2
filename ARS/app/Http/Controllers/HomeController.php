@@ -84,6 +84,7 @@ class HomeController extends Controller
                     $passenger[$i] = $tickets[$i]->customer;
                     $flight[$i] = $tickets[$i]->flight;
                 }
+
                 $flights = array_values(array_unique($flight));
                 $passengers = array_values(array_unique($passenger));
                 usort($flights, function ($a, $b){
@@ -98,6 +99,7 @@ class HomeController extends Controller
                     $ori_airports[$i] = $airport[$i]->airports_origin;
                     $arr_airports[$i] = $airport[$i]->airports_arrival;
                 }
+
                 for($i=0;$i<count($passengers);$i++){
                     for($j=0;$j<count($flights);$j++){
                         $seat[$i][$j] = Ticket_details::select('seat_location')->where('flight_id','=',$flights[$j]->id)
@@ -105,7 +107,7 @@ class HomeController extends Controller
                         ->first();
                     }
                 }
-//                dd($way);
+
 
                 return back()->with('ori_airport', $ori_airports)
                     ->with('arr_airport', $arr_airports)
@@ -138,6 +140,26 @@ class HomeController extends Controller
         $ticket = $order->ticket_details;
         $passenger = array();
         $customer = array();
+        for($i=0;$i<count($ticket);$i++){
+            $flight[$i] = $ticket[$i]->flight;
+        }
+        $refund = array();
+        $flights = array_values(array_unique($flight));
+        for($i = 0;$i<count($flights);$i++){
+            $departure[$i] = Carbon::parse($flights[$i]->departure_date);
+            $today = Carbon::today('Asia/Ho_Chi_Minh');
+            $date_diff[$i] = $departure[$i]->diffInDays($today);
+
+
+        }
+        $money= Refund_Policy::get();
+        for($i=0;$i<count($date_diff);$i++){
+            if ($money[$i]->days_before_departure<=$date_diff[$i] && $date_diff<$money[$i+1]->days_before_departure){
+                $refund
+            }
+        }
+        dd($money);
+
 
         if ($status->order_status == 1) {
             $mailType = 5;
@@ -168,17 +190,7 @@ class HomeController extends Controller
         }
         if ($mailType == 5){
         $this->sendEmail($array,$mailType);
-        for($i=0;$i<count($ticket);$i++){
-            $flight[$i] = $ticket[$i]->flight;
-        }
-        $refund = array();
-        $flights = array_values(array_unique($flight));
-        for($i = 0;$i<count($flights);$i++){
-            $departure[$i] = Carbon::parse($flights[$i]->departure_date);
-            $today = Carbon::today('Asia/Ho_Chi_Minh');
-            $date_diff[$i] = $departure[$i]->diffInDays($today);
-            $refund[$i]= Refund_Policy::where('days_before_departure','<=',$date_diff[$i])->orderByDesc('id')->first()->percentage_of_refund;
-        }
+
         return redirect('/')->with('notification', 'Your booking has been cancelled.')
             ->with('refund',$refund)
             ->with('flightss',$flights);
@@ -305,7 +317,7 @@ class HomeController extends Controller
         });
 
         for($i=0;$i<count($flights);$i++){
-            $planeId[$i]=$flight[$i]->plane;
+            $planeId[$i]=$flights[$i]->plane;
             $plane_type[$i]=$planeId[$i]->plane_types->name;
             $duration[$i]=$flight[$i]->route_direct->duration;
             $airport[$i] = $flights[$i]->route_direct;

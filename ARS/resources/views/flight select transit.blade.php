@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-0 text-center">
                     <div class="row row-mt-15em">
-                        <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+                        <div style="top: 100px" class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                             <h1>If not now, then when?</h1>
                         </div>
                     </div>
@@ -68,11 +68,11 @@
                     <div class="btn-group group1 btn_other_outbound_transit" style="display: flex" role="group" aria-label="Basic example">
                         <div>
                             <input  type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -2)}}">
-                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->addDays(-2)->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->addDays(-2)->month}} <br></button>
                         </div>
                         <div>
                             <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day -1)}}">
-                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day-1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->addDays(-1)->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->addDays(-1)->month}} <br></button>
 
                         </div>
                         <div>
@@ -82,12 +82,12 @@
                         </div>
                         <div>
                             <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +1)}}">
-                            <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_outbound'))->day+1}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+                            <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_outbound'))->addDays(1)->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->addDays(1)->month}} <br></button>
 
                         </div>
                         <div>
                             <input type="hidden" name="other_day_outbound" value="{{Carbon\Carbon::parse(session('date_outbound'))->setDay(Carbon\Carbon::parse(session('date_outbound'))->day +2)}}">
-                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->day+2}}/{{Carbon\Carbon::parse(session('date_outbound'))->month}} <br></button>
+                            <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_outbound'))->addDays(2)->day}}/{{Carbon\Carbon::parse(session('date_outbound'))->addDays(2)->month}} <br></button>
 
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                 <table style="border-bottom: 0.5px solid #F5F5F5;margin-bottom: 10px">
                                     <tr>
                                         <td rowspan="2">{{session('from_transit_outbound_details')[$i]->id}}</td>
-                                        <td style="    width: 280px;">{{request('place_from')}} &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_outbound_details')[$i]->airport_transit}}</td>
+                                        <td style="    width: 280px;">{{session('place_from')}} &nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('from_transit_outbound_details')[$i]->airport_transit}}</td>
                                         <td>Date:</td>
                                         <td>{{Carbon\Carbon::parse(session('from_transit_outbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
                                         <td>Departure:</td>
@@ -122,7 +122,7 @@
                                 <table>
                                     <tr>
                                         <td rowspan="2">{{session('transit_to_outbound_details')[$i]->id}}</td>
-                                        <td style="    width: 280px;">{{session('from_transit_outbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{request('place_to')}}</td>
+                                        <td style="    width: 280px;">{{session('from_transit_outbound_details')[$i]->airport_transit}} &nbsp;&nbsp;&nbsp;<img src="front/images/429706-84%20-%20Copy.png" alt="">&nbsp;&nbsp;&nbsp;{{session('place_to')}}</td>
                                         <td>Date:</td>
                                         <td>{{Carbon\Carbon::parse(session('transit_to_outbound_details')[$i]->departure_date)->format('d/m/Y')}}</td>
                                         <td>Departure:</td>
@@ -147,14 +147,14 @@
                         <h3>Inbound</h3>
                     </div>
                     <div class="row col-md-12">
-                        <div class="btn-group group1 btn_other_return_transit" style="display: flex" role="group" aria-label="Basic example">
+                        <div class="btn-group group2 btn_other_return_transit" style="display: flex" role="group" aria-label="Basic example">
                             <div>
                                 <input  type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -2)}}">
-                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->addDays(-2)->day}}/{{Carbon\Carbon::parse(session('date_return'))->addDays(-2)->month}} <br></button>
                             </div>
                             <div>
                                 <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day -1)}}">
-                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day-1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->addDays(-1)->day}}/{{Carbon\Carbon::parse(session('date_return'))->addDays(-1)->month}} <br></button>
 
                             </div>
                             <div>
@@ -164,12 +164,12 @@
                             </div>
                             <div>
                                 <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +1)}}">
-                                <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_return'))->day+1}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+                                <button type="button" class="date-button btn btn-secondary  ">{{Carbon\Carbon::parse(session('date_return'))->addDays(1)->day}}/{{Carbon\Carbon::parse(session('date_return'))->addDays(1)->month}} <br></button>
 
                             </div>
                             <div>
                                 <input type="hidden" name="other_day_return" value="{{Carbon\Carbon::parse(session('date_return'))->setDay(Carbon\Carbon::parse(session('date_return'))->day +2)}}">
-                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->day+2}}/{{Carbon\Carbon::parse(session('date_return'))->month}} <br></button>
+                                <button type="button" class="date-button btn btn-secondary ">{{Carbon\Carbon::parse(session('date_return'))->addDays(2)->day}}/{{Carbon\Carbon::parse(session('date_return'))->addDays(2)->month}} <br></button>
 
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                 <div class="row back-continue">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-secondary" type="button"><a href="./">Back</a></button>
+                        <a href="./"><button class="btn btn-secondary" type="button">Back</button></a>
                         @if(session('check'))
                             <button class="btn btn-primary" type="submit" >Continue</button>
                         @elseif(!session('check'))

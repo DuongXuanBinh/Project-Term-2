@@ -132,7 +132,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="list-group" style="height: 600px">
+                        <ul class="list-group" style="height: 950px">
                             <li class="{{(session('view') == 'account') ? 'active' : '' }}" onclick="window.location='admin/view_admin/account'" ><a href="{{url('admin/view_admin/account')}}"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-fill" viewBox="0 -5 16 21">
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                     </svg>&nbsp;&nbsp;&nbsp;&nbsp;Account</a></li>
@@ -156,8 +156,8 @@
 {{--                FOR ACCOUNT--}}
             @if(session('view') == 'account')
                 <div class="row">
-                    <div class="col-md-12">
-                    <table>
+                    <div class="col-md-12" style="overflow-x: scroll">
+                    <table style="width: 110%;">
                         <tr class="table-menu">
                             <th colspan="12">ACCOUNT</th>
                             <th colspan="4"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
