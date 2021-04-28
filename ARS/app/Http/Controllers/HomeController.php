@@ -149,8 +149,18 @@ class HomeController extends Controller
             $departure[$i] = Carbon::parse($flights[$i]->departure_date);
             $today = Carbon::today('Asia/Ho_Chi_Minh');
             $date_diff[$i] = $departure[$i]->diffInDays($today);
-            $refund[$i]= Refund_Policy::where('days_before_departure','<=',$date_diff[$i])->orderByDesc('id')->first()->percentage_of_refund;
+
+
         }
+        $money= Refund_Policy::get();
+        for($i=0;$i<count($date_diff);$i++){
+            if ($money[$i]->days_before_departure<=$date_diff[$i] && $date_diff<$money[$i+1]->days_before_departure){
+                $refund
+            }
+        }
+        dd($money);
+
+
         if ($status->order_status == 1) {
             $mailType = 5;
         }

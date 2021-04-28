@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-0 text-center">
                     <div class="row row-mt-15em">
-                        <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+                        <div style="top: 100px" class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
                             <h1>If not now, then when?</h1>
                         </div>
                     </div>

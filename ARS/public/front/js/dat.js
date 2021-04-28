@@ -396,7 +396,6 @@ $('.btn_other_outbound div button.date-button').on('click',function (){
             $('.outbound_flights').html(data);
         },
         error: function (error){
-            alert('failed');
             console.log(error);
         }
     })
