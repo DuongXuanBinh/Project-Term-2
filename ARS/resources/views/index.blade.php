@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">
-                                        <h4 style="color: inherit">{{session('notification1')}}<span style="color: #0ac5a9;font-size: 1.5em">{{session('order_id')}}</span></h4>
+                                        <h4 style="color: inherit">{{session('notification2')}}<span style="color: #0ac5a9;font-size: 1.5em">{{session('order_id')}}</span></h4>
                                         <span><i>Your purchase was successful </i></span>
                                         <span><i>Thank you for choosing Helvetic Airline</i></span>
                                     </div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h3 style="color: inherit">Failed!</h3>
-                                    <span>{{session('notification')}}</span>
+                                    <span>{{session('notification2')}}</span>
                                 </div>
                             </div>
                         </div>

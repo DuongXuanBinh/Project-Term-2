@@ -304,7 +304,7 @@
                                                             @endfor
                                                             @if(session('order_status')==2)
                                                                 <tr style="height: 25px">
-                                                                    <td colspan="2"><a style="cursor: pointer" href="#" data-toggle="modal" data-target="#purchase">PURCHASE</a></td>
+                                                                    <td colspan="3"><a style="cursor: pointer" href="#" data-toggle="modal" data-target="#purchase">PURCHASE</a></td>
                                                                 </tr>
                                                             @endif
                                                             <tr style="margin-top: 10px;height: 25px">
@@ -448,7 +448,7 @@
                                                             @endfor
                                                             @if(session('order_status')==2)
                                                                 <tr style="height: 25px">
-                                                                    <td colspan="2"><a style="cursor: pointer" href="#" data-toggle="modal" data-target="#purchase">PURCHASE</a></td>
+                                                                    <td colspan="3"><a style="cursor: pointer" href="#" data-toggle="modal" data-target="#purchase">PURCHASE</a></td>
                                                                 </tr>
                                                             @endif
                                                             <tr  style="margin-top: 10px;height: 25px">

@@ -154,12 +154,16 @@ class HomeController extends Controller
         }
         $money= Refund_Policy::get();
         for($i=0;$i<count($date_diff);$i++){
-            if ($money[$i]->days_before_departure<=$date_diff[$i] && $date_diff<$money[$i+1]->days_before_departure){
-                $refund
+            if($money[$i]->days_before_departure>=$date_diff[$i]){
+                $refund[$i] = $money[$i]->percentage_of_refund;
+            }
+            else if ($money[$i]->days_before_departure<=$date_diff[$i] && $date_diff<$money[$i+1]->days_before_departure){
+                $refund[$i] = $money[$i]->percentage_of_refund;
+            }
+            else if ($i = count($date_diff)-1 && $date_diff>=$money[$i]->days_before_departure){
+                $refund[$i] = $money[$i]->percentage_of_refund;
             }
         }
-        dd($money);
-
 
         if ($status->order_status == 1) {
             $mailType = 5;
