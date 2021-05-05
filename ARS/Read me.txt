@@ -1,0 +1,37 @@
+Website: http://helveticairline.infinityfreeapp.com/
+
+Note: Can not buy a ticket unless logged in
+
+Test Account:
+	Email: Binhdxth2004002@fpt.edu.vn
+	Password: 111111
+
+Book Flight:
+	Direct flight: 
+		From: Ha Noi
+		To: Ho Chi Minh
+		Departure date: 7/5/2021
+		Arrival date (optional): 8/5/2021
+	Transit flight:
+		From: Van Don
+		To: Ho Chi Minh
+		Departure date: 7/5/2021
+		Arrival date (optional): 8/5/2021
+
+Check out:
+	By ATM of NCB Bank
+	Card number: 9704198526191432198
+	Name: Nguyen Van A
+	Expried: 07/15
+	OTP: 123456
+	An code will be returned after checking out or blocking successfully. You can use this code for checking in “Booking manage”
+
+
+Booking manage (log in required)
+	Booking code: SO-AKEB
+	Cancel or Reschedule (for purchased code) and Purchase (for blocking code) functions are available here
+
+
+Flight status (log in unnessessary):
+	Flight number: HV111
+	Departure date: 1/5/2021
