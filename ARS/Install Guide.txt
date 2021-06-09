@@ -1,0 +1,6 @@
+1. Run: composer install
+2. Run: php artisan key:generate
+3. Run: php artisan migrate
+4. Run: php artisan db:seed
+5. Run: $ composer require fedeisas/laravel-mail-css-inliner
+6: Run: php artisan serve
